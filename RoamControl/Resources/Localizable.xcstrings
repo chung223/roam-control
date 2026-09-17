@@ -24,6 +24,17 @@
         }
       }
     },
+    "A directly resolved address answered. LocalDevVPN may not be needed for this hop — worth confirming with a full session before relying on it.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "有直接解析出的位址回應了。這一跳可能不需要 LocalDevVPN——但在真正依賴它之前，建議先用完整的工作階段確認。"
+          }
+        }
+      }
+    },
     "A newer public release is available: %@.": {
       "extractionState": "manual",
       "localizations": {
@@ -53,6 +64,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "需要實體 iPhone 才能啟動定位工作階段。"
+          }
+        }
+      }
+    },
+    "About": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "關於"
           }
         }
       }
@@ -120,6 +142,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "其他 VPN 可能影響本機裝置連線。若你的網路環境允許，可以暫停該 VPN 再測試比較。啟動定位工作階段時請保持 LocalDevVPN 啟用。"
+          }
+        }
+      }
+    },
+    "Appearance": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "外觀"
           }
         }
       }
@@ -258,6 +291,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Checks the public GitHub release only when you tap it. Sprout never sends location, pairing or diagnostic data with this request."
+          }
+        }
+      }
+    },
+    "Checks whether this iPhone's pairing service answers on the addresses Bonjour resolved, instead of only through LocalDevVPN. It opens a TCP connection and closes it without sending anything, and never starts, changes or stops a location session. The result includes local network addresses, so review it before sharing.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "檢查這支 iPhone 的配對服務是否能在 Bonjour 解析出的位址上回應，而不是只能透過 LocalDevVPN。它只會開啟一個 TCP 連線並立即關閉，不會傳送任何內容，也絕不會啟動、變更或停止定位工作階段。結果包含區域網路位址，分享前請先確認內容。"
           }
         }
       }
@@ -455,6 +499,17 @@
         }
       }
     },
+    "Copied": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已複製"
+          }
+        }
+      }
+    },
     "Copies a status-only report you can paste into a bug report. It never includes locations, searches, pairing records, PINs, device names or error text.": {
       "extractionState": "manual",
       "localizations": {
@@ -462,6 +517,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "複製一份僅含狀態的報告，可貼進問題回報。其中絕不包含位置、搜尋內容、配對記錄、PIN、裝置名稱或錯誤文字。"
+          }
+        }
+      }
+    },
+    "Copy Experiment Result": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "複製實驗結果"
           }
         }
       }
@@ -484,6 +550,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "在這支 iPhone 上安全地建立配對，或匯入現有檔案。"
+          }
+        }
+      }
+    },
+    "Current Location": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目前位置"
           }
         }
       }
@@ -532,6 +609,17 @@
         }
       }
     },
+    "Device": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "裝置"
+          }
+        }
+      }
+    },
     "Device Setup": {
       "extractionState": "manual",
       "localizations": {
@@ -539,6 +627,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "裝置設定"
+          }
+        }
+      }
+    },
+    "Direct Path Experiment": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "直連路徑實驗"
           }
         }
       }
@@ -758,6 +857,17 @@
         }
       }
     },
+    "Help": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "說明"
+          }
+        }
+      }
+    },
     "History": {
       "extractionState": "manual",
       "localizations": {
@@ -952,6 +1062,17 @@
         }
       }
     },
+    "Local Network access is unavailable. Allow it in iPhone Settings, then try again.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "無法使用「區域網路」權限。請在 iPhone 設定中允許後再試一次。"
+          }
+        }
+      }
+    },
     "LocalDevVPN did not make the iPhone connection available in time.": {
       "extractionState": "manual",
       "localizations": {
@@ -992,6 +1113,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "模擬定位已停止"
+          }
+        }
+      }
+    },
+    "Location control": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "定位控制"
           }
         }
       }
@@ -1057,6 +1189,17 @@
         }
       }
     },
+    "Map controls": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "地圖控制項"
+          }
+        }
+      }
+    },
     "My Real Location Is Already Back": {
       "extractionState": "manual",
       "localizations": {
@@ -1079,6 +1222,17 @@
         }
       }
     },
+    "Never Shared": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "絕不分享"
+          }
+        }
+      }
+    },
     "New Location": {
       "extractionState": "manual",
       "localizations": {
@@ -1097,6 +1251,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "iOS 27 提供了新的裝置端配對。模擬器可以測試畫面，但 Apple 只在實體 iPhone 上開放真正的交握。"
+          }
+        }
+      }
+    },
+    "No matching pairing service was found. Is the paired iPhone awake and on this network?": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "找不到相符的配對服務。配對的 iPhone 是否已喚醒並連在這個網路上？"
           }
         }
       }
@@ -1130,6 +1295,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "北美洲"
+          }
+        }
+      }
+    },
+    "Nothing answered. Check that LocalDevVPN is connected and the paired iPhone is awake, then run it again.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "沒有任何位址回應。請確認 LocalDevVPN 已連線、配對的 iPhone 處於喚醒狀態，然後重新執行。"
           }
         }
       }
@@ -1174,6 +1350,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "裝置端配對需要實體 iPhone。"
+          }
+        }
+      }
+    },
+    "Only the LocalDevVPN address answered. The tunnel app is required for this hop.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "只有 LocalDevVPN 的位址回應。這一跳需要隧道 App。"
           }
         }
       }
@@ -1244,6 +1431,17 @@
         }
       }
     },
+    "Other VPNs": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "其他 VPN"
+          }
+        }
+      }
+    },
     "Page %lld of %lld": {
       "extractionState": "manual",
       "localizations": {
@@ -1284,6 +1482,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "恢復或還原工作階段前，請先完成這支 iPhone 的配對。"
+          }
+        }
+      }
+    },
+    "Pair this iPhone before running the direct-path experiment.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "執行直連路徑實驗前，請先完成這支 iPhone 的配對。"
           }
         }
       }
@@ -1503,6 +1712,17 @@
         }
       }
     },
+    "Reachable · %lld ms": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "可連線 · %lld 毫秒"
+          }
+        }
+      }
+    },
     "Ready": {
       "extractionState": "manual",
       "localizations": {
@@ -1687,6 +1907,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "重設未能完成"
+          }
+        }
+      }
+    },
+    "Restoration": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "還原"
           }
         }
       }
@@ -2205,6 +2436,23 @@
         }
       }
     },
+    "Roam Control has not found LocalDevVPN's device connection yet.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout 尚未找到 LocalDevVPN 的裝置連線。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout has not found LocalDevVPN's device connection yet."
+          }
+        }
+      }
+    },
     "Roam Control is intended for location-based app development and testing on your own device.": {
       "extractionState": "manual",
       "localizations": {
@@ -2286,6 +2534,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sprout sends only a small, fixed set of anonymous activity counts when sharing is enabled."
+          }
+        }
+      }
+    },
+    "Roam Control should continue automatically. If it doesn't, tap Continue.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout 應該會自動繼續。如果沒有，請點一下「繼續」。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout should continue automatically. If it doesn't, tap Continue."
           }
         }
       }
@@ -2399,6 +2664,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "執行連線檢查"
+          }
+        }
+      }
+    },
+    "Run Direct Path Experiment": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "執行直連路徑實驗"
           }
         }
       }
@@ -2564,6 +2840,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "設定"
+          }
+        }
+      }
+    },
+    "Setup & support": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "設定與支援"
+          }
+        }
+      }
+    },
+    "Shared": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "會分享"
           }
         }
       }
@@ -2766,6 +3064,17 @@
         }
       }
     },
+    "Storage and Control": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "儲存與控制"
+          }
+        }
+      }
+    },
     "Stored securely": {
       "extractionState": "manual",
       "localizations": {
@@ -2861,6 +3170,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "在你停止並還原真實位置之前，目的地會維持生效。"
+          }
+        }
+      }
+    },
+    "The direct-path experiment needs a physical iPhone.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "直連路徑實驗需要實體 iPhone。"
           }
         }
       }
@@ -3135,6 +3455,17 @@
         }
       }
     },
+    "The paired iPhone was found but published no addresses to try.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "找到了配對的 iPhone，但它沒有公布任何可嘗試的位址。"
+          }
+        }
+      }
+    },
     "The pairing engine returned an empty record.": {
       "extractionState": "manual",
       "localizations": {
@@ -3273,6 +3604,17 @@
         }
       }
     },
+    "Timed out": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "逾時"
+          }
+        }
+      }
+    },
     "Try Again": {
       "extractionState": "manual",
       "localizations": {
@@ -3389,6 +3731,17 @@
         }
       }
     },
+    "Waiting": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "等待中"
+          }
+        }
+      }
+    },
     "Waiting for a fresh location from this iPhone. Other apps may also take time to update…": {
       "extractionState": "manual",
       "localizations": {
@@ -3407,6 +3760,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "沿原路走回"
+          }
+        }
+      }
+    },
+    "Walking routes": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "步行路線"
           }
         }
       }
