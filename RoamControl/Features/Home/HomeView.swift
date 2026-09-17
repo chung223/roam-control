@@ -12,6 +12,7 @@ struct HomeView: View {
     @State private var isShowingSettings: Bool
     @State private var isShowingSavedPlaces = false
     @State private var isShowingLandmarks = false
+    @State private var isShowingPikminSpots = false
     @State private var shouldRefreshRealLocationWhenActive = false
     @State private var shouldClearLocationAfterRestoration = false
     @State private var isLocatingRealLocationAfterRestoration = false
@@ -131,6 +132,19 @@ struct HomeView: View {
                         .disabled(walkingSimulation.locksDestination)
                         .accessibilityLabel("Landmarks")
                         .accessibilityHint("Browse well-known places")
+
+                        Button {
+                            isShowingPikminSpots = true
+                        } label: {
+                            Image(systemName: "leaf.fill")
+                                .font(SproutTheme.font(.subheadline, weight: .semibold))
+                                .foregroundStyle(SproutTheme.primary)
+                                .sproutMapControl()
+                        }
+                        .buttonStyle(.plain)
+                        .disabled(walkingSimulation.locksDestination)
+                        .accessibilityLabel("Pikmin Spots")
+                        .accessibilityHint("Browse the bundled Pikmin Bloom catalogue")
 
                         Button {
                             isShowingSavedPlaces = true
@@ -464,6 +478,12 @@ struct HomeView: View {
         .sheet(isPresented: $isShowingSettings) {
             SettingsView()
                 .environment(appModel)
+        }
+        .sheet(isPresented: $isShowingPikminSpots) {
+            PikminSpotsView { target in
+                guard !walkingSimulation.locksDestination else { return }
+                mapModel.show(target)
+            }
         }
         .sheet(isPresented: $isShowingLandmarks) {
             LandmarksView { target in

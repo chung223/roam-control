@@ -498,6 +498,17 @@
         }
       }
     },
+    "Browse the bundled Pikmin Bloom catalogue": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "瀏覽內建的 Pikmin Bloom 目錄"
+          }
+        }
+      }
+    },
     "Browse well-known places": {
       "extractionState": "manual",
       "localizations": {
@@ -538,6 +549,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "哈里發塔"
+          }
+        }
+      }
+    },
+    "By county": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "依縣市"
+          }
+        }
+      }
+    },
+    "By decoration": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "依飾品"
           }
         }
       }
@@ -2465,6 +2498,17 @@
         }
       }
     },
+    "Mushroom spots": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "菇點"
+          }
+        }
+      }
+    },
     "My Real Location Is Already Back": {
       "extractionState": "manual",
       "localizations": {
@@ -2597,6 +2641,17 @@
         }
       }
     },
+    "No spots recorded": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "沒有收錄點位"
+          }
+        }
+      }
+    },
     "No walking route was found for this destination.": {
       "extractionState": "manual",
       "localizations": {
@@ -2648,6 +2703,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "沒有任何位址回應。請確認 LocalDevVPN 已連線、配對的 iPhone 處於喚醒狀態，然後重新執行。"
+          }
+        }
+      }
+    },
+    "Nothing in the catalogue yields this yet.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目錄裡還沒有會產出這一項的點位。"
           }
         }
       }
@@ -3054,6 +3120,17 @@
         }
       }
     },
+    "Pikmin Spots": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pikmin 點位"
+          }
+        }
+      }
+    },
     "Pisa, Italy": {
       "extractionState": "manual",
       "localizations": {
@@ -3083,6 +3160,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "正在規劃步行路線…"
+          }
+        }
+      }
+    },
+    "Postcards": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "明信片"
           }
         }
       }
@@ -3254,6 +3342,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "智利復活節島"
+          }
+        }
+      }
+    },
+    "Rarest first. A decoration with few spots is the one worth travelling for.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "稀有的排在前面。點位越少的飾品，越值得專程跑一趟。"
           }
         }
       }
@@ -4474,6 +4573,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "搜尋地點或座標"
+          }
+        }
+      }
+    },
+    "Search spots": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "搜尋點位"
           }
         }
       }
@@ -6071,6 +6181,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "英國威爾特郡"
+          }
+        }
+      }
+    },
+    "Worldwide": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全球"
           }
         }
       }
