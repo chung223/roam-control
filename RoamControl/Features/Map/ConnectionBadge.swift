@@ -27,11 +27,11 @@ struct ConnectionBadge: View {
 
     private var label: String {
         switch state {
-        case .notConfigured: "Set up iPhone"
-        case .ready: "Ready"
-        case .connecting: "Connecting…"
-        case .active: "Session active"
-        case .failed: "Connection error"
+        case .notConfigured: .appText("Set up iPhone")
+        case .ready: .appText("Ready")
+        case .connecting: .appText("Connecting…")
+        case .active: .appText("Session active")
+        case .failed: .appText("Connection error")
         }
     }
 

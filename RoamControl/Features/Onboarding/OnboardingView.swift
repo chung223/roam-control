@@ -117,8 +117,8 @@ struct OnboardingView: View {
     }
 
     private var finalButtonTitle: String {
-        if !isLastPage { return "Continue" }
-        return isReplay ? "Done" : "Set Up This iPhone"
+        if !isLastPage { return .appText("Continue") }
+        return isReplay ? .appText("Done") : .appText("Set Up This iPhone")
     }
 
     private var finalButtonSymbol: String {
@@ -241,25 +241,25 @@ private struct OnboardingPage {
     static let pages: [OnboardingPage] = [
         OnboardingPage(
             symbol: "location.viewfinder",
-            title: "Welcome to Roam Control",
+            title: .appText("Welcome to Roam Control"),
             message: "Choose where your iPhone should appear, from one simple map.",
             colors: [.blue, .cyan]
         ),
         OnboardingPage(
             symbol: "map.fill",
-            title: "Pick any place",
+            title: .appText("Pick any place"),
             message: "Search for a destination or tap the map, then save it as your target.",
             colors: [.indigo, .blue]
         ),
         OnboardingPage(
             symbol: "iphone.and.arrow.forward",
-            title: "Pair this iPhone once",
+            title: .appText("Pair this iPhone once"),
             message: "Roam Control needs one private pairing before it can control location. We'll guide you through it next.",
             colors: [.green, .teal]
         ),
         OnboardingPage(
             symbol: "hand.raised.fill",
-            title: "Private by design",
+            title: .appText("Private by design"),
             message: "Choose whether to help improve Roam Control with anonymous activity counts. Sharing starts only if you switch it on and can be changed later in Settings.",
             colors: [.indigo, .purple],
             showsUsageStatisticsControl: true

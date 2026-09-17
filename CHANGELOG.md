@@ -9,6 +9,10 @@ All notable public changes to Roam Control are recorded here.
 - Live Activity for a running session, on the Lock Screen and in the Dynamic Island. It shows the reported place and session stage, and for a walk the progress, remaining distance and arrival countdown. It ends when the session ends, including on failure. The place name is drawn by iOS on the Lock Screen and is never transmitted or added to usage statistics. Delivered by a new `RoamControlLiveActivity` app extension embedded in the app.
 - Bundled landmark catalogue: 72 well-known places grouped by region, searchable without a network connection, reachable from the globe button on the map. Choosing one selects it exactly as a search result does; starting a session remains a separate step.
 
+- Traditional Chinese (zh-Hant) localisation, via a String Catalog covering 289 strings: every plain SwiftUI literal, the computed status and button text, and all 54 failure messages the native bridge and session code can produce.
+
+  Those failure messages stay English in the source on purpose. `FailureStage` classifies telemetry by matching them exactly, the session coordinator decides recoverability by matching them, and `scripts/test-failure-stages.py` asserts on them, so the English is the internal identity and translation happens only at the point of display. No native rebuild was needed and every source invariant still passes.
+
 ### Fixed
 
 - `LocationTarget` identity no longer derives from the coordinate bit pattern. Two saved places at one coordinate could not both exist, and one place reported with slightly different coordinates by search, a dropped pin and reverse geocoding could occupy several history rows. Identity is now a stored `UUID`, and favourite matching, history de-duplication and active-target display compare position within about one metre instead. Favourites and history saved by earlier builds are migrated in place on first launch.

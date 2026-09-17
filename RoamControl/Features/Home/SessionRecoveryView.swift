@@ -167,10 +167,14 @@ struct SessionRecoveryView: View {
 
     private var summaryText: String {
         if let destination = recovery.destination, recovery.isWalkingRoute {
-            return "Roam Control closed before it could confirm that the simulated walk to \(destination.name) ended. Continue from the last saved point or restore this iPhone's real location."
+            return String(
+                localized: "Roam Control closed before it could confirm that the simulated walk to \(destination.name) ended. Continue from the last saved point or restore this iPhone's real location."
+            )
         }
 
-        return "Roam Control closed before it could confirm that the simulated location at \(recovery.lastReportedLocation.name) ended. Choose what this iPhone should do next."
+        return String(
+            localized: "Roam Control closed before it could confirm that the simulated location at \(recovery.lastReportedLocation.name) ended. Choose what this iPhone should do next."
+        )
     }
 
     private var resumeTitle: String {

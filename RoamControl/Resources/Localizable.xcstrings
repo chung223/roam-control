@@ -1,0 +1,3185 @@
+{
+  "sourceLanguage": "en",
+  "version": "1.0",
+  "strings": {
+    "%@, %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@，%2$@"
+          }
+        }
+      }
+    },
+    "%@. %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@。%2$@"
+          }
+        }
+      }
+    },
+    "A newer public release is available: %@.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "有可用的新版公開發行版本：%@。"
+          }
+        }
+      }
+    },
+    "A random identifier is created for this installation and irreversibly hashed before it is sent. It is used only to estimate activity from participating installations.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "系統會為這次安裝建立一個隨機識別碼，並在傳送前經過不可逆的雜湊處理。它只用於估算參與安裝的活動量。"
+          }
+        }
+      }
+    },
+    "A real iPhone is required to start a location session.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "需要實體 iPhone 才能啟動定位工作階段。"
+          }
+        }
+      }
+    },
+    "About Roam Control": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "關於 Roam Control"
+          }
+        }
+      }
+    },
+    "Africa": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "非洲"
+          }
+        }
+      }
+    },
+    "An inactive session means Roam Control's worker has ended. Other apps may need time to acquire a fresh real location.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "工作階段未啟用代表 Roam Control 的工作程序已結束。其他 App 可能需要一些時間才能取得新的真實位置。"
+          }
+        }
+      }
+    },
+    "Anonymous Statistics": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "匿名統計"
+          }
+        }
+      }
+    },
+    "Another VPN may affect local device connections. If it is appropriate for your network, compare a test with that VPN paused. Keep LocalDevVPN enabled when starting a location session.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "其他 VPN 可能影響本機裝置連線。若你的網路環境允許，可以暫停該 VPN 再測試比較。啟動定位工作階段時請保持 LocalDevVPN 啟用。"
+          }
+        }
+      }
+    },
+    "Asia": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "亞洲"
+          }
+        }
+      }
+    },
+    "Auto": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自動"
+          }
+        }
+      }
+    },
+    "Automatic": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自動"
+          }
+        }
+      }
+    },
+    "Before connecting": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "連線之前"
+          }
+        }
+      }
+    },
+    "Brisk": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "快走"
+          }
+        }
+      }
+    },
+    "Browse well-known places": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "瀏覽知名地標"
+          }
+        }
+      }
+    },
+    "Cancel": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取消"
+          }
+        }
+      }
+    },
+    "Cancel Pairing": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取消配對"
+          }
+        }
+      }
+    },
+    "Cancel Restoration": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取消還原"
+          }
+        }
+      }
+    },
+    "Checking pairing file": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在檢查配對檔案"
+          }
+        }
+      }
+    },
+    "Checking this iPhone": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在檢查這支 iPhone"
+          }
+        }
+      }
+    },
+    "Checks the public GitHub release only when you tap it. Roam Control never sends location, pairing or diagnostic data with this request.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "只有在你點選時才會檢查公開的 GitHub 版本。Roam Control 不會在這個請求中傳送位置、配對或診斷資料。"
+          }
+        }
+      }
+    },
+    "Choose a location": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "選擇一個位置"
+          }
+        }
+      }
+    },
+    "Choose where your iPhone should appear, from one simple map.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在一張簡潔的地圖上，決定你的 iPhone 要出現在哪裡。"
+          }
+        }
+      }
+    },
+    "Choose whether to help improve Roam Control with anonymous activity counts. Sharing starts only if you switch it on and can be changed later in Settings.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你可以選擇是否以匿名活動次數協助改善 Roam Control。只有在你主動開啟後才會開始分享，之後也可以在「設定」中變更。"
+          }
+        }
+      }
+    },
+    "Choose, test and move this iPhone’s reported location from one clean map.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在一張簡潔的地圖上選擇、測試並移動這支 iPhone 回報的位置。"
+          }
+        }
+      }
+    },
+    "Clear": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "清除"
+          }
+        }
+      }
+    },
+    "Clear search": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "清除搜尋"
+          }
+        }
+      }
+    },
+    "Clear selected location": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "清除已選位置"
+          }
+        }
+      }
+    },
+    "Close introduction": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "關閉介紹"
+          }
+        }
+      }
+    },
+    "Close walking route": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "關閉步行路線"
+          }
+        }
+      }
+    },
+    "Closing the local session and advertisement.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在關閉本機工作階段與廣播。"
+          }
+        }
+      }
+    },
+    "Connect your physical iPhone to create the pairing, or import an existing file.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "連接你的實體 iPhone 以建立配對，或匯入現有檔案。"
+          }
+        }
+      }
+    },
+    "Connecting…": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "連線中…"
+          }
+        }
+      }
+    },
+    "Connection Check": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "連線檢查"
+          }
+        }
+      }
+    },
+    "Connection Health": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "連線健康狀態"
+          }
+        }
+      }
+    },
+    "Connection error": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "連線錯誤"
+          }
+        }
+      }
+    },
+    "Connection status: %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "連線狀態：%@"
+          }
+        }
+      }
+    },
+    "Continue": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "繼續"
+          }
+        }
+      }
+    },
+    "Copies a status-only report you can paste into a bug report. It never includes locations, searches, pairing records, PINs, device names or error text.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "複製一份僅含狀態的報告，可貼進問題回報。其中絕不包含位置、搜尋內容、配對記錄、PIN、裝置名稱或錯誤文字。"
+          }
+        }
+      }
+    },
+    "Couldn’t check GitHub right now. Try again later.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目前無法檢查 GitHub，請稍後再試。"
+          }
+        }
+      }
+    },
+    "Create the pairing securely on this iPhone, or import an existing file.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在這支 iPhone 上安全地建立配對，或匯入現有檔案。"
+          }
+        }
+      }
+    },
+    "Currently using %@. Update to move to %@.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目前使用 %1$@。更新即可移動到 %2$@。"
+          }
+        }
+      }
+    },
+    "Dark": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "深色"
+          }
+        }
+      }
+    },
+    "Delete": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "刪除"
+          }
+        }
+      }
+    },
+    "Detecting this iPhone…": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在偵測這支 iPhone…"
+          }
+        }
+      }
+    },
+    "Device Setup": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "裝置設定"
+          }
+        }
+      }
+    },
+    "Dismiss keyboard": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "收起鍵盤"
+          }
+        }
+      }
+    },
+    "Dismisses the keyboard": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "收起鍵盤"
+          }
+        }
+      }
+    },
+    "Done": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "完成"
+          }
+        }
+      }
+    },
+    "E": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "東"
+          }
+        }
+      }
+    },
+    "Enter the six-digit code in Settings to confirm.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在「設定」中輸入六位數驗證碼以確認。"
+          }
+        }
+      }
+    },
+    "Enter this code in Settings": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在「設定」中輸入此驗證碼"
+          }
+        }
+      }
+    },
+    "Europe": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "歐洲"
+          }
+        }
+      }
+    },
+    "Events are sent to Roam Control's maintainer-operated service and, in configured beta builds, TelemetryDeck. The self-hosted service receives ordinary HTTPS connection metadata, such as the source IP address, but the app does not include it in the event body.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "事件會傳送到由 Roam Control 維護者營運的服務，在有設定的 Beta 版本中也會傳送到 TelemetryDeck。自架服務會收到一般的 HTTPS 連線中繼資料（例如來源 IP 位址），但 App 不會把它放進事件內容中。"
+          }
+        }
+      }
+    },
+    "Favourites": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "收藏"
+          }
+        }
+      }
+    },
+    "Favourites and history": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "收藏與紀錄"
+          }
+        }
+      }
+    },
+    "Feedback": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "意見回饋"
+          }
+        }
+      }
+    },
+    "Finding This iPhone…": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在尋找這支 iPhone…"
+          }
+        }
+      }
+    },
+    "Finding the paired iPhone through the private local tunnel.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在透過私有本機隧道尋找已配對的 iPhone。"
+          }
+        }
+      }
+    },
+    "Finish in Settings": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "前往「設定」完成"
+          }
+        }
+      }
+    },
+    "Finishing pairing": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在完成配對"
+          }
+        }
+      }
+    },
+    "Follow the mobile-data guidance if it appears.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "若出現行動網路的指引，請依照指引操作。"
+          }
+        }
+      }
+    },
+    "Get LocalDevVPN": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取得 LocalDevVPN"
+          }
+        }
+      }
+    },
+    "GitHub may ask you to choose Bug Report or Feature Request first. For pairing or connection problems, open Connection Health and use Copy Diagnostics. Do not include pairing records, credentials or private locations.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GitHub 可能會先請你選擇「Bug Report」或「Feature Request」。若是配對或連線問題，請開啟「連線健康狀態」並使用「複製診斷資訊」。請勿附上配對記錄、憑證或私人位置。"
+          }
+        }
+      }
+    },
+    "Give this saved place a name that is easy to recognise.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "為這個已儲存的地點取一個好辨認的名稱。"
+          }
+        }
+      }
+    },
+    "History": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "歷史紀錄"
+          }
+        }
+      }
+    },
+    "How it works": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "運作方式"
+          }
+        }
+      }
+    },
+    "Hybrid": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "混合"
+          }
+        }
+      }
+    },
+    "I'm Using Mobile Data": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "我正在使用行動網路"
+          }
+        }
+      }
+    },
+    "If you're on Wi‑Fi, make sure LocalDevVPN says Connected, then try again. Choose mobile data only when you're actually using 4G or 5G.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "如果你正在使用 Wi‑Fi，請確認 LocalDevVPN 顯示為 Connected，然後再試一次。只有在你確實使用 4G 或 5G 時才選擇行動網路。"
+          }
+        }
+      }
+    },
+    "Import Existing File": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "匯入現有檔案"
+          }
+        }
+      }
+    },
+    "Install %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "安裝 %@"
+          }
+        }
+      }
+    },
+    "Install LocalDevVPN before starting a location session.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "啟動定位工作階段前，請先安裝 LocalDevVPN。"
+          }
+        }
+      }
+    },
+    "Keep Recovery Options": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保留復原選項"
+          }
+        }
+      }
+    },
+    "Keep Roam Control open until the real location has been restored.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "真實位置還原完成前，請保持 Roam Control 開啟。"
+          }
+        }
+      }
+    },
+    "Keep Roam Control running. You can use other apps while the walk continues.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "請讓 Roam Control 持續執行。步行進行期間你可以使用其他 App。"
+          }
+        }
+      }
+    },
+    "Keep Simulated Location": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保持模擬定位"
+          }
+        }
+      }
+    },
+    "Landmarks": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "地標"
+          }
+        }
+      }
+    },
+    "Light": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "淺色"
+          }
+        }
+      }
+    },
+    "Local Network access is required to find this iPhone.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "需要「區域網路」權限才能找到這支 iPhone。"
+          }
+        }
+      }
+    },
+    "Local Network access is required. Enable it in Settings › Apps › Roam Control, then try again.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "需要「區域網路」權限。請到「設定 › App › Roam Control」開啟後再試一次。"
+          }
+        }
+      }
+    },
+    "LocalDevVPN did not make the iPhone connection available in time.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LocalDevVPN 未能及時建立與 iPhone 的連線。"
+          }
+        }
+      }
+    },
+    "LocalDevVPN did not open the secure tunnel in time.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LocalDevVPN 未能及時開啟安全隧道。"
+          }
+        }
+      }
+    },
+    "LocalDevVPN returned an invalid device address.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LocalDevVPN 回傳了無效的裝置位址。"
+          }
+        }
+      }
+    },
+    "Location Simulation Stopped": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "模擬定位已停止"
+          }
+        }
+      }
+    },
+    "Location is active": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "定位進行中"
+          }
+        }
+      }
+    },
+    "Location simulation stopped. Waiting for a fresh location from this iPhone.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "模擬定位已停止。正在等候這支 iPhone 回報新的位置。"
+          }
+        }
+      }
+    },
+    "Looking for a securely stored pairing record.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在尋找安全儲存的配對記錄。"
+          }
+        }
+      }
+    },
+    "Make sure LocalDevVPN is connected, switch mobile data off briefly, then return to Roam Control.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "請確認 LocalDevVPN 已連線，短暫關閉行動網路，然後回到 Roam Control。"
+          }
+        }
+      }
+    },
+    "Map Style": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "地圖樣式"
+          }
+        }
+      }
+    },
+    "My Real Location Is Already Back": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "我的真實位置已經回來了"
+          }
+        }
+      }
+    },
+    "N": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "北"
+          }
+        }
+      }
+    },
+    "New Location": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "換一個位置"
+          }
+        }
+      }
+    },
+    "New on-device pairing is available on iOS 27. The simulator can test the screen, but Apple only exposes the real handshake on a physical iPhone.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS 27 提供了新的裝置端配對。模擬器可以測試畫面，但 Apple 只在實體 iPhone 上開放真正的交握。"
+          }
+        }
+      }
+    },
+    "No public GitHub release has been published yet.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目前尚未發布任何公開的 GitHub 版本。"
+          }
+        }
+      }
+    },
+    "Normal": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "一般"
+          }
+        }
+      }
+    },
+    "North America": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "北美洲"
+          }
+        }
+      }
+    },
+    "OK": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "好"
+          }
+        }
+      }
+    },
+    "Oceania": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "大洋洲"
+          }
+        }
+      }
+    },
+    "Off by default. Never includes locations, searches, routes, pairing data or personal information.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "預設關閉。絕不包含位置、搜尋內容、路線、配對資料或個人資訊。"
+          }
+        }
+      }
+    },
+    "On-device pairing needs your physical iPhone.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "裝置端配對需要實體 iPhone。"
+          }
+        }
+      }
+    },
+    "Open LocalDevVPN": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "開啟 LocalDevVPN"
+          }
+        }
+      }
+    },
+    "Open LocalDevVPN in App Store": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在 App Store 開啟 LocalDevVPN"
+          }
+        }
+      }
+    },
+    "Opening LocalDevVPN…": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在開啟 LocalDevVPN…"
+          }
+        }
+      }
+    },
+    "Opening the secure location session.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在開啟安全的定位工作階段。"
+          }
+        }
+      }
+    },
+    "Opens device pairing setup": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "開啟裝置配對設定"
+          }
+        }
+      }
+    },
+    "Optional and off by default. Helps estimate activity from participating installations. Locations, searches and pairing data are never included.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "選用，預設關閉。用於估算參與安裝的活動量。絕不包含位置、搜尋內容與配對資料。"
+          }
+        }
+      }
+    },
+    "Page %lld of %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "第 %1$lld 頁，共 %2$lld 頁"
+          }
+        }
+      }
+    },
+    "Pair This iPhone": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "配對這支 iPhone"
+          }
+        }
+      }
+    },
+    "Pair this iPhone": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "配對這支 iPhone"
+          }
+        }
+      }
+    },
+    "Pair this iPhone before resuming or restoring the session.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢復或還原工作階段前，請先完成這支 iPhone 的配對。"
+          }
+        }
+      }
+    },
+    "Pair this iPhone before starting a walking session.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "開始步行工作階段前，請先完成這支 iPhone 的配對。"
+          }
+        }
+      }
+    },
+    "Pair this iPhone before starting location control.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用定位控制前，請先完成這支 iPhone 的配對。"
+          }
+        }
+      }
+    },
+    "Pair this iPhone once": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "配對這支 iPhone 一次"
+          }
+        }
+      }
+    },
+    "Pairing & Connection": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "配對與連線"
+          }
+        }
+      }
+    },
+    "Pairing code %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "配對驗證碼 %@"
+          }
+        }
+      }
+    },
+    "Pairing code ready": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "配對驗證碼已就緒"
+          }
+        }
+      }
+    },
+    "Pairing file ready": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "配對檔案已就緒"
+          }
+        }
+      }
+    },
+    "Pairing problem": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "配對發生問題"
+          }
+        }
+      }
+    },
+    "Pairing required": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "需要配對"
+          }
+        }
+      }
+    },
+    "Pairing took too long. Return to Roam Control and try again.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "配對耗時過久。請回到 Roam Control 再試一次。"
+          }
+        }
+      }
+    },
+    "Pairing verification took too long.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "配對驗證耗時過久。"
+          }
+        }
+      }
+    },
+    "Pick any place": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "選擇任何地點"
+          }
+        }
+      }
+    },
+    "Places you use will appear here.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你用過的地點會出現在這裡。"
+          }
+        }
+      }
+    },
+    "Preparing a secure pairing session…": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在準備安全的配對工作階段…"
+          }
+        }
+      }
+    },
+    "Preparing pairing": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在準備配對"
+          }
+        }
+      }
+    },
+    "Previous Session Interrupted": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上次的工作階段被中斷"
+          }
+        }
+      }
+    },
+    "Privacy": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "隱私"
+          }
+        }
+      }
+    },
+    "Private by design": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "隱私優先的設計"
+          }
+        }
+      }
+    },
+    "ROAM CONTROL": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ROAM CONTROL"
+          }
+        }
+      }
+    },
+    "Ready": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "就緒"
+          }
+        }
+      }
+    },
+    "Ready in Settings": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "可在「設定」中進行"
+          }
+        }
+      }
+    },
+    "Relaxed": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "輕鬆"
+          }
+        }
+      }
+    },
+    "Remove Pairing": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移除配對"
+          }
+        }
+      }
+    },
+    "Remove this pairing record?": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "要移除這筆配對記錄嗎？"
+          }
+        }
+      }
+    },
+    "Rename": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新命名"
+          }
+        }
+      }
+    },
+    "Reorder favourites": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新排列收藏"
+          }
+        }
+      }
+    },
+    "Replace Pairing File": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更換配對檔案"
+          }
+        }
+      }
+    },
+    "Replay Introduction": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重看介紹"
+          }
+        }
+      }
+    },
+    "Report a Bug": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "回報問題"
+          }
+        }
+      }
+    },
+    "Request a Feature": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "建議新功能"
+          }
+        }
+      }
+    },
+    "Required before location control": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用定位控制前必須完成"
+          }
+        }
+      }
+    },
+    "Reset App": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重設 App"
+          }
+        }
+      }
+    },
+    "Reset Roam Control": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重設 Roam Control"
+          }
+        }
+      }
+    },
+    "Reset Roam Control?": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "要重設 Roam Control 嗎？"
+          }
+        }
+      }
+    },
+    "Reset could not finish": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重設未能完成"
+          }
+        }
+      }
+    },
+    "Restore Real Location": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "還原真實位置"
+          }
+        }
+      }
+    },
+    "Restore this iPhone's real location?": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "要還原這支 iPhone 的真實位置嗎？"
+          }
+        }
+      }
+    },
+    "Restoring Real Location…": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在還原真實位置…"
+          }
+        }
+      }
+    },
+    "Restoring reconnects only long enough to clear the simulated location. Nothing starts automatically. Keep Roam Control open until it finishes.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "還原只會短暫重新連線以清除模擬定位，不會自動啟動任何項目。完成前請保持 Roam Control 開啟。"
+          }
+        }
+      }
+    },
+    "Restoring this iPhone's real location. Keep Roam Control open until this finishes.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在還原這支 iPhone 的真實位置。完成前請保持 Roam Control 開啟。"
+          }
+        }
+      }
+    },
+    "Restoring this iPhone's real location…": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在還原這支 iPhone 的真實位置…"
+          }
+        }
+      }
+    },
+    "Return map to north": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "將地圖轉回正北"
+          }
+        }
+      }
+    },
+    "Roam Control": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roam Control"
+          }
+        }
+      }
+    },
+    "Roam Control can use this record when the LocalDevVPN session layer is connected.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "當 LocalDevVPN 的工作階段層已連線時，Roam Control 就能使用這筆記錄。"
+          }
+        }
+      }
+    },
+    "Roam Control closed before it could confirm that the simulated location at %@ ended. Choose what this iPhone should do next.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roam Control 在確認 %@ 的模擬定位已結束之前就關閉了。請選擇這支 iPhone 接下來要做什麼。"
+          }
+        }
+      }
+    },
+    "Roam Control closed before it could confirm that the simulated walk to %@ ended. Continue from the last saved point or restore this iPhone's real location.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roam Control 在確認前往 %@ 的模擬步行已結束之前就關閉了。你可以從上次儲存的位置繼續，或還原這支 iPhone 的真實位置。"
+          }
+        }
+      }
+    },
+    "Roam Control could not complete the iPhone service handshake.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roam Control 無法完成 iPhone 的服務交握。"
+          }
+        }
+      }
+    },
+    "Roam Control could not confirm stopping location simulation.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roam Control 無法確認模擬定位已停止。"
+          }
+        }
+      }
+    },
+    "Roam Control could not determine its pairing port.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roam Control 無法判斷自己的配對連接埠。"
+          }
+        }
+      }
+    },
+    "Roam Control could not find this iPhone through LocalDevVPN. Check that the tunnel is enabled and try again.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roam Control 無法透過 LocalDevVPN 找到這支 iPhone。請確認隧道已啟用後再試一次。"
+          }
+        }
+      }
+    },
+    "Roam Control could not follow this walking route.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roam Control 無法沿著這條步行路線移動。"
+          }
+        }
+      }
+    },
+    "Roam Control could not identify this iPhone's pairing service.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roam Control 無法識別這支 iPhone 的配對服務。"
+          }
+        }
+      }
+    },
+    "Roam Control could not open a local pairing connection.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roam Control 無法開啟本機配對連線。"
+          }
+        }
+      }
+    },
+    "Roam Control could not open the iPhone's location controls.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roam Control 無法開啟這支 iPhone 的定位控制項。"
+          }
+        }
+      }
+    },
+    "Roam Control could not open the iPhone's service directory.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roam Control 無法開啟這支 iPhone 的服務目錄。"
+          }
+        }
+      }
+    },
+    "Roam Control could not open the secure device tunnel.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roam Control 無法開啟安全的裝置隧道。"
+          }
+        }
+      }
+    },
+    "Roam Control could not prepare the selected location.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roam Control 無法準備所選的位置。"
+          }
+        }
+      }
+    },
+    "Roam Control could not reach the iPhone through LocalDevVPN.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roam Control 無法透過 LocalDevVPN 連到這支 iPhone。"
+          }
+        }
+      }
+    },
+    "Roam Control could not secure the device tunnel.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roam Control 無法為裝置隧道建立加密。"
+          }
+        }
+      }
+    },
+    "Roam Control could not securely store the new pairing.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roam Control 無法安全地儲存新的配對記錄。"
+          }
+        }
+      }
+    },
+    "Roam Control could not start its device session.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roam Control 無法啟動裝置工作階段。"
+          }
+        }
+      }
+    },
+    "Roam Control could not start its location engine.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roam Control 無法啟動定位引擎。"
+          }
+        }
+      }
+    },
+    "Roam Control could not start its pairing engine.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roam Control 無法啟動配對引擎。"
+          }
+        }
+      }
+    },
+    "Roam Control could not start the walking session.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roam Control 無法啟動步行工作階段。"
+          }
+        }
+      }
+    },
+    "Roam Control could not update the active location.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roam Control 無法更新使用中的位置。"
+          }
+        }
+      }
+    },
+    "Roam Control found an outdated device announcement. Toggle LocalDevVPN off and on, then try again.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roam Control 找到的裝置廣播已過期。請將 LocalDevVPN 關閉再開啟，然後重試。"
+          }
+        }
+      }
+    },
+    "Roam Control has not detected another VPN. This is a troubleshooting check, not a diagnosis; an iOS scheduler rejection happens before the pairing connection starts.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roam Control 未偵測到其他 VPN。這只是疑難排解的檢查而非診斷結論；iOS 排程器的拒絕發生在配對連線開始之前。"
+          }
+        }
+      }
+    },
+    "Roam Control is intended for location-based app development and testing on your own device.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roam Control 的用途是在你自己的裝置上，進行以定位為基礎的 App 開發與測試。"
+          }
+        }
+      }
+    },
+    "Roam Control is visible to the iOS pairing screen.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS 的配對畫面現在看得到 Roam Control。"
+          }
+        }
+      }
+    },
+    "Roam Control lost the location session details.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roam Control 遺失了定位工作階段的資訊。"
+          }
+        }
+      }
+    },
+    "Roam Control needs one private pairing before it can control location. We'll guide you through it next.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roam Control 需要先完成一次私密配對才能控制定位。接下來會引導你完成。"
+          }
+        }
+      }
+    },
+    "Roam Control sends only a small, fixed set of anonymous activity counts when sharing is enabled.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "啟用分享時，Roam Control 只會傳送一小組固定的匿名活動次數。"
+          }
+        }
+      }
+    },
+    "Roam Control uses a narrow first-party sender instead of an analytics SDK, so extra device metadata is not added automatically.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roam Control 使用範圍狹窄的第一方傳送程式，而非分析 SDK，因此不會自動附加額外的裝置中繼資料。"
+          }
+        }
+      }
+    },
+    "Roam Control will end the simulated location and restore this iPhone's real location.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roam Control 將結束模擬定位，並還原這支 iPhone 的真實位置。"
+          }
+        }
+      }
+    },
+    "Roam Control will end the simulated walk and restore your real location. Your route progress will be reset.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roam Control 將結束模擬步行並還原你的真實位置，路線進度會被重設。"
+          }
+        }
+      }
+    },
+    "Roam Control will need a new RPPairing file before it can connect again.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roam Control 需要一個新的 RPPairing 檔案才能再次連線。"
+          }
+        }
+      }
+    },
+    "Roam Control will reconnect only long enough to clear the simulated location. It will not start a new location or walking session.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roam Control 只會短暫重新連線以清除模擬定位，不會啟動新的定位或步行工作階段。"
+          }
+        }
+      }
+    },
+    "Roam Control will return automatically after the tunnel starts.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "隧道啟動後，Roam Control 會自動返回。"
+          }
+        }
+      }
+    },
+    "Run Connection Check": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "執行連線檢查"
+          }
+        }
+      }
+    },
+    "S": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "南"
+          }
+        }
+      }
+    },
+    "Satellite": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "衛星"
+          }
+        }
+      }
+    },
+    "Save": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "儲存"
+          }
+        }
+      }
+    },
+    "Saved Places": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已儲存的地點"
+          }
+        }
+      }
+    },
+    "Search above or tap anywhere on the map.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在上方搜尋，或點一下地圖任一處。"
+          }
+        }
+      }
+    },
+    "Search for a destination or tap the map, then save it as your target.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "搜尋目的地或點一下地圖，然後把它存成你的目標位置。"
+          }
+        }
+      }
+    },
+    "Search for a place or enter coordinates": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "搜尋地點或輸入座標"
+          }
+        }
+      }
+    },
+    "Search landmarks": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "搜尋地標"
+          }
+        }
+      }
+    },
+    "Securing the pairing record in Keychain…": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在將配對記錄安全存入鑰匙圈…"
+          }
+        }
+      }
+    },
+    "Selects this location": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "選擇此位置"
+          }
+        }
+      }
+    },
+    "Selects this place on the map": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在地圖上選擇此地點"
+          }
+        }
+      }
+    },
+    "Session active": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "工作階段進行中"
+          }
+        }
+      }
+    },
+    "Set Up This iPhone": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "設定這支 iPhone"
+          }
+        }
+      }
+    },
+    "Set up iPhone": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "設定 iPhone"
+          }
+        }
+      }
+    },
+    "Settings": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "設定"
+          }
+        }
+      }
+    },
+    "Show my current location": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "顯示我目前的位置"
+          }
+        }
+      }
+    },
+    "South America": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "南美洲"
+          }
+        }
+      }
+    },
+    "Standard": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "標準"
+          }
+        }
+      }
+    },
+    "Start Location": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "開始定位"
+          }
+        }
+      }
+    },
+    "Start Walking": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "開始步行"
+          }
+        }
+      }
+    },
+    "Start when ready. Stop restores this iPhone's real location.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "準備好即可開始。停止會還原這支 iPhone 的真實位置。"
+          }
+        }
+      }
+    },
+    "Starting Location…": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在啟動定位…"
+          }
+        }
+      }
+    },
+    "Starting a private session on this iPhone.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在這支 iPhone 上啟動私密工作階段。"
+          }
+        }
+      }
+    },
+    "Starting walking session…": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在啟動步行工作階段…"
+          }
+        }
+      }
+    },
+    "Step %@. %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "步驟 %1$@。%2$@"
+          }
+        }
+      }
+    },
+    "Still Connecting": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "仍在連線中"
+          }
+        }
+      }
+    },
+    "Stop & Restore": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "停止並還原"
+          }
+        }
+      }
+    },
+    "Stop and restore real location": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "停止並還原真實位置"
+          }
+        }
+      }
+    },
+    "Stop the simulated location and restore your real location?": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "要停止模擬定位並還原真實位置嗎？"
+          }
+        }
+      }
+    },
+    "Stop walking and restore real location": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "停止步行並還原真實位置"
+          }
+        }
+      }
+    },
+    "Stop walking and restore this iPhone's real location?": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "要停止步行並還原這支 iPhone 的真實位置嗎？"
+          }
+        }
+      }
+    },
+    "Stopping pairing": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在停止配對"
+          }
+        }
+      }
+    },
+    "Stopping pairing…": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在停止配對…"
+          }
+        }
+      }
+    },
+    "Stored securely": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已安全儲存"
+          }
+        }
+      }
+    },
+    "Support": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "支援"
+          }
+        }
+      }
+    },
+    "Tap Edit to rearrange favourites.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "點一下「編輯」即可重新排列收藏。"
+          }
+        }
+      }
+    },
+    "Tap the heart on any selected place to save it.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "點一下所選地點的愛心即可儲存。"
+          }
+        }
+      }
+    },
+    "That location is outside the valid coordinate range.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "該位置超出有效的座標範圍。"
+          }
+        }
+      }
+    },
+    "The active location session ended before the walk finished.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "定位工作階段在步行結束前就中止了。"
+          }
+        }
+      }
+    },
+    "The code is generated on this iPhone and expires with this pairing attempt.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "驗證碼在這支 iPhone 上產生，並隨這次配對嘗試失效。"
+          }
+        }
+      }
+    },
+    "The code was not accepted. Start pairing again and enter the new code.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "驗證碼未被接受。請重新開始配對並輸入新的驗證碼。"
+          }
+        }
+      }
+    },
+    "The destination remains active until you stop and restore your real location.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在你停止並還原真實位置之前，目的地會維持生效。"
+          }
+        }
+      }
+    },
+    "The discovered device did not match the paired iPhone.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "找到的裝置與已配對的 iPhone 不符。"
+          }
+        }
+      }
+    },
+    "The encrypted device tunnel took too long to start.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "加密裝置隧道啟動耗時過久。"
+          }
+        }
+      }
+    },
+    "The handshake worked. Saving its keys securely.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "交握成功。正在安全地儲存金鑰。"
+          }
+        }
+      }
+    },
+    "The iPhone could not connect to Roam Control.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone 無法連線至 Roam Control。"
+          }
+        }
+      }
+    },
+    "The iPhone could not create its secure tunnel.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone 無法建立安全隧道。"
+          }
+        }
+      }
+    },
+    "The iPhone could not finish pairing. Please try again.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone 無法完成配對。請再試一次。"
+          }
+        }
+      }
+    },
+    "The iPhone did not accept the selected location.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone 未接受所選的位置。"
+          }
+        }
+      }
+    },
+    "The iPhone did not confirm stopping location simulation in time.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone 未能及時確認停止模擬定位。"
+          }
+        }
+      }
+    },
+    "The iPhone did not create its secure tunnel in time.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone 未能及時建立安全隧道。"
+          }
+        }
+      }
+    },
+    "The iPhone did not make its location service available.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone 未提供其定位服務。"
+          }
+        }
+      }
+    },
+    "The iPhone did not respond in time.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone 未能及時回應。"
+          }
+        }
+      }
+    },
+    "The iPhone ended the active location session.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone 結束了使用中的定位工作階段。"
+          }
+        }
+      }
+    },
+    "The iPhone ended the pairing connection. Start pairing again when you are ready.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone 中斷了配對連線。準備好後請重新開始配對。"
+          }
+        }
+      }
+    },
+    "The iPhone rejected the saved pairing session.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone 拒絕了已儲存的配對工作階段。"
+          }
+        }
+      }
+    },
+    "The iPhone returned an invalid service address.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone 回傳了無效的服務位址。"
+          }
+        }
+      }
+    },
+    "The iPhone returned an invalid tunnel address.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone 回傳了無效的隧道位址。"
+          }
+        }
+      }
+    },
+    "The iPhone's location service did not become ready.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone 的定位服務未就緒。"
+          }
+        }
+      }
+    },
+    "The iPhone's service directory took too long to respond.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone 的服務目錄回應耗時過久。"
+          }
+        }
+      }
+    },
+    "The iPhone's service handshake took too long.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone 的服務交握耗時過久。"
+          }
+        }
+      }
+    },
+    "The location controls took too long to open.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "定位控制項開啟耗時過久。"
+          }
+        }
+      }
+    },
+    "The location service did not become ready in time.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "定位服務未能及時就緒。"
+          }
+        }
+      }
+    },
+    "The location service took too long to open.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "定位服務開啟耗時過久。"
+          }
+        }
+      }
+    },
+    "The location session stopped unexpectedly.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "定位工作階段意外中止。"
+          }
+        }
+      }
+    },
+    "The paired iPhone did not respond in time.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已配對的 iPhone 未能及時回應。"
+          }
+        }
+      }
+    },
+    "The pairing engine returned an empty record.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "配對引擎回傳了空白的記錄。"
+          }
+        }
+      }
+    },
+    "The pairing record is generated or checked on this iPhone, then stored only in its Keychain. Roam Control does not upload it.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "配對記錄在這支 iPhone 上產生或驗證，並且只存放在它的鑰匙圈中。Roam Control 不會上傳。"
+          }
+        }
+      }
+    },
+    "The saved pairing is no longer valid. Reset Device Setup and pair again.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已儲存的配對已失效。請重設「裝置設定」後重新配對。"
+          }
+        }
+      }
+    },
+    "The saved pairing record could not be read.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "無法讀取已儲存的配對記錄。"
+          }
+        }
+      }
+    },
+    "The saved pairing record is missing its device identity.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已儲存的配對記錄缺少裝置識別資訊。"
+          }
+        }
+      }
+    },
+    "The secure location session is ready. You can restore mobile data now; spoofing will continue over 5G.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "安全的定位工作階段已就緒。你現在可以恢復行動網路，模擬定位會繼續透過 5G 運作。"
+          }
+        }
+      }
+    },
+    "The self-hosted service runs daily maintenance that deletes live events older than 90 days. No fixed deletion schedule is promised for database backups or web-server access logs. TelemetryDeck says it does not store IP addresses and may retain anonymous events for roughly 7–10 years without guaranteeing an exact deletion date.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自架服務每天執行維護作業，刪除超過 90 天的即時事件。資料庫備份與網頁伺服器存取紀錄則未承諾固定的刪除排程。TelemetryDeck 表示不會儲存 IP 位址，並可能保留匿名事件約 7 至 10 年，且不保證確切的刪除日期。"
+          }
+        }
+      }
+    },
+    "Theme": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "外觀"
+          }
+        }
+      }
+    },
+    "This checks the saved pairing record and whether the paired iPhone is visible through LocalDevVPN. It never starts, changes, or stops your location.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "這會檢查已儲存的配對記錄，以及能否透過 LocalDevVPN 看到已配對的 iPhone。它不會啟動、變更或停止你的定位。"
+          }
+        }
+      }
+    },
+    "This clears the pairing record and local app settings, then shows onboarding again. It does not remove or change LocalDevVPN.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "這會清除配對記錄與本機 App 設定，並重新顯示新手引導。不會移除或變更 LocalDevVPN。"
+          }
+        }
+      }
+    },
+    "This iPhone is using %@. Stop & Restore ends the simulation and restores its real location.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "這支 iPhone 正在使用 %@。「停止並還原」會結束模擬並還原它的真實位置。"
+          }
+        }
+      }
+    },
+    "Try Again": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "再試一次"
+          }
+        }
+      }
+    },
+    "Turn Mobile Data Back On": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新開啟行動網路"
+          }
+        }
+      }
+    },
+    "Turn Mobile Data Off": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "關閉行動網路"
+          }
+        }
+      }
+    },
+    "Turning sharing off stops new reporting, cancels requests still in progress where possible and removes the identifier from Roam Control. It cannot withdraw anonymous events already received.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "關閉分享會停止新的回報、盡可能取消仍在進行中的請求，並從 Roam Control 移除識別碼。但無法收回已經送達的匿名事件。"
+          }
+        }
+      }
+    },
+    "Update Location": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更新位置"
+          }
+        }
+      }
+    },
+    "Updates": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更新"
+          }
+        }
+      }
+    },
+    "Validating the record and its keys.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在驗證記錄與其金鑰。"
+          }
+        }
+      }
+    },
+    "View LocalDevVPN": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "查看 LocalDevVPN"
+          }
+        }
+      }
+    },
+    "View public release %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "查看公開發行版本 %@"
+          }
+        }
+      }
+    },
+    "W": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "西"
+          }
+        }
+      }
+    },
+    "Waiting for a fresh location from this iPhone. Other apps may also take time to update…": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在等候這支 iPhone 回報新的位置。其他 App 也可能需要一些時間才會更新…"
+          }
+        }
+      }
+    },
+    "Walk Route Back": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "沿原路走回"
+          }
+        }
+      }
+    },
+    "Welcome to Roam Control": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "歡迎使用 Roam Control"
+          }
+        }
+      }
+    },
+    "What Is Shared": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "分享的內容"
+          }
+        }
+      }
+    },
+    "You are using a newer local test build (%@ Build %@).": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你正在使用較新的本機測試版本（%1$@ Build %2$@）。"
+          }
+        }
+      }
+    },
+    "You have the latest public release (%@).": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你已在使用最新的公開發行版本（%@）。"
+          }
+        }
+      }
+    },
+    "Your pairing record and local choices will be removed. You will return to the welcome screen.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你的配對記錄與本機設定將被移除，並回到歡迎畫面。"
+          }
+        }
+      }
+    },
+    "Your spoofed location is being held here until you resume.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在你恢復之前，模擬的位置會停留在這裡。"
+          }
+        }
+      }
+    },
+    "iOS could not keep pairing active in the background. Keep Roam Control open and try again.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS 無法在背景維持配對。請保持 Roam Control 開啟後再試一次。"
+          }
+        }
+      }
+    },
+    "iOS could not prepare the location session. Close Roam Control, reopen it, and try again.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS 無法準備定位工作階段。請關閉 Roam Control 後重新開啟再試一次。"
+          }
+        }
+      }
+    },
+    "iOS could not register the secure pairing task. Close Roam Control, reopen it, and try again.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS 無法註冊安全配對工作。請關閉 Roam Control 後重新開啟再試一次。"
+          }
+        }
+      }
+    }
+  }
+}

@@ -88,7 +88,7 @@ struct LocationSelectionCard: View {
                 }
 
                 if let walkingRouteError {
-                    Text(walkingRouteError)
+                    Text(SessionMessage.localized(walkingRouteError))
                         .font(.caption)
                         .foregroundStyle(.red)
                         .frame(maxWidth: .infinity, alignment: .center)
@@ -282,19 +282,19 @@ struct LocationSelectionCard: View {
     private var primaryTitle: String {
         switch sessionPhase {
         case .openingLocalDevVPN:
-            "Opening LocalDevVPN…"
+            .appText("Opening LocalDevVPN…")
         case .discovering:
-            "Finding This iPhone…"
+            .appText("Finding This iPhone…")
         case .connecting:
-            "Starting Location…"
+            .appText("Starting Location…")
         case .active:
-            isShowingActiveTarget ? "Stop & Restore" : "Update Location"
+            isShowingActiveTarget ? .appText("Stop & Restore") : .appText("Update Location")
         case .stopping:
-            "Restoring Real Location…"
+            .appText("Restoring Real Location…")
         case .failed:
-            "Try Again"
+            .appText("Try Again")
         case .idle:
-            "Start Location"
+            .appText("Start Location")
         }
     }
 
@@ -333,23 +333,29 @@ struct LocationSelectionCard: View {
         switch sessionPhase {
         case .idle:
             return isPaired
-                ? "Start when ready. Stop restores this iPhone's real location."
-                : "Pair this iPhone before starting location control."
+                ? .appText("Start when ready. Stop restores this iPhone's real location.")
+                : .appText("Pair this iPhone before starting location control.")
         case .openingLocalDevVPN:
-            return "Roam Control will return automatically after the tunnel starts."
+            return .appText("Roam Control will return automatically after the tunnel starts.")
         case .discovering:
-            return "Finding the paired iPhone through the private local tunnel."
+            return .appText("Finding the paired iPhone through the private local tunnel.")
         case .connecting:
-            return "Opening the secure location session."
+            return .appText("Opening the secure location session.")
         case .active(let target):
             if !isShowingActiveTarget, let location {
-                return "Currently using \(target.name). Update to move to \(location.name)."
+                return String(
+                    localized: "Currently using \(target.name). Update to move to \(location.name)."
+                )
             }
-            return "This iPhone is using \(target.name). Stop & Restore ends the simulation and restores its real location."
+            return String(
+                localized: "This iPhone is using \(target.name). Stop & Restore ends the simulation and restores its real location."
+            )
         case .stopping:
-            return "Restoring this iPhone's real location. Keep Roam Control open until this finishes."
+            return .appText("Restoring this iPhone's real location. Keep Roam Control open until this finishes.")
         case .failed(let message):
-            return message
+            // Native and session failures stay English internally; translate
+            // only here, on the way to the screen.
+            return SessionMessage.localized(message)
         }
     }
 
