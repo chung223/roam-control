@@ -36,8 +36,7 @@ struct SessionRecoveryView: View {
                 .stroke(.white.opacity(0.16), lineWidth: 1)
         }
         .shadow(color: .black.opacity(0.24), radius: 28, y: 12)
-        .confirmationDialog(
-            "Restore this iPhone's real location?",
+        .confirmationDialog("Restore this iPhone's real location?",
             isPresented: $isConfirmingRestore,
             titleVisibility: .visible
         ) {
@@ -80,21 +79,21 @@ struct SessionRecoveryView: View {
 
             VStack(spacing: 10) {
                 recoveryDetail(
-                    title: recovery.isWalkingRoute ? "Last saved point" : "Last location",
+                    title: recovery.isWalkingRoute ? .appText("Last saved point") : .appText("Last location"),
                     value: recovery.lastReportedLocation.name,
                     symbol: "mappin.and.ellipse"
                 )
 
                 if let destination = recovery.destination, recovery.isWalkingRoute {
                     recoveryDetail(
-                        title: "Destination",
+                        title: .appText("Destination"),
                         value: destination.name,
                         symbol: "flag.checkered"
                     )
                 }
 
                 recoveryDetail(
-                    title: "Last active",
+                    title: .appText("Last active"),
                     value: recovery.updatedAt.formatted(date: .abbreviated, time: .shortened),
                     symbol: "clock"
                 )
@@ -105,7 +104,7 @@ struct SessionRecoveryView: View {
             if isResuming || isRestoring {
                 HStack(spacing: 10) {
                     ProgressView()
-                    Text(isRestoring ? "Restoring this iPhone's real location…" : "Preparing the route…")
+                    Text(verbatim: isRestoring ? .appText("Restoring this iPhone's real location…") : .appText("Preparing the route…"))
                         .font(.subheadline.weight(.semibold))
                 }
                 .frame(maxWidth: .infinity)
@@ -172,7 +171,7 @@ struct SessionRecoveryView: View {
     }
 
     private var resumeTitle: String {
-        recovery.isWalkingRoute ? "Resume Walking" : "Resume Location"
+        recovery.isWalkingRoute ? .appText("Resume Walking") : .appText("Resume Location")
     }
 
     private func recoveryDetail(title: String, value: String, symbol: String) -> some View {

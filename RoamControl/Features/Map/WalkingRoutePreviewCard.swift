@@ -113,17 +113,17 @@ struct WalkingRoutePreviewCard: View {
     @ViewBuilder
     private var routeMetrics: some View {
         let distance = RouteMetric(
-            title: showsProgress ? "Remaining" : "Distance",
+            title: showsProgress ? .appText("Remaining") : .appText("Distance"),
             value: distanceText,
             symbol: "point.topleft.down.to.point.bottomright.curvepath"
         )
         let duration = RouteMetric(
-            title: simulation.phase == .arrived ? "Status" : "Walking",
+            title: simulation.phase == .arrived ? .appText("Status") : .appText("Walking"),
             value: durationText,
             symbol: simulation.phase == .arrived ? "checkmark.circle" : "clock"
         )
         let arrival = RouteMetric(
-            title: "Arrive",
+            title: .appText("Arrive"),
             value: arrivalText,
             symbol: "flag.checkered"
         )
@@ -361,13 +361,13 @@ struct WalkingRoutePreviewCard: View {
 
     private var phaseTitle: String {
         switch simulation.phase {
-        case .idle: "Walking route"
-        case .preparing: "Preparing walk"
-        case .walking: "Walking"
-        case .paused: "Walk paused"
-        case .arrived: "Arrived"
-        case .stopping: "Ending walk"
-        case .failed: "Walking unavailable"
+        case .idle: .appText("Walking route")
+        case .preparing: .appText("Preparing walk")
+        case .walking: .appText("Walking")
+        case .paused: .appText("Walk paused")
+        case .arrived: .appText("Arrived")
+        case .stopping: .appText("Ending walk")
+        case .failed: .appText("Walking unavailable")
         }
     }
 
@@ -380,7 +380,7 @@ struct WalkingRoutePreviewCard: View {
         case .arrived:
             "Location active at \(destination.name)"
         case .stopping:
-            "Restoring this iPhone's real location"
+            .appText("Restoring this iPhone's real location")
         }
     }
 
@@ -437,7 +437,7 @@ struct WalkingRoutePreviewCard: View {
     }
 
     private var durationText: String {
-        guard simulation.phase != .arrived else { return "Complete" }
+        guard simulation.phase != .arrived else { return .appText("Complete") }
         let duration = simulation.totalDistance > 0
             ? simulation.remainingDuration
             : route.expectedTravelTime

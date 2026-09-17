@@ -76,10 +76,10 @@ struct PairingSetupView: View {
             if case .paired(let summary) = appModel.pairingStatus {
                 Divider()
 
-                pairingDetail(title: "Fingerprint", value: summary.fingerprint, monospaced: true)
+                pairingDetail(title: .appText("Fingerprint"), value: summary.fingerprint, monospaced: true)
 
                 pairingDetail(
-                    title: "Added",
+                    title: .appText("Added"),
                     value: summary.importedAt.formatted(date: .abbreviated, time: .shortened)
                 )
 
@@ -153,8 +153,8 @@ struct PairingSetupView: View {
                 Text("Finish in Settings")
                     .font(.subheadline.weight(.semibold))
                 instructionRow("Open Settings › Privacy & Security › Developer Mode.")
-                instructionRow("Tap Pair with Roam Control.")
-                instructionRow("Use the code shown here when iOS asks for it.")
+                instructionRow(.appText("Tap Pair with Roam Control."))
+                instructionRow(.appText("Use the code shown here when iOS asks for it."))
             }
 
         case .showingPIN(let pin):
@@ -200,9 +200,9 @@ struct PairingSetupView: View {
             Text("Before connecting")
                 .font(.headline)
 
-            requirementRow(number: "1", text: "Pair this iPhone here, or import its existing RPPairing file.")
-            requirementRow(number: "2", text: "Install LocalDevVPN and switch it on.")
-            requirementRow(number: "3", text: "Keep Developer Mode enabled on the iPhone.")
+            requirementRow(number: "1", text: .appText("Pair this iPhone here, or import its existing RPPairing file."))
+            requirementRow(number: "2", text: .appText("Install LocalDevVPN and switch it on."))
+            requirementRow(number: "3", text: .appText("Keep Developer Mode enabled on the iPhone."))
 
             Link(destination: localDevVPNURL) {
                 Label("View LocalDevVPN", systemImage: "arrow.up.right.square")
