@@ -13,6 +13,9 @@ struct PikminSpotsView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var query = ""
     @State private var tab: Tab = .decorations
+    @State private var finder = PlaceFinder()
+    @State private var ask = ""
+    @FocusState private var isAsking: Bool
 
     /// Where the map is looking, so a list can answer "which of these is
     /// nearest" rather than leaving the reader to work it out.
@@ -21,7 +24,7 @@ struct PikminSpotsView: View {
     let onShowOnMap: (PikminSpotFilter) -> Void
 
     enum Tab: String, CaseIterable, Identifiable {
-        case decorations, counties, world
+        case decorations, counties, world, ask
         var id: String { rawValue }
 
         var title: String {
@@ -29,6 +32,7 @@ struct PikminSpotsView: View {
             case .decorations: String(localized: "By decoration")
             case .counties: String(localized: "By county")
             case .world: String(localized: "Worldwide")
+            case .ask: String(localized: "Ask")
             }
         }
     }
@@ -60,7 +64,12 @@ struct PikminSpotsView: View {
     private var browser: some View {
         VStack(spacing: 0) {
             Picker("", selection: $tab) {
-                ForEach(Tab.allCases) { Text($0.title).tag($0) }
+                // The ask tab only exists where the model does. A tab that
+                // explains why it cannot work is worse than one that is not
+                // there.
+                ForEach(Tab.allCases.filter { $0 != .ask || finder.isAvailable }) {
+                    Text($0.title).tag($0)
+                }
             }
             .pickerStyle(.segmented)
             .padding(.horizontal, 16)
@@ -70,6 +79,7 @@ struct PikminSpotsView: View {
             case .decorations: decorationList
             case .counties: countyList
             case .world: worldList
+            case .ask: askList
             }
         }
     }
@@ -166,6 +176,64 @@ struct PikminSpotsView: View {
             }
         }
         .listStyle(.insetGrouped)
+    }
+
+    /// Runs entirely on the device, which is why it is here at all: the rest
+    /// of this catalogue is bundled and offline so that where someone wants to
+    /// be stays on their phone.
+    private var askList: some View {
+        List {
+            Section {
+                HStack(spacing: 10) {
+                    TextField("What are you looking for?", text: $ask, axis: .vertical)
+                        .focused($isAsking)
+                        .submitLabel(.search)
+                        .onSubmit { runAsk() }
+
+                    if finder.isSearching {
+                        ProgressView()
+                    } else {
+                        Button("Ask", systemImage: "arrow.up.circle.fill") { runAsk() }
+                            .labelStyle(.iconOnly)
+                            .font(SproutTheme.font(.title3))
+                            .foregroundStyle(SproutTheme.primary)
+                            .disabled(ask.trimmingCharacters(in: .whitespaces).isEmpty)
+                    }
+                }
+            } footer: {
+                Text("Answered on this iPhone, from the bundled catalogue. Nothing is sent anywhere.")
+            }
+
+            if let explanation = finder.explanation, !explanation.isEmpty {
+                Section {
+                    Text(explanation)
+                        .font(SproutTheme.font(.subheadline))
+                        .foregroundStyle(SproutTheme.textSecondary)
+                }
+            }
+
+            if let failure = finder.failure {
+                Section {
+                    Text(failure)
+                        .font(SproutTheme.font(.subheadline))
+                        .foregroundStyle(SproutTheme.accent)
+                }
+            }
+
+            if !finder.results.isEmpty {
+                Section {
+                    ForEach(finder.results) { spot in
+                        SpotRow(spot: spot, origin: origin) { select(spot) }
+                    }
+                }
+            }
+        }
+        .listStyle(.insetGrouped)
+    }
+
+    private func runAsk() {
+        isAsking = false
+        Task { await finder.find(ask, near: origin) }
     }
 
     private var searchResults: some View {

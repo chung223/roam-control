@@ -54,6 +54,11 @@ EXEMPT_FILES = {
     # Compiled into both targets, so it cannot use the app's appText. Its
     # English is the key the extension's own catalogue is looked up by.
     "RoamControlShared/RoamSessionActivityAttributes.swift",
+    # Its English is addressed to the model, not to a reader: tool
+    # descriptions, @Guide hints and the text a tool answers with. Translating
+    # any of it would change what the model does. The two things it does say
+    # to a reader go through appText like everything else.
+    "RoamControl/Services/PlaceFinder.swift",
 }
 
 # Not text a reader sees: SF Symbol names, reverse-DNS identifiers, Info.plist

@@ -311,6 +311,17 @@
         }
       }
     },
+    "Answered on this iPhone, from the bundled catalogue. Nothing is sent anywhere.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "由這支 iPhone 就地回答，只用內建目錄。不會送出任何資料。"
+          }
+        }
+      }
+    },
     "App opened or returned to foreground": {
       "extractionState": "manual",
       "localizations": {
@@ -428,6 +439,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "亞洲"
+          }
+        }
+      }
+    },
+    "Ask": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "詢問"
           }
         }
       }
@@ -3297,6 +3319,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "沒有任何位址回應。請確認 LocalDevVPN 已連線、配對的 iPhone 處於喚醒狀態，然後重新執行。"
+          }
+        }
+      }
+    },
+    "Nothing in the catalogue matched that.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目錄裡沒有符合的項目。"
           }
         }
       }
@@ -6431,6 +6464,17 @@
         }
       }
     },
+    "The on-device model could not answer that.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "裝置端模型無法回答這個問題。"
+          }
+        }
+      }
+    },
     "The paired iPhone did not respond in time.": {
       "extractionState": "manual",
       "localizations": {
@@ -7127,6 +7171,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "分享的內容"
+          }
+        }
+      }
+    },
+    "What are you looking for?": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你在找什麼？"
           }
         }
       }
