@@ -52,6 +52,8 @@ final class WalkingSimulationController {
     private var movementTask: Task<Void, Never>?
     @ObservationIgnored
     private var pauseRequestObserver: (any NSObjectProtocol)?
+    @ObservationIgnored
+    let arrivalAlarm = ArrivalAlarm()
 
     init() {
         observePauseRequests()
@@ -215,6 +217,7 @@ final class WalkingSimulationController {
     }
 
     func stop(using deviceSession: LocalDeviceSessionCoordinator) {
+        arrivalAlarm.cancel()
         guard locksDestination || isFailed else { return }
         movementTask?.cancel()
         movementTask = nil
@@ -304,6 +307,7 @@ final class WalkingSimulationController {
         stage: RoamSessionActivityAttributes.ContentState.Stage
     ) {
         guard let destination else { return }
+        updateArrivalAlarm(stage: stage, destination: destination)
         liveActivity?.updateWalk(
             stage: stage,
             destinationName: destination.name,
@@ -318,6 +322,20 @@ final class WalkingSimulationController {
     /// in progress on the Lock Screen.
     private func reportWalkNoLongerMoving(named placeName: String) {
         liveActivity?.updateFixedLocation(named: placeName)
+    }
+
+    /// The alarm follows the walk rather than being set once: pausing, turning
+    /// round or retargeting all change when arrival happens, and an alarm for
+    /// an arrival that already passed is worse than none.
+    private func updateArrivalAlarm(
+        stage: RoamSessionActivityAttributes.ContentState.Stage,
+        destination: LocationTarget
+    ) {
+        guard stage == .running, let expectedArrival else {
+            arrivalAlarm.cancel()
+            return
+        }
+        Task { await arrivalAlarm.schedule(arrivingAt: expectedArrival, destination: destination.name) }
     }
 
     /// Only meaningful while moving; a paused walk has no arrival time.

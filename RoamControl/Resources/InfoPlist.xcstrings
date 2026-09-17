@@ -1,40 +1,57 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-    "NSLocalNetworkUsageDescription" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sprout uses the local network to securely pair with and control this iPhone through LocalDevVPN."
+  "sourceLanguage": "en",
+  "strings": {
+    "NSAlarmKitUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout sets an alarm when a simulated walk reaches its destination, so it is heard even when the iPhone is silenced."
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sprout 會使用區域網路，透過 LocalDevVPN 與這支 iPhone 安全配對並控制它。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "模擬步行抵達目的地時，Sprout 會設一個鬧鐘，即使 iPhone 靜音也聽得到。"
           }
         }
       }
     },
-    "NSLocationWhenInUseUsageDescription" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sprout uses location updates to keep fixed and walking sessions running in the background, and to recenter on your real position after a session stops."
+    "NSLocalNetworkUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout uses the local network to securely pair with and control this iPhone through LocalDevVPN."
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sprout 會使用定位更新，讓固定定位與步行工作階段能在背景繼續執行，並在工作階段結束後重新對準你的真實位置。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout 會使用區域網路，透過 LocalDevVPN 與這支 iPhone 安全配對並控制它。"
+          }
+        }
+      }
+    },
+    "NSLocationWhenInUseUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout uses location updates to keep fixed and walking sessions running in the background, and to recenter on your real position after a session stops."
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout 會使用定位更新，讓固定定位與步行工作階段能在背景繼續執行，並在工作階段結束後重新對準你的真實位置。"
           }
         }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

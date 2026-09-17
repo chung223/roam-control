@@ -239,6 +239,17 @@
         }
       }
     },
+    "An alarm, so it is heard through silent and Focus.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "用鬧鐘，靜音與專注模式下也聽得到。"
+          }
+        }
+      }
+    },
     "An inactive session means Roam Control's worker has ended. Other apps may need time to acquire a fresh real location.": {
       "extractionState": "manual",
       "localizations": {
@@ -395,6 +406,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "已抵達"
+          }
+        }
+      }
+    },
+    "Arrived at %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已抵達 %@"
           }
         }
       }
@@ -5776,6 +5798,17 @@
         }
       }
     },
+    "Stop": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "停止"
+          }
+        }
+      }
+    },
     "Stop & Restore": {
       "extractionState": "manual",
       "localizations": {
@@ -6934,6 +6967,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "正在等候這支 iPhone 回報新的位置。其他 App 也可能需要一些時間才會更新…"
+          }
+        }
+      }
+    },
+    "Wake me on arrival": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "抵達時叫我"
           }
         }
       }

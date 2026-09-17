@@ -85,10 +85,43 @@ struct WalkingRoutePreviewCard: View {
             if canChoosePace {
                 pacePicker
                 loopToggle
+                alarmToggle
             }
 
             controls
             footer
+        }
+    }
+
+    /// Off unless asked for, and it asks for permission at the moment it is
+    /// switched on rather than at launch, so the prompt arrives with a reason.
+    /// A loop never arrives, so it is only offered when one is not running.
+    @ViewBuilder
+    private var alarmToggle: some View {
+        if !simulation.loopsWalk {
+            Toggle(isOn: Binding(
+                get: { simulation.arrivalAlarm.isEnabled },
+                set: { wanted in
+                    guard wanted else {
+                        simulation.arrivalAlarm.isEnabled = false
+                        simulation.arrivalAlarm.cancel()
+                        return
+                    }
+                    Task {
+                        simulation.arrivalAlarm.isEnabled =
+                            await simulation.arrivalAlarm.requestAuthorization()
+                    }
+                }
+            )) {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Wake me on arrival")
+                        .font(SproutTheme.font(.subheadline, weight: .medium))
+                    Text("An alarm, so it is heard through silent and Focus.")
+                        .font(SproutTheme.font(.caption))
+                        .foregroundStyle(SproutTheme.textSecondary)
+                }
+            }
+            .tint(SproutTheme.primary)
         }
     }
 
