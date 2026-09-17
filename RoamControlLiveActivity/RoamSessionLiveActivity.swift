@@ -120,9 +120,22 @@ private struct LockScreenView: View {
 
             // No wordmark here. It was dim, carried nothing, and sat in the
             // width the address needed.
+            // A timer text is greedy: offered space, it takes it. Beside a
+            // column that also wants the width, the two split the banner down
+            // the middle — half of it reserved to print four characters, with
+            // the address and the route bar laid out in what was left.
+            //
+            // Capping it is enough to stop that. fixedSize is not — its ideal
+            // width is larger than the cap, so the text was clipped away to
+            // nothing. The eight-hour bound fixes the longest string it can
+            // show at 7:59:59, which fits well inside the cap.
             ElapsedTimeText(startedAt: startedAt)
                 .font(.caption.weight(.medium).monospacedDigit())
                 .foregroundStyle(.secondary)
+                .frame(maxWidth: 72, alignment: .trailing)
+                // The timer fills the cap, so the frame's alignment never
+                // applies to it; the text has to align itself.
+                .multilineTextAlignment(.trailing)
         }
         .padding(16)
         // The row was sizing to its content, which left the elapsed time
@@ -195,8 +208,20 @@ private struct WalkingProgressView: View {
 private struct ElapsedTimeText: View {
     let startedAt: Date
 
+    /// Bounded, not open ended. A range ending at distantFuture makes the view
+    /// reserve room for the longest duration it could ever print, and on the
+    /// Lock Screen that reservation took about 40% of the banner to show four
+    /// characters — everything else was laid out in what was left, which is
+    /// why the address wrapped early and the route bar stopped short.
+    ///
+    /// Eight hours is the longest a Live Activity is meant to run, so it is
+    /// the widest this ever has to be.
+    private var interval: ClosedRange<Date> {
+        startedAt...startedAt.addingTimeInterval(8 * 60 * 60)
+    }
+
     var body: some View {
-        Text(timerInterval: startedAt...Date.distantFuture, countsDown: false)
+        Text(timerInterval: interval, countsDown: false)
     }
 }
 
