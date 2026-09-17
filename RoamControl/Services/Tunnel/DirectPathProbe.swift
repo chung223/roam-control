@@ -206,7 +206,7 @@ final class DirectPathProbe: NSObject {
         for addressData in service.addresses ?? [] {
             guard let described = ResolvedServiceAddress.describe(addressData) else { continue }
             // A resolved loopback address tells us nothing new.
-            guard !described.host.hasPrefix("127."), described.host != "::1" else { continue }
+            guard !ResolvedServiceAddress.isLoopback(described.host) else { continue }
             found.append(
                 Candidate(
                     source: described.isIPv6 ? .bonjourIPv6 : .bonjourIPv4,

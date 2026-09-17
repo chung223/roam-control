@@ -34,6 +34,14 @@ enum ResolvedServiceAddress {
         }
     }
 
+    /// True for an address that only ever reaches this device: the IPv4
+    /// loopback block, the IPv6 loopback address, and anything scoped to the
+    /// loopback interface. `fe80::1%lo0` is link-local by form but loopback by
+    /// scope, so the scope has to be checked and not just the address.
+    static func isLoopback(_ host: String) -> Bool {
+        host.hasPrefix("127.") || host == "::1" || host.hasSuffix("%lo0")
+    }
+
     /// The resolved addresses worth dialling, loopback removed. IPv4 first: a
     /// link-local IPv6 address needs its scope to survive, and an address
     /// without one would fail for a reason unrelated to what is being tested.
@@ -41,7 +49,7 @@ enum ResolvedServiceAddress {
         var hosts: [String] = []
         for data in addresses ?? [] {
             guard let described = describe(data) else { continue }
-            guard !described.host.hasPrefix("127."), described.host != "::1" else { continue }
+            guard !isLoopback(described.host) else { continue }
             hosts.append(described.host)
         }
         return hosts.sorted { !$0.contains(":") && $1.contains(":") }
