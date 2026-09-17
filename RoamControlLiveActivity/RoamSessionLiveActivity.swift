@@ -1,5 +1,6 @@
 import ActivityKit
 import SwiftUI
+import UIKit
 import WidgetKit
 
 /// Lock Screen and Dynamic Island presentation of a running location session.
@@ -27,7 +28,7 @@ struct RoamSessionLiveActivity: Widget {
                         Image(systemName: context.state.symbolName)
                     }
                     .font(.caption.weight(.semibold))
-                    .foregroundStyle(context.state.isSimulating ? .orange : .secondary)
+                    .foregroundStyle(SproutActivity.tint(for: context.state))
                 }
 
                 DynamicIslandExpandedRegion(.trailing) {
@@ -54,22 +55,17 @@ struct RoamSessionLiveActivity: Widget {
                 }
             } compactLeading: {
                 Image(systemName: context.state.symbolName)
-                    .foregroundStyle(context.state.isSimulating ? .orange : .secondary)
+                    .foregroundStyle(SproutActivity.tint(for: context.state))
             } compactTrailing: {
-                if context.state.isWalking, context.state.stage == .running {
-                    Text(percentText(context.state.progress))
-                        .font(.caption2.monospacedDigit())
-                }
+                CompactTrailing(
+                    state: context.state,
+                    startedAt: context.attributes.startedAt
+                )
             } minimal: {
-                Image(systemName: context.state.symbolName)
-                    .foregroundStyle(context.state.isSimulating ? .orange : .secondary)
+                ProgressRing(state: context.state)
             }
             .widgetURL(URL(string: "roamcontrol://session"))
         }
-    }
-
-    private func percentText(_ progress: Double) -> String {
-        "\(Int((min(max(progress, 0), 1) * 100).rounded()))%"
     }
 }
 
@@ -83,7 +79,7 @@ private struct LockScreenView: View {
         HStack(alignment: .top, spacing: 12) {
             Image(systemName: state.symbolName)
                 .font(.title2)
-                .foregroundStyle(state.isSimulating ? .orange : .secondary)
+                .foregroundStyle(SproutActivity.tint(for: state))
                 .frame(width: 30)
                 .accessibilityHidden(true)
 
@@ -109,7 +105,7 @@ private struct LockScreenView: View {
                     .font(.caption.monospacedDigit())
                     .foregroundStyle(.secondary)
 
-                Text("Roam Control")
+                Text("Sprout")
                     .font(.caption2)
                     .foregroundStyle(.tertiary)
             }
@@ -135,8 +131,10 @@ private struct WalkingProgressView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            ProgressView(value: min(max(state.progress, 0), 1))
-                .tint(state.stage == .paused ? .secondary : .green)
+            RouteTrail(
+                progress: state.progress,
+                isPaused: state.stage == .paused
+            )
 
             HStack(spacing: 6) {
                 Text(distanceText)
@@ -177,5 +175,143 @@ private struct ElapsedTimeText: View {
 
     var body: some View {
         Text(timerInterval: startedAt...Date.distantFuture, countsDown: false)
+    }
+}
+
+// MARK: - Dynamic Island pieces
+
+/// The smallest presentation. A walk draws its progress as a ring around the
+/// glyph, so the one place with room for nothing else still says how far along
+/// the walk is.
+private struct ProgressRing: View {
+    let state: RoamSessionActivityAttributes.ContentState
+
+    private var showsRing: Bool {
+        state.isWalking && (state.stage == .running || state.stage == .paused)
+    }
+
+    var body: some View {
+        ZStack {
+            if showsRing {
+                Circle()
+                    .stroke(SproutActivity.primary.opacity(0.25), lineWidth: 2)
+                Circle()
+                    .trim(from: 0, to: min(max(state.progress, 0), 1))
+                    .stroke(
+                        SproutActivity.tint(for: state),
+                        style: StrokeStyle(lineWidth: 2, lineCap: .round)
+                    )
+                    .rotationEffect(.degrees(-90))
+            }
+            Image(systemName: state.symbolName)
+                .font(.system(size: showsRing ? 9 : 12, weight: .bold))
+                .foregroundStyle(SproutActivity.tint(for: state))
+        }
+    }
+}
+
+/// A fixed-location session left this side of the island empty, which is most
+/// of what made it look inert. Every stage now says something: a walk counts
+/// down to arrival, a held location counts up from when it was set.
+private struct CompactTrailing: View {
+    let state: RoamSessionActivityAttributes.ContentState
+    let startedAt: Date
+
+    var body: some View {
+        content
+            .font(.caption2.monospacedDigit())
+            .foregroundStyle(SproutActivity.tint(for: state))
+    }
+
+    @ViewBuilder
+    private var content: some View {
+        if
+            state.isWalking,
+            state.stage == .running,
+            let expectedArrival = state.expectedArrival,
+            expectedArrival > .now
+        {
+            // Counts down in place, like the Lock Screen, so a walk does not
+            // cost an activity update every second.
+            Text(timerInterval: Date.now...expectedArrival, countsDown: true)
+        } else if state.isWalking, state.stage == .running || state.stage == .paused {
+            Text(percentText)
+        } else if state.isSimulating {
+            ElapsedTimeText(startedAt: startedAt)
+        }
+    }
+
+    private var percentText: String {
+        "\(Int((min(max(state.progress, 0), 1) * 100).rounded()))%"
+    }
+}
+
+/// The walking route as a trail with a marker on it, rather than a bar. The
+/// marker is the same walking glyph the rest of the session uses, so the two
+/// read as the same thing at different sizes.
+private struct RouteTrail: View {
+    let progress: Double
+    let isPaused: Bool
+
+    private var clamped: Double { min(max(progress, 0), 1) }
+    private var fill: Color { isPaused ? SproutActivity.accent : SproutActivity.primary }
+
+    var body: some View {
+        GeometryReader { proxy in
+            let width = proxy.size.width
+            let marker: CGFloat = 16
+
+            ZStack(alignment: .leading) {
+                Capsule()
+                    .fill(SproutActivity.primary.opacity(0.18))
+                    .frame(height: 5)
+                    .frame(maxHeight: .infinity, alignment: .center)
+
+                Capsule()
+                    .fill(fill)
+                    .frame(width: max(5, width * clamped), height: 5)
+                    .frame(maxHeight: .infinity, alignment: .center)
+
+                Image(systemName: "figure.walk")
+                    .font(.system(size: 9, weight: .bold))
+                    .foregroundStyle(.white)
+                    .frame(width: marker, height: marker)
+                    .background(Circle().fill(fill))
+                    .offset(x: min(max(width * clamped - marker / 2, 0), max(width - marker, 0)))
+            }
+        }
+        .frame(height: 16)
+    }
+}
+
+// MARK: - Palette
+
+/// `SproutTheme` belongs to the app target, which this extension does not
+/// compile, so the two colours the activity needs are mirrored here. Keep them
+/// in step with `RoamControl/Resources/Theme/SproutTheme.swift`.
+private enum SproutActivity {
+    static let primary = dynamic(light: 0x6F9A4E, dark: 0xA3CC7A)
+    static let accent = dynamic(light: 0xD4694A, dark: 0xE8896B)
+
+    static func tint(for state: RoamSessionActivityAttributes.ContentState) -> Color {
+        switch state.stage {
+        case .running, .arrived: primary
+        case .paused: accent
+        // Dimmed rather than .secondary: the island is always black, and
+        // .secondary there is close to invisible exactly while connecting.
+        case .connecting, .stopping, .restoring: primary.opacity(0.6)
+        }
+    }
+
+    private static func dynamic(light: UInt32, dark: UInt32) -> Color {
+        Color(uiColor: UIColor { traits in
+            let hex = traits.userInterfaceStyle == .dark ? dark : light
+            return UIColor(
+                red: CGFloat((hex >> 16) & 0xFF) / 255,
+                green: CGFloat((hex >> 8) & 0xFF) / 255,
+                blue: CGFloat(hex & 0xFF) / 255,
+                alpha: 1
+            )
+        })
     }
 }
