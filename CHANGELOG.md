@@ -6,6 +6,26 @@ All notable public changes to Roam Control are recorded here.
 
 ### Added
 
+- Bundled Pikmin Bloom catalogue: 10,505 places with coordinates — 6,546 Taiwanese pure spots across 41 types and 23 counties, 434 postcards in 47 countries, and 3,525 field reports. Browse by decoration, by county or by country, search across all of it, or send a decoration to the map to pin the spots that yield it. Bundled and loaded on first use, for the same reason the landmarks are: choosing a place has to work with no network, and a static file sends nothing anywhere.
+- Spot lists sort nearest first and show the distance, measured from wherever the map is looking. Five taco spots in the country is only useful once you know which one is yours.
+- Start and stop a session from the Action button, Siri or a Shortcut, choosing from saved favourites. A separate action takes a coordinate as text, which also covers the Share sheet, and `roamcontrol://location?lat=&lon=` does the same as a plain link.
+- Ask, on devices with Apple Intelligence: a question like "where do I get a taco" answered against the bundled catalogue by the on-device model. A tool does the searching and the model only chooses, so a wrong answer is a wrong choice among real places rather than an invented one. Nothing is sent anywhere, which is the reason this is allowed to exist here at all.
+- An alarm when a simulated walk arrives, off unless asked for. A notification is silenced by the switch and by a Focus, which is exactly the state a phone is in while it is being left to walk somewhere.
+- Pause and resume a walk from the Live Activity. Stopping stays in the app: it has to restore the real location and confirm the device accepted it, which is not something to fire off from a Lock Screen tap.
+- A walk can keep going after it arrives, turning round and walking the route again, for when the point of it is to keep moving.
+- Traditional Chinese throughout, including the Live Activity and the permission prompts, which have their own catalogues and had reached neither before.
+- Landmarks read in both languages: the reader's own with the English kept beside it, since that is what the signage and every other app call these places. Search matches either spelling.
+
+### Changed
+
+- Everything floating over the map uses the system's glass rather than an opaque fill and a drawn shadow. A control over a map has to stay legible whether what is underneath is a pale street or a dark satellite photograph, and an opaque surface has to pick one.
+- Minimum iOS is 26.0 rather than 27.0. Nothing used an iOS 27 API — it could not, since the SDK is 26.5 — and 26.0 is the real floor, set by the MapKit geocoding the map already uses.
+
+### Fixed
+
+- An address scoped to `lo0` counted as a direct path. The filter matched loopback by text, and `fe80::1%lo0` is neither `127.` nor `::1`, so the experiment reported a direct path where there was none — and `prefersDirectPath` would have dialled loopback on mobile data instead of falling back.
+- Interface text passed as a `String` stayed English however good the catalogue was. Onboarding, the Lock Screen and the empty states all shipped this; `scripts/test-localisation.py` now fails the build for it, and found 60 more on its first run.
+
 - Live Activity for a running session, on the Lock Screen and in the Dynamic Island. It shows the reported place and session stage, and for a walk the progress, remaining distance and arrival countdown. It ends when the session ends, including on failure. The place name is drawn by iOS on the Lock Screen and is never transmitted or added to usage statistics. Delivered by a new `RoamControlLiveActivity` app extension embedded in the app.
 - Bundled landmark catalogue: 72 well-known places grouped by region, searchable without a network connection, reachable from the globe button on the map. Choosing one selects it exactly as a search result does; starting a session remains a separate step.
 
