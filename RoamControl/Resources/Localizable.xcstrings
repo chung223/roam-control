@@ -1632,6 +1632,17 @@
         }
       }
     },
+    "Ends the session and restores this iPhone's real location.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "結束工作階段並還原這支 iPhone 的真實位置。"
+          }
+        }
+      }
+    },
     "Enter latitude from −90 to 90 and longitude from −180 to 180.": {
       "extractionState": "manual",
       "localizations": {
@@ -1755,6 +1766,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "收藏"
+          }
+        }
+      }
+    },
+    "Favourite Place": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "收藏地點"
           }
         }
       }
@@ -3758,6 +3780,17 @@
         }
       }
     },
+    "Place": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "地點"
+          }
+        }
+      }
+    },
     "Places you use will appear here.": {
       "extractionState": "manual",
       "localizations": {
@@ -4167,6 +4200,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "回報問題"
+          }
+        }
+      }
+    },
+    "Reports a saved place as this iPhone's location.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "將已儲存的地點回報為這支 iPhone 的位置。"
           }
         }
       }
@@ -5706,6 +5750,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "停止並還原"
+          }
+        }
+      }
+    },
+    "Stop Location": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "停止定位"
           }
         }
       }

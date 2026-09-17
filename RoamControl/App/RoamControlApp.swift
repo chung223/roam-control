@@ -37,6 +37,13 @@ struct RoamControlApp: App {
                     guard phase == .active else { return }
                     appModel.appBecameActive()
                 }
+                // An intent run while the app is already in front produces no
+                // scene change, so it says so directly.
+                .onReceive(
+                    NotificationCenter.default.publisher(for: LocationIntentRequest.posted)
+                ) { _ in
+                    appModel.performPendingLocationIntent()
+                }
         }
     }
 

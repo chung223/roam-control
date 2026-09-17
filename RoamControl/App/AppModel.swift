@@ -5,7 +5,9 @@ import Observation
 @Observable
 final class AppModel {
     private static let onboardingKey = "hasCompletedOnboarding"
-    private static let favouritesKey = "favouriteLocations"
+    /// Not private: the Shortcuts query reads the same store, because it runs
+    /// when there is no AppModel to ask.
+    static let favouritesDefaultsKey = "favouriteLocations"
     private static let hasSeenFavouriteReorderHintKey = "hasSeenFavouriteReorderHint"
     private static let historyKey = "locationHistory"
     private static let appearanceKey = "appAppearance"
@@ -56,7 +58,7 @@ final class AppModel {
         self.preferences = preferences
         let hasCompletedOnboarding = preferences.bool(forKey: Self.onboardingKey)
         self.hasCompletedOnboarding = hasCompletedOnboarding
-        self.favouriteLocations = Self.locations(forKey: Self.favouritesKey, in: preferences)
+        self.favouriteLocations = Self.locations(forKey: Self.favouritesDefaultsKey, in: preferences)
         self.hasSeenFavouriteReorderHint = preferences.bool(forKey: Self.hasSeenFavouriteReorderHintKey)
         self.locationHistory = Self.locations(forKey: Self.historyKey, in: preferences)
         self.appearance = AppAppearance(
@@ -141,17 +143,17 @@ final class AppModel {
         } else {
             favouriteLocations.insert(target, at: 0)
         }
-        save(favouriteLocations, forKey: Self.favouritesKey)
+        save(favouriteLocations, forKey: Self.favouritesDefaultsKey)
     }
 
     func removeFavourite(_ target: LocationTarget) {
         favouriteLocations.removeAll { $0.id == target.id }
-        save(favouriteLocations, forKey: Self.favouritesKey)
+        save(favouriteLocations, forKey: Self.favouritesDefaultsKey)
     }
 
     func moveFavouriteLocations(from source: IndexSet, to destination: Int) {
         favouriteLocations.move(fromOffsets: source, toOffset: destination)
-        save(favouriteLocations, forKey: Self.favouritesKey)
+        save(favouriteLocations, forKey: Self.favouritesDefaultsKey)
         dismissFavouriteReorderHint()
     }
 
@@ -179,7 +181,7 @@ final class AppModel {
         if selectedTarget?.id == target.id {
             selectedTarget = renamed
         }
-        save(favouriteLocations, forKey: Self.favouritesKey)
+        save(favouriteLocations, forKey: Self.favouritesDefaultsKey)
     }
 
     func removeFromHistory(_ target: LocationTarget) {
@@ -194,7 +196,7 @@ final class AppModel {
 
     func clearFavouriteLocations() {
         favouriteLocations = []
-        preferences.removeObject(forKey: Self.favouritesKey)
+        preferences.removeObject(forKey: Self.favouritesDefaultsKey)
     }
 
     func setAppearance(_ appearance: AppAppearance) {
@@ -478,6 +480,27 @@ final class AppModel {
     func appBecameActive() {
         guard hasCompletedOnboarding else { return }
         usageAnalytics.recordActivation(enabled: sharesAnonymousUsageStatistics)
+        performPendingLocationIntent()
+    }
+
+    /// Carries out whatever the Action button, Siri or a Shortcut asked for.
+    ///
+    /// An intent cannot run a session itself — pairing, the tunnel and the
+    /// location worker all live here — so it records the request and brings
+    /// the app forward, and this is where it lands.
+    func performPendingLocationIntent() {
+        guard hasCompletedOnboarding, let request = LocationIntentRequest.take() else { return }
+
+        switch request.kind {
+        case .start:
+            guard
+                let id = request.targetID,
+                let target = favouriteLocations.first(where: { $0.id == id })
+            else { return }
+            Task { await startLocationSession(at: target) }
+        case .stop:
+            stopLocationSession()
+        }
     }
 
     func removePairingRecord() async {

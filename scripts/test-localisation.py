@@ -98,7 +98,13 @@ LITERAL = re.compile(r'"((?:[^"\\]|\\.)*)"')
 # Names of things, not text: an asset, a bundled file, an SF Symbol argument.
 NAMING_CALL = re.compile(
     r"(Image|forResource|systemImage|named|withExtension|imageNamed|"
-    r"NSLocalizedString)\(?\s*:?\s*$"
+    r"NSLocalizedString|Notification\.Name|systemImageName)\(?\s*:?\s*$"
+)
+# App Intents localise their own text: anything typed LocalizedStringResource,
+# and the titles and descriptions the framework reads, are translated by it.
+INTENT_TEXT = re.compile(
+    r"LocalizedStringResource|IntentDescription\(|TypeDisplayRepresentation\(|"
+    r"DisplayRepresentation\(|@Parameter\(|AppShortcut\(|shortTitle:"
 )
 # Session failure text: English is its identity, and SessionMessage.localized
 # translates it on the way to the screen. Same reason as EXEMPT_FILES.
@@ -153,6 +159,8 @@ def check():
                     or FAILURE_CALL.search(before)
                     or ALREADY_LOOKED_UP.search(before)
                     or COMPARISON.search(before)
+                    or INTENT_TEXT.search(line)
+                    or INTENT_TEXT.search(source[number - 2] if number >= 2 else "")
                 ):
                     continue
                 # The app wraps with appText; the extension has its own
