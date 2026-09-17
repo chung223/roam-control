@@ -107,18 +107,19 @@ private struct LockScreenView: View {
                         .padding(.top, 2)
                 }
             }
-
-            Spacer(minLength: 0)
-
-            // No wordmark here. It was costing the width that the place name
-            // needed, and truncating the one thing on this banner a person
-            // actually reads.
+            // Claims the width rather than leaving a Spacer to argue with the
+            // text over it. A Spacer and a truncatable Text are both flexible,
+            // so an HStack splits the free width between them: the address was
+            // cut short, the route bar stopped half way across, and the space
+            // they were arguing over sat empty to the right of both.
             //
-            // Nothing here may claim its ideal width. This counts towards
-            // distantFuture, so its ideal width is the widest duration it could
-            // ever show — neither layoutPriority nor fixedSize belongs on it.
-            // Given either, it took that width and left the text a few
-            // characters, one per line.
+            // The priority belongs here and not on the elapsed time. Putting it
+            // there instead let the time take the row and left this column a
+            // few characters wide, one per line.
+            .frame(maxWidth: .infinity, alignment: .leading)
+
+            // No wordmark here. It was dim, carried nothing, and sat in the
+            // width the address needed.
             ElapsedTimeText(startedAt: startedAt)
                 .font(.caption.weight(.medium).monospacedDigit())
                 .foregroundStyle(.secondary)
