@@ -51,6 +51,10 @@ struct RoamSessionLiveActivity: Widget {
                         }
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    // The island's bottom corners curve inwards over this
+                    // region, and without the inset they clipped the first
+                    // character of the distance line.
+                    .padding(.horizontal, 6)
                 }
             } compactLeading: {
                 Image(systemName: context.state.symbolName)
@@ -100,15 +104,12 @@ private struct LockScreenView: View {
 
             Spacer(minLength: 0)
 
-            VStack(alignment: .trailing, spacing: 4) {
-                ElapsedTimeText(startedAt: startedAt)
-                    .font(.caption.weight(.medium).monospacedDigit())
-                    .foregroundStyle(.secondary)
-
-                Text("Sprout")
-                    .font(.caption2)
-                    .foregroundStyle(.tertiary)
-            }
+            // No wordmark here. It was costing the width that the place name
+            // needed, and truncating the one thing on this banner a person
+            // actually reads.
+            ElapsedTimeText(startedAt: startedAt)
+                .font(.caption.weight(.medium).monospacedDigit())
+                .foregroundStyle(.secondary)
         }
         .padding(16)
         .accessibilityElement(children: .combine)
@@ -254,7 +255,7 @@ private struct RouteTrail: View {
     let progress: Double
     let isPaused: Bool
 
-    private static let marker: CGFloat = 16
+    private static let marker: CGFloat = 14
 
     private var clamped: Double { min(max(progress, 0), 1) }
     private var fill: Color { isPaused ? SproutActivity.accent : SproutActivity.primary }
@@ -265,13 +266,13 @@ private struct RouteTrail: View {
 
             ZStack(alignment: .leading) {
                 Capsule()
-                    .fill(SproutActivity.primary.opacity(0.18))
-                    .frame(height: 5)
+                    .fill(SproutActivity.primary.opacity(0.35))
+                    .frame(height: 6)
                     .frame(maxHeight: .infinity, alignment: .center)
 
                 Capsule()
                     .fill(fill)
-                    .frame(width: max(5, width * clamped), height: 5)
+                    .frame(width: max(6, width * clamped), height: 6)
                     .frame(maxHeight: .infinity, alignment: .center)
 
                 Image(systemName: "figure.walk")
