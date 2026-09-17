@@ -97,7 +97,7 @@ final class MapViewModel: NSObject, MKLocalSearchCompleterDelegate {
             return
         case .invalid:
             searchSuggestions = []
-            errorMessage = "Enter latitude from −90 to 90 and longitude from −180 to 180."
+            errorMessage = .appText("Enter latitude from −90 to 90 and longitude from −180 to 180.")
             return
         case .notCoordinates:
             break
@@ -204,7 +204,7 @@ final class MapViewModel: NSObject, MKLocalSearchCompleterDelegate {
         do {
             let response = try await MKLocalSearch(request: request).start()
             guard let item = response.mapItems.first else {
-                errorMessage = "No matching place found."
+                errorMessage = .appText("No matching place found.")
                 return
             }
 
@@ -227,7 +227,7 @@ final class MapViewModel: NSObject, MKLocalSearchCompleterDelegate {
         } catch is CancellationError {
             return
         } catch {
-            errorMessage = "Search is unavailable right now."
+            errorMessage = .appText("Search is unavailable right now.")
         }
     }
 
@@ -416,7 +416,7 @@ final class MapViewModel: NSObject, MKLocalSearchCompleterDelegate {
         case .denied, .restricted:
             isFindingRealLocation = false
             if recenter && shouldReportLocationErrors {
-                errorMessage = "Allow Location access in Settings to show your real position."
+                errorMessage = .appText("Allow Location access in Settings to show your real position.")
             }
         @unknown default:
             break
@@ -491,7 +491,7 @@ extension MapViewModel: CLLocationManagerDelegate {
                 if recenterOnNextRealLocation {
                     recenterOnNextRealLocation = false
                     if shouldReportLocationErrors {
-                        errorMessage = "Allow Location access in Settings to show your real position."
+                        errorMessage = .appText("Allow Location access in Settings to show your real position.")
                     }
                 }
             case .notDetermined:
@@ -527,7 +527,7 @@ extension MapViewModel: CLLocationManagerDelegate {
             if recenterOnNextRealLocation {
                 recenterOnNextRealLocation = false
                 if shouldReportLocationErrors {
-                    errorMessage = "Your real location is not available yet."
+                    errorMessage = .appText("Your real location is not available yet.")
                 }
             }
         }

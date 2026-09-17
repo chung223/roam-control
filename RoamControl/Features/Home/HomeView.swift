@@ -593,7 +593,7 @@ struct HomeView: View {
             )
             guard let route else {
                 recoveredWalkError = walkingRoutePlanner.errorMessage
-                    ?? "The remaining walking route could not be prepared."
+                    ?? .appText("The remaining walking route could not be prepared.")
                 isPreparingRecoveredWalk = false
                 return
             }

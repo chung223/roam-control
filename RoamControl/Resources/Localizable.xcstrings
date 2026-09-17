@@ -129,6 +129,17 @@
         }
       }
     },
+    "Allow Location access in Settings to show your real position.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "請在「設定」中允許定位存取，才能顯示你的真實位置。"
+          }
+        }
+      }
+    },
     "An inactive session means Roam Control's worker has ended. Other apps may need time to acquire a fresh real location.": {
       "extractionState": "manual",
       "localizations": {
@@ -704,6 +715,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "東"
+          }
+        }
+      }
+    },
+    "Enter latitude from −90 to 90 and longitude from −180 to 180.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "請輸入 −90 到 90 的緯度，以及 −180 到 180 的經度。"
           }
         }
       }
@@ -1310,6 +1332,17 @@
         }
       }
     },
+    "No matching place found.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "找不到符合的地點。"
+          }
+        }
+      }
+    },
     "No public GitHub release has been published yet.": {
       "extractionState": "manual",
       "localizations": {
@@ -1317,6 +1350,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "目前尚未發布任何公開的 GitHub 版本。"
+          }
+        }
+      }
+    },
+    "No walking route was found for this destination.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "找不到通往這個目的地的步行路線。"
           }
         }
       }
@@ -2800,6 +2844,17 @@
         }
       }
     },
+    "Search is unavailable right now.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目前無法使用搜尋。"
+          }
+        }
+      }
+    },
     "Search landmarks": {
       "extractionState": "manual",
       "localizations": {
@@ -3560,6 +3615,17 @@
         }
       }
     },
+    "The remaining walking route could not be prepared.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "無法準備剩餘的步行路線。"
+          }
+        }
+      }
+    },
     "The saved pairing is no longer valid. Reset Device Setup and pair again.": {
       "extractionState": "manual",
       "localizations": {
@@ -3852,6 +3918,17 @@
         }
       }
     },
+    "Walking directions are unavailable. Check Location access and your internet connection, then try again.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "無法取得步行路線。請檢查定位存取與網路連線後再試一次。"
+          }
+        }
+      }
+    },
     "Walking pace": {
       "extractionState": "manual",
       "localizations": {
@@ -3931,6 +4008,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "你的配對記錄與本機設定將被移除，並回到歡迎畫面。"
+          }
+        }
+      }
+    },
+    "Your real location is not available yet.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "尚未取得你的真實位置。"
           }
         }
       }
