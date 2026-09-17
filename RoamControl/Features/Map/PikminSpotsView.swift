@@ -1,3 +1,4 @@
+import CoreLocation
 import SwiftUI
 
 /// Browse the bundled Pikmin Bloom catalogue.
@@ -13,7 +14,11 @@ struct PikminSpotsView: View {
     @State private var query = ""
     @State private var tab: Tab = .decorations
 
+    /// Where the map is looking, so a list can answer "which of these is
+    /// nearest" rather than leaving the reader to work it out.
+    let origin: CLLocationCoordinate2D?
     let onSelect: (LocationTarget) -> Void
+    let onShowOnMap: (PikminSpotFilter) -> Void
 
     enum Tab: String, CaseIterable, Identifiable {
         case decorations, counties, world
@@ -77,7 +82,14 @@ struct PikminSpotsView: View {
                         SpotList(
                             title: entry.decoration.name,
                             spots: PikminSpotCatalogue.spots(ofType: entry.decoration.placeType),
-                            onSelect: select
+                            origin: origin,
+                            onSelect: select,
+                            onShowOnMap: {
+                                onShowOnMap(
+                                    .type(entry.decoration.placeType, label: entry.decoration.name)
+                                )
+                                dismiss()
+                            }
                         )
                     } label: {
                         row(
@@ -101,7 +113,9 @@ struct PikminSpotsView: View {
                     SpotList(
                         title: entry.area,
                         spots: PikminSpotCatalogue.spots(source: .pureSpot, area: entry.area),
-                        onSelect: select
+                        origin: origin,
+                        onSelect: select,
+                        onShowOnMap: nil
                     )
                 } label: {
                     row(title: entry.area, subtitle: nil, count: entry.count)
@@ -119,7 +133,9 @@ struct PikminSpotsView: View {
                         SpotList(
                             title: entry.area,
                             spots: PikminSpotCatalogue.spots(source: .postcard, area: entry.area),
-                            onSelect: select
+                            origin: origin,
+                            onSelect: select,
+                            onShowOnMap: nil
                         )
                     } label: {
                         row(title: entry.area, subtitle: nil, count: entry.count)
@@ -135,7 +151,9 @@ struct PikminSpotsView: View {
                         SpotList(
                             title: entry.area,
                             spots: PikminSpotCatalogue.spots(source: .mushroom, area: entry.area),
-                            onSelect: select
+                            origin: origin,
+                            onSelect: select,
+                            onShowOnMap: nil
                         )
                     } label: {
                         row(title: entry.area, subtitle: nil, count: entry.count)
@@ -156,7 +174,7 @@ struct PikminSpotsView: View {
             } else {
                 List {
                     ForEach(results) { spot in
-                        SpotRow(spot: spot) { select(spot) }
+                        SpotRow(spot: spot, origin: origin) { select(spot) }
                     }
                 }
                 .listStyle(.insetGrouped)
@@ -196,7 +214,16 @@ struct PikminSpotsView: View {
 private struct SpotList: View {
     let title: String
     let spots: [PikminSpot]
+    let origin: CLLocationCoordinate2D?
     let onSelect: (PikminSpot) -> Void
+    let onShowOnMap: (() -> Void)?
+
+    /// Nearest first when the map has told us where it is looking. Five taco
+    /// spots in the country is only useful once you know which one is yours.
+    private var ordered: [PikminSpot] {
+        guard let origin else { return spots }
+        return spots.sorted { $0.distance(from: origin) < $1.distance(from: origin) }
+    }
 
     var body: some View {
         Group {
@@ -208,8 +235,8 @@ private struct SpotList: View {
                 )
             } else {
                 List {
-                    ForEach(spots) { spot in
-                        SpotRow(spot: spot) { onSelect(spot) }
+                    ForEach(ordered) { spot in
+                        SpotRow(spot: spot, origin: origin) { onSelect(spot) }
                     }
                 }
                 .listStyle(.insetGrouped)
@@ -218,11 +245,19 @@ private struct SpotList: View {
         .sproutListBackground()
         .navigationTitle(title)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            if let onShowOnMap, !spots.isEmpty {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Show on map", systemImage: "map") { onShowOnMap() }
+                }
+            }
+        }
     }
 }
 
 private struct SpotRow: View {
     let spot: PikminSpot
+    let origin: CLLocationCoordinate2D?
     let onSelect: () -> Void
 
     var body: some View {
@@ -245,7 +280,13 @@ private struct SpotRow: View {
                         .lineLimit(1)
                 }
 
-                Spacer(minLength: 0)
+                Spacer(minLength: 8)
+
+                if let origin {
+                    Text(distanceText(from: origin))
+                        .font(SproutTheme.font(.caption, weight: .medium).monospacedDigit())
+                        .foregroundStyle(SproutTheme.textSecondary)
+                }
             }
             .contentShape(Rectangle())
         }
@@ -257,6 +298,14 @@ private struct SpotRow: View {
         [spot.type, spot.area, spot.detail]
             .filter { !$0.isEmpty }
             .joined(separator: " · ")
+    }
+
+    private func distanceText(from origin: CLLocationCoordinate2D) -> String {
+        let metres = spot.distance(from: origin)
+        let formatter = MeasurementFormatter()
+        formatter.unitOptions = .naturalScale
+        formatter.numberFormatter.maximumFractionDigits = metres < 1000 ? 0 : 1
+        return formatter.string(from: Measurement(value: metres, unit: UnitLength.meters))
     }
 
     private var symbolName: String {

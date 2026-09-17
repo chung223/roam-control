@@ -1060,6 +1060,17 @@
         }
       }
     },
+    "Clear spot filter": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "清除點位篩選"
+          }
+        }
+      }
+    },
     "Close introduction": {
       "extractionState": "manual",
       "localizations": {
@@ -5409,6 +5420,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "顯示我目前的位置"
+          }
+        }
+      }
+    },
+    "Show on map": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在地圖上顯示"
           }
         }
       }

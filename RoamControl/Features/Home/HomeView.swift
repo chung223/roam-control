@@ -13,6 +13,8 @@ struct HomeView: View {
     @State private var isShowingSavedPlaces = false
     @State private var isShowingLandmarks = false
     @State private var isShowingPikminSpots = false
+    @State private var pikminFilter: PikminSpotFilter?
+    @State private var visibleMapRegion: MKCoordinateRegion?
     @State private var shouldRefreshRealLocationWhenActive = false
     @State private var shouldClearLocationAfterRestoration = false
     @State private var isLocatingRealLocationAfterRestoration = false
@@ -47,6 +49,21 @@ struct HomeView: View {
                             .tint(SproutTheme.primary)
                     }
 
+                    ForEach(pikminSpotsInView) { spot in
+                        Annotation(spot.name, coordinate: spot.coordinate) {
+                            Image(systemName: "leaf.fill")
+                                .font(SproutTheme.font(.caption2, weight: .bold))
+                                .foregroundStyle(.white)
+                                .padding(5)
+                                .background(SproutTheme.primary, in: Circle())
+                                .onTapGesture {
+                                    guard !walkingSimulation.locksDestination else { return }
+                                    mapModel.show(spot.target)
+                                }
+                        }
+                        .annotationTitles(.hidden)
+                    }
+
                     if let coordinate = walkingSimulation.currentCoordinate {
                         Annotation("Walking location", coordinate: coordinate) {
                             Image(systemName: "leaf.circle.fill")
@@ -68,6 +85,11 @@ struct HomeView: View {
                 }
                 .onMapCameraChange(frequency: .continuous) { context in
                     visibleMapCamera = context.camera
+                }
+                // Only at rest: filtering the catalogue on every frame of a
+                // drag would cost more than the pins are worth.
+                .onMapCameraChange(frequency: .onEnd) { context in
+                    visibleMapRegion = context.region
                 }
                 .onTapGesture { point in
                     if isSearchFocused {
@@ -96,6 +118,38 @@ struct HomeView: View {
                     onClear: mapModel.clearSearch
                 )
                 .disabled(walkingSimulation.locksDestination)
+
+                if let pikminFilter {
+                    HStack(spacing: 8) {
+                        Image(systemName: "leaf.fill")
+                            .font(SproutTheme.font(.caption2, weight: .bold))
+                        Text(pikminFilter.label)
+                            .font(SproutTheme.font(.caption, weight: .medium))
+                        Text(pikminSpotsInView.count.formatted())
+                            .font(SproutTheme.font(.caption).monospacedDigit())
+                            .foregroundStyle(SproutTheme.textSecondary)
+
+                        Button {
+                            self.pikminFilter = nil
+                        } label: {
+                            Image(systemName: "xmark.circle.fill")
+                                .font(SproutTheme.font(.caption))
+                                .foregroundStyle(SproutTheme.textSecondary)
+                        }
+                        .buttonStyle(.plain)
+                        .accessibilityLabel("Clear spot filter")
+                    }
+                    .foregroundStyle(SproutTheme.primary)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 8)
+                    .background(SproutTheme.surface, in: Capsule())
+                    .shadow(
+                        color: SproutTheme.controlShadow.color,
+                        radius: SproutTheme.controlShadow.radius,
+                        y: SproutTheme.controlShadow.y
+                    )
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                }
 
                 if mapModel.isShowingSuggestions && !walkingSimulation.locksDestination {
                     SearchSuggestionsView(
@@ -480,10 +534,14 @@ struct HomeView: View {
                 .environment(appModel)
         }
         .sheet(isPresented: $isShowingPikminSpots) {
-            PikminSpotsView { target in
-                guard !walkingSimulation.locksDestination else { return }
-                mapModel.show(target)
-            }
+            PikminSpotsView(
+                origin: visibleMapRegion?.center,
+                onSelect: { target in
+                    guard !walkingSimulation.locksDestination else { return }
+                    mapModel.show(target)
+                },
+                onShowOnMap: { pikminFilter = $0 }
+            )
         }
         .sheet(isPresented: $isShowingLandmarks) {
             LandmarksView { target in
@@ -511,6 +569,13 @@ struct HomeView: View {
                 onClearHistory: appModel.clearLocationHistory
             )
         }
+    }
+
+    /// Nothing until a filter is chosen: 7,000 pins would describe less than
+    /// no pins at all.
+    private var pikminSpotsInView: [PikminSpot] {
+        guard let pikminFilter, let visibleMapRegion else { return [] }
+        return PikminSpotCatalogue.spots(in: visibleMapRegion, matching: pikminFilter)
     }
 
     private var needsPairingPrompt: Bool {

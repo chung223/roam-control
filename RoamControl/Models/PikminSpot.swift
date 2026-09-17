@@ -1,4 +1,6 @@
+import CoreLocation
 import Foundation
+import MapKit
 
 /// A Pikmin Bloom point of interest from the bundled catalogue.
 ///
@@ -34,12 +36,35 @@ struct PikminSpot: Identifiable, Hashable, Sendable {
         )
     }
 
+    var coordinate: CLLocationCoordinate2D {
+        CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
+
+    func distance(from origin: CLLocationCoordinate2D) -> CLLocationDistance {
+        CLLocation(latitude: latitude, longitude: longitude)
+            .distance(from: CLLocation(latitude: origin.latitude, longitude: origin.longitude))
+    }
+
     func matches(_ query: String) -> Bool {
         let haystack = "\(name) \(type) \(area) \(detail)"
         return haystack.range(
             of: query,
             options: [.caseInsensitive, .diacriticInsensitive]
         ) != nil
+    }
+}
+
+/// What the map is being asked to show. Nothing until a reader picks
+/// something: 7,000 pins would say less than none.
+enum PikminSpotFilter: Equatable, Sendable {
+    case type(String, label: String)
+
+    var label: String {
+        switch self { case .type(_, let label): label }
+    }
+
+    func includes(_ spot: PikminSpot) -> Bool {
+        switch self { case .type(let type, _): spot.type == type }
     }
 }
 
@@ -139,6 +164,34 @@ enum PikminSpotCatalogue {
         load().spots.filter {
             $0.source == source && (area == nil || $0.area == area)
         }
+    }
+
+    /// Spots inside a map's visible area, nearest the centre first.
+    ///
+    /// Capped, and deliberately low: past a certain density the pins cover the
+    /// map they are meant to describe, and the reader is better served zooming
+    /// in than being shown everything at once.
+    static func spots(
+        in region: MKCoordinateRegion,
+        matching filter: PikminSpotFilter,
+        limit: Int = 120
+    ) -> [PikminSpot] {
+        let latMin = region.center.latitude - region.span.latitudeDelta / 2
+        let latMax = region.center.latitude + region.span.latitudeDelta / 2
+        let lonMin = region.center.longitude - region.span.longitudeDelta / 2
+        let lonMax = region.center.longitude + region.span.longitudeDelta / 2
+
+        let inside = load().spots.filter {
+            filter.includes($0)
+                && $0.latitude >= latMin && $0.latitude <= latMax
+                && $0.longitude >= lonMin && $0.longitude <= lonMax
+        }
+        guard inside.count > limit else { return inside }
+        return Array(
+            inside
+                .sorted { $0.distance(from: region.center) < $1.distance(from: region.center) }
+                .prefix(limit)
+        )
     }
 
     /// Capped: a query like "台" matches thousands, and a list that long is
