@@ -242,25 +242,25 @@ private struct OnboardingPage {
         OnboardingPage(
             symbol: "location.viewfinder",
             title: .appText("Welcome to Roam Control"),
-            message: "Choose where your iPhone should appear, from one simple map.",
+            message: .appText("Choose where your iPhone should appear, from one simple map."),
             colors: SproutTheme.Pair.moss
         ),
         OnboardingPage(
             symbol: "map.fill",
             title: .appText("Pick any place"),
-            message: "Search for a destination or tap the map, then save it as your target.",
+            message: .appText("Search for a destination or tap the map, then save it as your target."),
             colors: SproutTheme.Pair.sage
         ),
         OnboardingPage(
             symbol: "iphone.and.arrow.forward",
             title: .appText("Pair this iPhone once"),
-            message: "Roam Control needs one private pairing before it can control location. We'll guide you through it next.",
+            message: .appText("Roam Control needs one private pairing before it can control location. We'll guide you through it next."),
             colors: SproutTheme.Pair.clay
         ),
         OnboardingPage(
             symbol: "hand.raised.fill",
             title: .appText("Private by design"),
-            message: "Choose whether to help improve Roam Control with anonymous activity counts. Sharing starts only if you switch it on and can be changed later in Settings.",
+            message: .appText("Choose whether to help improve Roam Control with anonymous activity counts. Sharing starts only if you switch it on and can be changed later in Settings."),
             colors: SproutTheme.Pair.coral,
             showsUsageStatisticsControl: true
         )
