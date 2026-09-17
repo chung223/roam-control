@@ -211,9 +211,8 @@ private struct ProgressRing: View {
     }
 }
 
-/// A fixed-location session left this side of the island empty, which is most
-/// of what made it look inert. Every stage now says something: a walk counts
-/// down to arrival, a held location counts up from when it was set.
+/// Carries a walk's own numbers — time to arrival, or percent when there is no
+/// estimate. Both are short. Anything longer makes the island grow to hold it.
 private struct CompactTrailing: View {
     let state: RoamSessionActivityAttributes.ContentState
     let startedAt: Date
@@ -237,9 +236,10 @@ private struct CompactTrailing: View {
             Text(timerInterval: Date.now...expectedArrival, countsDown: true)
         } else if state.isWalking, state.stage == .running || state.stage == .paused {
             Text(percentText)
-        } else if state.isSimulating {
-            ElapsedTimeText(startedAt: startedAt)
         }
+        // A held location has no number worth the width. The guidance is to
+        // use only the space the content needs, and an elapsed timer here
+        // rendered as h:mm:ss and stretched the island for nothing.
     }
 
     private var percentText: String {
@@ -254,13 +254,14 @@ private struct RouteTrail: View {
     let progress: Double
     let isPaused: Bool
 
+    private static let marker: CGFloat = 16
+
     private var clamped: Double { min(max(progress, 0), 1) }
     private var fill: Color { isPaused ? SproutActivity.accent : SproutActivity.primary }
 
     var body: some View {
         GeometryReader { proxy in
             let width = proxy.size.width
-            let marker: CGFloat = 16
 
             ZStack(alignment: .leading) {
                 Capsule()
@@ -276,12 +277,16 @@ private struct RouteTrail: View {
                 Image(systemName: "figure.walk")
                     .font(.system(size: 9, weight: .bold))
                     .foregroundStyle(.white)
-                    .frame(width: marker, height: marker)
+                    .frame(width: Self.marker, height: Self.marker)
                     .background(Circle().fill(fill))
-                    .offset(x: min(max(width * clamped - marker / 2, 0), max(width - marker, 0)))
+                    .offset(x: width * clamped - Self.marker / 2)
             }
         }
-        .frame(height: 16)
+        .frame(height: Self.marker)
+        // Inset by half the marker so that at 0% and 100% it still sits inside
+        // the view, and never reaches the rounded edge of the island — the
+        // guidance asks content not to touch it.
+        .padding(.horizontal, Self.marker / 2)
     }
 }
 
