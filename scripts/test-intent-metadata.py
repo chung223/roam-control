@@ -51,6 +51,11 @@ PRODUCT_RE = re.compile(
 )
 
 STRING_RE = re.compile(r'"((?:[^"\\]|\\.)*)"')
+# Multi-line literals have to come out first. Quote pairing only holds within a
+# line, so a `"""` block both hides the description inside it and desynchronises
+# every quote after it — which is how the orphan check that found this bug came
+# to report strings that were plainly in use.
+BLOCK_RE = re.compile(r'"""(.*?)"""', re.DOTALL)
 
 CATALOGUES = (
     "RoamControl/Resources/Localizable.xcstrings",
@@ -73,6 +78,18 @@ def main():
 
     for path, text in intent_files():
         rel = path.relative_to(ROOT).as_posix()
+
+        for match in BLOCK_RE.finditer(text):
+            literal = " ".join(match.group(1).split())
+            literals.add(literal)
+            found = PRODUCT_RE.search(literal)
+            if found:
+                number = text[: match.start()].count("\n") + 1
+                offences.append((rel, number, literal, found.group(1)))
+        # Blanked rather than deleted, so the lines after a block keep their
+        # numbers in the per-line scan below.
+        text = BLOCK_RE.sub(lambda m: '""' + "\n" * m.group(0).count("\n"), text)
+
         for number, line in enumerate(text.splitlines(), 1):
             stripped = line.strip()
             if stripped.startswith("//") or stripped.startswith("///"):
