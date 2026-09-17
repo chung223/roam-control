@@ -20,6 +20,7 @@ struct ConnectionBadge: View {
         .padding(.horizontal, 12)
         .padding(.vertical, 8)
         .frame(minHeight: SproutTheme.mapControlDiameter)
+        .contentShape(Capsule())
         .glassEffect(.regular.interactive(), in: Capsule())
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("Connection status: \(label)")

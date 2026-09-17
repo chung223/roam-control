@@ -64,10 +64,11 @@ struct PikminSpotsView: View {
     private var browser: some View {
         VStack(spacing: 0) {
             Picker("", selection: $tab) {
-                // The ask tab only exists where the model does. A tab that
-                // explains why it cannot work is worse than one that is not
-                // there.
-                ForEach(Tab.allCases.filter { $0 != .ask || finder.isAvailable }) {
+                // Hidden only where no amount of setting up would help. The
+                // other reasons are things a reader can act on, and silently
+                // removing the tab for those leaves them unable to tell a
+                // missing feature from a broken one.
+                ForEach(Tab.allCases.filter { $0 != .ask || finder.canBeOffered }) {
                     Text($0.title).tag($0)
                 }
             }
@@ -183,12 +184,21 @@ struct PikminSpotsView: View {
     /// be stays on their phone.
     private var askList: some View {
         List {
+            if let reason = finder.unavailableReason {
+                Section {
+                    Text(reason)
+                        .font(SproutTheme.font(.subheadline))
+                        .foregroundStyle(SproutTheme.textSecondary)
+                }
+            }
+
             Section {
                 HStack(spacing: 10) {
                     TextField("What are you looking for?", text: $ask, axis: .vertical)
                         .focused($isAsking)
                         .submitLabel(.search)
                         .onSubmit { runAsk() }
+                        .disabled(!finder.isAvailable)
 
                     if finder.isSearching {
                         ProgressView()

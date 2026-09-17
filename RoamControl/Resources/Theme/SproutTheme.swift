@@ -138,6 +138,7 @@ extension View {
     ) -> some View {
         self
             .padding(padding)
+            .contentShape(RoundedRectangle(cornerRadius: radius, style: .continuous))
             .glassEffect(
                 .regular,
                 in: RoundedRectangle(cornerRadius: radius, style: .continuous)
@@ -165,6 +166,10 @@ extension View {
                 width: SproutTheme.mapControlDiameter,
                 height: SproutTheme.mapControlDiameter
             )
+            // Before the glass, a drawn fill made the whole circle tappable.
+            // A material is not a shape to hit, so without this the target
+            // shrinks to the glyph itself and the control stops responding.
+            .contentShape(Circle())
             .glassEffect(.regular.interactive(), in: Circle())
     }
 }

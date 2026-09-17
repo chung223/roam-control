@@ -377,6 +377,17 @@
         }
       }
     },
+    "Apple Intelligence is still preparing. Try again shortly.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple Intelligence 仍在準備中，請稍後再試。"
+          }
+        }
+      }
+    },
     "Approximate event time": {
       "extractionState": "manual",
       "localizations": {
@@ -6657,6 +6668,17 @@
         }
       }
     },
+    "This iPhone cannot run the on-device model.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "這支 iPhone 無法執行裝置端模型。"
+          }
+        }
+      }
+    },
     "This iPhone is using %@. Stop & Restore ends the simulation and restores its real location.": {
       "extractionState": "manual",
       "localizations": {
@@ -6785,6 +6807,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "關閉行動網路"
+          }
+        }
+      }
+    },
+    "Turn on Apple Intelligence in Settings to ask questions here.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "請在「設定」中開啟 Apple Intelligence，才能在這裡提問。"
           }
         }
       }

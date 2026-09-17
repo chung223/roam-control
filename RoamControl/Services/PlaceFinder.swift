@@ -46,6 +46,25 @@ final class PlaceFinder {
 
     var isAvailable: Bool { availability == .ready }
 
+    /// Worth showing at all. Ineligible hardware is the one case nothing can
+    /// be done about, so that is the only one that hides the tab; the rest are
+    /// things a reader can go and fix, and they can only do that if they are
+    /// told.
+    var canBeOffered: Bool { availability != .deviceNotEligible }
+
+    var unavailableReason: String? {
+        switch availability {
+        case .ready:
+            return nil
+        case .notEnabled:
+            return .appText("Turn on Apple Intelligence in Settings to ask questions here.")
+        case .notReady:
+            return .appText("Apple Intelligence is still preparing. Try again shortly.")
+        case .deviceNotEligible, .unavailable:
+            return .appText("This iPhone cannot run the on-device model.")
+        }
+    }
+
     func clear() {
         results = []
         explanation = nil
