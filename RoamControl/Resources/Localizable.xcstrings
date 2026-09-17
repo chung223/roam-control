@@ -758,6 +758,17 @@
         }
       }
     },
+    "Favourite name": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "收藏名稱"
+          }
+        }
+      }
+    },
     "Favourites": {
       "extractionState": "manual",
       "localizations": {
@@ -2800,6 +2811,17 @@
         }
       }
     },
+    "Search places or coordinates": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "搜尋地點或座標"
+          }
+        }
+      }
+    },
     "Securing the pairing record in Keychain…": {
       "extractionState": "manual",
       "localizations": {
@@ -2884,6 +2906,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "設定與支援"
+          }
+        }
+      }
+    },
+    "Share Anonymous Usage Statistics": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "分享匿名使用統計"
           }
         }
       }
@@ -3815,6 +3848,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "沿原路走回"
+          }
+        }
+      }
+    },
+    "Walking pace": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "步行速度"
           }
         }
       }
