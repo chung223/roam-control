@@ -419,7 +419,7 @@ final class AppModel {
     func restoreRealLocationFromInterruptedSession() async {
         guard let recovery = interruptedSession else { return }
         guard case .paired = pairingStatus else {
-            interruptedSessionError = "Pair this iPhone before restoring its real location."
+            interruptedSessionError = .appText("Pair this iPhone before restoring its real location.")
             return
         }
 
@@ -431,7 +431,7 @@ final class AppModel {
         do {
             guard let pairingRecord = try await pairingService.pairingRecordData() else {
                 isRestoringInterruptedSession = false
-                interruptedSessionError = "The saved pairing record is unavailable. Pair this iPhone again."
+                interruptedSessionError = .appText("The saved pairing record is unavailable. Pair this iPhone again.")
                 usageAnalytics.recordFailure(.locationPreparation, context: .restoration, enabled: sharesAnonymousUsageStatistics)
                 usageAnalytics.record(.locationRestoreFailed, enabled: sharesAnonymousUsageStatistics)
                 return

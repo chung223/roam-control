@@ -188,25 +188,25 @@ struct SavedPlacesView: View {
 
     private var clearConfirmationTitle: String {
         switch clearTarget {
-        case .favourites: "Clear all favourites?"
-        case .history: "Clear location history?"
-        case nil: "Clear saved places?"
+        case .favourites: .appText("Clear all favourites?")
+        case .history: .appText("Clear location history?")
+        case nil: .appText("Clear saved places?")
         }
     }
 
     private var clearConfirmationButton: String {
         switch clearTarget {
-        case .favourites: "Clear Favourites"
-        case .history: "Clear History"
-        case nil: "Clear"
+        case .favourites: .appText("Clear Favourites")
+        case .history: .appText("Clear History")
+        case nil: .appText("Clear")
         }
     }
 
     private var clearConfirmationMessage: String {
         switch clearTarget {
-        case .favourites: "Every favourite will be removed. Your history will be kept."
-        case .history: "Every recently used location will be removed. Your favourites will be kept."
-        case nil: "This cannot be undone."
+        case .favourites: .appText("Every favourite will be removed. Your history will be kept.")
+        case .history: .appText("Every recently used location will be removed. Your favourites will be kept.")
+        case nil: .appText("This cannot be undone.")
         }
     }
 
@@ -263,7 +263,7 @@ private struct SavedPlaceRow: View {
                     .frame(width: 44, height: 44)
             }
             .buttonStyle(.plain)
-            .accessibilityLabel(isFavourite ? "Remove from favourites" : "Add to favourites")
+            .accessibilityLabel(Text(verbatim: isFavourite ? .appText("Remove from favourites") : .appText("Add to favourites")))
         }
     }
 

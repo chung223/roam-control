@@ -12,9 +12,9 @@ enum WalkingPace: Double, CaseIterable, Identifiable {
 
     var title: String {
         switch self {
-        case .relaxed: "Relaxed"
-        case .normal: "Normal"
-        case .brisk: "Brisk"
+        case .relaxed: .appText("Relaxed")
+        case .normal: .appText("Normal")
+        case .brisk: .appText("Brisk")
         }
     }
 
@@ -87,7 +87,7 @@ final class WalkingSimulationController {
         self.destination = destination
         if let startCoordinate = routePoints.first?.coordinate {
             routeStart = LocationTarget(
-                name: "Route Start",
+                name: .appText("Route Start"),
                 subtitle: "Starting point for \(destination.name)",
                 latitude: startCoordinate.latitude,
                 longitude: startCoordinate.longitude

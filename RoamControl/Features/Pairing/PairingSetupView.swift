@@ -152,7 +152,7 @@ struct PairingSetupView: View {
             VStack(alignment: .leading, spacing: 10) {
                 Text("Finish in Settings")
                     .font(.subheadline.weight(.semibold))
-                instructionRow("Open Settings › Privacy & Security › Developer Mode.")
+                instructionRow(.appText("Open Settings › Privacy & Security › Developer Mode."))
                 instructionRow(.appText("Tap Pair with Roam Control."))
                 instructionRow(.appText("Use the code shown here when iOS asks for it."))
             }

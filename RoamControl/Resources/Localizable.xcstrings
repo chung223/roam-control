@@ -3455,6 +3455,17 @@
         }
       }
     },
+    "Pair this iPhone before restoring its real location.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "還原真實位置前，請先配對這支 iPhone。"
+          }
+        }
+      }
+    },
     "Pair this iPhone before resuming or restoring the session.": {
       "extractionState": "manual",
       "localizations": {
@@ -5039,6 +5050,17 @@
         }
       }
     },
+    "Route Start": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "路線起點"
+          }
+        }
+      }
+    },
     "Run Connection Check": {
       "extractionState": "manual",
       "localizations": {
@@ -6356,6 +6378,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "已儲存的配對記錄缺少裝置識別資訊。"
+          }
+        }
+      }
+    },
+    "The saved pairing record is unavailable. Pair this iPhone again.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已儲存的配對記錄無法使用。請重新配對這支 iPhone。"
           }
         }
       }

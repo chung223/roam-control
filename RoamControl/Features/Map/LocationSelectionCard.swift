@@ -188,7 +188,7 @@ struct LocationSelectionCard: View {
                             .frame(width: 44, height: 44)
                     }
                     .buttonStyle(.plain)
-                    .accessibilityLabel(didCopyCoordinates ? "Location copied" : "Copy location")
+                    .accessibilityLabel(Text(verbatim: didCopyCoordinates ? .appText("Location copied") : .appText("Copy location")))
                 }
             }
         }
@@ -203,7 +203,7 @@ struct LocationSelectionCard: View {
                 .frame(width: 44, height: 44)
         }
         .buttonStyle(.plain)
-        .accessibilityLabel(isFavourite ? "Remove from favourites" : "Add to favourites")
+        .accessibilityLabel(Text(verbatim: isFavourite ? .appText("Remove from favourites") : .appText("Add to favourites")))
 
         if canClearSelection {
             Button(action: onClearSelection) {

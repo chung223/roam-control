@@ -60,12 +60,12 @@ enum LandmarkRegion: String, CaseIterable, Identifiable, Sendable {
 
     var displayName: String {
         switch self {
-        case .africa: "Africa"
-        case .asia: "Asia"
-        case .europe: "Europe"
-        case .northAmerica: "North America"
-        case .oceania: "Oceania"
-        case .southAmerica: "South America"
+        case .africa: .appText("Africa")
+        case .asia: .appText("Asia")
+        case .europe: .appText("Europe")
+        case .northAmerica: .appText("North America")
+        case .oceania: .appText("Oceania")
+        case .southAmerica: .appText("South America")
         }
     }
 

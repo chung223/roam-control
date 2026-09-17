@@ -297,9 +297,9 @@ struct WalkingRoutePreviewCard: View {
     private var footer: some View {
         switch simulation.phase {
         case .idle:
-            Text(isPaired
-                 ? "Your location will move along this route at the selected pace."
-                 : "Pair this iPhone before starting a walking session.")
+            Text(verbatim: isPaired
+                 ? .appText("Your location will move along this route at the selected pace.")
+                 : .appText("Pair this iPhone before starting a walking session."))
                 .font(.caption)
                 .foregroundStyle(.secondary)
                 .frame(maxWidth: .infinity, alignment: .center)

@@ -22,7 +22,7 @@ struct UsageStatisticsPrivacyView: View {
                 privacyRow(.appText("Fixed failure stage, scheduler reason, operation and recovery category"), symbol: "exclamationmark.triangle")
                 privacyRow(.appText("Fixed pairing and location task configuration and registration states on scheduler failures"), symbol: "gearshape.2")
                 privacyRow(.appText("Background session support, permission status and scheduler availability"), symbol: "location.circle")
-                privacyRow("iOS version (maintainer service only)", symbol: "iphone")
+                privacyRow(.appText("iOS version (maintainer service only)"), symbol: "iphone")
                 privacyRow(.appText("Installed app and permitted background-task identifiers on scheduler failures (maintainer service only)"), symbol: "gearshape")
                 privacyRow(.appText("Pairing completed"), symbol: "iphone.and.arrow.forward")
                 privacyRow(.appText("Fixed or walking session started"), symbol: "figure.walk")
