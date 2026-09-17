@@ -35,17 +35,6 @@
         }
       }
     },
-    "A newer public release is available: %@.": {
-      "extractionState": "manual",
-      "localizations": {
-        "zh-Hant": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "有可用的新版公開發行版本：%@。"
-          }
-        }
-      }
-    },
     "A random identifier is created for this installation and irreversibly hashed before it is sent. It is used only to estimate activity from participating installations.": {
       "extractionState": "manual",
       "localizations": {
@@ -850,17 +839,6 @@
         }
       }
     },
-    "Check for Updates": {
-      "extractionState": "manual",
-      "localizations": {
-        "zh-Hant": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "檢查更新"
-          }
-        }
-      }
-    },
     "Check pairing and the local connection without changing your location. You can also share a readable diagnostics report.": {
       "extractionState": "manual",
       "localizations": {
@@ -868,17 +846,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "檢查配對與區域連線，不會改變你的位置。你也可以分享一份可讀的診斷報告。"
-          }
-        }
-      }
-    },
-    "Checking for Updates…": {
-      "extractionState": "manual",
-      "localizations": {
-        "zh-Hant": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "正在檢查更新…"
           }
         }
       }
@@ -901,23 +868,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "正在檢查這支 iPhone"
-          }
-        }
-      }
-    },
-    "Checks the public GitHub release only when you tap it. Roam Control never sends location, pairing or diagnostic data with this request.": {
-      "extractionState": "manual",
-      "localizations": {
-        "zh-Hant": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "只有在你點選時才會檢查公開的 GitHub 版本。Sprout 不會在這個請求中傳送位置、配對或診斷資料。"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Checks the public GitHub release only when you tap it. Sprout never sends location, pairing or diagnostic data with this request."
           }
         }
       }
@@ -1397,17 +1347,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "複製地點"
-          }
-        }
-      }
-    },
-    "Couldn’t check GitHub right now. Try again later.": {
-      "extractionState": "manual",
-      "localizations": {
-        "zh-Hant": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "目前無法檢查 GitHub，請稍後再試。"
           }
         }
       }
@@ -2408,17 +2347,6 @@
         }
       }
     },
-    "Install %@": {
-      "extractionState": "manual",
-      "localizations": {
-        "zh-Hant": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "安裝 %@"
-          }
-        }
-      }
-    },
     "Install LocalDevVPN": {
       "extractionState": "manual",
       "localizations": {
@@ -3242,17 +3170,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "找不到符合的地點。"
-          }
-        }
-      }
-    },
-    "No public GitHub release has been published yet.": {
-      "extractionState": "manual",
-      "localizations": {
-        "zh-Hant": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "目前尚未發布任何公開的 GitHub 版本。"
           }
         }
       }
@@ -6894,17 +6811,6 @@
         }
       }
     },
-    "Updates": {
-      "extractionState": "manual",
-      "localizations": {
-        "zh-Hant": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "更新"
-          }
-        }
-      }
-    },
     "Use the code shown here when iOS asks for it.": {
       "extractionState": "manual",
       "localizations": {
@@ -7000,17 +6906,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "再看一次導覽，不會刪除你的配對、收藏、紀錄或偏好設定。"
-          }
-        }
-      }
-    },
-    "View public release %@": {
-      "extractionState": "manual",
-      "localizations": {
-        "zh-Hant": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "查看公開發行版本 %@"
           }
         }
       }
@@ -7259,28 +7154,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "全球"
-          }
-        }
-      }
-    },
-    "You are using a newer local test build (%@ Build %@).": {
-      "extractionState": "manual",
-      "localizations": {
-        "zh-Hant": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "你正在使用較新的本機測試版本（%1$@ Build %2$@）。"
-          }
-        }
-      }
-    },
-    "You have the latest public release (%@).": {
-      "extractionState": "manual",
-      "localizations": {
-        "zh-Hant": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "你已在使用最新的公開發行版本（%@）。"
           }
         }
       }

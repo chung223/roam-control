@@ -41,7 +41,6 @@ EXEMPT_FILES = {
     "RoamControl/Services/UsageAnalyticsService.swift",
     "RoamControl/Services/BackgroundTaskIdentifier.swift",
     "RoamControl/Services/BackgroundLocationKeepAlive.swift",
-    "RoamControl/Services/ReleaseUpdateChecker.swift",
     "RoamControl/Services/Pairing/PairingService.swift",
     "RoamControl/Services/Pairing/OnDevicePairingCoordinator.swift",
     "RoamControl/Services/Tunnel/LocalDeviceSessionCoordinator.swift",

@@ -18,9 +18,14 @@ All notable public changes to Roam Control are recorded here.
 
 ### Changed
 
+- Report a Bug and Request a Feature open issues on this repository rather than on the upstream project they were forked from. A tester's report about this app would have arrived in an unrelated maintainer's tracker. The private security-reporting link moves with them.
 - Everything floating over the map uses the system's glass rather than an opaque fill and a drawn shadow. A control over a map has to stay legible whether what is underneath is a pale street or a dark satellite photograph, and an opaque surface has to pick one.
 - Minimum iOS is 26.0 rather than 27.0. Nothing used an iOS 27 API — it could not, since the SDK is 26.5 — and 26.0 is the real floor, set by the MapKit geocoding the map already uses.
 - Export compliance is declared in the app's `Info.plist` as `ITSAppUsesNonExemptEncryption` = `false`, so App Store Connect stops asking on every build. It is a record of an answer already given, not a way to dismiss the prompt.
+
+### Removed
+
+- Check for Updates, and the `ReleaseUpdateChecker` behind it. It asked the upstream project's GitHub releases what the latest version was and compared that against this app's own version line, which was never a comparison that meant anything. Updates arrive through TestFlight now, and the app makes one fewer request to a service it does not need.
 
 ### Fixed
 

@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A10000000000000000000001 /* Frameworks/RoamPairingFFI.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10000000000000000000002 /* Frameworks/RoamPairingFFI.xcframework */; };
 		A0000000000000000000001B /* RoamControlLiveActivity.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A00000000000000000000010 /* RoamControlLiveActivity.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A10000000000000000000001 /* Frameworks/RoamPairingFFI.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10000000000000000000002 /* Frameworks/RoamPairingFFI.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -20,13 +20,6 @@
 			remoteInfo = RoamControlLiveActivity;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXFileReference section */
-		A00000000000000000000001 /* RoamControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoamControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A10000000000000000000002 /* Frameworks/RoamPairingFFI.xcframework */ = {isa = PBXFileReference; explicitFileType = wrapper.xcframework; path = Frameworks/RoamPairingFFI.xcframework; sourceTree = "<group>"; };
-		A20000000000000000000001 /* Configuration/Local.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Configuration/Local.xcconfig; sourceTree = "<group>"; };
-		A00000000000000000000010 /* RoamControlLiveActivity.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RoamControlLiveActivity.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-/* End PBXFileReference section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		A0000000000000000000001A /* Embed Foundation Extensions */ = {
@@ -41,6 +34,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A00000000000000000000001 /* RoamControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoamControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A00000000000000000000010 /* RoamControlLiveActivity.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RoamControlLiveActivity.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A10000000000000000000002 /* Frameworks/RoamPairingFFI.xcframework */ = {isa = PBXFileReference; explicitFileType = wrapper.xcframework; path = Frameworks/RoamPairingFFI.xcframework; sourceTree = "<group>"; };
+		A20000000000000000000001 /* Configuration/Local.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Configuration/Local.xcconfig; sourceTree = "<group>"; };
+/* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		A00000000000000000000002 /* RoamControl */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = RoamControl; sourceTree = "<group>"; };
