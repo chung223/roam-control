@@ -104,7 +104,8 @@ NAMING_CALL = re.compile(
 # and the titles and descriptions the framework reads, are translated by it.
 INTENT_TEXT = re.compile(
     r"LocalizedStringResource|IntentDescription\(|TypeDisplayRepresentation\(|"
-    r"DisplayRepresentation\(|@Parameter\(|AppShortcut\(|shortTitle:"
+    r"DisplayRepresentation\(|@Parameter\(|AppShortcut\(|shortTitle:|"
+    r"needsValueError\(|IntentDialog\(|requestValue\("
 )
 # Session failure text: English is its identity, and SessionMessage.localized
 # translates it on the way to the screen. Same reason as EXEMPT_FILES.

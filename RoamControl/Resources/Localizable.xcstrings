@@ -1269,6 +1269,17 @@
         }
       }
     },
+    "Coordinates": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "座標"
+          }
+        }
+      }
+    },
     "Coordinates or place names": {
       "extractionState": "manual",
       "localizations": {
@@ -4204,6 +4215,17 @@
         }
       }
     },
+    "Reports a pair of coordinates as this iPhone's location.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "將一組座標回報為這支 iPhone 的位置。"
+          }
+        }
+      }
+    },
     "Reports a saved place as this iPhone's location.": {
       "extractionState": "manual",
       "localizations": {
@@ -5611,6 +5633,17 @@
         }
       }
     },
+    "Start Location at Coordinates": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "以座標開始定位"
+          }
+        }
+      }
+    },
     "Start Walking": {
       "extractionState": "manual",
       "localizations": {
@@ -6003,6 +6036,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "太魯閣峽谷"
+          }
+        }
+      }
+    },
+    "That is not a pair of coordinates. Try 28.472262, -81.473574.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "那不是一組座標。試試 28.472262, -81.473574。"
           }
         }
       }

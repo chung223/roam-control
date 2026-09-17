@@ -291,27 +291,13 @@ final class MapViewModel: NSObject, MKLocalSearchCompleterDelegate {
         }
     }
 
+    /// Now a thin read over the shared parser, since a Shortcut and a
+    /// roamcontrol:// link take the same text the search field does.
     private func coordinateInput(from query: String) -> CoordinateInput {
-        let trimmed = query.trimmingCharacters(
-            in: .whitespacesAndNewlines.union(CharacterSet(charactersIn: "()[]"))
-        )
-        let parts = trimmed.split(separator: ",", omittingEmptySubsequences: false)
-        guard parts.count == 2 else { return .notCoordinates }
-
-        let latitudeText = parts[0].trimmingCharacters(in: .whitespacesAndNewlines)
-        let longitudeText = parts[1].trimmingCharacters(in: .whitespacesAndNewlines)
-        guard
-            let latitude = Double(latitudeText),
-            let longitude = Double(longitudeText)
-        else { return .notCoordinates }
-
-        guard (-90...90).contains(latitude), (-180...180).contains(longitude) else {
-            return .invalid
+        if let coordinate = CoordinateText.parse(query) {
+            return .coordinate(coordinate)
         }
-
-        return .coordinate(
-            CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        )
+        return CoordinateText.looksLikeCoordinates(query) ? .invalid : .notCoordinates
     }
 
     func clearSearch() {

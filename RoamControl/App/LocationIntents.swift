@@ -1,4 +1,5 @@
 import AppIntents
+import CoreLocation
 import Foundation
 
 /// Starting and stopping a session from outside the app: the Action button,
@@ -21,10 +22,18 @@ enum LocationIntentRequest {
     /// scene change to act on.
     static let posted = Notification.Name("LocationIntentRequestPosted")
 
-    static func record(_ kind: Kind, targetID: UUID? = nil) {
+    static func record(
+        _ kind: Kind,
+        targetID: UUID? = nil,
+        coordinate: CLLocationCoordinate2D? = nil
+    ) {
         var request: [String: String] = ["kind": kind.rawValue]
         if let targetID {
             request["target"] = targetID.uuidString
+        }
+        if let coordinate {
+            request["lat"] = String(coordinate.latitude)
+            request["lon"] = String(coordinate.longitude)
         }
         UserDefaults.standard.set(request, forKey: key)
         NotificationCenter.default.post(name: posted, object: nil)
@@ -32,14 +41,20 @@ enum LocationIntentRequest {
 
     /// Reads and clears in one step. A request is acted on once; a stale one
     /// left behind would start a session the next time the app opened.
-    static func take() -> (kind: Kind, targetID: UUID?)? {
+    static func take() -> (kind: Kind, targetID: UUID?, coordinate: CLLocationCoordinate2D?)? {
         guard
             let request = UserDefaults.standard.dictionary(forKey: key) as? [String: String],
             let kind = Kind(rawValue: request["kind"] ?? "")
         else { return nil }
 
         UserDefaults.standard.removeObject(forKey: key)
-        return (kind, request["target"].flatMap(UUID.init(uuidString:)))
+
+        var coordinate: CLLocationCoordinate2D?
+        if let lat = request["lat"].flatMap(Double.init),
+           let lon = request["lon"].flatMap(Double.init) {
+            coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        }
+        return (kind, request["target"].flatMap(UUID.init(uuidString:)), coordinate)
     }
 }
 
@@ -111,6 +126,31 @@ struct StartLocationIntent: AppIntent {
     }
 }
 
+/// Takes the text a coordinate was copied as, so a Shortcut can be fed one
+/// from anywhere — a message, a web page, the Share sheet — without it having
+/// to be saved as a favourite first.
+struct StartLocationAtCoordinateIntent: AppIntent {
+    static let title: LocalizedStringResource = "Start Location at Coordinates"
+    static let description = IntentDescription(
+        "Reports a pair of coordinates as this iPhone's location."
+    )
+    static let openAppWhenRun = true
+
+    @Parameter(title: "Coordinates", inputOptions: String.IntentInputOptions(capitalizationType: .none))
+    var text: String
+
+    @MainActor
+    func perform() async throws -> some IntentResult {
+        guard let coordinate = CoordinateText.parse(text) else {
+            throw $text.needsValueError(
+                "That is not a pair of coordinates. Try 28.472262, -81.473574."
+            )
+        }
+        LocationIntentRequest.record(.start, coordinate: coordinate)
+        return .result()
+    }
+}
+
 struct StopLocationIntent: AppIntent {
     static let title: LocalizedStringResource = "Stop Location"
     static let description = IntentDescription(
@@ -137,6 +177,15 @@ struct SproutShortcuts: AppShortcutsProvider {
             ],
             shortTitle: "Start Location",
             systemImageName: "location.fill"
+        )
+        AppShortcut(
+            intent: StartLocationAtCoordinateIntent(),
+            phrases: [
+                "Start a coordinate in \(.applicationName)",
+                "Go to coordinates with \(.applicationName)",
+            ],
+            shortTitle: "Coordinates",
+            systemImageName: "mappin.and.ellipse"
         )
         AppShortcut(
             intent: StopLocationIntent(),

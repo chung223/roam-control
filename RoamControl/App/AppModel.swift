@@ -1,3 +1,4 @@
+import CoreLocation
 import Foundation
 import Observation
 
@@ -474,7 +475,46 @@ final class AppModel {
     }
 
     func handleOpenURL(_ url: URL) {
+        if startLocationFromLink(url) { return }
         deviceSession.handleOpenURL(url)
+    }
+
+    /// `roamcontrol://location?lat=28.472262&lon=-81.473574`, so a coordinate
+    /// can arrive as a plain link — from a note, a message, a web page, or a
+    /// Shortcut that would rather open a URL than call an intent.
+    ///
+    /// Returns whether it was one, since the same scheme is LocalDevVPN's
+    /// callback and that has to keep working.
+    private func startLocationFromLink(_ url: URL) -> Bool {
+        guard
+            url.scheme?.lowercased() == "roamcontrol",
+            url.host()?.lowercased() == "location",
+            let items = URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems
+        else { return false }
+
+        let values = Dictionary(
+            items.compactMap { item in item.value.map { (item.name.lowercased(), $0) } },
+            uniquingKeysWith: { first, _ in first }
+        )
+        guard
+            let latitude = values["lat"].flatMap(Double.init),
+            let longitude = values["lon"].flatMap(Double.init),
+            let coordinate = CoordinateText.parse("\(latitude),\(longitude)")
+        else { return false }
+
+        Task { await startLocationSession(at: target(at: coordinate)) }
+        return true
+    }
+
+    /// A place with no name but its own numbers, which is all a pasted
+    /// coordinate ever carries.
+    private func target(at coordinate: CLLocationCoordinate2D) -> LocationTarget {
+        LocationTarget(
+            name: .appText("Entered Location"),
+            subtitle: CoordinateText.describe(coordinate),
+            latitude: coordinate.latitude,
+            longitude: coordinate.longitude
+        )
     }
 
     func appBecameActive() {
@@ -493,6 +533,10 @@ final class AppModel {
 
         switch request.kind {
         case .start:
+            if let coordinate = request.coordinate {
+                Task { await startLocationSession(at: target(at: coordinate)) }
+                return
+            }
             guard
                 let id = request.targetID,
                 let target = favouriteLocations.first(where: { $0.id == id })
