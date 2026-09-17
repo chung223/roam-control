@@ -453,6 +453,7 @@ struct ConnectionHealthView: View {
         Restoration: \(appModel.deviceSession.restorationStatus)
         Last connection check: \(checked)
         Connection check result: \(diagnosticResultStatus)
+        On-device model: \(PlaceFinder().availabilityDescription)
         Appearance: \(appModel.appearance.title)
         Map style: \(appModel.mapDisplayStyle.title)
         Location data: Not included

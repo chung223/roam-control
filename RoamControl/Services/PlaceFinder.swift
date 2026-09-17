@@ -46,11 +46,17 @@ final class PlaceFinder {
 
     var isAvailable: Bool { availability == .ready }
 
-    /// Worth showing at all. Ineligible hardware is the one case nothing can
-    /// be done about, so that is the only one that hides the tab; the rest are
-    /// things a reader can go and fix, and they can only do that if they are
-    /// told.
-    var canBeOffered: Bool { availability != .deviceNotEligible }
+    /// For the diagnostics report, which is where a question like "why is
+    /// this not offered" should be answerable without guessing.
+    var availabilityDescription: String {
+        switch availability {
+        case .ready: "Available"
+        case .deviceNotEligible: "Unavailable: device not eligible"
+        case .notEnabled: "Unavailable: Apple Intelligence not enabled"
+        case .notReady: "Unavailable: model not ready"
+        case .unavailable: "Unavailable: unknown reason"
+        }
+    }
 
     var unavailableReason: String? {
         switch availability {

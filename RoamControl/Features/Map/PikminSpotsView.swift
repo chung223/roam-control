@@ -64,11 +64,10 @@ struct PikminSpotsView: View {
     private var browser: some View {
         VStack(spacing: 0) {
             Picker("", selection: $tab) {
-                // Hidden only where no amount of setting up would help. The
-                // other reasons are things a reader can act on, and silently
-                // removing the tab for those leaves them unable to tell a
-                // missing feature from a broken one.
-                ForEach(Tab.allCases.filter { $0 != .ask || finder.canBeOffered }) {
+                // Always here. Hiding it was twice wrong: it left someone
+                // unable to tell a missing feature from a broken one, and it
+                // hid the very fact that would explain which.
+                ForEach(Tab.allCases) {
                     Text($0.title).tag($0)
                 }
             }
