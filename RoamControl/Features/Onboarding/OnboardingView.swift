@@ -149,17 +149,13 @@ private struct OnboardingPageView: View {
                             height: dynamicTypeSize.isAccessibilitySize ? 96 : 132
                         )
                         .background(
-                            LinearGradient(
-                                colors: page.colors,
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            ),
+                            page.colour,
                             in: RoundedRectangle(
                                 cornerRadius: dynamicTypeSize.isAccessibilitySize ? 26 : 34,
                                 style: .continuous
                             )
                         )
-                        .shadow(color: page.colors[0].opacity(0.28), radius: 24, y: 14)
+                        .shadow(color: page.colour.opacity(0.28), radius: 24, y: 14)
                         .accessibilityHidden(true)
 
                     VStack(spacing: 14) {
@@ -221,20 +217,20 @@ private struct OnboardingPage {
     let symbol: String
     let title: String
     let message: String
-    let colors: [Color]
+    let colour: Color
     let showsUsageStatisticsControl: Bool
 
     init(
         symbol: String,
         title: String,
         message: String,
-        colors: [Color],
+        colour: Color,
         showsUsageStatisticsControl: Bool = false
     ) {
         self.symbol = symbol
         self.title = title
         self.message = message
-        self.colors = colors
+        self.colour = colour
         self.showsUsageStatisticsControl = showsUsageStatisticsControl
     }
 
@@ -243,25 +239,25 @@ private struct OnboardingPage {
             symbol: "location.viewfinder",
             title: .appText("Welcome to Roam Control"),
             message: .appText("Choose where your iPhone should appear, from one simple map."),
-            colors: SproutTheme.Pair.moss
+            colour: SproutTheme.Pair.moss
         ),
         OnboardingPage(
             symbol: "map.fill",
             title: .appText("Pick any place"),
             message: .appText("Search for a destination or tap the map, then save it as your target."),
-            colors: SproutTheme.Pair.sage
+            colour: SproutTheme.Pair.sage
         ),
         OnboardingPage(
             symbol: "iphone.and.arrow.forward",
             title: .appText("Pair this iPhone once"),
             message: .appText("Roam Control needs one private pairing before it can control location. We'll guide you through it next."),
-            colors: SproutTheme.Pair.clay
+            colour: SproutTheme.Pair.clay
         ),
         OnboardingPage(
             symbol: "hand.raised.fill",
             title: .appText("Private by design"),
             message: .appText("Choose whether to help improve Roam Control with anonymous activity counts. Sharing starts only if you switch it on and can be changed later in Settings."),
-            colors: SproutTheme.Pair.coral,
+            colour: SproutTheme.Pair.coral,
             showsUsageStatisticsControl: true
         )
     ]

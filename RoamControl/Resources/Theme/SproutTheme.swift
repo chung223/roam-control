@@ -15,19 +15,19 @@ enum SproutTheme {
     // MARK: - Colour
 
     /// Page background, behind the map and sheets.
-    static let background = dynamic(light: 0xFAF8F3, dark: 0x141A12)
+    static let background = dynamic(light: 0xFBF6E2, dark: 0x141A12)
 
     /// Cards and controls that sit on the background.
     static let surface = dynamic(light: 0xFFFFFF, dark: 0x1F2A1B)
 
     /// A surface raised above another surface, such as a row inside a card.
-    static let surfaceRaised = dynamic(light: 0xF2EFE6, dark: 0x2A3724)
+    static let surfaceRaised = dynamic(light: 0xF3EED8, dark: 0x2A3724)
 
     /// Primary action and brand colour: moss.
-    static let primary = dynamic(light: 0x6F9A4E, dark: 0xA3CC7A)
+    static let primary = dynamic(light: 0x55743A, dark: 0xAECC84)
 
     /// Primary colour at low opacity, for fills behind icons.
-    static let primarySoft = dynamic(light: 0xE8F0DE, dark: 0x2E3F24)
+    static let primarySoft = dynamic(light: 0xE9EFD3, dark: 0x2E3F24)
 
     /// Destructive and attention colour: coral. Warm enough to belong to the
     /// palette, distinct enough to stop someone mid-gesture.
@@ -47,29 +47,20 @@ enum SproutTheme {
     /// Positive state, for a healthy connection.
     static let positive = dynamic(light: 0x4F8A4A, dark: 0x8FCB78)
 
-    // MARK: - Gradients
+    // MARK: - Illustrative colour
 
-    /// Soft two-stop pairs for illustrative headers. They stay inside the
-    /// botanical palette so an onboarding page and a warning still read as the
-    /// same app.
+    /// Single colours for illustrative headers. The app icon is drawn flat,
+    /// with no gradient anywhere in it, so the interface is too — a gradient
+    /// here would be the one place the two visual languages disagreed.
     enum Pair {
-        /// The brand gradient.
-        static let moss = [dynamic(light: 0x6F9A4E, dark: 0x8FBF6A),
-                           dynamic(light: 0x9BC275, dark: 0xB8D89A)]
+        /// The brand colour.
+        static let moss = dynamic(light: 0x55743A, dark: 0x8FBF6A)
         /// Cooler green, for calm or informational moments.
-        static let sage = [dynamic(light: 0x5C8F7B, dark: 0x7FB39C),
-                           dynamic(light: 0x8FBFA3, dark: 0xA6CDBA)]
+        static let sage = dynamic(light: 0x4E7D69, dark: 0x7FB39C)
         /// Warm, for attention without alarm.
-        static let clay = [dynamic(light: 0xC08A4E, dark: 0xD6A874),
-                           dynamic(light: 0xDDB47A, dark: 0xE5C79B)]
+        static let clay = dynamic(light: 0xB07C42, dark: 0xD6A874)
         /// Coral, for interruption and recovery.
-        static let coral = [dynamic(light: 0xD4694A, dark: 0xE8896B),
-                            dynamic(light: 0xE8A07E, dark: 0xF0B79B)]
-    }
-
-    /// A linear gradient across one of the pairs, top-leading to bottom-trailing.
-    static func gradient(_ colors: [Color]) -> LinearGradient {
-        LinearGradient(colors: colors, startPoint: .topLeading, endPoint: .bottomTrailing)
+        static let coral = dynamic(light: 0xD4694A, dark: 0xE8896B)
     }
 
     // MARK: - Shape

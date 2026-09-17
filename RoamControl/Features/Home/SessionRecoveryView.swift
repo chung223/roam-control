@@ -56,13 +56,7 @@ struct SessionRecoveryView: View {
 
             ZStack {
                 Circle()
-                    .fill(
-                        LinearGradient(
-                            colors: SproutTheme.Pair.coral,
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
+                    .fill(SproutTheme.Pair.coral)
                     .frame(
                         width: dynamicTypeSize.isAccessibilitySize ? 66 : 78,
                         height: dynamicTypeSize.isAccessibilitySize ? 66 : 78

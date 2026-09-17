@@ -42,13 +42,7 @@ struct MobileDataGuidanceView: View {
 
             ZStack {
                 Circle()
-                    .fill(
-                        LinearGradient(
-                            colors: iconColours,
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
+                    .fill(iconColour)
                     .frame(
                         width: dynamicTypeSize.isAccessibilitySize ? 68 : 82,
                         height: dynamicTypeSize.isAccessibilitySize ? 68 : 82
@@ -157,7 +151,7 @@ struct MobileDataGuidanceView: View {
         }
     }
 
-    private var iconColours: [Color] {
+    private var iconColour: Color {
         switch guidance {
         case .connectionHelp: SproutTheme.Pair.clay
         case .turnOff: SproutTheme.Pair.sage

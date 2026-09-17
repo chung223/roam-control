@@ -33,9 +33,8 @@ struct SavedPlacesView: View {
             List {
                 Section {
                     if favourites.isEmpty {
-                        EmptySavedPlacesRow(
-                            symbol: "heart",
-                            message: "Tap the heart on any selected place to save it."
+                        EmptyFavouritesRow(
+                            message: .appText("Tap the heart on any selected place to save it.")
                         )
                     } else {
                         ForEach(favourites) { location in
@@ -84,7 +83,7 @@ struct SavedPlacesView: View {
                     if history.isEmpty {
                         EmptySavedPlacesRow(
                             symbol: "clock",
-                            message: "Places you use will appear here."
+                            message: .appText("Places you use will appear here.")
                         )
                     } else {
                         ForEach(history) { location in
@@ -271,6 +270,29 @@ private struct SavedPlaceRow: View {
     private var locationAccessibilityLabel: String {
         guard !location.subtitle.isEmpty else { return location.name }
         return "\(location.name), \(location.subtitle)"
+    }
+}
+
+/// The favourites list is empty for every new reader, so it is the one
+/// moment the mascot is doing a job rather than decorating.
+private struct EmptyFavouritesRow: View {
+    let message: String
+
+    var body: some View {
+        HStack(spacing: 14) {
+            Image("SproutMascot")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 38, height: 60)
+                .accessibilityHidden(true)
+
+            Text(message)
+                .font(.subheadline)
+                .foregroundStyle(SproutTheme.textSecondary)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.vertical, 10)
     }
 }
 

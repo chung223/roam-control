@@ -151,13 +151,7 @@ struct AboutRoamControlView: View {
             VStack(spacing: 14) {
                 ZStack {
                     Circle()
-                        .fill(
-                            LinearGradient(
-                                colors: SproutTheme.Pair.moss,
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
+                        .fill(SproutTheme.Pair.moss)
                         .frame(width: 74, height: 74)
 
                     Image(systemName: "location.north.circle.fill")
