@@ -3026,6 +3026,17 @@
         }
       }
     },
+    "Mushrooms, flowers and detectors": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "菇點、花點與探測器"
+          }
+        }
+      }
+    },
     "My Real Location Is Already Back": {
       "extractionState": "manual",
       "localizations": {

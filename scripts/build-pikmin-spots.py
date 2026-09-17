@@ -37,10 +37,14 @@ for r in load("postcards.json"):
     spots.append({"n": r["名稱"], "la": round(r["緯度"], 6), "lo": round(r["經度"], 6),
                   "t": "明信片", "c": r.get("國家") or "", "d": r.get("種類") or "", "s": "c"})
 
+# This source files four kinds, not one: 菇點, 花點, 探測器 and a few 未知.
+# An earlier version of this script labelled every record 菇點, which was
+# survivable while it held 417 rows and is not now that it holds 3,525.
 for r in load("pikoohiong.json"):
     if r.get("緯度") is None: continue
     spots.append({"n": r["名稱"], "la": round(r["緯度"], 6), "lo": round(r["經度"], 6),
-                  "t": "菇點", "c": r.get("國家") or "", "d": r.get("地點") or "", "s": "m"})
+                  "t": r.get("種類") or "菇點", "c": r.get("國家") or "",
+                  "d": r.get("地點") or "", "s": "m"})
 
 decorations = []
 for d in load("decor.json"):

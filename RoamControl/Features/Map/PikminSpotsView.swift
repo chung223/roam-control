@@ -160,7 +160,9 @@ struct PikminSpotsView: View {
                     }
                 }
             } header: {
-                Text("Mushroom spots")
+                // Not only mushrooms: this source files flowers and detectors
+                // too, and each row says which it is.
+                Text("Mushrooms, flowers and detectors")
             }
         }
         .listStyle(.insetGrouped)
