@@ -259,6 +259,7 @@ final class MapViewModel: NSObject, MKLocalSearchCompleterDelegate {
             location: CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
         ) else {
             selectedLocation = LocationTarget(
+                id: pendingTarget.id,
                 name: fallbackName,
                 subtitle: fallbackDescription,
                 latitude: coordinate.latitude,
@@ -272,6 +273,7 @@ final class MapViewModel: NSObject, MKLocalSearchCompleterDelegate {
             guard selectedLocation?.id == pendingTarget.id, let item = items.first else { return }
 
             selectedLocation = LocationTarget(
+                id: pendingTarget.id,
                 name: item.name ?? fallbackName,
                 subtitle: placeDescription(for: item),
                 latitude: coordinate.latitude,
@@ -280,6 +282,7 @@ final class MapViewModel: NSObject, MKLocalSearchCompleterDelegate {
         } catch {
             guard selectedLocation?.id == pendingTarget.id else { return }
             selectedLocation = LocationTarget(
+                id: pendingTarget.id,
                 name: fallbackName,
                 subtitle: fallbackDescription,
                 latitude: coordinate.latitude,

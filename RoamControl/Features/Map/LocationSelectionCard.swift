@@ -257,7 +257,7 @@ struct LocationSelectionCard: View {
             let location,
             case .active(let activeTarget) = sessionPhase
         else { return false }
-        return location.id == activeTarget.id
+        return location.isSamePlace(as: activeTarget)
     }
 
     private var isWorking: Bool {

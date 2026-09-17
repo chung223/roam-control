@@ -53,6 +53,10 @@
 	<string>Roam Control uses the local network to securely pair with and control this iPhone through LocalDevVPN.</string>
 	<key>UIBackgroundModes</key>
 	<array><string>location</string></array>
+	<key>NSSupportsLiveActivities</key>
+	<true/>
+	<key>NSSupportsLiveActivitiesFrequentUpdates</key>
+	<false/>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Roam Control uses location updates to keep fixed and walking sessions running in the background, and to recenter on your real position after a session stops.</string>
 	<key>RoamControlBuildTimestamp</key>

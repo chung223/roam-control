@@ -36,10 +36,12 @@ final class AppModel {
     private var restorationWasCancelled = false
     private var isStoppingLocationSessionForRestoration = false
     private var pendingSessionAnalyticsEvent: UsageAnalyticsEvent?
+    private var activeSessionIsWalkingRoute = false
 
     let pairingService: any PairingService
     let onDevicePairing: OnDevicePairingCoordinator
     let deviceSession: LocalDeviceSessionCoordinator
+    let liveActivity = RoamSessionLiveActivityController()
     private let usageAnalytics: UsageAnalyticsService
     let localDevVPNInstallURL = URL(string: "https://apps.apple.com/app/localdevvpn/id6755608044")!
 
@@ -130,11 +132,11 @@ final class AppModel {
     }
 
     func isFavourite(_ target: LocationTarget) -> Bool {
-        favouriteLocations.contains { $0.id == target.id }
+        favouriteLocations.contains { $0.isSamePlace(as: target) }
     }
 
     func toggleFavourite(_ target: LocationTarget) {
-        if let index = favouriteLocations.firstIndex(where: { $0.id == target.id }) {
+        if let index = favouriteLocations.firstIndex(where: { $0.isSamePlace(as: target) }) {
             favouriteLocations.remove(at: index)
         } else {
             favouriteLocations.insert(target, at: 0)
@@ -167,6 +169,7 @@ final class AppModel {
         else { return }
 
         let renamed = LocationTarget(
+            id: target.id,
             name: name,
             subtitle: target.subtitle,
             latitude: target.latitude,
@@ -237,6 +240,7 @@ final class AppModel {
     func resetApp() async throws {
         onDevicePairing.reset()
         deviceSession.reset()
+        liveActivity.end()
         try await pairingService.removeRecord()
 
         if let bundleIdentifier = Bundle.main.bundleIdentifier {
@@ -253,6 +257,7 @@ final class AppModel {
         sharesAnonymousUsageStatistics = false
         interruptedSession = nil
         activeSessionRecovery = nil
+        activeSessionIsWalkingRoute = false
         isRestoringInterruptedSession = false
         interruptedSessionError = nil
         restorationWasCancelled = false
@@ -362,11 +367,15 @@ final class AppModel {
 
         self.selectedTarget = selectedTarget
         dismissInterruptedSessionRecovery()
+        activeSessionIsWalkingRoute = recovery.kind == .walkingRoute
         activeSessionRecovery = recovery
         lastRecoverySaveDate = nil
         addToHistory(historyTarget)
         switch deviceSession.updateLocation(deviceTarget) {
         case .updated:
+            if !activeSessionIsWalkingRoute {
+                liveActivity.updateFixedLocation(named: deviceTarget.name)
+            }
             usageAnalytics.record(
                 .activeLocationUpdated,
                 enabled: sharesAnonymousUsageStatistics
@@ -485,7 +494,7 @@ final class AppModel {
     }
 
     private func addToHistory(_ target: LocationTarget) {
-        locationHistory.removeAll { $0.id == target.id }
+        locationHistory.removeAll { $0.isSamePlace(as: target) }
         locationHistory.insert(target, at: 0)
         locationHistory = Array(locationHistory.prefix(30))
         save(locationHistory, forKey: Self.historyKey)
@@ -495,6 +504,8 @@ final class AppModel {
         switch phase {
         case .idle:
             pendingSessionAnalyticsEvent = nil
+            activeSessionIsWalkingRoute = false
+            liveActivity.end()
             isStoppingLocationSessionForRestoration = false
             if isRestoringInterruptedSession {
                 let didRestore = restorationReachedActiveSession && !restorationWasCancelled
@@ -511,14 +522,27 @@ final class AppModel {
             } else {
                 connectionState = .notConfigured
             }
-        case .openingLocalDevVPN, .discovering, .connecting, .stopping:
+        case .openingLocalDevVPN, .discovering, .connecting:
             connectionState = .connecting
+        case .stopping:
+            connectionState = .connecting
+            liveActivity.markStopping(
+                isRestoringRealLocation: isRestoringInterruptedSession
+                    || isStoppingLocationSessionForRestoration
+            )
         case .active(let target):
             connectionState = .active
             isStoppingLocationSessionForRestoration = false
             if let event = pendingSessionAnalyticsEvent {
                 usageAnalytics.record(event, enabled: sharesAnonymousUsageStatistics)
                 pendingSessionAnalyticsEvent = nil
+            }
+            if !activeSessionIsWalkingRoute, !isRestoringInterruptedSession {
+                if liveActivity.isRunning {
+                    liveActivity.updateFixedLocation(named: target.name)
+                } else {
+                    liveActivity.startFixedLocation(named: target.name)
+                }
             }
             if isRestoringInterruptedSession {
                 restorationReachedActiveSession = true
@@ -538,6 +562,8 @@ final class AppModel {
             }
         case .failed(let message):
             pendingSessionAnalyticsEvent = nil
+            activeSessionIsWalkingRoute = false
+            liveActivity.end()
             connectionState = .failed(message: message)
             if isRestoringInterruptedSession || isStoppingLocationSessionForRestoration {
                 let wasRestoringInterruptedSession = isRestoringInterruptedSession
@@ -617,7 +643,25 @@ final class AppModel {
         else {
             return []
         }
+
+        // Records saved before identities were stored decode with a new
+        // identity each launch. Write them back once so the identity settles.
+        if
+            storedLocationsNeedIdentities(data),
+            let migrated = try? JSONEncoder().encode(locations)
+        {
+            preferences.set(migrated, forKey: key)
+        }
         return locations
+    }
+
+    private static func storedLocationsNeedIdentities(_ data: Data) -> Bool {
+        guard
+            let elements = try? JSONSerialization.jsonObject(with: data) as? [[String: Any]]
+        else {
+            return false
+        }
+        return elements.contains { $0["id"] == nil }
     }
 
     private static func recoveryRecord(in preferences: UserDefaults) -> SessionRecoveryRecord? {

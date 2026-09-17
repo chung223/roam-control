@@ -125,6 +125,7 @@ final class WalkingSimulationController {
             let destination,
             phase == .idle || isFailed
         else { return }
+        liveActivity = appModel.liveActivity
         guard case .paired = appModel.pairingStatus else {
             phase = .failed("Pair this iPhone before starting a walking session.")
             return
@@ -150,8 +151,10 @@ final class WalkingSimulationController {
         switch phase {
         case .walking:
             phase = .paused
+            publishWalkingActivity(stage: .paused)
         case .paused:
             phase = .walking
+            publishWalkingActivity(stage: .running)
         case .idle, .preparing, .arrived, .stopping, .failed:
             break
         }
@@ -181,6 +184,7 @@ final class WalkingSimulationController {
         case .active:
             guard phase == .preparing else { return }
             phase = .walking
+            startWalkingActivity()
             beginMovement(using: deviceSession)
 
         case .stopping:
@@ -228,6 +232,46 @@ final class WalkingSimulationController {
         return false
     }
 
+    /// Set when a walk starts. The activity itself is owned by AppModel, which
+    /// ends it when the device session ends.
+    @ObservationIgnored
+    private weak var liveActivity: RoamSessionLiveActivityController?
+
+    private func startWalkingActivity() {
+        guard let destination else { return }
+        liveActivity?.startWalk(
+            destinationName: destination.name,
+            remainingDistance: remainingDistance,
+            expectedArrival: expectedArrival
+        )
+    }
+
+    private func publishWalkingActivity(
+        stage: RoamSessionActivityAttributes.ContentState.Stage
+    ) {
+        guard let destination else { return }
+        liveActivity?.updateWalk(
+            stage: stage,
+            destinationName: destination.name,
+            progress: progress,
+            remainingDistance: remainingDistance,
+            expectedArrival: stage == .running ? expectedArrival : nil
+        )
+    }
+
+    /// The walk stopped but the location session did not: the iPhone still
+    /// reports its last coordinate. Say that plainly instead of leaving a walk
+    /// in progress on the Lock Screen.
+    private func reportWalkNoLongerMoving(named placeName: String) {
+        liveActivity?.updateFixedLocation(named: placeName)
+    }
+
+    /// Only meaningful while moving; a paused walk has no arrival time.
+    private var expectedArrival: Date? {
+        guard remainingDuration.isFinite, remainingDuration > 0 else { return nil }
+        return Date.now.addingTimeInterval(remainingDuration)
+    }
+
     private func beginMovement(using deviceSession: LocalDeviceSessionCoordinator) {
         movementTask?.cancel()
         movementTask = Task { @MainActor [weak self, weak deviceSession] in
@@ -253,6 +297,7 @@ final class WalkingSimulationController {
 
                 guard let coordinate = self.coordinate(at: self.distanceTravelled) else {
                     self.phase = .failed("Roam Control could not follow this walking route.")
+                    self.reportWalkNoLongerMoving(named: destination.name)
                     return
                 }
 
@@ -264,14 +309,18 @@ final class WalkingSimulationController {
 
                 guard deviceSession.updateLocation(target) == .updated else {
                     self.phase = .failed("The active location session ended before the walk finished.")
+                    self.reportWalkNoLongerMoving(named: destination.name)
                     return
                 }
 
                 if reachedDestination {
                     self.currentCoordinate = destination.coordinate
                     self.phase = .arrived
+                    self.publishWalkingActivity(stage: .arrived)
                     return
                 }
+
+                self.publishWalkingActivity(stage: .running)
             }
         }
     }
@@ -295,7 +344,7 @@ final class WalkingSimulationController {
         if distance <= 0 { return first.coordinate }
         if distance >= totalDistance { return routePoints.last?.coordinate }
 
-        guard let upperIndex = cumulativeDistances.firstIndex(where: { $0 >= distance }) else {
+        guard let upperIndex = firstIndex(atOrBeyond: distance) else {
             return routePoints.last?.coordinate
         }
         let lowerIndex = max(upperIndex - 1, 0)
@@ -311,6 +360,23 @@ final class WalkingSimulationController {
             x: start.x + ((end.x - start.x) * fraction),
             y: start.y + ((end.y - start.y) * fraction)
         ).coordinate
+    }
+
+    /// `cumulativeDistances` is ascending, so the first entry at or beyond a
+    /// distance can be found by bisection rather than by scanning the whole
+    /// route on every tick.
+    private func firstIndex(atOrBeyond distance: CLLocationDistance) -> Int? {
+        var low = 0
+        var high = cumulativeDistances.count
+        while low < high {
+            let middle = low + ((high - low) / 2)
+            if cumulativeDistances[middle] >= distance {
+                high = middle
+            } else {
+                low = middle + 1
+            }
+        }
+        return low < cumulativeDistances.count ? low : nil
     }
 
     private func movementTarget(

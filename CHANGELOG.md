@@ -4,7 +4,22 @@ All notable public changes to Roam Control are recorded here.
 
 ## [Unreleased]
 
-No public changes recorded yet.
+### Added
+
+- Live Activity for a running session, on the Lock Screen and in the Dynamic Island. It shows the reported place and session stage, and for a walk the progress, remaining distance and arrival countdown. It ends when the session ends, including on failure. The place name is drawn by iOS on the Lock Screen and is never transmitted or added to usage statistics. Delivered by a new `RoamControlLiveActivity` app extension embedded in the app.
+- Bundled landmark catalogue: 72 well-known places grouped by region, searchable without a network connection, reachable from the globe button on the map. Choosing one selects it exactly as a search result does; starting a session remains a separate step.
+
+### Fixed
+
+- `LocationTarget` identity no longer derives from the coordinate bit pattern. Two saved places at one coordinate could not both exist, and one place reported with slightly different coordinates by search, a dropped pin and reverse geocoding could occupy several history rows. Identity is now a stored `UUID`, and favourite matching, history de-duplication and active-target display compare position within about one metre instead. Favourites and history saved by earlier builds are migrated in place on first launch.
+- Reverse geocoding now refines the existing selection instead of replacing it with a new one, so a planned walking route is no longer discarded when an address resolves.
+- Route interpolation during a walk bisects the cumulative-distance table instead of scanning it, removing a per-second linear scan over every route point.
+
+### Validation and remaining work
+
+- Source-level invariants in `scripts/` pass, including the release, failure-stage, telemetry and background-task checks. The release invariant now expects one version pair per target rather than one, because the extension must carry the host app's version.
+- Not yet built, run or installed. The new extension target was added by editing `project.pbxproj` directly and has not been opened in Xcode; the shared `RoamControlShared` folder is listed in both targets' synchronized groups and that membership should be confirmed on first open.
+- Live Activity behaviour, Dynamic Island layout and SideStore signing of the embedded extension are unverified on a device.
 
 ## [0.9.2] - 2026-09-16
 

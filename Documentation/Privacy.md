@@ -15,6 +15,12 @@ Roam Control does not send:
 
 Pairing records are stored in the device-only Keychain. App preferences and saved places remain in local app storage.
 
+### Live Activity
+
+While a session runs, Roam Control shows a Live Activity on the Lock Screen and in the Dynamic Island. It displays the name of the chosen place, the session stage and, for a walk, progress and remaining time. It contains no coordinates.
+
+That information is handed to iOS so the system can draw it, and it is visible on the Lock Screen without unlocking the iPhone. It is not sent anywhere and is not included in usage statistics. The activity ends when the session ends, including when a session fails. Live Activities can be turned off for Roam Control in **Settings → Roam Control → Live Activities**; sessions run normally without it.
+
 ## Optional anonymous usage statistics
 
 The app offers **Share Anonymous Usage Statistics**. It is off by default. New users see the switch before finishing setup, and nothing is sent unless they affirmatively switch it on. Existing installations keep their previously saved choice when upgrading. The setting can be changed at any time under **Settings → Privacy**.

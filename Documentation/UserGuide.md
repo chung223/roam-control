@@ -24,9 +24,14 @@ Use any of these methods:
 - Enter coordinates such as `51.50740, -0.12780`.
 - Tap anywhere on the map to drop a precise pin.
 - Open the heart/list button to choose a favourite or recent location.
+- Open the globe button to pick from the bundled landmark list.
 - Use **Resume** when Roam Control offers the last used location.
 
 Choosing a search result clears the search box automatically. The close button on a selected-location card clears a dropped pin or selection. The copy button copies the readable place and address.
+
+### Landmarks
+
+The globe button opens a searchable list of well-known places grouped by region. The list is bundled with the app, so it works without a network connection and sends nothing anywhere. Choosing one selects it on the map exactly as a search result would: it can be previewed, saved as a favourite or used as a walking destination, and starting a session remains a separate step.
 
 ## Start a fixed location
 
@@ -117,6 +122,14 @@ Settings offers automatic, light and dark appearance plus standard, satellite an
 ## Background sessions
 
 An active location session uses an iOS continued-processing task so it can remain reliable while Roam Control is in the background. iOS shows this task in the Dynamic Island and controls its presentation. You can swipe it up to keep it compact, but Roam Control continues to report task progress so iOS can keep the session running reliably.
+
+### Live Activity
+
+A running session also shows a Live Activity on the Lock Screen and in the Dynamic Island, so it stays obvious that the iPhone is reporting a chosen place rather than its real one. It shows the place name and session stage; a walk also shows progress, distance left and a countdown to arrival.
+
+Tapping it opens Roam Control. It carries no stop control of its own: stopping has to restore the real location and confirm the iPhone accepted it, which belongs in the app. The activity disappears when the session ends, including when a session fails.
+
+If the activity is missing, check **Settings → Roam Control → Live Activities**. Sessions run normally either way.
 
 ## Anonymous usage statistics
 

@@ -11,6 +11,7 @@ struct HomeView: View {
     @State private var isShowingDeviceSetup: Bool
     @State private var isShowingSettings: Bool
     @State private var isShowingSavedPlaces = false
+    @State private var isShowingLandmarks = false
     @State private var shouldRefreshRealLocationWhenActive = false
     @State private var shouldClearLocationAfterRestoration = false
     @State private var isLocatingRealLocationAfterRestoration = false
@@ -114,6 +115,22 @@ struct HomeView: View {
                     Spacer()
 
                     HStack(spacing: 10) {
+                        Button {
+                            isShowingLandmarks = true
+                        } label: {
+                            Image(systemName: "globe.americas.fill")
+                                .font(.subheadline.weight(.semibold))
+                                .foregroundStyle(.primary)
+                                .frame(width: 36, height: 36)
+                                .background(.regularMaterial, in: Circle())
+                                .shadow(color: .black.opacity(0.08), radius: 8, y: 3)
+                                .frame(width: 44, height: 44)
+                        }
+                        .buttonStyle(.plain)
+                        .disabled(walkingSimulation.locksDestination)
+                        .accessibilityLabel("Landmarks")
+                        .accessibilityHint("Browse well-known places")
+
                         Button {
                             isShowingSavedPlaces = true
                         } label: {
@@ -429,12 +446,13 @@ struct HomeView: View {
                 mapModel.showRealLocationAfterSession()
             }
         }
-        .onChange(of: mapModel.selectedLocation?.id) { _, selectedLocationID in
+        .onChange(of: mapModel.selectedLocation) { _, selectedLocation in
             guard !walkingSimulation.locksDestination else { return }
             guard let destination = walkingRoutePlanner.destination else { return }
-            if destination.id != selectedLocationID {
+            guard let selectedLocation, destination.isSamePlace(as: selectedLocation) else {
                 walkingSimulation.reset()
                 walkingRoutePlanner.clear()
+                return
             }
         }
         .onChange(of: mapModel.isFindingRealLocation) { _, isFindingRealLocation in
@@ -457,6 +475,12 @@ struct HomeView: View {
         .sheet(isPresented: $isShowingSettings) {
             SettingsView()
                 .environment(appModel)
+        }
+        .sheet(isPresented: $isShowingLandmarks) {
+            LandmarksView { target in
+                guard !walkingSimulation.locksDestination else { return }
+                mapModel.show(target)
+            }
         }
         .sheet(isPresented: $isShowingSavedPlaces) {
             SavedPlacesView(
