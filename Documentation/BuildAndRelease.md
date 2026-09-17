@@ -1,14 +1,19 @@
 # Build and Release Guide
 
-This guide covers Roam Control's development builds and the planned IPA workflow.
+This guide covers development builds and the TestFlight upload workflow.
 
 ## Current release identity
 
-- Marketing version: `0.9.2`
-- Current build: `56`
-- Bundle identifier: `com.sean.roamcontrol`
-- Minimum deployment target: iOS 27
+- Marketing version: `0.10.0`
+- Current build: `62`
+- Bundle identifier: supplied by `ROAMCONTROL_BUNDLE_ID` in the ignored private configuration
+- Minimum deployment target: iOS 26.0
 - Supported device family: iPhone
+- Display name: Sprout
+
+The minimum is 26.0 rather than anything lower because the map already uses
+`MKReverseGeocodingRequest` and `MKMapItem.address`, which are iOS 26 APIs. That
+is the real floor; nothing else in the app sets a higher one.
 
 The version and build are shown in **Settings** inside the app. The built date and time come from the timestamp embedded for that packaged build.
 
@@ -53,34 +58,58 @@ Run `scripts/build-pairing-engine.sh` from the project directory. Confirm the ap
 
 Before creating an archive:
 
-1. Finish the regression checklist.
-2. Increase `CURRENT_PROJECT_VERSION` for the archive.
-3. Confirm the public version.
-4. Use the Release configuration.
-5. Confirm the app icon and display name.
-6. Set and verify the build timestamp.
-7. For a configured public build, set the self-hosted ingestion token and any TelemetryDeck identifiers in the ignored private configuration.
-8. Confirm no live ingestion token is tracked or shown in the staged diff.
-9. Confirm `RoamPairingFFI.xcframework` is embedded and signed.
-10. Build once for a physical iPhone.
+1. Run the invariant scripts. They are quick, they need no device, and two of
+   them exist because their failures are only visible partway through an upload:
+
+   ```sh
+   for s in scripts/test-*.py; do python3 "$s" || break; done
+   ```
+
+   `test-release-invariants.py` pins the version and build deliberately, so it
+   fails until step 3 is done. That is the point of it.
+2. Finish the regression checklist.
+3. Increase `CURRENT_PROJECT_VERSION` for the archive, and update the two
+   assertions in `scripts/test-release-invariants.py` that pin it.
+4. Confirm the public version.
+5. Use the Release configuration.
+6. Confirm the app icon and display name.
+7. Set and verify the build timestamp.
+8. For a configured public build, set the self-hosted ingestion token and any TelemetryDeck identifiers in the ignored private configuration.
+9. Confirm no live ingestion token is tracked or shown in the staged diff.
+10. Confirm `RoamPairingFFI.xcframework` is embedded and signed.
+11. Build once for a physical iPhone.
 
 Then select **Any iOS Device (arm64)** and choose **Product → Archive**. Xcode opens Organizer after a successful archive.
 
-## IPA and SideStore
+## Upload to TestFlight
 
-Roam Control's SideStore IPA is built from an optimized, unsigned Release archive. SideStore applies the user's personal development certificate during installation. The native pairing engine is statically linked into the app binary, so it does not need a separate framework or extension.
+Upload from Organizer, not from the command line:
 
-For personal SideStore installation:
+**Xcode → Window → Organizer → Archives → the archive → Distribute App → App Store Connect → Upload**
 
-1. Use the verified IPA from `Releases`, or create a new one from a Release archive.
-2. Move the IPA to Files or another location SideStore can access.
-3. Open SideStore, choose the IPA and allow SideStore to sign/install it with the configured Apple ID.
-4. Keep Developer Mode enabled.
-5. Complete Roam Control's pairing on the installed copy if its signing identity gives it a new Keychain container.
+`xcodebuild -exportArchive` fails here with `No Accounts` and `No signing
+certificate "iOS Distribution" found`, because the App Store Connect session
+lives in the Xcode GUI and `xcodebuild` cannot see it. An export can succeed
+once and still leave no certificate behind for the next one, so treat Organizer
+as the route rather than a fallback.
 
-SideStore re-signing and Apple's free-account limits can affect expiry, app identifiers and available entitlements. The final IPA must therefore be tested as a SideStore install rather than assuming an Xcode-installed build is equivalent. With a free Apple Account, SideStore normally refreshes the signed installation within Apple's seven-day development period.
+Two validation failures arrive partway through an upload rather than at build
+time, which is why both now have a script:
 
-Do not treat an Xcode Debug `.app` folder renamed to `.ipa` as a release package. Use the verified Release archive/package workflow.
+- **Export compliance.** App Store Connect asks the encryption question once per
+  build unless `ITSAppUsesNonExemptEncryption` is declared in
+  `Configuration/RoamControl-Info.plist`. It is. Note that the app does use
+  encryption the operating system does not provide: the Rust bridge carries its
+  own standard implementations for pair-verify and the TLS-PSK tunnel.
+- **Error 90626.** An App Intent title, description or shortcut phrase may not
+  name an Apple product. `scripts/test-intent-metadata.py` checks every intent
+  string and every localisation of it, because the metadata Apple reads is built
+  from the String Catalog and a translation is rejected on its own.
+
+A build number cannot be reused once App Store Connect has accepted it. A build
+rejected during validation does not consume its number.
+
+Do not treat an Xcode Debug `.app` folder renamed to `.ipa` as a release package. Use the verified Release archive workflow.
 
 ## Privacy statistics configuration
 
@@ -105,7 +134,7 @@ For each distributed build, record:
 - Version and build number.
 - Date and time created.
 - Xcode and iOS versions used.
-- Signing method.
+- Signing method and distribution route.
 - Device used for testing.
 - Regression checklist result.
 - Known issues.

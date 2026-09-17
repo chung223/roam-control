@@ -25,6 +25,8 @@ Use any of these methods:
 - Tap anywhere on the map to drop a precise pin.
 - Open the heart/list button to choose a favourite or recent location.
 - Open the globe button to pick from the bundled landmark list.
+- Open the Pikmin spots button to browse the bundled spot catalogue.
+- Paste a coordinate pair straight into the search box.
 - Use **Resume** when Roam Control offers the last used location.
 
 Choosing a search result clears the search box automatically. The close button on a selected-location card clears a dropped pin or selection. The copy button copies the readable place and address.
@@ -32,6 +34,32 @@ Choosing a search result clears the search box automatically. The close button o
 ### Landmarks
 
 The globe button opens a searchable list of well-known places grouped by region. The list is bundled with the app, so it works without a network connection and sends nothing anywhere. Choosing one selects it on the map exactly as a search result would: it can be previewed, saved as a favourite or used as a walking destination, and starting a session remains a separate step.
+
+Landmarks are named in both languages: the reader's own, with the English kept beside it, since that is what the signage and every other app call these places. Search matches either spelling.
+
+### Pikmin spots
+
+A second bundled catalogue holds Pikmin Bloom spots. Four tabs sort the same places different ways:
+
+- **Decorations** lists what each decoration comes from, so a decoration can be sent to the map to pin the spots that yield it.
+- **Counties** and **World** group spots by where they are.
+- **Ask** answers a question about them, described below.
+
+Lists sort nearest first, measured from wherever the map is currently looking rather than from the real location, so panning the map to a city re-sorts them around it.
+
+### Ask
+
+On iPhones that can run Apple Intelligence, the Ask tab takes a question such as "where do I get a taco" and answers it from the bundled catalogue.
+
+The searching is done locally and the model only chooses among what was found, so an answer is a choice among real places rather than an invented one. The question, the candidates and the answer all stay on the iPhone; nothing is sent anywhere.
+
+Where the on-device model is unavailable, the tab stays visible and says why rather than disappearing.
+
+### Coordinates
+
+A coordinate pair typed or pasted into the search box, such as `28.472262, -81.473574`, selects that point directly. The same pair can be given to the Shortcuts action below, and a `roamcontrol://location?lat=28.472262&lon=-81.473574` link does the same thing from anywhere a link can be tapped.
+
+Remember that such a link contains the coordinate. Sharing the link shares the place.
 
 ## Start a fixed location
 
@@ -100,9 +128,21 @@ For UK regional settings, short distances are shown in yards and longer distance
 - **Favourites and history** opens saved places. Swipe an item to delete it; swipe a favourite to rename it.
 - **Settings** controls appearance, map style, diagnostics, pairing, feedback, help and reset.
 
+## Shortcuts, Siri and the Action button
+
+Three actions are available to Shortcuts, Siri and the Action button:
+
+- **Start Location** reports a saved favourite. It asks which one if a shortcut does not name it.
+- **Start Location at Coordinates** takes a coordinate pair as text, which also covers the Share sheet.
+- **Stop Location** ends the session and restores the real location.
+
+Saved favourite names are offered to the system so a shortcut can choose among them. Coordinates are not.
+
 ## Feedback
 
 Under **Settings → Feedback**, **Report a Bug** and **Request a Feature** open the matching GitHub form. Do not include pairing records, credentials or private locations in a report.
+
+Updates arrive through TestFlight, which says when a new build is available. The app has no update check of its own.
 
 ## Interrupted-session recovery
 
@@ -127,9 +167,17 @@ An active location session uses an iOS continued-processing task so it can remai
 
 A running session also shows a Live Activity on the Lock Screen and in the Dynamic Island, so it stays obvious that the iPhone is reporting a chosen place rather than its real one. It shows the place name and session stage; a walk also shows progress, distance left and a countdown to arrival.
 
-Tapping it opens Roam Control. It carries no stop control of its own: stopping has to restore the real location and confirm the iPhone accepted it, which belongs in the app. The activity disappears when the session ends, including when a session fails.
+Tapping it opens the app. A walk's activity carries a pause button, which holds the walk where it is and starts it again without bringing the app forward. It carries no stop control: stopping has to restore the real location and confirm the iPhone accepted it, which belongs in the app. The activity disappears when the session ends, including when a session fails.
 
-If the activity is missing, check **Settings → Roam Control → Live Activities**. Sessions run normally either way.
+If the activity is missing, check **Settings → Sprout → Live Activities**. Sessions run normally either way.
+
+### Arrival alarm
+
+A walk of any length is not something to watch. Under Settings, an optional alarm can be set for when a simulated walk arrives.
+
+It is an alarm rather than a notification deliberately: a notification is silenced by the ring switch and by a Focus, which is exactly the state a phone is in while it is being left to walk somewhere. It is off unless switched on, and switching it on asks for permission the first time.
+
+The alarm follows the walk. Retargeting replaces it, and pausing, stopping or arriving early cancels it.
 
 ## Anonymous usage statistics
 

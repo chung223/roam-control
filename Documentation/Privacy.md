@@ -19,7 +19,29 @@ Pairing records are stored in the device-only Keychain. App preferences and save
 
 While a session runs, Roam Control shows a Live Activity on the Lock Screen and in the Dynamic Island. It displays the name of the chosen place, the session stage and, for a walk, progress and remaining time. It contains no coordinates.
 
-That information is handed to iOS so the system can draw it, and it is visible on the Lock Screen without unlocking the iPhone. It is not sent anywhere and is not included in usage statistics. The activity ends when the session ends, including when a session fails. Live Activities can be turned off for Roam Control in **Settings → Roam Control → Live Activities**; sessions run normally without it.
+That information is handed to iOS so the system can draw it, and it is visible on the Lock Screen without unlocking the iPhone. It is not sent anywhere and is not included in usage statistics. The activity ends when the session ends, including when a session fails. Live Activities can be turned off in **Settings → Sprout → Live Activities**; sessions run normally without it.
+
+### The bundled catalogue
+
+The landmark and Pikmin Bloom catalogues are files inside the app. Browsing them, searching them and sorting them by distance are local operations. No request is made for them, and which places are looked at is not recorded or sent.
+
+### Ask
+
+Ask is answered by Apple's on-device model. The question text is given to that model on the iPhone, along with the candidate places a local search over the bundled catalogue returned. Nothing about the question, the candidates or the answer leaves the device, and no request is made.
+
+This is the reason the feature is allowed to exist here at all. Everything else in the app is bundled and offline precisely so that nothing about where someone wants to be is disclosed, and a cloud model would undo that in a single call.
+
+Ask is offered only where the on-device model is available. Where it is not, the app says why rather than hiding the tab.
+
+### Arrival alarm
+
+The optional arrival alarm is scheduled with AlarmKit and is off unless switched on. The alert it schedules carries the destination's name, because an alarm that does not say what it is for is not useful. That name is handed to iOS so the system can show and sound the alarm, in the same way the Live Activity's place name is. It is not sent anywhere and is not included in usage statistics.
+
+### Shortcuts, the Action button and links
+
+The app offers actions to Shortcuts and Siri. So that the Shortcuts action can offer a saved place to choose from, saved favourite names are made available to the system's App Intents infrastructure on the device. Coordinates are not included in what is offered.
+
+A `roamcontrol://location?lat=&lon=` link carries a coordinate in the link itself. A link you create therefore contains that coordinate, and sharing the link shares it. The app neither creates nor transmits such links on its own.
 
 ## Optional anonymous usage statistics
 

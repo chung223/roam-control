@@ -1,44 +1,45 @@
 # Installation
 
-Roam Control is not distributed through the App Store or TestFlight. Public beta builds are supplied as unsigned IPA files for users to sign with their own Apple account.
+This fork is distributed through TestFlight as **Sprout**. The upstream project published unsigned IPA files for users to sign themselves; that route still works if you build your own archive, but no IPA is published here.
 
 ## Requirements
 
-- An iPhone running iOS 27 or newer.
+- An iPhone running iOS 26 or newer.
 - Developer Mode enabled under **Settings → Privacy & Security**.
 - [LocalDevVPN](https://apps.apple.com/app/localdevvpn/id6755608044) installed on the iPhone.
-- SideStore, or Xcode on a Mac with an Apple development team.
+- TestFlight, or Xcode 26.6 or newer on a Mac with an Apple development team.
 
-## Install with SideStore
+Two features need more than the minimum. Ask is offered only on iPhones that can run Apple Intelligence, and the arrival alarm asks for permission the first time it is switched on. Everything else works on any supported iPhone, and the app says so rather than hiding the control.
 
-1. Download the IPA attached to the matching GitHub Release. Do not download an IPA from an untrusted mirror.
-2. In SideStore, tap **+** and choose the downloaded IPA.
-3. Allow SideStore to sign and install Roam Control with your Apple account.
-4. Open Roam Control and complete its introduction and device-pairing flow.
-5. Open LocalDevVPN and enable its local tunnel before starting a location.
+## Install with TestFlight
 
-Free Apple accounts normally require sideloaded apps to be refreshed within seven days and limit the number of simultaneously active apps/App IDs. These are Apple signing limits, not Roam Control subscriptions.
+1. Accept the invitation and install TestFlight if it is not already installed.
+2. Install Sprout from TestFlight.
+3. Open it and complete the introduction and device-pairing flow.
+4. Open LocalDevVPN and enable its local tunnel before starting a location.
 
-When updating, install the newer IPA over the existing copy. Deleting the app first also deletes its local settings and may require pairing again.
+TestFlight delivers updates itself and tells you when one is available. The app has no update check of its own.
+
+A TestFlight build expires 90 days after it is uploaded. When it does, install the newer build rather than reinstalling the expired one; installing over the existing copy preserves pairing, favourites, history and settings. Deleting the app first also deletes its local settings and requires pairing again.
 
 ## Build with Xcode
 
 1. Clone the repository and open `RoamControl.xcodeproj`.
-2. Select the Roam Control target and choose your own team under **Signing & Capabilities**.
+2. Select the RoamControl target and choose your own team under **Signing & Capabilities**.
 3. Select a connected iPhone and press **Run**.
 
-The tracked build configuration has no Apple team or TelemetryDeck destination. Xcode may save your selected team locally. Do not commit signing material or `Configuration/Local.private.xcconfig`.
+The tracked build configuration has no Apple team, bundle identifier or TelemetryDeck destination of its own. Copy `Configuration/Local.private.xcconfig.example` to `Configuration/Local.private.xcconfig` and set yours there. That file is ignored by git and must never be committed, along with any other signing material.
 
 The simulator can test the interface but cannot complete the physical iPhone pairing handshake or start a real location session.
 
-## Verify a release
+## Check the project before building
 
-Each GitHub Release publishes the IPA's SHA-256 checksum. On a Mac, calculate the checksum of the IPA you downloaded:
+Eight scripts assert invariants the compiler cannot. They are ordinary Python and need no simulator:
 
 ```sh
-shasum -a 256 RoamControl-0.9.2-Beta3-build53.ipa
+for s in scripts/test-*.py; do python3 "$s" || break; done
 ```
 
-Compare the result with the SHA-256 value shown on the matching GitHub Release before installing it.
+They cover background-session and task-identifier rules, failure-stage classification, failure telemetry, localisation reachability, the bundled spot catalogue, App Intent metadata and release invariants. A failure explains what it found and why it matters.
 
-See the [user guide](UserGuide.md) for pairing and everyday operation.
+See the [user guide](UserGuide.md) for pairing and everyday operation, and the [build and release guide](BuildAndRelease.md) for archiving and uploading.

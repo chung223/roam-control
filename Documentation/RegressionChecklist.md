@@ -1,6 +1,8 @@
 # Roam Control Regression Checklist
 
-Use this checklist before packaging an IPA or declaring a development build stable. Test on the physical iPhone unless a row explicitly says the simulator is sufficient.
+Use this checklist before uploading a build to TestFlight or declaring a development build stable. Test on the physical iPhone unless a row explicitly says the simulator is sufficient.
+
+An unchecked row means untested, not failing. Rows added for a release stay unchecked until someone has actually seen the behaviour on hardware.
 
 ## Install and launch
 
@@ -11,7 +13,7 @@ Use this checklist before packaging an IPA or declaring a development build stab
 - [ ] An existing installation preserves its previously saved sharing choice after updating.
 - [ ] Set Up This iPhone opens Device Setup instead of dropping directly onto an unexplained map.
 - [ ] An update install preserves pairing, favourites, history, appearance and map style.
-- [ ] Settings shows the expected version, build and plausible built date/time.
+- [ ] Settings shows the expected version and build. The built date is pinned in the project rather than generated, so it does not distinguish one build from another and cannot be used to tell whether an install is current.
 
 ## Pairing
 
@@ -42,6 +44,31 @@ Use this checklist before packaging an IPA or declaring a development build stab
 - [ ] Clear Favourites and Clear History each require confirmation and affect only their own list.
 - [ ] Choosing a saved place closes the list and selects it on the map.
 - [ ] Resume Last Location works and its dismissal remains dismissed.
+
+## Catalogue, Ask and Shortcuts
+
+- [ ] Pikmin spots open from the map and list decorations, counties and countries.
+- [ ] Spot lists sort nearest first, measured from wherever the map is looking.
+- [ ] Sending a decoration to the map pins the spots that yield it.
+- [ ] Searching the catalogue matches a place by its English or Chinese name.
+- [ ] Landmarks show both languages, and search matches either spelling.
+- [ ] The Ask tab is always present. On an ineligible iPhone it explains why it cannot answer instead of disappearing.
+- [ ] Ask returns places that exist in the catalogue rather than invented ones.
+- [ ] Ask answers in the language of the question.
+- [ ] Pasting a coordinate pair into search selects that point.
+- [ ] A `roamcontrol://location?lat=&lon=` link selects that point.
+- [ ] Start Location, Start Location at Coordinates and Stop Location appear in Shortcuts and run without opening the app where they say they will not.
+- [ ] The Action button and Siri run the same actions.
+- [ ] A saved favourite appears as a choice in the Shortcuts action.
+
+## Arrival alarm
+
+- [ ] The setting is off on a clean install.
+- [ ] Switching it on asks for alarm permission, and declining leaves the switch off rather than silently on.
+- [ ] An alarm fires on arrival with the phone silenced.
+- [ ] An alarm fires on arrival with a Focus active.
+- [ ] Retargeting a walk replaces the alarm rather than leaving two.
+- [ ] Pausing, stopping or arriving early cancels the alarm.
 
 ## Fixed location on Wi-Fi
 
@@ -75,6 +102,10 @@ Use this checklist before packaging an IPA or declaring a development build stab
 - [ ] Pause holds the current point and Resume continues from it.
 - [ ] The walk continues while Apple Maps or another app is in front.
 - [ ] Arrival holds the destination location.
+- [ ] The Live Activity's pause button holds the walk without bringing the app forward, and resumes it.
+- [ ] The Live Activity ends when the session ends, including when it ends in failure.
+- [ ] Arrival stops the Live Activity's timer rather than letting it keep counting.
+- [ ] A looping walk turns round and walks the route again.
 - [ ] Walk Route Back reverses the journey.
 - [ ] New Location allows a new destination without restoring the real location first.
 - [ ] Stop & Restore requires confirmation and restores the real location.
@@ -97,7 +128,7 @@ Use this checklist before packaging an IPA or declaring a development build stab
 - [ ] Connection Health reports pairing, LocalDevVPN and location-session state accurately.
 - [ ] Feedback links open the correct Bug Report and Feature Request forms.
 - [ ] Share Diagnostics opens the iOS share sheet and contains no keys or PINs.
-- [ ] About Roam Control describes the current controls and flows.
+- [ ] About Sprout describes the current controls and flows.
 - [ ] Replay Introduction does not delete app data.
 - [ ] Privacy shows the sharing toggle and the complete What Is Shared disclosure.
 - [ ] Disabling sharing takes effect immediately and remains disabled after relaunch.
@@ -114,6 +145,13 @@ Use this checklist before packaging an IPA or declaring a development build stab
 - [ ] The built app contains `PrivacyInfo.xcprivacy` with tracking disabled.
 - [ ] Reset Roam Control clears app data, returns to onboarding and does not alter LocalDevVPN.
 
+## Language
+
+- [ ] Every screen reads in Traditional Chinese with the device set to it, including onboarding, empty states and the Lock Screen.
+- [ ] Permission prompts read in Traditional Chinese.
+- [ ] The Live Activity reads in Traditional Chinese.
+- [ ] Failure messages read in Traditional Chinese while still classifying correctly in diagnostics, which stay English deliberately.
+
 ## Accessibility and layout
 
 - [ ] Normal text size retains the intended clean layout.
@@ -123,6 +161,8 @@ Use this checklist before packaging an IPA or declaring a development build stab
 - [ ] Touch targets are comfortably usable.
 - [ ] Reduce Motion removes nonessential map, card and onboarding animations.
 - [ ] Light and dark appearances retain readable contrast.
+- [ ] Every glass control over the map responds to a tap. Glass alone is not hit-testable, so a control that looks right can still be dead.
+- [ ] Map controls stay legible over both a pale street map and a dark satellite photograph.
 
 ## Final result
 

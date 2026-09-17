@@ -1,46 +1,39 @@
-# Roam Control 0.9.2 - Build 61
+# Sprout 0.10.0 — Build 62
 
-Roam Control 0.9.2 Build 61 is the current public release of the source-available SwiftUI app for testing an iPhone's reported location from a clean Apple Maps interface. It supports fixed locations, simulated walking routes, favourites, history and native on-device pairing through LocalDevVPN.
+Build 62 is the current release of this fork: a source-available SwiftUI app for testing an iPhone's reported location from a clean Apple Maps interface. It supports fixed locations, simulated walking routes, favourites, history and native on-device pairing through LocalDevVPN.
+
+It is the first release distributed through TestFlight, and the first to install as **Sprout** rather than Roam Control.
 
 ## Before installing
 
-- Requires iOS 27 or newer.
+- Requires iOS 26 or newer.
 - Requires Developer Mode and LocalDevVPN.
-- This is an unsigned IPA. SideStore signs it with the user's own Apple account.
+- Distributed through TestFlight. There is no public App Store listing and no published IPA.
 - Intended only for development, quality assurance and responsible testing on a device the user owns and controls.
 
 Read the [installation guide](Installation.md), [privacy explanation](Privacy.md) and [responsible-use policy](ResponsibleUse.md) before using it.
 
-## Download
+## What is new in 0.10.0
 
-Download `RoamControl-0.9.2-build61.ipa` from the [Roam Control 0.9.2 release](https://github.com/seanhowarthdev/Roam-Control/releases/tag/v0.9.2).
+- A bundled catalogue of 10,505 Pikmin Bloom spots and 72 well-known landmarks, browsable by decoration, county or country and searchable with no network connection.
+- Ask: a question like "where do I get a taco" answered against that catalogue by the on-device model, on iPhones that can run Apple Intelligence. A tool does the searching and the model only chooses, so a wrong answer is a wrong choice among real places rather than an invented one. Nothing is sent anywhere.
+- Start and stop a session from the Action button, Siri, a Shortcut or the Share sheet, and from a `roamcontrol://location?lat=&lon=` link.
+- Pause and resume a walk from the Live Activity. Stopping stays in the app, because it has to restore the real location and confirm the device accepted it.
+- An optional alarm when a simulated walk arrives, which a notification cannot be relied on for while the phone is silenced or in a Focus.
+- A walk can keep going after it arrives, turning round and walking the route again.
+- Traditional Chinese throughout, including the Live Activity and the permission prompts. Landmarks read in both languages and search matches either spelling.
+- The Sprout visual system, with the system's glass over the map in place of opaque cards.
 
-SHA-256:
+## Changes worth knowing about
 
-`a6dde76eb02a696347be9ccfc3bff34b4a86745c0de7964811363e88fce1890d`
+- Minimum iOS is 26.0 rather than 27.0, so the app installs on more devices than earlier builds.
+- Check for Updates is gone. It compared this app against a different project's releases, which was never a meaningful comparison, and TestFlight delivers updates now.
+- Report a Bug and Request a Feature open issues on this repository rather than on the upstream project.
 
-## Highlights
+## Known gaps
 
-- Search for a place, enter coordinates or tap the map.
-- Start and update a fixed reported location without restarting the connection.
-- Preview and simulate Apple Maps walking routes.
-- Pause, resume, reverse or redirect an active walk.
-- Save favourites and revisit recent locations.
-- Recover safely after an interrupted session.
-- Choose light, dark or automatic appearance and multiple map styles.
-- Optionally share a small, fixed set of anonymous usage statistics; sharing is off by default.
-- Copy fixed connection and scheduler states for troubleshooting without including location or pairing data in telemetry.
+Several device behaviours have not been verified on hardware yet: the quality of Ask's answers, the Live Activity pause button, the arrival alarm firing, and Live Activity dismissal when a session ends in failure. They are listed in the [regression checklist](RegressionChecklist.md) as unchecked rows rather than presented as tested.
 
-## Build 61 pairing change
+## Reporting problems
 
-Build 61 removes pairing's dependency on successful BGTaskScheduler registration or submission. The RPPairing listener starts directly when a pairing attempt begins, allowing pairing to continue when SideStore re-signing changes the runtime bundle identifier and it no longer matches the permitted background-task identifier in the IPA.
-
-A UIKit background-task assertion covers the brief transition to Settings while pairing. Scheduler configuration remains available for diagnostics, and pairing cleanup still occurs on success, failure, cancellation or timeout.
-
-Build 61 was initially published as a Preview for wider SideStore testing. Following successful real-world testing, it was promoted to the main Roam Control 0.9.2 release.
-
-## Distribution constraints
-
-SideStore and free Apple accounts are subject to Apple's app-count and seven-day refresh limits. Pairing and location sessions require a physical iPhone; the simulator supports interface testing only.
-
-Please report ordinary bugs with the issue template and security problems through a private GitHub security advisory.
+Report ordinary bugs with the issue template, and security problems through a private GitHub security advisory. For pairing or connection problems, open **Connection Health** and use **Copy Diagnostics**. Never include pairing records, credentials or private locations.

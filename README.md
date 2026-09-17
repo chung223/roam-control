@@ -9,17 +9,19 @@
 </p>
 
 <p align="center">
-  <strong>Current release:</strong> 0.9.2 Build 61 · <strong>Requires:</strong> iOS 27+
+  <strong>Current release:</strong> 0.10.0 Build 62 · <strong>Requires:</strong> iOS 26+
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/iOS-27%2B-blue" alt="iOS 27+">
+  <img src="https://img.shields.io/badge/iOS-26%2B-blue" alt="iOS 26+">
   <img src="https://img.shields.io/badge/UI-SwiftUI-orange" alt="SwiftUI">
-  <img src="https://img.shields.io/badge/Current-Build%2061-lightgrey" alt="Current Build 61">
+  <img src="https://img.shields.io/badge/Current-Build%2062-lightgrey" alt="Current Build 62">
   <img src="https://img.shields.io/badge/License-PolyForm%20NC%201.0.0-blue" alt="PolyForm Noncommercial 1.0.0">
 </p>
 
 Roam Control is a source-available SwiftUI app for location-based development, quality assurance and responsible personal testing on an iPhone you own and control. It supports fixed locations, walking routes, favourites, history, native on-device pairing and LocalDevVPN-compatible sessions.
+
+The app installs and appears on the Home Screen as **Sprout**. The project, its targets and its failure strings keep the Roam Control name, because those strings are also telemetry classification keys and are asserted on by the invariant scripts in `scripts/`.
 
 ## Screenshots
 
@@ -53,30 +55,35 @@ Roam Control is a source-available SwiftUI app for location-based development, q
 - Recover safely after an interrupted fixed or walking session.
 - Follow separate, guided LocalDevVPN flows for Wi-Fi and mobile data.
 - Choose automatic, light or dark appearance and standard, satellite or hybrid maps.
+- Browse a bundled catalogue of Pikmin Bloom spots and well-known landmarks, searchable with no network.
+- Ask the on-device model where to find something and have it answered from that catalogue, on iPhones with Apple Intelligence.
+- Start and stop a session from the Action button, Siri, a Shortcut, the Share sheet or a `roamcontrol://` link.
+- Pause and resume a walk from the Live Activity, and set an alarm for when it arrives.
+- Read the interface in English or Traditional Chinese, landmarks included.
 - Use Dynamic Type, VoiceOver and Reduce Motion.
 
 ## Install Roam Control
 
-Roam Control is not distributed through the App Store or TestFlight. The current release is **0.9.2 Build 61**. Download the `RoamControl-0.9.2-build61.ipa` attached to the [0.9.2 release](https://github.com/seanhowarthdev/Roam-Control/releases/tag/v0.9.2) and sign it with SideStore using your own Apple account.
+This fork is distributed through **TestFlight** as **Sprout 0.10.0 Build 62**. Ask the maintainer for an invitation; there is no public App Store listing.
 
-> **Current release:** Build 61 is the recommended release for new installations. Earlier builds remain available for release history and reference.
+Earlier releases of the upstream project were published as unsigned IPAs for SideStore. That route still works if you build your own archive, but no IPA is published here.
 
 You will need:
 
-- An iPhone running iOS 27 or newer.
+- An iPhone running iOS 26 or newer.
 - Developer Mode enabled.
 - [LocalDevVPN](https://apps.apple.com/app/localdevvpn/id6755608044).
-- SideStore, or Xcode on a Mac.
+- TestFlight, or Xcode on a Mac to build and install it yourself.
 
-Read the complete [installation guide](Documentation/Installation.md) before installing. Free Apple accounts remain subject to Apple's app-count and seven-day refresh limits.
+Read the complete [installation guide](Documentation/Installation.md) before installing.
 
 ## First-time setup
 
-1. Install and open Roam Control.
+1. Install and open Sprout.
 2. Complete the four-page introduction.
 3. Tap **Pair This iPhone** on Device Setup.
-4. Open **Settings → Privacy & Security → Developer Mode → Pair with Roam Control**.
-5. Enter the six-digit code shown in Roam Control.
+4. Open **Settings → Privacy & Security → Developer Mode → Pair with Sprout**.
+5. Enter the six-digit code shown in the app.
 6. Install and connect LocalDevVPN.
 7. Choose a location or walking route.
 
@@ -100,7 +107,7 @@ Do not use Roam Control to mislead another person, falsify evidence, access some
 
 ## Build from source
 
-1. Clone the repository and open `RoamControl.xcodeproj` in Xcode 27 or newer.
+1. Clone the repository and open `RoamControl.xcodeproj` in Xcode 26.6 or newer.
 2. Select the Roam Control target.
 3. Choose your own Apple development team under **Signing & Capabilities**.
 4. Select a connected iPhone and press **Run**.
@@ -123,8 +130,8 @@ The native engine is a narrow Rust-to-Swift bridge around the MIT-licensed [`ide
 - [Responsible use](Documentation/ResponsibleUse.md)
 - [Build and release guide](Documentation/BuildAndRelease.md)
 - [Regression checklist](Documentation/RegressionChecklist.md)
-- [0.9.2 release notes](https://github.com/seanhowarthdev/Roam-Control/releases/tag/v0.9.2)
 - [Current release](Documentation/CurrentRelease.md)
+- [Release history](Documentation/ReleaseHistory.md)
 - [Security policy](SECURITY.md)
 - [Third-party notices](Documentation/Licensing/THIRD_PARTY_NOTICES.md)
 
