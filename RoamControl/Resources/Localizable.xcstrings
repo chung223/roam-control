@@ -118,6 +118,17 @@
         }
       }
     },
+    "Acropolis": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "雅典衛城"
+          }
+        }
+      }
+    },
     "Add to favourites": {
       "extractionState": "manual",
       "localizations": {
@@ -151,6 +162,28 @@
         }
       }
     },
+    "Agra, India": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "印度阿格拉"
+          }
+        }
+      }
+    },
+    "Alcatraz Island": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "惡魔島"
+          }
+        }
+      }
+    },
     "Allow Location access in Settings to show your real position.": {
       "extractionState": "manual",
       "localizations": {
@@ -158,6 +191,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "請在「設定」中允許定位存取，才能顯示你的真實位置。"
+          }
+        }
+      }
+    },
+    "Amsterdam, Netherlands": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "荷蘭阿姆斯特丹"
           }
         }
       }
@@ -175,6 +219,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "An inactive session means Sprout's worker has ended. Other apps may need time to acquire a fresh real location."
+          }
+        }
+      }
+    },
+    "Angkor Wat": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "吳哥窟"
+          }
+        }
+      }
+    },
+    "Anne Frank House": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "安妮之家"
           }
         }
       }
@@ -212,6 +278,17 @@
         }
       }
     },
+    "Arizona, United States": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "美國亞利桑那州"
+          }
+        }
+      }
+    },
     "Arrive": {
       "extractionState": "manual",
       "localizations": {
@@ -245,6 +322,28 @@
         }
       }
     },
+    "Athens, Greece": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "希臘雅典"
+          }
+        }
+      }
+    },
+    "Atomium": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "原子塔"
+          }
+        }
+      }
+    },
     "Auto": {
       "extractionState": "manual",
       "localizations": {
@@ -267,6 +366,39 @@
         }
       }
     },
+    "Bangkok, Thailand": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "泰國曼谷"
+          }
+        }
+      }
+    },
+    "Barcelona, Spain": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "西班牙巴塞隆納"
+          }
+        }
+      }
+    },
+    "Bavaria, Germany": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "德國巴伐利亞"
+          }
+        }
+      }
+    },
     "Before connecting": {
       "extractionState": "manual",
       "localizations": {
@@ -274,6 +406,83 @@
           "stringUnit": {
             "state": "translated",
             "value": "連線之前"
+          }
+        }
+      }
+    },
+    "Beijing, China": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "中國北京"
+          }
+        }
+      }
+    },
+    "Berlin, Germany": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "德國柏林"
+          }
+        }
+      }
+    },
+    "Big Ben": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "大笨鐘"
+          }
+        }
+      }
+    },
+    "Bilbao, Spain": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "西班牙畢爾包"
+          }
+        }
+      }
+    },
+    "Bondi Beach": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "邦代海灘"
+          }
+        }
+      }
+    },
+    "Borobudur": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "婆羅浮屠"
+          }
+        }
+      }
+    },
+    "Brandenburg Gate": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "布蘭登堡門"
           }
         }
       }
@@ -296,6 +505,50 @@
           "stringUnit": {
             "state": "translated",
             "value": "瀏覽知名地標"
+          }
+        }
+      }
+    },
+    "Brussels, Belgium": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "比利時布魯塞爾"
+          }
+        }
+      }
+    },
+    "Buenos Aires, Argentina": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "阿根廷布宜諾斯艾利斯"
+          }
+        }
+      }
+    },
+    "Burj Khalifa": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "哈里發塔"
+          }
+        }
+      }
+    },
+    "CN Tower": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "加拿大國家電視塔"
           }
         }
       }
@@ -329,6 +582,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "取消還原"
+          }
+        }
+      }
+    },
+    "Cape Town, South Africa": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "南非開普敦"
+          }
+        }
+      }
+    },
+    "Charles Bridge": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "查理大橋"
           }
         }
       }
@@ -383,6 +658,28 @@
         }
       }
     },
+    "Chicago, United States": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "美國芝加哥"
+          }
+        }
+      }
+    },
+    "Chichén Itzá": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "奇琴伊察"
+          }
+        }
+      }
+    },
     "Choose a location": {
       "extractionState": "manual",
       "localizations": {
@@ -429,6 +726,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "在一張簡潔的地圖上選擇、測試並移動這支 iPhone 回報的位置。"
+          }
+        }
+      }
+    },
+    "Christ the Redeemer": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "救世基督像"
           }
         }
       }
@@ -554,6 +862,17 @@
         }
       }
     },
+    "Colosseum": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "羅馬競技場"
+          }
+        }
+      }
+    },
     "Complete": {
       "extractionState": "manual",
       "localizations": {
@@ -642,6 +961,17 @@
         }
       }
     },
+    "Copenhagen, Denmark": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "丹麥哥本哈根"
+          }
+        }
+      }
+    },
     "Copied": {
       "extractionState": "manual",
       "localizations": {
@@ -726,6 +1056,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "目前使用 %1$@。更新即可移動到 %2$@。"
+          }
+        }
+      }
+    },
+    "Cusco, Peru": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "秘魯庫斯科"
           }
         }
       }
@@ -862,6 +1203,17 @@
         }
       }
     },
+    "Dubai, United Arab Emirates": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "阿聯杜拜"
+          }
+        }
+      }
+    },
     "E": {
       "extractionState": "manual",
       "localizations": {
@@ -873,6 +1225,39 @@
         }
       }
     },
+    "Easter Island Moai": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "復活節島摩艾石像"
+          }
+        }
+      }
+    },
+    "Edinburgh Castle": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "愛丁堡城堡"
+          }
+        }
+      }
+    },
+    "Edinburgh, United Kingdom": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "英國愛丁堡"
+          }
+        }
+      }
+    },
     "Edit": {
       "extractionState": "manual",
       "localizations": {
@@ -880,6 +1265,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "編輯"
+          }
+        }
+      }
+    },
+    "Eiffel Tower": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "艾菲爾鐵塔"
           }
         }
       }
@@ -1110,6 +1506,28 @@
         }
       }
     },
+    "Fiordland, New Zealand": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "紐西蘭峽灣區"
+          }
+        }
+      }
+    },
+    "Florida, United States": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "美國佛羅里達州"
+          }
+        }
+      }
+    },
     "Follow the mobile-data guidance if it appears.": {
       "extractionState": "manual",
       "localizations": {
@@ -1117,6 +1535,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "若出現行動網路的指引，請依照指引操作。"
+          }
+        }
+      }
+    },
+    "Forbidden City": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "紫禁城"
+          }
+        }
+      }
+    },
+    "Fushimi Inari Shrine": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "伏見稻荷大社"
           }
         }
       }
@@ -1154,6 +1594,116 @@
         }
       }
     },
+    "Giza, Egypt": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "埃及吉薩"
+          }
+        }
+      }
+    },
+    "Golden Gate Bridge": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "金門大橋"
+          }
+        }
+      }
+    },
+    "Grand Canyon South Rim": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "大峽谷南緣"
+          }
+        }
+      }
+    },
+    "Grand Palace": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "大皇宮"
+          }
+        }
+      }
+    },
+    "Great Barrier Reef": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "大堡礁"
+          }
+        }
+      }
+    },
+    "Great Wall at Badaling": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "八達嶺長城"
+          }
+        }
+      }
+    },
+    "Guggenheim Museum": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "古根漢美術館"
+          }
+        }
+      }
+    },
+    "Gyeongbokgung Palace": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "景福宮"
+          }
+        }
+      }
+    },
+    "Ha Long Bay": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下龍灣"
+          }
+        }
+      }
+    },
+    "Hagia Sophia": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "聖索菲亞大教堂"
+          }
+        }
+      }
+    },
     "Help": {
       "extractionState": "manual",
       "localizations": {
@@ -1176,6 +1726,50 @@
         }
       }
     },
+    "Hobbiton Movie Set": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "哈比屯電影場景"
+          }
+        }
+      }
+    },
+    "Hollywood Sign": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "好萊塢標誌"
+          }
+        }
+      }
+    },
+    "Hong Kong": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "香港"
+          }
+        }
+      }
+    },
+    "Honshū, Japan": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日本本州"
+          }
+        }
+      }
+    },
     "How it works": {
       "extractionState": "manual",
       "localizations": {
@@ -1183,6 +1777,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "運作方式"
+          }
+        }
+      }
+    },
+    "Hualien, Taiwan": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "台灣花蓮"
           }
         }
       }
@@ -1216,6 +1821,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "如果你正在使用 Wi‑Fi，請確認 LocalDevVPN 顯示為 Connected，然後再試一次。只有在你確實使用 4G 或 5G 時才選擇行動網路。"
+          }
+        }
+      }
+    },
+    "Iguazú Falls": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "伊瓜蘇瀑布"
           }
         }
       }
@@ -1271,6 +1887,39 @@
           "stringUnit": {
             "state": "translated",
             "value": "啟動定位工作階段前，請先安裝 LocalDevVPN。"
+          }
+        }
+      }
+    },
+    "Istanbul, Türkiye": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "土耳其伊斯坦堡"
+          }
+        }
+      }
+    },
+    "Java, Indonesia": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "印尼爪哇"
+          }
+        }
+      }
+    },
+    "Jemaa el-Fnaa": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "傑馬夫納廣場"
           }
         }
       }
@@ -1342,6 +1991,39 @@
         }
       }
     },
+    "Kilimanjaro, Tanzania": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "坦尚尼亞吉力馬札羅"
+          }
+        }
+      }
+    },
+    "Kuala Lumpur, Malaysia": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "馬來西亞吉隆坡"
+          }
+        }
+      }
+    },
+    "Kyoto, Japan": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日本京都"
+          }
+        }
+      }
+    },
     "Landmarks": {
       "extractionState": "manual",
       "localizations": {
@@ -1349,6 +2031,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "地標"
+          }
+        }
+      }
+    },
+    "Las Vegas Strip": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "拉斯維加斯大道"
+          }
+        }
+      }
+    },
+    "Las Vegas, United States": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "美國拉斯維加斯"
           }
         }
       }
@@ -1386,6 +2090,17 @@
         }
       }
     },
+    "Leaning Tower of Pisa": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "比薩斜塔"
+          }
+        }
+      }
+    },
     "Light": {
       "extractionState": "manual",
       "localizations": {
@@ -1393,6 +2108,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "淺色"
+          }
+        }
+      }
+    },
+    "Livingstone, Zambia": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "尚比亞李文斯頓"
           }
         }
       }
@@ -1535,6 +2261,17 @@
         }
       }
     },
+    "London, United Kingdom": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "英國倫敦"
+          }
+        }
+      }
+    },
     "Looking for a securely stored pairing record.": {
       "extractionState": "manual",
       "localizations": {
@@ -1553,6 +2290,39 @@
           "stringUnit": {
             "state": "translated",
             "value": "本機回送"
+          }
+        }
+      }
+    },
+    "Los Angeles, United States": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "美國洛杉磯"
+          }
+        }
+      }
+    },
+    "Louvre Museum": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "羅浮宮"
+          }
+        }
+      }
+    },
+    "Machu Picchu": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "馬丘比丘"
           }
         }
       }
@@ -1596,6 +2366,105 @@
         }
       }
     },
+    "Mara, Tanzania": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "坦尚尼亞馬拉"
+          }
+        }
+      }
+    },
+    "Marina Bay Sands": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "濱海灣金沙"
+          }
+        }
+      }
+    },
+    "Marrakesh, Morocco": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "摩洛哥馬拉喀什"
+          }
+        }
+      }
+    },
+    "Matamata, New Zealand": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "紐西蘭瑪塔瑪塔"
+          }
+        }
+      }
+    },
+    "Milford Sound": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "米佛峽灣"
+          }
+        }
+      }
+    },
+    "Misiones, Argentina": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "阿根廷米西奧內斯"
+          }
+        }
+      }
+    },
+    "Moscow, Russia": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "俄羅斯莫斯科"
+          }
+        }
+      }
+    },
+    "Mount Fuji": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "富士山"
+          }
+        }
+      }
+    },
+    "Mount Kilimanjaro": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "吉力馬札羅山"
+          }
+        }
+      }
+    },
     "My Real Location Is Already Back": {
       "extractionState": "manual",
       "localizations": {
@@ -1614,6 +2483,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "北"
+          }
+        }
+      }
+    },
+    "Nantou, Taiwan": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "台灣南投"
+          }
+        }
+      }
+    },
+    "Neuschwanstein Castle": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "新天鵝堡"
           }
         }
       }
@@ -1640,6 +2531,17 @@
         }
       }
     },
+    "New York, United States": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "美國紐約"
+          }
+        }
+      }
+    },
     "New on-device pairing is available on iOS 27. The simulator can test the screen, but Apple only exposes the real handshake on a physical iPhone.": {
       "extractionState": "manual",
       "localizations": {
@@ -1647,6 +2549,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "iOS 27 提供了新的裝置端配對。模擬器可以測試畫面，但 Apple 只在實體 iPhone 上開放真正的交握。"
+          }
+        }
+      }
+    },
+    "Niagara Falls": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "尼加拉瀑布"
           }
         }
       }
@@ -1717,6 +2630,17 @@
         }
       }
     },
+    "Northern Territory, Australia": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "澳洲北領地"
+          }
+        }
+      }
+    },
     "Nothing answered. Check that LocalDevVPN is connected and the paired iPhone is awake, then run it again.": {
       "extractionState": "manual",
       "localizations": {
@@ -1735,6 +2659,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "好"
+          }
+        }
+      }
+    },
+    "Obelisco de Buenos Aires": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "布宜諾斯艾利斯方尖碑"
           }
         }
       }
@@ -1779,6 +2714,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "只有 LocalDevVPN 的位址回應。這一跳需要隧道 App。"
+          }
+        }
+      }
+    },
+    "Ontario, Canada": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "加拿大安大略"
           }
         }
       }
@@ -2064,6 +3010,17 @@
         }
       }
     },
+    "Paris, France": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "法國巴黎"
+          }
+        }
+      }
+    },
     "Pause": {
       "extractionState": "manual",
       "localizations": {
@@ -2075,6 +3032,17 @@
         }
       }
     },
+    "Petronas Towers": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "雙峰塔"
+          }
+        }
+      }
+    },
     "Pick any place": {
       "extractionState": "manual",
       "localizations": {
@@ -2082,6 +3050,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "選擇任何地點"
+          }
+        }
+      }
+    },
+    "Pisa, Italy": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "義大利比薩"
           }
         }
       }
@@ -2104,6 +3083,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "正在規劃步行路線…"
+          }
+        }
+      }
+    },
+    "Potosí, Bolivia": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "玻利維亞波托西"
+          }
+        }
+      }
+    },
+    "Prague, Czechia": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "捷克布拉格"
           }
         }
       }
@@ -2196,6 +3197,39 @@
         }
       }
     },
+    "Pyramids of Giza": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "吉薩金字塔"
+          }
+        }
+      }
+    },
+    "Queensland, Australia": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "澳洲昆士蘭"
+          }
+        }
+      }
+    },
+    "Quảng Ninh, Vietnam": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "越南廣寧"
+          }
+        }
+      }
+    },
     "ROAM CONTROL": {
       "extractionState": "manual",
       "localizations": {
@@ -2209,6 +3243,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "SPROUT"
+          }
+        }
+      }
+    },
+    "Rapa Nui, Chile": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "智利復活節島"
           }
         }
       }
@@ -2242,6 +3287,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "可在「設定」中進行"
+          }
+        }
+      }
+    },
+    "Red Square": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "紅場"
           }
         }
       }
@@ -2585,6 +3641,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "將地圖轉回正北"
+          }
+        }
+      }
+    },
+    "Rio de Janeiro, Brazil": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "巴西里約熱內盧"
           }
         }
       }
@@ -3235,6 +4302,17 @@
         }
       }
     },
+    "Rome, Italy": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "義大利羅馬"
+          }
+        }
+      }
+    },
     "Run Connection Check": {
       "extractionState": "manual",
       "localizations": {
@@ -3264,6 +4342,39 @@
           "stringUnit": {
             "state": "translated",
             "value": "南"
+          }
+        }
+      }
+    },
+    "Sagrada Família": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "聖家堂"
+          }
+        }
+      }
+    },
+    "Salar de Uyuni": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "烏尤尼鹽湖"
+          }
+        }
+      }
+    },
+    "San Francisco, United States": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "美國舊金山"
           }
         }
       }
@@ -3367,6 +4478,17 @@
         }
       }
     },
+    "Seattle, United States": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "美國西雅圖"
+          }
+        }
+      }
+    },
     "Securing the pairing record in Keychain…": {
       "extractionState": "manual",
       "localizations": {
@@ -3407,6 +4529,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "在地圖上選擇此地點"
+          }
+        }
+      }
+    },
+    "Seoul, South Korea": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "南韓首爾"
+          }
+        }
+      }
+    },
+    "Serengeti National Park": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "塞倫蓋蒂國家公園"
           }
         }
       }
@@ -3488,6 +4632,17 @@
         }
       }
     },
+    "Shibuya Crossing": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "澀谷十字路口"
+          }
+        }
+      }
+    },
     "Show my current location": {
       "extractionState": "manual",
       "localizations": {
@@ -3499,6 +4654,28 @@
         }
       }
     },
+    "Siem Reap, Cambodia": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "柬埔寨暹粒"
+          }
+        }
+      }
+    },
+    "Singapore": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "新加坡"
+          }
+        }
+      }
+    },
     "South America": {
       "extractionState": "manual",
       "localizations": {
@@ -3506,6 +4683,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "南美洲"
+          }
+        }
+      }
+    },
+    "Space Needle": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "太空針塔"
+          }
+        }
+      }
+    },
+    "St Peter's Basilica": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "聖彼得大教堂"
           }
         }
       }
@@ -3587,6 +4786,17 @@
         }
       }
     },
+    "Statue of Liberty": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自由女神像"
+          }
+        }
+      }
+    },
     "Status": {
       "extractionState": "manual",
       "localizations": {
@@ -3616,6 +4826,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "仍在連線中"
+          }
+        }
+      }
+    },
+    "Stonehenge": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "巨石陣"
           }
         }
       }
@@ -3719,6 +4940,17 @@
         }
       }
     },
+    "Sun Moon Lake": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日月潭"
+          }
+        }
+      }
+    },
     "Support": {
       "extractionState": "manual",
       "localizations": {
@@ -3726,6 +4958,72 @@
           "stringUnit": {
             "state": "translated",
             "value": "支援"
+          }
+        }
+      }
+    },
+    "Sydney Opera House": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "雪梨歌劇院"
+          }
+        }
+      }
+    },
+    "Sydney, Australia": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "澳洲雪梨"
+          }
+        }
+      }
+    },
+    "Table Mountain": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "桌山"
+          }
+        }
+      }
+    },
+    "Taipei 101": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "台北 101"
+          }
+        }
+      }
+    },
+    "Taipei, Taiwan": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "台灣台北"
+          }
+        }
+      }
+    },
+    "Taj Mahal": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "泰姬瑪哈陵"
           }
         }
       }
@@ -3763,6 +5061,17 @@
         }
       }
     },
+    "Taroko Gorge": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "太魯閣峽谷"
+          }
+        }
+      }
+    },
     "That location is outside the valid coordinate range.": {
       "extractionState": "manual",
       "localizations": {
@@ -3770,6 +5079,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "該位置超出有效的座標範圍。"
+          }
+        }
+      }
+    },
+    "The Little Mermaid": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "小美人魚雕像"
+          }
+        }
+      }
+    },
+    "The White House": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "白宮"
           }
         }
       }
@@ -4281,6 +5612,39 @@
         }
       }
     },
+    "Times Square": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "時代廣場"
+          }
+        }
+      }
+    },
+    "Tokyo Tower": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "東京鐵塔"
+          }
+        }
+      }
+    },
+    "Tokyo, Japan": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日本東京"
+          }
+        }
+      }
+    },
     "Too many route requests just now. Wait a moment, then try again.": {
       "extractionState": "manual",
       "localizations": {
@@ -4288,6 +5652,39 @@
           "stringUnit": {
             "state": "translated",
             "value": "路線請求過於頻繁。請稍候再試一次。"
+          }
+        }
+      }
+    },
+    "Toronto, Canada": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "加拿大多倫多"
+          }
+        }
+      }
+    },
+    "Tower Bridge": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "倫敦塔橋"
+          }
+        }
+      }
+    },
+    "Trevi Fountain": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "特雷維噴泉"
           }
         }
       }
@@ -4338,6 +5735,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Turning sharing off stops new reporting, cancels requests still in progress where possible and removes the identifier from Sprout. It cannot withdraw anonymous events already received."
+          }
+        }
+      }
+    },
+    "Uluru": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "烏魯魯"
           }
         }
       }
@@ -4404,6 +5812,39 @@
           "stringUnit": {
             "state": "translated",
             "value": "正在驗證記錄與其金鑰。"
+          }
+        }
+      }
+    },
+    "Vatican City": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "梵蒂岡"
+          }
+        }
+      }
+    },
+    "Victoria Falls": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "維多利亞瀑布"
+          }
+        }
+      }
+    },
+    "Victoria Peak": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "太平山頂"
           }
         }
       }
@@ -4562,6 +6003,28 @@
         }
       }
     },
+    "Walt Disney World": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "華特迪士尼世界"
+          }
+        }
+      }
+    },
+    "Washington, D.C., United States": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "美國華盛頓特區"
+          }
+        }
+      }
+    },
     "Welcome to Roam Control": {
       "extractionState": "manual",
       "localizations": {
@@ -4586,6 +6049,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "分享的內容"
+          }
+        }
+      }
+    },
+    "Willis Tower": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "威利斯大廈"
+          }
+        }
+      }
+    },
+    "Wiltshire, United Kingdom": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "英國威爾特郡"
           }
         }
       }
@@ -4652,6 +6137,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "在你恢復之前，模擬的位置會停留在這裡。"
+          }
+        }
+      }
+    },
+    "Yucatán, Mexico": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "墨西哥猶加敦"
           }
         }
       }

@@ -74,12 +74,20 @@ private struct LandmarkRow: View {
                     .accessibilityHidden(true)
 
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(landmark.name)
+                    Text(landmark.localizedName)
                         .font(SproutTheme.font(.body, weight: .medium))
                         .foregroundStyle(SproutTheme.text)
-                    Text(landmark.locality)
-                        .font(SproutTheme.font(.caption))
-                        .foregroundStyle(SproutTheme.textSecondary)
+
+                    HStack(spacing: 5) {
+                        if landmark.showsOriginalName {
+                            Text(landmark.name)
+                            Text(verbatim: "·")
+                        }
+                        Text(landmark.localizedLocality)
+                    }
+                    .font(SproutTheme.font(.caption))
+                    .foregroundStyle(SproutTheme.textSecondary)
+                    .lineLimit(1)
                 }
 
                 Spacer(minLength: 0)
@@ -87,7 +95,7 @@ private struct LandmarkRow: View {
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
-        .accessibilityLabel("\(landmark.name), \(landmark.locality)")
+        .accessibilityLabel("\(landmark.localizedName), \(landmark.localizedLocality)")
         .accessibilityHint("Selects this place on the map")
     }
 }

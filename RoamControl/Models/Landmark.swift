@@ -16,10 +16,21 @@ struct Landmark: Identifiable, Hashable, Sendable {
     /// SF Symbol shown in the list.
     let symbolName: String
 
+    /// The catalogue is written in English. A reader sees their own language
+    /// with the English kept beside it, because that is what the signage, the
+    /// map and every other app will call the place.
+    var localizedName: String { SessionMessage.localized(name) }
+
+    var localizedLocality: String { SessionMessage.localized(locality) }
+
+    /// True when the translation says something different from the English,
+    /// so the English line can be left out rather than printed twice.
+    var showsOriginalName: Bool { localizedName != name }
+
     var target: LocationTarget {
         LocationTarget(
-            name: name,
-            subtitle: locality,
+            name: localizedName,
+            subtitle: localizedLocality,
             latitude: latitude,
             longitude: longitude
         )
@@ -28,7 +39,8 @@ struct Landmark: Identifiable, Hashable, Sendable {
     /// Case- and diacritic-insensitive match across the name and locality, so
     /// "sao paulo" finds "São Paulo" and "tokyo" finds the Tokyo entries.
     func matches(_ query: String) -> Bool {
-        let haystack = "\(name) \(locality) \(region.displayName)"
+        // Both languages, so either spelling finds the place.
+        let haystack = "\(name) \(locality) \(localizedName) \(localizedLocality) \(region.displayName)"
         return haystack.range(
             of: query,
             options: [.caseInsensitive, .diacriticInsensitive]
