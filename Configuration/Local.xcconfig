@@ -1,5 +1,10 @@
 // Safe public defaults. A checkout builds without analytics and without using
 // the repository owner's Apple development team.
+// The app's bundle identifier. The Live Activity extension derives its own
+// from this, and an extension identifier that is not prefixed by its host
+// app's is rejected at install, so change this one value rather than both.
+ROAMCONTROL_BUNDLE_ID = com.sean.roamcontrol
+
 DEVELOPMENT_TEAM =
 ROAMCONTROL_TELEMETRY_APP_ID =
 ROAMCONTROL_TELEMETRY_NAMESPACE =

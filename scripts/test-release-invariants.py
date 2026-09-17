@@ -40,6 +40,13 @@ assert re.search(r"^ROAMCONTROL_SELFHOSTED_TELEMETRY_TOKEN\s*=\s*$", public_conf
 example_config = (ROOT / "Configuration/Local.private.xcconfig.example").read_text()
 assert "YOUR-SELF-HOSTED-INGESTION-TOKEN" in example_config
 
+# An app extension must carry its host app's identifier as a prefix or the
+# install is rejected. Both derive from one overridable value so that a builder
+# signing with their own team changes one setting, not two.
+assert project.count('PRODUCT_BUNDLE_IDENTIFIER = "$(ROAMCONTROL_BUNDLE_ID)";') == 2
+assert project.count('PRODUCT_BUNDLE_IDENTIFIER = "$(ROAMCONTROL_BUNDLE_ID).LiveActivity";') == 2
+assert re.search(r"^ROAMCONTROL_BUNDLE_ID\s*=\s*\S+", public_config, re.MULTILINE)
+
 analytics = (ROOT / "RoamControl/Services/UsageAnalyticsService.swift").read_text()
 for signature in (
     "func recordActivation(enabled: Bool)",

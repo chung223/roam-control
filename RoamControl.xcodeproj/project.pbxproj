@@ -268,7 +268,7 @@
 				INFOPLIST_FILE = "Configuration/RoamControl-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				MARKETING_VERSION = 0.9.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sean.roamcontrol;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(ROAMCONTROL_BUNDLE_ID)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				ROAMCONTROL_BUILD_TIMESTAMP = "2026-09-14T20:11:19Z";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -293,7 +293,7 @@
 				INFOPLIST_FILE = "Configuration/RoamControl-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				MARKETING_VERSION = 0.9.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sean.roamcontrol;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(ROAMCONTROL_BUNDLE_ID)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				ROAMCONTROL_BUILD_TIMESTAMP = "2026-09-14T20:11:19Z";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -321,7 +321,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 0.9.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sean.roamcontrol.LiveActivity;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(ROAMCONTROL_BUNDLE_ID).LiveActivity";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -349,7 +349,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 0.9.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sean.roamcontrol.LiveActivity;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(ROAMCONTROL_BUNDLE_ID).LiveActivity";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
