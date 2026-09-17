@@ -125,6 +125,9 @@ private struct LockScreenView: View {
                 .foregroundStyle(.secondary)
         }
         .padding(16)
+        // The row was sizing to its content, which left the elapsed time
+        // stranded mid-banner with empty space past it.
+        .frame(maxWidth: .infinity, alignment: .leading)
         .accessibilityElement(children: .combine)
         .accessibilityLabel(accessibilityLabel)
     }
@@ -149,6 +152,10 @@ private struct WalkingProgressView: View {
                 progress: state.progress,
                 isPaused: state.stage == .paused
             )
+            // RouteTrail is a GeometryReader, which contributes no width of
+            // its own, so the column would otherwise be as wide as the text
+            // and the bar would stop with it.
+            .frame(maxWidth: .infinity)
 
             HStack(spacing: 6) {
                 Text(distanceText)
