@@ -22,6 +22,9 @@ struct RoamControlApp: App {
                 }
             }
                 .environment(appModel)
+                // Rounded everywhere, inherited rather than applied per Text.
+                .fontDesign(.rounded)
+                .tint(SproutTheme.primary)
                 .preferredColorScheme(preferredColorScheme)
                 .animation(
                     reduceMotion ? nil : .easeInOut(duration: 0.25),

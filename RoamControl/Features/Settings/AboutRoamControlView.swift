@@ -141,6 +141,7 @@ struct AboutRoamControlView: View {
                 )
             }
         }
+        .sproutListBackground()
         .navigationTitle("About Roam Control")
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -152,7 +153,7 @@ struct AboutRoamControlView: View {
                     Circle()
                         .fill(
                             LinearGradient(
-                                colors: [.blue, .cyan],
+                                colors: SproutTheme.Pair.moss,
                                 startPoint: .topLeading,
                                 endPoint: .bottomTrailing
                             )
@@ -200,7 +201,7 @@ struct AboutRoamControlView: View {
                 .font(.caption.bold())
                 .foregroundStyle(.white)
                 .frame(width: 24, height: 24)
-                .background(.blue, in: Circle())
+                .background(SproutTheme.primary, in: Circle())
 
             Text(text)
                 .font(.subheadline)
@@ -214,7 +215,7 @@ struct AboutRoamControlView: View {
         HStack(alignment: .top, spacing: 12) {
             Image(systemName: symbol)
                 .font(.body.weight(.semibold))
-                .foregroundStyle(.blue)
+                .foregroundStyle(SproutTheme.primary)
                 .frame(width: 26, height: 24)
                 .accessibilityHidden(true)
 

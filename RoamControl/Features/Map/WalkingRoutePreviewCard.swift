@@ -29,7 +29,7 @@ struct WalkingRoutePreviewCard: View {
             }
         }
         .padding(18)
-        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .background(SproutTheme.surface, in: RoundedRectangle(cornerRadius: SproutTheme.Radius.card, style: .continuous))
         .shadow(color: .black.opacity(0.15), radius: 18, y: 8)
         .confirmationDialog(
             "Stop walking and restore this iPhone's real location?",
@@ -77,7 +77,7 @@ struct WalkingRoutePreviewCard: View {
 
             if showsProgress {
                 ProgressView(value: simulation.progress)
-                    .tint(simulation.phase == .arrived ? .green : .blue)
+                    .tint(simulation.phase == .arrived ? SproutTheme.positive : SproutTheme.primary)
             }
 
             routeMetrics
@@ -326,7 +326,7 @@ struct WalkingRoutePreviewCard: View {
         case .failed(let message):
             Text(message)
                 .font(.caption)
-                .foregroundStyle(.red)
+                .foregroundStyle(SproutTheme.accent)
                 .frame(maxWidth: .infinity, alignment: .center)
                 .fixedSize(horizontal: false, vertical: true)
         }
@@ -396,9 +396,9 @@ struct WalkingRoutePreviewCard: View {
 
     private var phaseColour: Color {
         switch simulation.phase {
-        case .arrived: .green
-        case .failed: .red
-        case .idle, .preparing, .walking, .paused, .stopping: .blue
+        case .arrived: SproutTheme.positive
+        case .failed: SproutTheme.accent
+        case .idle, .preparing, .walking, .paused, .stopping: SproutTheme.primary
         }
     }
 
@@ -485,7 +485,7 @@ private struct RouteMetric: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(10)
-        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 13, style: .continuous))
+        .background(SproutTheme.surfaceRaised, in: RoundedRectangle(cornerRadius: 13, style: .continuous))
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("\(title), \(value)")
     }

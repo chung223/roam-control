@@ -47,6 +47,31 @@ enum SproutTheme {
     /// Positive state, for a healthy connection.
     static let positive = dynamic(light: 0x4F8A4A, dark: 0x8FCB78)
 
+    // MARK: - Gradients
+
+    /// Soft two-stop pairs for illustrative headers. They stay inside the
+    /// botanical palette so an onboarding page and a warning still read as the
+    /// same app.
+    enum Pair {
+        /// The brand gradient.
+        static let moss = [dynamic(light: 0x6F9A4E, dark: 0x8FBF6A),
+                           dynamic(light: 0x9BC275, dark: 0xB8D89A)]
+        /// Cooler green, for calm or informational moments.
+        static let sage = [dynamic(light: 0x5C8F7B, dark: 0x7FB39C),
+                           dynamic(light: 0x8FBFA3, dark: 0xA6CDBA)]
+        /// Warm, for attention without alarm.
+        static let clay = [dynamic(light: 0xC08A4E, dark: 0xD6A874),
+                           dynamic(light: 0xDDB47A, dark: 0xE5C79B)]
+        /// Coral, for interruption and recovery.
+        static let coral = [dynamic(light: 0xD4694A, dark: 0xE8896B),
+                            dynamic(light: 0xE8A07E, dark: 0xF0B79B)]
+    }
+
+    /// A linear gradient across one of the pairs, top-leading to bottom-trailing.
+    static func gradient(_ colors: [Color]) -> LinearGradient {
+        LinearGradient(colors: colors, startPoint: .topLeading, endPoint: .bottomTrailing)
+    }
+
     // MARK: - Shape
 
     enum Radius {
@@ -128,6 +153,15 @@ extension View {
                 radius: SproutTheme.cardShadow.radius,
                 y: SproutTheme.cardShadow.y
             )
+    }
+
+    /// Puts a List or Form on the Sprout background instead of the system
+    /// grouped grey, which is the only part of a standard list that reads as
+    /// belonging to a different app.
+    func sproutListBackground() -> some View {
+        self
+            .scrollContentBackground(.hidden)
+            .background(SproutTheme.background)
     }
 
     /// A circular control floating over the map.

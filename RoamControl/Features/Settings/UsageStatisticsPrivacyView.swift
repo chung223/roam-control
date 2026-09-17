@@ -8,7 +8,7 @@ struct UsageStatisticsPrivacyView: View {
                     Text("Roam Control sends only a small, fixed set of anonymous activity counts when sharing is enabled.")
                 } icon: {
                     Image(systemName: "checkmark.shield.fill")
-                        .foregroundStyle(.green)
+                        .foregroundStyle(SproutTheme.positive)
                 }
             }
 
@@ -55,6 +55,7 @@ struct UsageStatisticsPrivacyView: View {
                     .foregroundStyle(.secondary)
             }
         }
+        .sproutListBackground()
         .navigationTitle("Anonymous Statistics")
         .navigationBarTitleDisplayMode(.inline)
     }

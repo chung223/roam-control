@@ -94,7 +94,7 @@ struct ConnectionHealthView: View {
                         systemImage: didCopyDiagnostics ? "checkmark" : "doc.on.doc"
                     )
                 }
-                .foregroundStyle(didCopyDiagnostics ? .green : .primary)
+                .foregroundStyle(didCopyDiagnostics ? SproutTheme.positive : SproutTheme.text)
             } header: {
                 Text("Support")
             } footer: {
@@ -176,6 +176,7 @@ struct ConnectionHealthView: View {
                 }
             }
         }
+        .sproutListBackground()
         .navigationTitle("Connection Health")
         .navigationBarTitleDisplayMode(.inline)
         .onDisappear {
@@ -221,10 +222,10 @@ struct ConnectionHealthView: View {
 
     private var pairingColor: Color {
         switch appModel.pairingStatus {
-        case .checking, .importing: .blue
-        case .notPaired: .orange
-        case .paired: .green
-        case .failed: .red
+        case .checking, .importing: SproutTheme.primary
+        case .notPaired: SproutTheme.accent
+        case .paired: SproutTheme.positive
+        case .failed: SproutTheme.accent
         }
     }
 
@@ -253,11 +254,11 @@ struct ConnectionHealthView: View {
     private var localDevVPNColor: Color {
         switch diagnostics.state {
         case .notRun:
-            if case .active = appModel.deviceSession.phase { return .green }
+            if case .active = appModel.deviceSession.phase { return SproutTheme.positive }
             return .secondary
-        case .running: return .blue
-        case .passed: return .green
-        case .failed: return .red
+        case .running: return SproutTheme.primary
+        case .passed: return SproutTheme.positive
+        case .failed: return SproutTheme.accent
         }
     }
 
@@ -286,9 +287,9 @@ struct ConnectionHealthView: View {
     private var sessionColor: Color {
         switch appModel.deviceSession.phase {
         case .idle: .secondary
-        case .openingLocalDevVPN, .discovering, .connecting, .stopping: .blue
-        case .active: .green
-        case .failed: .red
+        case .openingLocalDevVPN, .discovering, .connecting, .stopping: SproutTheme.primary
+        case .active: SproutTheme.positive
+        case .failed: SproutTheme.accent
         }
     }
 
@@ -309,8 +310,8 @@ struct ConnectionHealthView: View {
 
     private var resultColor: Color {
         switch diagnostics.state {
-        case .passed: .green
-        case .failed: .red
+        case .passed: SproutTheme.positive
+        case .failed: SproutTheme.accent
         case .notRun, .running: .secondary
         }
     }

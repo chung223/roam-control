@@ -58,7 +58,7 @@ struct SavedPlacesView: View {
                                 } label: {
                                     Label("Rename", systemImage: "pencil")
                                 }
-                                .tint(.blue)
+                                .tint(SproutTheme.primary)
                             }
                         }
                         .onMove(perform: onMoveFavourites)
@@ -118,6 +118,7 @@ struct SavedPlacesView: View {
                 }
             }
             .environment(\.editMode, $editMode)
+            .sproutListBackground()
             .navigationTitle("Saved Places")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -236,7 +237,7 @@ private struct SavedPlaceRow: View {
             Button(action: onSelect) {
                 HStack(spacing: 12) {
                     Image(systemName: symbol)
-                        .foregroundStyle(symbol.hasPrefix("heart") ? .pink : .blue)
+                        .foregroundStyle(symbol.hasPrefix("heart") ? SproutTheme.accent : SproutTheme.primary)
                         .frame(width: 24)
 
                     VStack(alignment: .leading, spacing: 3) {
@@ -259,7 +260,7 @@ private struct SavedPlaceRow: View {
 
             Button(action: onToggleFavourite) {
                 Image(systemName: isFavourite ? "heart.fill" : "heart")
-                    .foregroundStyle(isFavourite ? .pink : .secondary)
+                    .foregroundStyle(isFavourite ? SproutTheme.accent : SproutTheme.textSecondary)
                     .frame(width: 44, height: 44)
             }
             .buttonStyle(.plain)

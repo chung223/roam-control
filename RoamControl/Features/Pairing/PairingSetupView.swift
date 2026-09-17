@@ -166,7 +166,7 @@ struct PairingSetupView: View {
                     .font(.largeTitle.weight(.semibold))
                     .fontDesign(.rounded)
                     .monospacedDigit()
-                    .foregroundStyle(.blue)
+                    .foregroundStyle(SproutTheme.primary)
                     .minimumScaleFactor(0.7)
                     .lineLimit(1)
                     .accessibilityLabel("Pairing code \(pin)")
@@ -221,7 +221,7 @@ struct PairingSetupView: View {
         setupCard {
             Label("Stored securely", systemImage: "lock.shield")
                 .font(.headline)
-                .foregroundStyle(.green)
+                .foregroundStyle(SproutTheme.positive)
 
             Text("The pairing record is generated or checked on this iPhone, then stored only in its Keychain. Roam Control does not upload it.")
                 .font(.subheadline)
@@ -243,7 +243,7 @@ struct PairingSetupView: View {
                 .font(.caption.bold())
                 .foregroundStyle(.white)
                 .frame(width: 24, height: 24)
-                .background(.blue, in: Circle())
+                .background(SproutTheme.primary, in: Circle())
 
             Text(text)
                 .font(.subheadline)
@@ -258,7 +258,7 @@ struct PairingSetupView: View {
         HStack(alignment: .top, spacing: 8) {
             Image(systemName: "chevron.right")
                 .font(.caption.bold())
-                .foregroundStyle(.blue)
+                .foregroundStyle(SproutTheme.primary)
                 .padding(.top, 3)
             Text(text)
                 .font(.subheadline)
@@ -328,18 +328,18 @@ struct PairingSetupView: View {
     private var statusColor: Color {
         switch appModel.onDevicePairing.phase {
         case .preparing, .waitingForSettings, .showingPIN, .storing, .cancelling:
-            return .blue
+            return SproutTheme.primary
         case .failed:
-            return .red
+            return SproutTheme.accent
         case .idle, .success:
             break
         }
 
         switch appModel.pairingStatus {
-        case .checking, .importing: return .blue
-        case .notPaired: return .orange
-        case .paired: return .green
-        case .failed: return .red
+        case .checking, .importing: return SproutTheme.primary
+        case .notPaired: return SproutTheme.accent
+        case .paired: return SproutTheme.positive
+        case .failed: return SproutTheme.accent
         }
     }
 

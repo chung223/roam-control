@@ -30,7 +30,7 @@ struct SessionRecoveryView: View {
         .padding(.top, 12)
         .padding(.bottom, 24)
         .frame(maxWidth: 520)
-        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32, style: .continuous))
+        .background(SproutTheme.surface, in: RoundedRectangle(cornerRadius: 32, style: .continuous))
         .overlay {
             RoundedRectangle(cornerRadius: 32, style: .continuous)
                 .stroke(.white.opacity(0.16), lineWidth: 1)
@@ -58,7 +58,7 @@ struct SessionRecoveryView: View {
                 Circle()
                     .fill(
                         LinearGradient(
-                            colors: [.orange, .pink],
+                            colors: SproutTheme.Pair.coral,
                             startPoint: .topLeading,
                             endPoint: .bottomTrailing
                         )
@@ -106,7 +106,7 @@ struct SessionRecoveryView: View {
                 )
             }
             .padding(14)
-            .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+            .background(SproutTheme.surfaceRaised, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
 
             if isResuming || isRestoring {
                 HStack(spacing: 10) {
@@ -152,7 +152,7 @@ struct SessionRecoveryView: View {
             if let errorMessage {
                 Text(errorMessage)
                     .font(.caption)
-                    .foregroundStyle(.red)
+                    .foregroundStyle(SproutTheme.accent)
                     .multilineTextAlignment(.center)
                     .fixedSize(horizontal: false, vertical: true)
             }
@@ -186,7 +186,7 @@ struct SessionRecoveryView: View {
             if dynamicTypeSize.isAccessibilitySize {
                 HStack(alignment: .top, spacing: 11) {
                     Image(systemName: symbol)
-                        .foregroundStyle(.blue)
+                        .foregroundStyle(SproutTheme.primary)
                         .frame(width: 22)
 
                     VStack(alignment: .leading, spacing: 3) {
@@ -202,7 +202,7 @@ struct SessionRecoveryView: View {
             } else {
                 HStack(spacing: 11) {
                     Image(systemName: symbol)
-                        .foregroundStyle(.blue)
+                        .foregroundStyle(SproutTheme.primary)
                         .frame(width: 22)
 
                     Text(title)

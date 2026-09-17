@@ -141,9 +141,6 @@ Two structural decisions worth knowing before changing anything:
 ## Still open
 
 - The app icon is still the old `RoamControl-AppIcon.png`.
-- `SettingsView`, `ConnectionHealthView`, `AboutRoamControlView`,
-  `PairingSetupView`, `WalkingRoutePreviewCard`, `SavedPlacesView` and
-  `OnboardingView` still use system blue rather than the Sprout palette.
 - 14 interpolated accessibility labels are in the catalogue in `%@` placeholder
   form, with the placeholder types inferred. A wrong type means that one label
   shows English; nothing breaks.

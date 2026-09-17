@@ -184,7 +184,7 @@ struct LocationSelectionCard: View {
                     } label: {
                         Image(systemName: didCopyCoordinates ? "checkmark" : "doc.on.doc")
                             .font(.caption.weight(.semibold))
-                            .foregroundStyle(didCopyCoordinates ? .green : .blue)
+                            .foregroundStyle(didCopyCoordinates ? SproutTheme.positive : SproutTheme.primary)
                             .frame(width: 44, height: 44)
                     }
                     .buttonStyle(.plain)

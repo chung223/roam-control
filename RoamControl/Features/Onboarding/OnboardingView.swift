@@ -17,9 +17,9 @@ struct OnboardingView: View {
         ZStack {
             LinearGradient(
                 colors: [
-                    Color.blue.opacity(0.16),
-                    Color.cyan.opacity(0.07),
-                    Color(uiColor: .systemBackground)
+                    SproutTheme.primary.opacity(0.14),
+                    SproutTheme.primary.opacity(0.05),
+                    SproutTheme.background
                 ],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
@@ -29,9 +29,9 @@ struct OnboardingView: View {
             VStack(spacing: 0) {
                 ZStack {
                     Text("ROAM CONTROL")
-                        .font(.caption.weight(.bold))
+                        .font(SproutTheme.font(.caption, weight: .bold))
                         .tracking(2.2)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(SproutTheme.textSecondary)
 
                     if isReplay {
                         HStack {
@@ -64,7 +64,7 @@ struct OnboardingView: View {
                     HStack(spacing: 8) {
                         ForEach(pages.indices, id: \.self) { index in
                             Capsule()
-                                .fill(index == selectedPage ? Color.blue : Color.secondary.opacity(0.25))
+                                .fill(index == selectedPage ? SproutTheme.primary : SproutTheme.textSecondary.opacity(0.28))
                                 .frame(width: index == selectedPage ? 24 : 8, height: 8)
                                 .animation(
                                     reduceMotion ? nil : .spring(response: 0.3),
@@ -205,14 +205,14 @@ private struct OnboardingPageView: View {
                 Text("Off by default. Never includes locations, searches, routes, pairing data or personal information.")
             } icon: {
                 Image(systemName: "hand.raised.fill")
-                    .foregroundStyle(.green)
+                    .foregroundStyle(SproutTheme.positive)
             }
             .font(.footnote)
             .foregroundStyle(.secondary)
             .fixedSize(horizontal: false, vertical: true)
         }
         .padding(18)
-        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .background(SproutTheme.surface, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
         .accessibilityElement(children: .contain)
     }
 }
@@ -243,25 +243,25 @@ private struct OnboardingPage {
             symbol: "location.viewfinder",
             title: .appText("Welcome to Roam Control"),
             message: "Choose where your iPhone should appear, from one simple map.",
-            colors: [.blue, .cyan]
+            colors: SproutTheme.Pair.moss
         ),
         OnboardingPage(
             symbol: "map.fill",
             title: .appText("Pick any place"),
             message: "Search for a destination or tap the map, then save it as your target.",
-            colors: [.indigo, .blue]
+            colors: SproutTheme.Pair.sage
         ),
         OnboardingPage(
             symbol: "iphone.and.arrow.forward",
             title: .appText("Pair this iPhone once"),
             message: "Roam Control needs one private pairing before it can control location. We'll guide you through it next.",
-            colors: [.green, .teal]
+            colors: SproutTheme.Pair.clay
         ),
         OnboardingPage(
             symbol: "hand.raised.fill",
             title: .appText("Private by design"),
             message: "Choose whether to help improve Roam Control with anonymous activity counts. Sharing starts only if you switch it on and can be changed later in Settings.",
-            colors: [.indigo, .purple],
+            colors: SproutTheme.Pair.coral,
             showsUsageStatisticsControl: true
         )
     ]

@@ -131,6 +131,7 @@ struct SettingsView: View {
                     Text("This clears the pairing record and local app settings, then shows onboarding again. It does not remove or change LocalDevVPN.")
                 }
             }
+            .sproutListBackground()
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -327,7 +328,7 @@ struct SettingsView: View {
         case .current(let release):
             Label("You have the latest public release (\(release.version)).", systemImage: "checkmark.circle")
                 .font(.subheadline)
-                .foregroundStyle(.green)
+                .foregroundStyle(SproutTheme.positive)
         case .newerLocalBuild(let release):
             Link(destination: release.releaseURL) {
                 Label("View public release \(release.version)", systemImage: "arrow.up.right.square")

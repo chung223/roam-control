@@ -13,7 +13,7 @@ struct SearchSuggestionsView: View {
                 } label: {
                     HStack(spacing: 12) {
                         Image(systemName: "mappin.circle.fill")
-                            .foregroundStyle(.blue)
+                            .foregroundStyle(SproutTheme.primary)
 
                         VStack(alignment: .leading, spacing: 2) {
                             Text(suggestion.title)
@@ -43,7 +43,7 @@ struct SearchSuggestionsView: View {
                 }
             }
         }
-        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .background(SproutTheme.surface, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
         .shadow(color: .black.opacity(0.12), radius: 12, y: 5)
     }
 

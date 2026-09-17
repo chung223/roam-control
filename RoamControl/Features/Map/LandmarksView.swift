@@ -41,6 +41,7 @@ struct LandmarksView: View {
                     .listStyle(.insetGrouped)
                 }
             }
+            .sproutListBackground()
             .navigationTitle("Landmarks")
             .navigationBarTitleDisplayMode(.inline)
             .searchable(

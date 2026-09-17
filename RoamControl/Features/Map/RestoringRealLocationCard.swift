@@ -5,7 +5,7 @@ struct RestoringRealLocationCard: View {
         VStack(spacing: 12) {
             ProgressView()
                 .controlSize(.large)
-                .tint(.blue)
+                .tint(SproutTheme.primary)
 
             Text("Location Simulation Stopped")
                 .font(.headline)
@@ -17,7 +17,7 @@ struct RestoringRealLocationCard: View {
         }
         .frame(maxWidth: .infinity)
         .padding(22)
-        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .background(SproutTheme.surface, in: RoundedRectangle(cornerRadius: 24, style: .continuous))
         .shadow(color: .black.opacity(0.15), radius: 18, y: 8)
         .accessibilityElement(children: .combine)
         .accessibilityLabel("Location simulation stopped. Waiting for a fresh location from this iPhone.")

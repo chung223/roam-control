@@ -26,7 +26,7 @@ struct MobileDataGuidanceView: View {
         .padding(.top, 12)
         .padding(.bottom, 26)
         .frame(maxWidth: 520)
-        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32, style: .continuous))
+        .background(SproutTheme.surface, in: RoundedRectangle(cornerRadius: 32, style: .continuous))
         .overlay {
             RoundedRectangle(cornerRadius: 32, style: .continuous)
                 .stroke(.white.opacity(0.16), lineWidth: 1)
@@ -101,7 +101,7 @@ struct MobileDataGuidanceView: View {
                 }
                 .padding(.horizontal, 18)
                 .padding(.vertical, 11)
-                .background(.thinMaterial, in: Capsule())
+                .background(SproutTheme.surfaceRaised, in: Capsule())
 
                 Label(
                     "Roam Control should continue automatically. If it doesn't, tap Continue.",
@@ -125,7 +125,7 @@ struct MobileDataGuidanceView: View {
             } else {
                 Label("Location is active", systemImage: "location.fill")
                     .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(.green)
+                    .foregroundStyle(SproutTheme.positive)
 
                 Button("Done", action: onDone)
                     .buttonStyle(.borderedProminent)
@@ -159,9 +159,9 @@ struct MobileDataGuidanceView: View {
 
     private var iconColours: [Color] {
         switch guidance {
-        case .connectionHelp: [.purple, .indigo]
-        case .turnOff: [.indigo, .blue]
-        case .turnBackOn: [.green, .teal]
+        case .connectionHelp: SproutTheme.Pair.clay
+        case .turnOff: SproutTheme.Pair.sage
+        case .turnBackOn: SproutTheme.Pair.moss
         }
     }
 

@@ -213,7 +213,7 @@ struct HomeView: View {
                                     } else {
                                         Image(systemName: "location.fill")
                                             .font(.body.weight(.semibold))
-                                            .foregroundStyle(.blue)
+                                            .foregroundStyle(SproutTheme.primary)
                                     }
                                 }
                                 .sproutMapControl()
@@ -313,7 +313,7 @@ struct HomeView: View {
                         .foregroundStyle(.white)
                         .padding(.horizontal, 16)
                         .padding(.vertical, 10)
-                        .background(.red, in: Capsule())
+                        .background(SproutTheme.accent, in: Capsule())
                         .padding(.bottom, 196)
                 }
                 .transition(.opacity)
@@ -632,7 +632,7 @@ private struct CompassRoseDial: View {
                 .strokeBorder(.primary.opacity(0.28), lineWidth: 0.8)
 
             Text("N")
-                .foregroundStyle(.red)
+                .foregroundStyle(SproutTheme.accent)
                 .offset(y: -10.5)
 
             Text("E")
