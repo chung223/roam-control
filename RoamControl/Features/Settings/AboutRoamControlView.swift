@@ -8,136 +8,136 @@ struct AboutRoamControlView: View {
 
             Section("Choose a location") {
                 guideRow(
-                    "Search",
+                    .appText("Search"),
                     symbol: "magnifyingglass",
-                    text: "Find a place by name or enter latitude and longitude. Choosing a result also clears the search ready for the next one."
+                    text: .appText("Find a place by name or enter latitude and longitude. Choosing a result also clears the search ready for the next one.")
                 )
                 guideRow(
-                    "Tap the map",
+                    .appText("Tap the map"),
                     symbol: "hand.tap",
-                    text: "Drop a precise pin anywhere on the map. The close button on its card clears that pin."
+                    text: .appText("Drop a precise pin anywhere on the map. The close button on its card clears that pin.")
                 )
                 guideRow(
-                    "Favourite",
+                    .appText("Favourite"),
                     symbol: "heart",
-                    text: "Save the selected place for quick use later. Favourites can be renamed, reordered or removed from the saved-locations screen."
+                    text: .appText("Save the selected place for quick use later. Favourites can be renamed, reordered or removed from the saved-locations screen.")
                 )
                 guideRow(
-                    "Favourites & history",
+                    .appText("Favourites & history"),
                     symbol: "list.bullet.rectangle",
-                    text: "Open saved favourites and recently used locations. Swipe an item to remove it."
+                    text: .appText("Open saved favourites and recently used locations. Swipe an item to remove it.")
                 )
             }
 
             Section("Map controls") {
                 guideRow(
-                    "Current location",
+                    .appText("Current location"),
                     symbol: "location.fill",
-                    text: "Fly back to this iPhone’s real location and return the map to north-up."
+                    text: .appText("Fly back to this iPhone’s real location and return the map to north-up.")
                 )
                 guideRow(
-                    "Compass",
+                    .appText("Compass"),
                     symbol: "safari",
-                    text: "Appears when the map is rotated. It shows the map heading; tap it to face north again."
+                    text: .appText("Appears when the map is rotated. It shows the map heading; tap it to face north again.")
                 )
                 guideRow(
-                    "Connection status",
+                    .appText("Connection status"),
                     symbol: "circle.fill",
-                    text: "Shows whether Roam Control is ready, connecting or active. Tap it for pairing and connection details."
+                    text: .appText("Shows whether Roam Control is ready, connecting or active. Tap it for pairing and connection details.")
                 )
                 guideRow(
-                    "Settings",
+                    .appText("Settings"),
                     symbol: "gearshape.fill",
-                    text: "Change appearance and map style, check the connection, manage pairing and view app information."
+                    text: .appText("Change appearance and map style, check the connection, manage pairing and view app information.")
                 )
             }
 
             Section("Location control") {
                 guideRow(
-                    "Start Location",
+                    .appText("Start Location"),
                     symbol: "location.fill",
-                    text: "Start reporting the selected place as this iPhone’s location. LocalDevVPN must be connected."
+                    text: .appText("Start reporting the selected place as this iPhone’s location. LocalDevVPN must be connected.")
                 )
                 guideRow(
-                    "Update Location",
+                    .appText("Update Location"),
                     symbol: "arrow.triangle.2.circlepath",
-                    text: "Move an active location session to a newly selected place without restarting the whole connection flow."
+                    text: .appText("Move an active location session to a newly selected place without restarting the whole connection flow.")
                 )
                 guideRow(
-                    "Stop & Restore",
+                    .appText("Stop & Restore"),
                     symbol: "location.slash.fill",
-                    text: "Confirm before ending the active session and restoring this iPhone’s real location."
+                    text: .appText("Confirm before ending the active session and restoring this iPhone’s real location.")
                 )
                 guideRow(
-                    "Mobile-data guidance",
+                    .appText("Mobile-data guidance"),
                     symbol: "antenna.radiowaves.left.and.right",
-                    text: "When using mobile data, temporarily turn it off when asked. Roam Control continues automatically once the local connection is available, and tells you when data can go back on."
+                    text: .appText("When using mobile data, temporarily turn it off when asked. Roam Control continues automatically once the local connection is available, and tells you when data can go back on.")
                 )
                 guideRow(
-                    "Interrupted-session recovery",
+                    .appText("Interrupted-session recovery"),
                     symbol: "arrow.trianglehead.2.clockwise.rotate.90",
-                    text: "If Roam Control did not receive a normal end signal, the next launch offers to resume, reconnect briefly to restore the real location, or confirm that it is already back."
+                    text: .appText("If Roam Control did not receive a normal end signal, the next launch offers to resume, reconnect briefly to restore the real location, or confirm that it is already back.")
                 )
             }
 
             Section("Walking routes") {
                 guideRow(
-                    "Preview Walking Route",
+                    .appText("Preview Walking Route"),
                     symbol: "figure.walk",
-                    text: "Ask Apple Maps for a walking route from your current point to the selected destination before anything starts."
+                    text: .appText("Ask Apple Maps for a walking route from your current point to the selected destination before anything starts.")
                 )
                 guideRow(
-                    "Walking pace",
+                    .appText("Walking pace"),
                     symbol: "speedometer",
-                    text: "Choose how quickly the simulated location moves along the route."
+                    text: .appText("Choose how quickly the simulated location moves along the route.")
                 )
                 guideRow(
-                    "Start Walking",
+                    .appText("Start Walking"),
                     symbol: "figure.walk.motion",
-                    text: "Begin moving the reported location along the previewed route. The walk can continue while you use another app."
+                    text: .appText("Begin moving the reported location along the previewed route. The walk can continue while you use another app.")
                 )
                 guideRow(
-                    "Pause or Resume",
+                    .appText("Pause or Resume"),
                     symbol: "pause.fill",
-                    text: "Hold the current point on the route, then continue from exactly where it paused."
+                    text: .appText("Hold the current point on the route, then continue from exactly where it paused.")
                 )
                 guideRow(
-                    "Walk Route Back",
+                    .appText("Walk Route Back"),
                     symbol: "arrow.uturn.backward",
-                    text: "After arrival, reverse the journey and walk back along the route."
+                    text: .appText("After arrival, reverse the journey and walk back along the route.")
                 )
                 guideRow(
-                    "New Location",
+                    .appText("New Location"),
                     symbol: "mappin.and.ellipse",
-                    text: "Keep the active session and return to the map so you can choose another destination."
+                    text: .appText("Keep the active session and return to the map so you can choose another destination.")
                 )
                 guideRow(
-                    "Stop & Restore",
+                    .appText("Stop & Restore"),
                     symbol: "stop.fill",
-                    text: "Stop walking, clear the route and restore the real location. A confirmation helps prevent accidental stops."
+                    text: .appText("Stop walking, clear the route and restore the real location. A confirmation helps prevent accidental stops.")
                 )
             }
 
             Section("Setup & support") {
                 guideRow(
-                    "Pairing & Connection",
+                    .appText("Pairing & Connection"),
                     symbol: "iphone.and.arrow.forward",
-                    text: "Pair this iPhone once so Roam Control can identify it through LocalDevVPN."
+                    text: .appText("Pair this iPhone once so Roam Control can identify it through LocalDevVPN.")
                 )
                 guideRow(
-                    "Connection Health",
+                    .appText("Connection Health"),
                     symbol: "stethoscope",
-                    text: "Check pairing and the local connection without changing your location. You can also share a readable diagnostics report."
+                    text: .appText("Check pairing and the local connection without changing your location. You can also share a readable diagnostics report.")
                 )
                 guideRow(
-                    "Replay Introduction",
+                    .appText("Replay Introduction"),
                     symbol: "sparkles",
-                    text: "View onboarding again without deleting your pairing, favourites, history or preferences."
+                    text: .appText("View onboarding again without deleting your pairing, favourites, history or preferences.")
                 )
                 guideRow(
-                    "Reset Roam Control",
+                    .appText("Reset Roam Control"),
                     symbol: "arrow.counterclockwise",
-                    text: "Erase the pairing record and all saved app choices, then return to onboarding. LocalDevVPN itself is not changed."
+                    text: .appText("Erase the pairing record and all saved app choices, then return to onboarding. LocalDevVPN itself is not changed.")
                 )
             }
         }
@@ -178,10 +178,10 @@ struct AboutRoamControlView: View {
 
     private var quickStart: some View {
         Section {
-            stepRow(1, "Pair this iPhone once.")
-            stepRow(2, "Connect LocalDevVPN.")
-            stepRow(3, "Search, choose or drop a location.")
-            stepRow(4, "Start a fixed location or preview a walking route.")
+            stepRow(1, .appText("Pair this iPhone once."))
+            stepRow(2, .appText("Connect LocalDevVPN."))
+            stepRow(3, .appText("Search, choose or drop a location."))
+            stepRow(4, .appText("Start a fixed location or preview a walking route."))
         } header: {
             Text("How it works")
         } footer: {

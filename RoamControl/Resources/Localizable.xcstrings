@@ -129,6 +129,28 @@
         }
       }
     },
+    "Active": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用中"
+          }
+        }
+      }
+    },
+    "Active location updated": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更新使用中的位置"
+          }
+        }
+      }
+    },
     "Add to favourites": {
       "extractionState": "manual",
       "localizations": {
@@ -158,6 +180,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "非洲"
+          }
+        }
+      }
+    },
+    "After arrival, reverse the journey and walk back along the route.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "抵達後可反向沿原路線走回去。"
           }
         }
       }
@@ -267,6 +300,28 @@
         }
       }
     },
+    "App opened or returned to foreground": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "開啟 App 或回到前景"
+          }
+        }
+      }
+    },
+    "App version and build": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App 版本與建置編號"
+          }
+        }
+      }
+    },
     "Appearance": {
       "extractionState": "manual",
       "localizations": {
@@ -274,6 +329,39 @@
           "stringUnit": {
             "state": "translated",
             "value": "外觀"
+          }
+        }
+      }
+    },
+    "Appears when the map is rotated. It shows the map heading; tap it to face north again.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "地圖旋轉時才會出現。它顯示地圖方位；點一下即可轉回正北。"
+          }
+        }
+      }
+    },
+    "Apple ID, device name or personal details": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple ID、裝置名稱或個人資料"
+          }
+        }
+      }
+    },
+    "Approximate event time": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "事件的大約時間"
           }
         }
       }
@@ -322,6 +410,17 @@
         }
       }
     },
+    "Ask Apple Maps for a walking route from your current point to the selected destination before anything starts.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在開始之前，先向 Apple 地圖索取從目前位置到所選目的地的步行路線。"
+          }
+        }
+      }
+    },
     "Athens, Greece": {
       "extractionState": "manual",
       "localizations": {
@@ -366,6 +465,17 @@
         }
       }
     },
+    "Background session support, permission status and scheduler availability": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "背景工作階段支援、權限狀態與排程器可用性"
+          }
+        }
+      }
+    },
     "Bangkok, Thailand": {
       "extractionState": "manual",
       "localizations": {
@@ -406,6 +516,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "連線之前"
+          }
+        }
+      }
+    },
+    "Begin moving the reported location along the previewed route. The walk can continue while you use another app.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "開始讓回報的位置沿著預覽路線移動。你切換到其他 App 時，步行仍會繼續。"
           }
         }
       }
@@ -542,6 +663,28 @@
         }
       }
     },
+    "Build": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "建置版本"
+          }
+        }
+      }
+    },
+    "Built": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "建置時間"
+          }
+        }
+      }
+    },
     "Burj Khalifa": {
       "extractionState": "manual",
       "localizations": {
@@ -630,6 +773,17 @@
         }
       }
     },
+    "Change appearance and map style, check the connection, manage pairing and view app information.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "變更外觀與地圖樣式、檢查連線、管理配對並查看 App 資訊。"
+          }
+        }
+      }
+    },
     "Charles Bridge": {
       "extractionState": "manual",
       "localizations": {
@@ -637,6 +791,39 @@
           "stringUnit": {
             "state": "translated",
             "value": "查理大橋"
+          }
+        }
+      }
+    },
+    "Check for Updates": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "檢查更新"
+          }
+        }
+      }
+    },
+    "Check pairing and the local connection without changing your location. You can also share a readable diagnostics report.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "檢查配對與區域連線，不會改變你的位置。你也可以分享一份可讀的診斷報告。"
+          }
+        }
+      }
+    },
+    "Checking for Updates…": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在檢查更新…"
           }
         }
       }
@@ -720,6 +907,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "選擇一個位置"
+          }
+        }
+      }
+    },
+    "Choose how quickly the simulated location moves along the route.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "選擇模擬位置沿路線移動的速度。"
           }
         }
       }
@@ -906,6 +1104,17 @@
         }
       }
     },
+    "Compass": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "指南針"
+          }
+        }
+      }
+    },
     "Complete": {
       "extractionState": "manual",
       "localizations": {
@@ -917,6 +1126,28 @@
         }
       }
     },
+    "Confirm before ending the active session and restoring this iPhone’s real location.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "結束進行中的工作階段並還原這支 iPhone 的真實位置前，會先確認。"
+          }
+        }
+      }
+    },
+    "Connect LocalDevVPN.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "連線 LocalDevVPN。"
+          }
+        }
+      }
+    },
     "Connect your physical iPhone to create the pairing, or import an existing file.": {
       "extractionState": "manual",
       "localizations": {
@@ -924,6 +1155,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "連接你的實體 iPhone 以建立配對，或匯入現有檔案。"
+          }
+        }
+      }
+    },
+    "Connecting": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "連線中"
           }
         }
       }
@@ -972,6 +1214,28 @@
         }
       }
     },
+    "Connection help, retry and retry success counts": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "連線協助、重試與重試成功次數"
+          }
+        }
+      }
+    },
+    "Connection status": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "連線狀態"
+          }
+        }
+      }
+    },
     "Connection status: %@": {
       "extractionState": "manual",
       "localizations": {
@@ -990,6 +1254,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "繼續"
+          }
+        }
+      }
+    },
+    "Coordinates or place names": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "座標或地點名稱"
           }
         }
       }
@@ -1072,6 +1347,17 @@
       }
     },
     "Current Location": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目前位置"
+          }
+        }
+      }
+    },
+    "Current location": {
       "extractionState": "manual",
       "localizations": {
         "zh-Hant": {
@@ -1221,6 +1507,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "完成"
+          }
+        }
+      }
+    },
+    "Drop a precise pin anywhere on the map. The close button on its card clears that pin.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在地圖上任一處標記精確位置。卡片上的關閉按鈕可清除該標記。"
           }
         }
       }
@@ -1379,6 +1676,17 @@
         }
       }
     },
+    "Erase the pairing record and all saved app choices, then return to onboarding. LocalDevVPN itself is not changed.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "清除配對記錄與所有已儲存的 App 選項，然後回到導覽。不會更動 LocalDevVPN 本身。"
+          }
+        }
+      }
+    },
     "Europe": {
       "extractionState": "manual",
       "localizations": {
@@ -1429,6 +1737,17 @@
         }
       }
     },
+    "Favourite": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "收藏"
+          }
+        }
+      }
+    },
     "Favourite name": {
       "extractionState": "manual",
       "localizations": {
@@ -1451,6 +1770,17 @@
         }
       }
     },
+    "Favourites & history": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "收藏與紀錄"
+          }
+        }
+      }
+    },
     "Favourites and history": {
       "extractionState": "manual",
       "localizations": {
@@ -1469,6 +1799,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "意見回饋"
+          }
+        }
+      }
+    },
+    "Find a place by name or enter latitude and longitude. Choosing a result also clears the search ready for the next one.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "以名稱尋找地點，或輸入經緯度。選定結果後會清空搜尋，方便接著找下一個。"
           }
         }
       }
@@ -1550,6 +1891,39 @@
         }
       }
     },
+    "Fixed failure stage, scheduler reason, operation and recovery category": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "固定定位的失敗階段、排程器原因、操作與恢復分類"
+          }
+        }
+      }
+    },
+    "Fixed or walking session started": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "開始固定定位或步行工作階段"
+          }
+        }
+      }
+    },
+    "Fixed pairing and location task configuration and registration states on scheduler failures": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "排程器失敗時，配對與定位任務的設定與註冊狀態"
+          }
+        }
+      }
+    },
     "Florida, United States": {
       "extractionState": "manual",
       "localizations": {
@@ -1557,6 +1931,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "美國佛羅里達州"
+          }
+        }
+      }
+    },
+    "Fly back to this iPhone’s real location and return the map to north-up.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "回到這支 iPhone 的真實位置，並將地圖轉回正北。"
           }
         }
       }
@@ -1579,6 +1964,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "紫禁城"
+          }
+        }
+      }
+    },
+    "Full diagnostic reports": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "完整診斷報告"
           }
         }
       }
@@ -1737,6 +2133,17 @@
         }
       }
     },
+    "Hashed random installation identifier": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "經雜湊的隨機安裝識別碼"
+          }
+        }
+      }
+    },
     "Help": {
       "extractionState": "manual",
       "localizations": {
@@ -1766,6 +2173,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "哈比屯電影場景"
+          }
+        }
+      }
+    },
+    "Hold the current point on the route, then continue from exactly where it paused.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "停在路線上的目前位置，之後可從暫停的地方繼續。"
           }
         }
       }
@@ -1847,6 +2265,17 @@
         }
       }
     },
+    "If Roam Control did not receive a normal end signal, the next launch offers to resume, reconnect briefly to restore the real location, or confirm that it is already back.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "若 Sprout 沒有收到正常的結束訊號，下次啟動時會提供選項：繼續、短暫重新連線以還原真實位置，或確認位置已經回復。"
+          }
+        }
+      }
+    },
     "If you're on Wi‑Fi, make sure LocalDevVPN says Connected, then try again. Choose mobile data only when you're actually using 4G or 5G.": {
       "extractionState": "manual",
       "localizations": {
@@ -1920,6 +2349,39 @@
           "stringUnit": {
             "state": "translated",
             "value": "啟動定位工作階段前，請先安裝 LocalDevVPN。"
+          }
+        }
+      }
+    },
+    "Installed app and permitted background-task identifiers on scheduler failures (maintainer service only)": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "排程器失敗時，已安裝 App 與允許的背景任務識別碼（僅限維護者服務）"
+          }
+        }
+      }
+    },
+    "Interrupted-session recovery": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "工作階段中斷復原"
+          }
+        }
+      }
+    },
+    "Introduction completed": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "完成導覽"
           }
         }
       }
@@ -2020,6 +2482,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "保持模擬定位"
+          }
+        }
+      }
+    },
+    "Keep the active session and return to the map so you can choose another destination.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保留進行中的工作階段並回到地圖，以便選擇另一個目的地。"
           }
         }
       }
@@ -2465,6 +2938,17 @@
         }
       }
     },
+    "Mobile-data guidance": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "行動網路指引"
+          }
+        }
+      }
+    },
     "Moscow, Russia": {
       "extractionState": "manual",
       "localizations": {
@@ -2494,6 +2978,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "吉力馬札羅山"
+          }
+        }
+      }
+    },
+    "Move an active location session to a newly selected place without restarting the whole connection flow.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "把進行中的定位工作階段移到新選的地點，不必重跑整個連線流程。"
           }
         }
       }
@@ -2696,6 +3191,17 @@
         }
       }
     },
+    "Not paired": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "尚未配對"
+          }
+        }
+      }
+    },
     "Nothing answered. Check that LocalDevVPN is connected and the paired iPhone is awake, then run it again.": {
       "extractionState": "manual",
       "localizations": {
@@ -2824,6 +3330,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "開啟「設定 › 隱私權與安全性 › 開發者模式」。"
+          }
+        }
+      }
+    },
+    "Open saved favourites and recently used locations. Swipe an item to remove it.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "開啟已收藏與最近使用的地點。向左滑動項目即可移除。"
           }
         }
       }
@@ -2982,6 +3499,28 @@
         }
       }
     },
+    "Pair this iPhone once so Roam Control can identify it through LocalDevVPN.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "將這支 iPhone 配對一次，Sprout 才能透過 LocalDevVPN 辨識它。"
+          }
+        }
+      }
+    },
+    "Pair this iPhone once.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "將這支 iPhone 配對一次。"
+          }
+        }
+      }
+    },
     "Pairing & Connection": {
       "extractionState": "manual",
       "localizations": {
@@ -3015,6 +3554,17 @@
         }
       }
     },
+    "Pairing completed": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "完成配對"
+          }
+        }
+      }
+    },
     "Pairing file ready": {
       "extractionState": "manual",
       "localizations": {
@@ -3033,6 +3583,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "配對發生問題"
+          }
+        }
+      }
+    },
+    "Pairing records or PINs": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "配對記錄或 PIN 碼"
           }
         }
       }
@@ -3094,6 +3655,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "暫停"
+          }
+        }
+      }
+    },
+    "Pause or Resume": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暫停或恢復"
           }
         }
       }
@@ -3160,6 +3732,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "正在規劃步行路線…"
+          }
+        }
+      }
+    },
+    "Please try again.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "請再試一次。"
           }
         }
       }
@@ -3285,6 +3868,17 @@
         }
       }
     },
+    "Problem": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "發生問題"
+          }
+        }
+      }
+    },
     "Pyramids of Giza": {
       "extractionState": "manual",
       "localizations": {
@@ -3353,6 +3947,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "稀有的排在前面。點位越少的飾品，越值得專程跑一趟。"
+          }
+        }
+      }
+    },
+    "Raw error messages or credentials": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "原始錯誤訊息或憑證"
           }
         }
       }
@@ -4500,6 +5105,17 @@
         }
       }
     },
+    "Save the selected place for quick use later. Favourites can be renamed, reordered or removed from the saved-locations screen.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "把所選地點存起來以便日後快速使用。收藏可在「已儲存地點」中重新命名、排序或移除。"
+          }
+        }
+      }
+    },
     "Saved Places": {
       "extractionState": "manual",
       "localizations": {
@@ -4507,6 +5123,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "已儲存的地點"
+          }
+        }
+      }
+    },
+    "Search": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "搜尋"
           }
         }
       }
@@ -4584,6 +5211,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "搜尋點位"
+          }
+        }
+      }
+    },
+    "Search, choose or drop a location.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "搜尋、選擇或標記一個位置。"
+          }
+        }
+      }
+    },
+    "Searches, favourites, history or routes": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "搜尋內容、收藏、紀錄或路線"
           }
         }
       }
@@ -4764,6 +5413,17 @@
         }
       }
     },
+    "Shows whether Roam Control is ready, connecting or active. Tap it for pairing and connection details.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "顯示 Sprout 目前是就緒、連線中或使用中。點一下可查看配對與連線細節。"
+          }
+        }
+      }
+    },
     "Siem Reap, Cambodia": {
       "extractionState": "manual",
       "localizations": {
@@ -4848,6 +5508,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "開始步行"
+          }
+        }
+      }
+    },
+    "Start a fixed location or preview a walking route.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "開始固定定位，或預覽步行路線。"
+          }
+        }
+      }
+    },
+    "Start reporting the selected place as this iPhone’s location. LocalDevVPN must be connected.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "開始把所選地點回報為這支 iPhone 的位置。LocalDevVPN 必須已連線。"
           }
         }
       }
@@ -5002,6 +5684,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "要停止步行並還原這支 iPhone 的真實位置嗎？"
+          }
+        }
+      }
+    },
+    "Stop walking, clear the route and restore the real location. A confirmation helps prevent accidental stops.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "停止步行、清除路線並還原真實位置。會先確認以避免誤觸。"
           }
         }
       }
@@ -5167,6 +5860,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "點一下所選地點的愛心即可儲存。"
+          }
+        }
+      }
+    },
+    "Tap the map": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "點一下地圖"
           }
         }
       }
@@ -5860,6 +6564,17 @@
         }
       }
     },
+    "Unknown": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未知"
+          }
+        }
+      }
+    },
     "Unproven. Turn it off if a session fails to start.": {
       "extractionState": "manual",
       "localizations": {
@@ -5937,6 +6652,17 @@
         }
       }
     },
+    "Version": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "版本"
+          }
+        }
+      }
+    },
     "Victoria Falls": {
       "extractionState": "manual",
       "localizations": {
@@ -5966,6 +6692,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "查看 LocalDevVPN"
+          }
+        }
+      }
+    },
+    "View onboarding again without deleting your pairing, favourites, history or preferences.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "再看一次導覽，不會刪除你的配對、收藏、紀錄或偏好設定。"
           }
         }
       }
@@ -6163,6 +6900,17 @@
         }
       }
     },
+    "When using mobile data, temporarily turn it off when asked. Roam Control continues automatically once the local connection is available, and tells you when data can go back on.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用行動網路時，請在提示出現時暫時關閉它。區域連線可用後 Sprout 會自動繼續，並在可以重新開啟行動網路時通知你。"
+          }
+        }
+      }
+    },
     "Willis Tower": {
       "extractionState": "manual",
       "localizations": {
@@ -6320,6 +7068,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "iOS could not register the secure pairing task. Close Sprout, reopen it, and try again."
+          }
+        }
+      }
+    },
+    "iOS version (maintainer service only)": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS 版本（僅限維護者服務）"
           }
         }
       }

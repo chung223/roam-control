@@ -59,8 +59,7 @@ struct SettingsView: View {
                 }
 
                 Section {
-                    Toggle(
-                        "Share Anonymous Usage Statistics",
+                    Toggle("Share Anonymous Usage Statistics",
                         isOn: anonymousUsageStatisticsBinding
                     )
 
@@ -165,17 +164,17 @@ struct SettingsView: View {
                 resetError = nil
             }
         } message: {
-            Text(resetError ?? "Please try again.")
+            Text(resetError ?? .appText("Please try again."))
         }
     }
 
     private var connectionLabel: String {
         switch appModel.connectionState {
-        case .notConfigured: "Not paired"
-        case .ready: "Ready"
-        case .connecting: "Connecting"
-        case .active: "Active"
-        case .failed: "Problem"
+        case .notConfigured: .appText("Not paired")
+        case .ready: .appText("Ready")
+        case .connecting: .appText("Connecting")
+        case .active: .appText("Active")
+        case .failed: .appText("Problem")
         }
     }
 
@@ -280,7 +279,7 @@ struct SettingsView: View {
 
     private var buildNumberText: String {
         let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
-        return build ?? "Unknown"
+        return build ?? .appText("Unknown")
     }
 
     private var buildDateText: String {
@@ -297,15 +296,15 @@ struct SettingsView: View {
             let executableURL = Bundle.main.executableURL,
             let values = try? executableURL.resourceValues(forKeys: [.contentModificationDateKey]),
             let buildDate = values.contentModificationDate
-        else { return "Unknown" }
+        else { return .appText("Unknown") }
 
         return buildDate.formatted(date: .abbreviated, time: .shortened)
     }
 
     private var updateCheckTitle: String {
         switch releaseUpdateStatus {
-        case .checking: "Checking for Updates…"
-        default: "Check for Updates"
+        case .checking: .appText("Checking for Updates…")
+        default: .appText("Check for Updates")
         }
     }
 
