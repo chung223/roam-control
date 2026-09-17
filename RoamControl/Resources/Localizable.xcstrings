@@ -3747,6 +3747,17 @@
         }
       }
     },
+    "Too many route requests just now. Wait a moment, then try again.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "路線請求過於頻繁。請稍候再試一次。"
+          }
+        }
+      }
+    },
     "Try Again": {
       "extractionState": "manual",
       "localizations": {

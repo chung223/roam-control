@@ -60,8 +60,28 @@ final class WalkingRoutePlanner {
             return nil
         } catch {
             guard directions === calculation else { return nil }
-            errorMessage = .appText("Walking directions are unavailable. Check Location access and your internet connection, then try again.")
+            errorMessage = Self.message(for: error)
             return nil
+        }
+    }
+
+    /// MKDirections reports "no such route exists" by throwing
+    /// `MKError.directionsNotFound`, not by returning an empty `routes`
+    /// array. Without separating the cases, a destination nobody could walk
+    /// to — which is most of them, for an app whose point is being somewhere
+    /// else — told the reader to go and check their network.
+    private static func message(for error: any Error) -> String {
+        guard let mapKitError = error as? MKError else {
+            return .appText("Walking directions are unavailable. Check Location access and your internet connection, then try again.")
+        }
+
+        switch mapKitError.code {
+        case .directionsNotFound, .placemarkNotFound:
+            return .appText("No walking route was found for this destination.")
+        case .loadingThrottled:
+            return .appText("Too many route requests just now. Wait a moment, then try again.")
+        default:
+            return .appText("Walking directions are unavailable. Check Location access and your internet connection, then try again.")
         }
     }
 
