@@ -50,6 +50,18 @@ final class WalkingSimulationController {
     private var routeStart: LocationTarget?
     @ObservationIgnored
     private var movementTask: Task<Void, Never>?
+    @ObservationIgnored
+    private var pauseRequestObserver: (any NSObjectProtocol)?
+
+    init() {
+        observePauseRequests()
+    }
+
+    deinit {
+        if let pauseRequestObserver {
+            NotificationCenter.default.removeObserver(pauseRequestObserver)
+        }
+    }
 
     var progress: Double {
         guard totalDistance > 0 else { return 0 }
@@ -173,6 +185,19 @@ final class WalkingSimulationController {
 
         if case .idle = appModel.deviceSession.phase, phase == .preparing {
             phase = .failed("Roam Control could not start the walking session.")
+        }
+    }
+
+    /// Listens for the Live Activity's pause button, which cannot reach this
+    /// object directly: it is view state, and the intent is a free function
+    /// running in the same process.
+    private func observePauseRequests() {
+        pauseRequestObserver = NotificationCenter.default.addObserver(
+            forName: ToggleWalkPauseIntent.requested,
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            MainActor.assumeIsolated { self?.togglePause() }
         }
     }
 

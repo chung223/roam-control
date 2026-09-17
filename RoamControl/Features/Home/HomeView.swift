@@ -142,12 +142,7 @@ struct HomeView: View {
                     .foregroundStyle(SproutTheme.primary)
                     .padding(.horizontal, 12)
                     .padding(.vertical, 8)
-                    .background(SproutTheme.surface, in: Capsule())
-                    .shadow(
-                        color: SproutTheme.controlShadow.color,
-                        radius: SproutTheme.controlShadow.radius,
-                        y: SproutTheme.controlShadow.y
-                    )
+                    .glassEffect(.regular, in: Capsule())
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
 

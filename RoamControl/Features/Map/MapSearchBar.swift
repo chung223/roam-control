@@ -35,8 +35,7 @@ struct MapSearchBar: View {
         .padding(.horizontal, 16)
         .padding(.vertical, dynamicTypeSize.isAccessibilitySize ? 8 : 4)
         .frame(minHeight: 52)
-        .background(SproutTheme.surface, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
-        .shadow(color: .black.opacity(0.12), radius: 12, y: 5)
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
     }
 
     private var searchFieldRow: some View {

@@ -129,20 +129,18 @@ private extension UIColor {
 
 extension View {
     /// A card in the Sprout style: soft surface, generous radius, gentle lift.
+    /// A card floating over the map. Glass for the same reason the controls
+    /// are: what is behind it moves and changes brightness, and it has to
+    /// stay readable over all of it.
     func sproutCard(
         radius: CGFloat = SproutTheme.Radius.card,
         padding: CGFloat = 18
     ) -> some View {
         self
             .padding(padding)
-            .background(
-                SproutTheme.surface,
+            .glassEffect(
+                .regular,
                 in: RoundedRectangle(cornerRadius: radius, style: .continuous)
-            )
-            .shadow(
-                color: SproutTheme.cardShadow.color,
-                radius: SproutTheme.cardShadow.radius,
-                y: SproutTheme.cardShadow.y
             )
     }
 
@@ -156,17 +154,17 @@ extension View {
     }
 
     /// A circular control floating over the map.
+    ///
+    /// Glass rather than a filled circle and a drawn shadow: this is exactly
+    /// what the system's own material is for — a control over moving content,
+    /// which has to stay legible whether the map beneath it is a pale street
+    /// or a dark satellite photograph. An opaque surface had to pick one.
     func sproutMapControl() -> some View {
         self
             .frame(
                 width: SproutTheme.mapControlDiameter,
                 height: SproutTheme.mapControlDiameter
             )
-            .background(SproutTheme.surface, in: Circle())
-            .shadow(
-                color: SproutTheme.controlShadow.color,
-                radius: SproutTheme.controlShadow.radius,
-                y: SproutTheme.controlShadow.y
-            )
+            .glassEffect(.regular.interactive(), in: Circle())
     }
 }
