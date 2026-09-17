@@ -3,20 +3,28 @@
 A working note for whoever picks this branch up on a Mac. Not a release
 document; delete it before this branch is ever merged anywhere public.
 
-## The one thing to know first
+## Status
 
-**None of this has been compiled.** There is no macOS or Xcode in the environment
-the changes were written in. What *was* verified:
+**Built and installed.** Debug and Release both compile for simulator and device,
+and all five scripts in `scripts/` pass under a real `xcrun swiftc`. One compile
+error in roughly 2,000 new lines: `DirectPathProbe.shortReason` needed
+`nonisolated`, since it is called from `NWConnection`'s handler on the
+connection's own queue.
 
-- All five scripts in `scripts/` pass (the four needing `xcrun` had only their
-  compile step stubbed; every source-level assertion ran).
-- `project.pbxproj` parses structurally: 32 object ids defined, 32 referenced,
-  none dangling, braces and sections balanced.
-- 212 localisable keys referenced in source, 212 present in the catalogue.
-- All 54 failure messages the native bridge and session code can produce have
-  translations, and their English is unchanged in the source.
+The four structural checks that used to be listed here as risks all passed
+untouched. In particular **Xcode 26.6 does accept one synchronised folder shared
+by two targets**, so `RoamControlShared` needed no manual target membership — the
+warning that used to be at the top of this note was wrong.
 
-That is not the same as building. Expect the first build to need fixes.
+**Still unverified: the section 4 smoke test.** It needs a physical device and
+manual interaction, and the Mac had no iOS 27 simulator runtime, so even
+interface-only checks were blocked. Identity migration, the stop button, Live
+Activity lifecycle, offline landmark search, the Chinese error path and dark mode
+are all still waiting on a person.
+
+Environment note: on a Homebrew Python 3.14, two scripts fail to `import plistlib`
+because its `pyexpat` links a newer `libexpat` than the system one. Use
+`/usr/bin/python3`.
 
 ## First build
 
@@ -93,21 +101,43 @@ telemetry, every connection closed without a byte sent. The verification pass
 asserts those symbols are absent from `DirectPathProbe.swift` rather than
 trusting the intention.
 
-### Reading the result
+### Result so far
 
-| Result | Meaning | Next step |
-| --- | --- | --- |
-| A Bonjour address answered | LocalDevVPN may be unnecessary for this hop | Confirm with a full session before relying on it. If it holds, the dependency can be removed entirely — no entitlement, no network extension |
-| Only `10.7.0.1` answered | The tunnel app is required | Question settled. Do **not** spend weeks on a `NEPacketTunnelProvider`: it would still occupy the one packet-tunnel slot iOS allows, so it would not let Surge coexist either |
-| Nothing answered | Not a result | Check LocalDevVPN is connected and the paired iPhone is awake, then re-run |
+The direct path answered. Run twice; the second with the USB cable unplugged, to
+rule out the connection riding a USB bridge:
 
-A split result is informative on its own. If IPv6 link-local answers but IPv4
-does not, the service is bound to a specific interface, and that says a lot about
-where a hand-built tunnel would have to sit.
+```
+Bonjour IPv4: 10.0.0.120:49152        -> REACHABLE in 1ms
+Bonjour IPv6: fe80::...%en0:49152     -> REACHABLE in 0ms
+LocalDevVPN (control): 10.7.0.1:49152 -> REACHABLE in 1ms
+```
 
-The expectation going in is that only `10.7.0.1` answers — LocalDevVPN existing
-at all is decent evidence the direct path does not work. Worth one button press
-to know rather than assume.
+On Wi-Fi, with no cable, the pairing service answers on the iPhone's own LAN
+address. The prediction written here — that only `10.7.0.1` would answer — was
+wrong.
+
+### What that does not yet establish
+
+Three things, in order of how cheaply they settle it:
+
+1. **LocalDevVPN was connected during both runs**, because it is the control. If
+   it is doing something that makes the listener reachable at all, the result is
+   an artefact. Disconnect it completely and re-run: `10.7.0.1` should fail, and
+   the question is whether the Bonjour rows still pass.
+2. **Loopback is now probed too.** If a resolved address answers but `127.0.0.1`
+   does not, the service wants a real interface address — which would explain why
+   LocalDevVPN exists at all, and means the direct path depends on having a
+   routable local address.
+3. **Mobile data has no LAN address.** The app already has a separate mobile-data
+   flow. Run the experiment with Wi-Fi off; LocalDevVPN is likely still required
+   there, which would make this a Wi-Fi-only simplification rather than a
+   removed dependency.
+
+A probe proves one TCP connection. **Settings → Connection Health → Use the
+direct path for sessions** carries it through a whole session — pair-verify, the
+tunnel, RSD, DVT — which is the only thing that settles it. It is off by default
+and appears only once a direct address has answered. Turn it off if a session
+fails to start.
 
 ### What to capture
 

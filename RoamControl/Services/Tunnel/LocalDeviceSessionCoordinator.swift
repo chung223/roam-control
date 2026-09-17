@@ -39,6 +39,32 @@ final class LocalDeviceSessionCoordinator: NSObject {
         let port: UInt16
         let identifier: String
         let authTag: String
+        /// Addresses Bonjour resolved for this service, best first. Empty until
+        /// the direct-path experiment showed these are worth carrying.
+        var resolvedAddresses: [String] = []
+    }
+
+    /// Opt-in: dial the address Bonjour resolved instead of LocalDevVPN's.
+    ///
+    /// The direct-path experiment showed the pairing service answering on its
+    /// own Wi-Fi address, which the probe could only prove for one TCP
+    /// connection. This carries that through a whole session — pair-verify,
+    /// the tunnel, RSD, DVT — which is the only thing that actually settles it.
+    /// Off by default: the working path must stay the default until this is
+    /// proven, and mobile data has no usable resolved address at all.
+    static let prefersDirectPathKey = "prefersDirectPathForSessions"
+
+    var prefersDirectPath: Bool {
+        get { UserDefaults.standard.bool(forKey: Self.prefersDirectPathKey) }
+        set { UserDefaults.standard.set(newValue, forKey: Self.prefersDirectPathKey) }
+    }
+
+    /// The address a session or probe should dial for this service.
+    private func peerAddress(for service: RemotePairingService) -> String {
+        guard prefersDirectPath, let resolved = service.resolvedAddresses.first else {
+            return Self.localDevVPNPeerAddress
+        }
+        return resolved
     }
 
     private static let localDevVPNPeerAddress = "10.7.0.1"
@@ -500,7 +526,8 @@ final class LocalDeviceSessionCoordinator: NSObject {
         verifyServiceIsReachable(RemotePairingService(
             port: UInt16(service.port),
             identifier: identifier,
-            authTag: authTag
+            authTag: authTag,
+            resolvedAddresses: ResolvedServiceAddress.dialable(from: service.addresses)
         ))
     }
 
@@ -567,7 +594,7 @@ final class LocalDeviceSessionCoordinator: NSObject {
         let contextBits = UInt(bitPattern: Unmanaged.passRetained(self).toOpaque())
         let pairingRecord = pendingSession.pairingRecord
         let target = pendingSession.target
-        let peerAddressString = Self.localDevVPNPeerAddress
+        let peerAddressString = peerAddress(for: resolvedService)
 
         DispatchQueue.global(qos: .userInitiated).async {
             guard
@@ -749,7 +776,7 @@ final class LocalDeviceSessionCoordinator: NSObject {
 
         serviceProbeAttemptCount += 1
         let connection = NWConnection(
-            host: NWEndpoint.Host(Self.localDevVPNPeerAddress),
+            host: NWEndpoint.Host(peerAddress(for: service)),
             port: port,
             using: .tcp
         )

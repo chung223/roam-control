@@ -157,6 +157,20 @@ struct ConnectionHealthView: View {
                     }
                     .foregroundStyle(.primary)
                 }
+                if directPath.directPathWorks {
+                    Toggle(isOn: Binding(
+                        get: { appModel.deviceSession.prefersDirectPath },
+                        set: { appModel.deviceSession.prefersDirectPath = $0 }
+                    )) {
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Use the direct path for sessions")
+                                .font(SproutTheme.font(.body))
+                            Text("Unproven. Turn it off if a session fails to start.")
+                                .font(SproutTheme.font(.caption))
+                                .foregroundStyle(SproutTheme.textSecondary)
+                        }
+                    }
+                }
             } header: {
                 Text("Direct Path Experiment")
             } footer: {
@@ -366,9 +380,13 @@ struct ConnectionHealthView: View {
 
     private var directPathConclusion: String {
         if directPath.directPathWorks {
-            return String(
-                localized: "A directly resolved address answered. LocalDevVPN may not be needed for this hop — worth confirming with a full session before relying on it."
-            )
+            return directPath.loopbackWorks
+                ? String(
+                    localized: "A resolved address and loopback both answered. The service is not refusing local connections, so LocalDevVPN may not be needed for this hop. Confirm with a full session."
+                )
+                : String(
+                    localized: "A resolved address answered but loopback did not. The service wants a real interface address, not loopback — LocalDevVPN may not be needed for this hop, but a routable address is. Confirm with a full session."
+                )
         }
         if directPath.localDevVPNWorks {
             return String(
@@ -393,7 +411,9 @@ struct ConnectionHealthView: View {
             lines.append("\(candidate.source.label): \(candidate.host):\(candidate.port) -> \(outcome)")
         }
         lines.append("Direct path works: \(directPath.directPathWorks)")
+        lines.append("Loopback works: \(directPath.loopbackWorks)")
         lines.append("LocalDevVPN works: \(directPath.localDevVPNWorks)")
+        lines.append("Sessions set to direct path: \(appModel.deviceSession.prefersDirectPath)")
         return lines.joined(separator: "\n")
     }
 

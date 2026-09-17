@@ -68,6 +68,28 @@
         }
       }
     },
+    "A resolved address and loopback both answered. The service is not refusing local connections, so LocalDevVPN may not be needed for this hop. Confirm with a full session.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "解析出的位址與本機回送都有回應。這項服務並未拒絕本機連線，因此這一跳可能不需要 LocalDevVPN。請用完整的工作階段確認。"
+          }
+        }
+      }
+    },
+    "A resolved address answered but loopback did not. The service wants a real interface address, not loopback — LocalDevVPN may not be needed for this hop, but a routable address is. Confirm with a full session.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "解析出的位址有回應，但本機回送沒有。這項服務需要真實的介面位址而非回送位址——這一跳可能不需要 LocalDevVPN，但需要一個可路由的位址。請用完整的工作階段確認。"
+          }
+        }
+      }
+    },
     "About": {
       "extractionState": "manual",
       "localizations": {
@@ -1157,6 +1179,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "正在尋找安全儲存的配對記錄。"
+          }
+        }
+      }
+    },
+    "Loopback": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "本機回送"
           }
         }
       }
@@ -3665,6 +3698,17 @@
         }
       }
     },
+    "Unproven. Turn it off if a session fails to start.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "尚未證實。如果工作階段無法啟動，請關閉此選項。"
+          }
+        }
+      }
+    },
     "Update Location": {
       "extractionState": "manual",
       "localizations": {
@@ -3683,6 +3727,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "更新"
+          }
+        }
+      }
+    },
+    "Use the direct path for sessions": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "工作階段使用直連路徑"
           }
         }
       }

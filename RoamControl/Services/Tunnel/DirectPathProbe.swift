@@ -41,6 +41,10 @@ final class DirectPathProbe: NSObject {
             /// An address Bonjour resolved for the service itself.
             case bonjourIPv4
             case bonjourIPv6
+            /// The device's own loopback. If a resolved address answers but
+            /// this does not, the service is refusing loopback specifically,
+            /// which is a different finding from "the app cannot reach it".
+            case loopback
         }
     }
 
@@ -76,7 +80,17 @@ final class DirectPathProbe: NSObject {
     /// point of the experiment.
     var directPathWorks: Bool {
         candidates.contains { candidate in
-            guard candidate.source != .localDevVPN else { return false }
+            guard candidate.source == .bonjourIPv4 || candidate.source == .bonjourIPv6 else {
+                return false
+            }
+            if case .reachable = candidate.outcome { return true }
+            return false
+        }
+    }
+
+    var loopbackWorks: Bool {
+        candidates.contains { candidate in
+            guard candidate.source == .loopback else { return false }
             if case .reachable = candidate.outcome { return true }
             return false
         }
@@ -190,7 +204,7 @@ final class DirectPathProbe: NSObject {
         var found: [Candidate] = []
 
         for addressData in service.addresses ?? [] {
-            guard let described = Self.describe(addressData) else { continue }
+            guard let described = ResolvedServiceAddress.describe(addressData) else { continue }
             // A resolved loopback address tells us nothing new.
             guard !described.host.hasPrefix("127."), described.host != "::1" else { continue }
             found.append(
@@ -201,6 +215,11 @@ final class DirectPathProbe: NSObject {
                 )
             )
         }
+
+        // Loopback is not advertised by Bonjour, so it is added explicitly.
+        // It separates "an app on this device can reach the service" from
+        // "the service requires a non-loopback source address".
+        found.append(Candidate(source: .loopback, host: "127.0.0.1", port: port))
 
         // The control: the path the app actually uses today.
         found.append(Candidate(source: .localDevVPN, host: "10.7.0.1", port: port))
@@ -284,7 +303,9 @@ final class DirectPathProbe: NSObject {
         }
     }
 
-    private static func shortReason(_ error: NWError) -> String {
+    // Called from NWConnection's state handler on the connection's own queue,
+    // and it only maps an error to text, so it is not actor state.
+    private nonisolated static func shortReason(_ error: NWError) -> String {
         switch error {
         case .posix(let code):
             switch code {
@@ -298,34 +319,6 @@ final class DirectPathProbe: NSObject {
         case .dns: return "DNS failure"
         case .tls: return "TLS failure"
         @unknown default: return "Unknown"
-        }
-    }
-
-    /// Renders a resolved `sockaddr` as a numeric address.
-    private static func describe(_ addressData: Data) -> (host: String, isIPv6: Bool)? {
-        addressData.withUnsafeBytes { raw -> (String, Bool)? in
-            guard
-                raw.count >= MemoryLayout<sockaddr>.size,
-                let base = raw.baseAddress?.assumingMemoryBound(to: sockaddr.self)
-            else { return nil }
-
-            let family = base.pointee.sa_family
-            guard family == sa_family_t(AF_INET) || family == sa_family_t(AF_INET6) else {
-                return nil
-            }
-
-            var hostBuffer = [CChar](repeating: 0, count: Int(NI_MAXHOST))
-            let status = getnameinfo(
-                base,
-                socklen_t(addressData.count),
-                &hostBuffer,
-                socklen_t(hostBuffer.count),
-                nil,
-                0,
-                NI_NUMERICHOST
-            )
-            guard status == 0 else { return nil }
-            return (String(cString: hostBuffer), family == sa_family_t(AF_INET6))
         }
     }
 }
@@ -363,6 +356,7 @@ extension DirectPathProbe.Candidate.Source {
         case .localDevVPN: "LocalDevVPN (control)"
         case .bonjourIPv4: "Bonjour IPv4"
         case .bonjourIPv6: "Bonjour IPv6"
+        case .loopback: "Loopback"
         }
     }
 }
