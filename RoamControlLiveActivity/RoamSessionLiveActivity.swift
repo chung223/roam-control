@@ -18,12 +18,12 @@ struct RoamSessionLiveActivity: Widget {
             )
             .widgetURL(URL(string: "roamcontrol://session"))
             .activityBackgroundTint(nil)
-            .activitySystemActionForegroundColor(nil)
+            .activitySystemActionForegroundColor(SproutActivity.primary)
         } dynamicIsland: { context in
             DynamicIsland {
                 DynamicIslandExpandedRegion(.leading) {
                     Label {
-                        Text(context.state.isWalking ? "Walking" : "Simulating")
+                        Text(ActivityText.localized(context.state.isWalking ? "Walking" : "Simulating"))
                     } icon: {
                         Image(systemName: context.state.symbolName)
                     }
@@ -43,12 +43,11 @@ struct RoamSessionLiveActivity: Widget {
                             .font(.headline)
                             .lineLimit(1)
 
+                        // The leading region already names the stage. Repeating
+                        // it here only made the expanded view taller and emptier,
+                        // and the guidance is to use the height the content needs.
                         if context.state.isWalking {
                             WalkingProgressView(state: context.state)
-                        } else {
-                            Text(context.state.statusText)
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
                         }
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -85,7 +84,7 @@ private struct LockScreenView: View {
                 .accessibilityHidden(true)
 
             VStack(alignment: .leading, spacing: 4) {
-                Text(state.statusText)
+                Text(ActivityText.localized(state.statusText))
                     .font(.caption.weight(.semibold))
                     .foregroundStyle(.secondary)
 
@@ -103,7 +102,7 @@ private struct LockScreenView: View {
 
             VStack(alignment: .trailing, spacing: 4) {
                 ElapsedTimeText(startedAt: startedAt)
-                    .font(.caption.monospacedDigit())
+                    .font(.caption.weight(.medium).monospacedDigit())
                     .foregroundStyle(.secondary)
 
                 Text("Sprout")
@@ -158,7 +157,7 @@ private struct WalkingProgressView: View {
     }
 
     private var distanceText: String {
-        guard state.stage != .arrived else { return "Arrived" }
+        guard state.stage != .arrived else { return ActivityText.localized("Arrived") }
 
         let measurement = Measurement(
             value: state.remainingDistance,
@@ -167,7 +166,8 @@ private struct WalkingProgressView: View {
         let formatter = MeasurementFormatter()
         formatter.unitOptions = .naturalScale
         formatter.numberFormatter.maximumFractionDigits = state.remainingDistance < 1000 ? 0 : 1
-        return "\(formatter.string(from: measurement)) left"
+        let distance = formatter.string(from: measurement)
+        return String(localized: "\(distance) left")
     }
 }
 
@@ -287,6 +287,20 @@ private struct RouteTrail: View {
         // the view, and never reaches the rounded edge of the island — the
         // guidance asks content not to touch it.
         .padding(.horizontal, Self.marker / 2)
+    }
+}
+
+// MARK: - Text
+
+/// The extension compiles none of the app's resources, so it carries its own
+/// String Catalog. Without this every word on the Lock Screen and in the
+/// Dynamic Island stayed English whatever the device language was.
+///
+/// The English stays the key, exactly as `SessionMessage` does in the app, so
+/// a string with no entry falls back to itself rather than disappearing.
+private enum ActivityText {
+    static func localized(_ english: String) -> String {
+        String(localized: String.LocalizationValue(english))
     }
 }
 
