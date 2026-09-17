@@ -110,7 +110,7 @@ struct FavouriteLocationQuery: EntityQuery {
 struct StartLocationIntent: AppIntent {
     static let title: LocalizedStringResource = "Start Location"
     static let description = IntentDescription(
-        "Reports a saved place as this iPhone's location."
+        "Reports a saved place as this device's location."
     )
     /// A session cannot run without the app in front, so there is nothing to
     /// gain by pretending otherwise.
@@ -132,7 +132,7 @@ struct StartLocationIntent: AppIntent {
 struct StartLocationAtCoordinateIntent: AppIntent {
     static let title: LocalizedStringResource = "Start Location at Coordinates"
     static let description = IntentDescription(
-        "Reports a pair of coordinates as this iPhone's location."
+        "Reports a pair of coordinates as this device's location."
     )
     static let openAppWhenRun = true
 
@@ -154,7 +154,7 @@ struct StartLocationAtCoordinateIntent: AppIntent {
 struct StopLocationIntent: AppIntent {
     static let title: LocalizedStringResource = "Stop Location"
     static let description = IntentDescription(
-        "Ends the session and restores this iPhone's real location."
+        "Ends the session and restores this device's real location."
     )
     static let openAppWhenRun = true
 

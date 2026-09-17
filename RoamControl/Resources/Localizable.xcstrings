@@ -1698,13 +1698,13 @@
         }
       }
     },
-    "Ends the session and restores this iPhone's real location.": {
+    "Ends the session and restores this device's real location.": {
       "extractionState": "manual",
       "localizations": {
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "結束工作階段並還原這支 iPhone 的真實位置。"
+            "value": "結束工作階段並還原這部裝置的真實位置。"
           }
         }
       }
@@ -4281,24 +4281,24 @@
         }
       }
     },
-    "Reports a pair of coordinates as this iPhone's location.": {
+    "Reports a pair of coordinates as this device's location.": {
       "extractionState": "manual",
       "localizations": {
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "將一組座標回報為這支 iPhone 的位置。"
+            "value": "將一組座標回報為這部裝置的位置。"
           }
         }
       }
     },
-    "Reports a saved place as this iPhone's location.": {
+    "Reports a saved place as this device's location.": {
       "extractionState": "manual",
       "localizations": {
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "將已儲存的地點回報為這支 iPhone 的位置。"
+            "value": "將已儲存的地點回報為這部裝置的位置。"
           }
         }
       }
