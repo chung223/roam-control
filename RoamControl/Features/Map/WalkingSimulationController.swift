@@ -316,7 +316,12 @@ final class WalkingSimulationController {
                 if reachedDestination {
                     self.currentCoordinate = destination.coordinate
                     self.phase = .arrived
-                    self.publishWalkingActivity(stage: .arrived)
+                    // The walk is over, the session is not: the iPhone still
+                    // reports the destination. Presenting it as a held location
+                    // says that; leaving the walk on screen kept a progress bar
+                    // and a running clock up over a walk that had finished.
+                    // The phase stays .arrived so a return trip is still offered.
+                    self.reportWalkNoLongerMoving(named: destination.name)
                     return
                 }
 
