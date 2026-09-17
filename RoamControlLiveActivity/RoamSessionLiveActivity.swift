@@ -39,9 +39,12 @@ struct RoamSessionLiveActivity: Widget {
 
                 DynamicIslandExpandedRegion(.bottom) {
                     VStack(alignment: .leading, spacing: 6) {
+                        // Two lines here as well as on the Lock Screen: the
+                        // expanded view is the one with room to read the whole
+                        // address, so it should not be the one that cuts it.
                         Text(context.state.placeName)
                             .font(.headline)
-                            .lineLimit(1)
+                            .lineLimit(2)
 
                         // The leading region already names the stage. Repeating
                         // it here only made the expanded view taller and emptier,
