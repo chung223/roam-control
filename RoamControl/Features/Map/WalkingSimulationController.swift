@@ -98,6 +98,35 @@ final class WalkingSimulationController {
         phase = routePoints.count >= 2 ? .idle : .failed("This walking route does not contain enough detail to simulate movement.")
     }
 
+    /// Keep walking after arriving, turning round and going back, over and
+    /// over. A one-way walk stops as soon as it arrives, which is not what a
+    /// walk is for when the point of it is to keep moving.
+    static let loopsWalkKey = "loopsWalkAfterArrival"
+
+    var loopsWalk: Bool {
+        get { UserDefaults.standard.bool(forKey: Self.loopsWalkKey) }
+        set { UserDefaults.standard.set(newValue, forKey: Self.loopsWalkKey) }
+    }
+
+    /// Reverses the route in place without leaving the walk.
+    ///
+    /// Unlike `prepareReturnTrip`, which ends at `.idle` for someone to start
+    /// again, this keeps the phase and the session as they are — the walk has
+    /// not stopped, it has turned round.
+    private func turnAround() -> Bool {
+        guard let previousDestination = destination, let returnDestination = routeStart,
+              routePoints.count >= 2
+        else { return false }
+
+        routePoints.reverse()
+        cumulativeDistances = cumulativeDistanceValues(for: routePoints)
+        totalDistance = cumulativeDistances.last ?? totalDistance
+        distanceTravelled = 0
+        destination = returnDestination
+        routeStart = previousDestination
+        return true
+    }
+
     func prepareReturnTrip() -> LocationTarget? {
         guard
             phase == .arrived,
@@ -311,6 +340,14 @@ final class WalkingSimulationController {
                     self.phase = .failed("The active location session ended before the walk finished.")
                     self.reportWalkNoLongerMoving(named: destination.name)
                     return
+                }
+
+                if reachedDestination, self.loopsWalk, self.turnAround() {
+                    // Arrived, and going straight back. The route is the same
+                    // line, so the map needs nothing; only the destination the
+                    // activity names has changed.
+                    self.publishWalkingActivity(stage: .running)
+                    continue
                 }
 
                 if reachedDestination {

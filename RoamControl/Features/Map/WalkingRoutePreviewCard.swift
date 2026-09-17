@@ -84,11 +84,28 @@ struct WalkingRoutePreviewCard: View {
 
             if canChoosePace {
                 pacePicker
+                loopToggle
             }
 
             controls
             footer
         }
+    }
+
+    private var loopToggle: some View {
+        Toggle(isOn: Binding(
+            get: { simulation.loopsWalk },
+            set: { simulation.loopsWalk = $0 }
+        )) {
+            VStack(alignment: .leading, spacing: 2) {
+                Text("Keep walking after arrival")
+                    .font(SproutTheme.font(.subheadline, weight: .medium))
+                Text("Turns round at each end and walks the route again.")
+                    .font(SproutTheme.font(.caption))
+                    .foregroundStyle(SproutTheme.textSecondary)
+            }
+        }
+        .tint(SproutTheme.primary)
     }
 
     @ViewBuilder

@@ -2508,6 +2508,17 @@
         }
       }
     },
+    "Keep walking after arrival": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "抵達後繼續走"
+          }
+        }
+      }
+    },
     "Kilimanjaro, Tanzania": {
       "extractionState": "manual",
       "localizations": {
@@ -6571,6 +6582,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Turning sharing off stops new reporting, cancels requests still in progress where possible and removes the identifier from Sprout. It cannot withdraw anonymous events already received."
+          }
+        }
+      }
+    },
+    "Turns round at each end and walks the route again.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "走到端點就折返，沿原路線再走一次。"
           }
         }
       }
