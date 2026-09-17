@@ -1,4 +1,5 @@
 import ActivityKit
+import AppIntents
 import SwiftUI
 import UIKit
 import WidgetKit
@@ -54,6 +55,9 @@ struct RoamSessionLiveActivity: Widget {
                         }
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    .overlay(alignment: .topTrailing) {
+                        WalkPauseButton(state: context.state)
+                    }
                     // The island's bottom corners curve inwards over this
                     // region, and without the inset they clipped the first
                     // character of the distance line.
@@ -129,13 +133,17 @@ private struct LockScreenView: View {
             // width is larger than the cap, so the text was clipped away to
             // nothing. The eight-hour bound fixes the longest string it can
             // show at 7:59:59, which fits well inside the cap.
-            ElapsedTimeText(startedAt: startedAt)
-                .font(.caption.weight(.medium).monospacedDigit())
-                .foregroundStyle(.secondary)
-                .frame(maxWidth: 72, alignment: .trailing)
-                // The timer fills the cap, so the frame's alignment never
-                // applies to it; the text has to align itself.
-                .multilineTextAlignment(.trailing)
+            VStack(alignment: .trailing, spacing: 8) {
+                ElapsedTimeText(startedAt: startedAt)
+                    .font(.caption.weight(.medium).monospacedDigit())
+                    .foregroundStyle(.secondary)
+                    .frame(maxWidth: 72, alignment: .trailing)
+                    // The timer fills the cap, so the frame's alignment never
+                    // applies to it; the text has to align itself.
+                    .multilineTextAlignment(.trailing)
+
+                WalkPauseButton(state: state)
+            }
         }
         .padding(16)
         // The row was sizing to its content, which left the elapsed time
@@ -151,6 +159,39 @@ private struct LockScreenView: View {
             parts.append("\(Int((state.progress * 100).rounded())) percent complete")
         }
         return parts.joined(separator: ", ")
+    }
+}
+
+/// Pause and resume, and nothing else.
+///
+/// Stopping is not offered here on purpose: it has to restore the real
+/// location and confirm the device accepted it, which is not something to
+/// fire off from a Lock Screen tap. Pausing changes nothing that cannot be
+/// changed straight back, and the guidance names pause and resume as the
+/// case a control belongs in.
+private struct WalkPauseButton: View {
+    let state: RoamSessionActivityAttributes.ContentState
+
+    private var isShown: Bool {
+        state.isWalking && (state.stage == .running || state.stage == .paused)
+    }
+
+    var body: some View {
+        if isShown {
+            Button(intent: ToggleWalkPauseIntent()) {
+                Image(systemName: state.stage == .paused ? "play.fill" : "pause.fill")
+                    .font(.caption.weight(.bold))
+                    .frame(width: 28, height: 28)
+                    .foregroundStyle(SproutActivity.tint(for: state))
+                    .background(SproutActivity.primary.opacity(0.18), in: Circle())
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel(
+                Text(verbatim: ActivityText.localized(
+                    state.stage == .paused ? "Resume walk" : "Pause walk"
+                ))
+            )
+        }
     }
 }
 
