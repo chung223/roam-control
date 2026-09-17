@@ -63,7 +63,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "關於 Roam Control"
+            "value": "關於 Sprout"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "About Sprout"
           }
         }
       }
@@ -85,7 +91,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "工作階段未啟用代表 Roam Control 的工作程序已結束。其他 App 可能需要一些時間才能取得新的真實位置。"
+            "value": "工作階段未啟用代表 Sprout 的工作程序已結束。其他 App 可能需要一些時間才能取得新的真實位置。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "An inactive session means Sprout's worker has ended. Other apps may need time to acquire a fresh real location."
           }
         }
       }
@@ -239,7 +251,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "只有在你點選時才會檢查公開的 GitHub 版本。Roam Control 不會在這個請求中傳送位置、配對或診斷資料。"
+            "value": "只有在你點選時才會檢查公開的 GitHub 版本。Sprout 不會在這個請求中傳送位置、配對或診斷資料。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checks the public GitHub release only when you tap it. Sprout never sends location, pairing or diagnostic data with this request."
           }
         }
       }
@@ -272,7 +290,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "你可以選擇是否以匿名活動次數協助改善 Roam Control。只有在你主動開啟後才會開始分享，之後也可以在「設定」中變更。"
+            "value": "你可以選擇是否以匿名活動次數協助改善 Sprout。只有在你主動開啟後才會開始分享，之後也可以在「設定」中變更。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose whether to help improve Sprout with anonymous activity counts. Sharing starts only if you switch it on and can be changed later in Settings."
           }
         }
       }
@@ -602,7 +626,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "事件會傳送到由 Roam Control 維護者營運的服務，在有設定的 Beta 版本中也會傳送到 TelemetryDeck。自架服務會收到一般的 HTTPS 連線中繼資料（例如來源 IP 位址），但 App 不會把它放進事件內容中。"
+            "value": "事件會傳送到由 Sprout 維護者營運的服務，在有設定的 Beta 版本中也會傳送到 TelemetryDeck。自架服務會收到一般的 HTTPS 連線中繼資料（例如來源 IP 位址），但 App 不會把它放進事件內容中。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Events are sent to Sprout's maintainer-operated service and, in configured beta builds, TelemetryDeck. The self-hosted service receives ordinary HTTPS connection metadata, such as the source IP address, but the app does not include it in the event body."
           }
         }
       }
@@ -833,7 +863,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "真實位置還原完成前，請保持 Roam Control 開啟。"
+            "value": "真實位置還原完成前，請保持 Sprout 開啟。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep Sprout open until the real location has been restored."
           }
         }
       }
@@ -844,7 +880,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "請讓 Roam Control 持續執行。步行進行期間你可以使用其他 App。"
+            "value": "請讓 Sprout 持續執行。步行進行期間你可以使用其他 App。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep Sprout running. You can use other apps while the walk continues."
           }
         }
       }
@@ -899,7 +941,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "需要「區域網路」權限。請到「設定 › App › Roam Control」開啟後再試一次。"
+            "value": "需要「區域網路」權限。請到「設定 › App › Sprout」開啟後再試一次。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Local Network access is required. Enable it in Settings › Apps › Sprout, then try again."
           }
         }
       }
@@ -987,7 +1035,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "請確認 LocalDevVPN 已連線，短暫關閉行動網路，然後回到 Roam Control。"
+            "value": "請確認 LocalDevVPN 已連線，短暫關閉行動網路，然後回到 Sprout。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Make sure LocalDevVPN is connected, switch mobile data off briefly, then return to Sprout."
           }
         }
       }
@@ -1339,7 +1393,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "配對耗時過久。請回到 Roam Control 再試一次。"
+            "value": "配對耗時過久。請回到 Sprout 再試一次。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pairing took too long. Return to Sprout and try again."
           }
         }
       }
@@ -1592,7 +1652,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "重設 Roam Control"
+            "value": "重設 Sprout"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reset Sprout"
           }
         }
       }
@@ -1603,7 +1669,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "要重設 Roam Control 嗎？"
+            "value": "要重設 Sprout 嗎？"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reset Sprout?"
           }
         }
       }
@@ -1658,7 +1730,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "還原只會短暫重新連線以清除模擬定位，不會自動啟動任何項目。完成前請保持 Roam Control 開啟。"
+            "value": "還原只會短暫重新連線以清除模擬定位，不會自動啟動任何項目。完成前請保持 Sprout 開啟。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restoring reconnects only long enough to clear the simulated location. Nothing starts automatically. Keep Sprout open until it finishes."
           }
         }
       }
@@ -1669,7 +1747,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "正在還原這支 iPhone 的真實位置。完成前請保持 Roam Control 開啟。"
+            "value": "正在還原這支 iPhone 的真實位置。完成前請保持 Sprout 開啟。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restoring this iPhone's real location. Keep Sprout open until this finishes."
           }
         }
       }
@@ -1702,7 +1786,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "Roam Control"
+            "value": "Sprout"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout"
           }
         }
       }
@@ -1713,7 +1803,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "當 LocalDevVPN 的工作階段層已連線時，Roam Control 就能使用這筆記錄。"
+            "value": "當 LocalDevVPN 的工作階段層已連線時，Sprout 就能使用這筆記錄。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout can use this record when the LocalDevVPN session layer is connected."
           }
         }
       }
@@ -1724,7 +1820,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "Roam Control 在確認 %@ 的模擬定位已結束之前就關閉了。請選擇這支 iPhone 接下來要做什麼。"
+            "value": "Sprout 在確認 %@ 的模擬定位已結束之前就關閉了。請選擇這支 iPhone 接下來要做什麼。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout closed before it could confirm that the simulated location at %@ ended. Choose what this iPhone should do next."
           }
         }
       }
@@ -1735,7 +1837,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "Roam Control 在確認前往 %@ 的模擬步行已結束之前就關閉了。你可以從上次儲存的位置繼續，或還原這支 iPhone 的真實位置。"
+            "value": "Sprout 在確認前往 %@ 的模擬步行已結束之前就關閉了。你可以從上次儲存的位置繼續，或還原這支 iPhone 的真實位置。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout closed before it could confirm that the simulated walk to %@ ended. Continue from the last saved point or restore this iPhone's real location."
           }
         }
       }
@@ -1746,7 +1854,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "Roam Control 無法完成 iPhone 的服務交握。"
+            "value": "Sprout 無法完成 iPhone 的服務交握。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout could not complete the iPhone service handshake."
           }
         }
       }
@@ -1757,7 +1871,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "Roam Control 無法確認模擬定位已停止。"
+            "value": "Sprout 無法確認模擬定位已停止。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout could not confirm stopping location simulation."
           }
         }
       }
@@ -1768,7 +1888,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "Roam Control 無法判斷自己的配對連接埠。"
+            "value": "Sprout 無法判斷自己的配對連接埠。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout could not determine its pairing port."
           }
         }
       }
@@ -1779,7 +1905,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "Roam Control 無法透過 LocalDevVPN 找到這支 iPhone。請確認隧道已啟用後再試一次。"
+            "value": "Sprout 無法透過 LocalDevVPN 找到這支 iPhone。請確認隧道已啟用後再試一次。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout could not find this iPhone through LocalDevVPN. Check that the tunnel is enabled and try again."
           }
         }
       }
@@ -1790,7 +1922,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "Roam Control 無法沿著這條步行路線移動。"
+            "value": "Sprout 無法沿著這條步行路線移動。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout could not follow this walking route."
           }
         }
       }
@@ -1801,7 +1939,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "Roam Control 無法識別這支 iPhone 的配對服務。"
+            "value": "Sprout 無法識別這支 iPhone 的配對服務。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout could not identify this iPhone's pairing service."
           }
         }
       }
@@ -1812,7 +1956,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "Roam Control 無法開啟本機配對連線。"
+            "value": "Sprout 無法開啟本機配對連線。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout could not open a local pairing connection."
           }
         }
       }
@@ -1823,7 +1973,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "Roam Control 無法開啟這支 iPhone 的定位控制項。"
+            "value": "Sprout 無法開啟這支 iPhone 的定位控制項。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout could not open the iPhone's location controls."
           }
         }
       }
@@ -1834,7 +1990,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "Roam Control 無法開啟這支 iPhone 的服務目錄。"
+            "value": "Sprout 無法開啟這支 iPhone 的服務目錄。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout could not open the iPhone's service directory."
           }
         }
       }
@@ -1845,7 +2007,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "Roam Control 無法開啟安全的裝置隧道。"
+            "value": "Sprout 無法開啟安全的裝置隧道。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout could not open the secure device tunnel."
           }
         }
       }
@@ -1856,7 +2024,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "Roam Control 無法準備所選的位置。"
+            "value": "Sprout 無法準備所選的位置。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout could not prepare the selected location."
           }
         }
       }
@@ -1867,7 +2041,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "Roam Control 無法透過 LocalDevVPN 連到這支 iPhone。"
+            "value": "Sprout 無法透過 LocalDevVPN 連到這支 iPhone。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout could not reach the iPhone through LocalDevVPN."
           }
         }
       }
@@ -1878,7 +2058,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "Roam Control 無法為裝置隧道建立加密。"
+            "value": "Sprout 無法為裝置隧道建立加密。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout could not secure the device tunnel."
           }
         }
       }
@@ -1889,7 +2075,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "Roam Control 無法安全地儲存新的配對記錄。"
+            "value": "Sprout 無法安全地儲存新的配對記錄。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout could not securely store the new pairing."
           }
         }
       }
@@ -1900,7 +2092,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "Roam Control 無法啟動裝置工作階段。"
+            "value": "Sprout 無法啟動裝置工作階段。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout could not start its device session."
           }
         }
       }
@@ -1911,7 +2109,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "Roam Control 無法啟動定位引擎。"
+            "value": "Sprout 無法啟動定位引擎。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout could not start its location engine."
           }
         }
       }
@@ -1922,7 +2126,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "Roam Control 無法啟動配對引擎。"
+            "value": "Sprout 無法啟動配對引擎。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout could not start its pairing engine."
           }
         }
       }
@@ -1933,7 +2143,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "Roam Control 無法啟動步行工作階段。"
+            "value": "Sprout 無法啟動步行工作階段。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout could not start the walking session."
           }
         }
       }
@@ -1944,7 +2160,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "Roam Control 無法更新使用中的位置。"
+            "value": "Sprout 無法更新使用中的位置。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout could not update the active location."
           }
         }
       }
@@ -1955,7 +2177,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "Roam Control 找到的裝置廣播已過期。請將 LocalDevVPN 關閉再開啟，然後重試。"
+            "value": "Sprout 找到的裝置廣播已過期。請將 LocalDevVPN 關閉再開啟，然後重試。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout found an outdated device announcement. Toggle LocalDevVPN off and on, then try again."
           }
         }
       }
@@ -1966,7 +2194,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "Roam Control 未偵測到其他 VPN。這只是疑難排解的檢查而非診斷結論；iOS 排程器的拒絕發生在配對連線開始之前。"
+            "value": "Sprout 未偵測到其他 VPN。這只是疑難排解的檢查而非診斷結論；iOS 排程器的拒絕發生在配對連線開始之前。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout has not detected another VPN. This is a troubleshooting check, not a diagnosis; an iOS scheduler rejection happens before the pairing connection starts."
           }
         }
       }
@@ -1977,7 +2211,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "Roam Control 的用途是在你自己的裝置上，進行以定位為基礎的 App 開發與測試。"
+            "value": "Sprout 的用途是在你自己的裝置上，進行以定位為基礎的 App 開發與測試。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout is intended for location-based app development and testing on your own device."
           }
         }
       }
@@ -1988,7 +2228,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "iOS 的配對畫面現在看得到 Roam Control。"
+            "value": "iOS 的配對畫面現在看得到 Sprout。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout is visible to the iOS pairing screen."
           }
         }
       }
@@ -1999,7 +2245,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "Roam Control 遺失了定位工作階段的資訊。"
+            "value": "Sprout 遺失了定位工作階段的資訊。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout lost the location session details."
           }
         }
       }
@@ -2010,7 +2262,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "Roam Control 需要先完成一次私密配對才能控制定位。接下來會引導你完成。"
+            "value": "Sprout 需要先完成一次私密配對才能控制定位。接下來會引導你完成。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout needs one private pairing before it can control location. We'll guide you through it next."
           }
         }
       }
@@ -2021,7 +2279,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "啟用分享時，Roam Control 只會傳送一小組固定的匿名活動次數。"
+            "value": "啟用分享時，Sprout 只會傳送一小組固定的匿名活動次數。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout sends only a small, fixed set of anonymous activity counts when sharing is enabled."
           }
         }
       }
@@ -2032,7 +2296,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "Roam Control 使用範圍狹窄的第一方傳送程式，而非分析 SDK，因此不會自動附加額外的裝置中繼資料。"
+            "value": "Sprout 使用範圍狹窄的第一方傳送程式，而非分析 SDK，因此不會自動附加額外的裝置中繼資料。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout uses a narrow first-party sender instead of an analytics SDK, so extra device metadata is not added automatically."
           }
         }
       }
@@ -2043,7 +2313,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "Roam Control 將結束模擬定位，並還原這支 iPhone 的真實位置。"
+            "value": "Sprout 將結束模擬定位，並還原這支 iPhone 的真實位置。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout will end the simulated location and restore this iPhone's real location."
           }
         }
       }
@@ -2054,7 +2330,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "Roam Control 將結束模擬步行並還原你的真實位置，路線進度會被重設。"
+            "value": "Sprout 將結束模擬步行並還原你的真實位置，路線進度會被重設。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout will end the simulated walk and restore your real location. Your route progress will be reset."
           }
         }
       }
@@ -2065,7 +2347,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "Roam Control 需要一個新的 RPPairing 檔案才能再次連線。"
+            "value": "Sprout 需要一個新的 RPPairing 檔案才能再次連線。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout will need a new RPPairing file before it can connect again."
           }
         }
       }
@@ -2076,7 +2364,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "Roam Control 只會短暫重新連線以清除模擬定位，不會啟動新的定位或步行工作階段。"
+            "value": "Sprout 只會短暫重新連線以清除模擬定位，不會啟動新的定位或步行工作階段。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout will reconnect only long enough to clear the simulated location. It will not start a new location or walking session."
           }
         }
       }
@@ -2087,7 +2381,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "隧道啟動後，Roam Control 會自動返回。"
+            "value": "隧道啟動後，Sprout 會自動返回。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout will return automatically after the tunnel starts."
           }
         }
       }
@@ -2604,7 +2904,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "iPhone 無法連線至 Roam Control。"
+            "value": "iPhone 無法連線至 Sprout。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The iPhone could not connect to Sprout."
           }
         }
       }
@@ -2846,7 +3152,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "配對記錄在這支 iPhone 上產生或驗證，並且只存放在它的鑰匙圈中。Roam Control 不會上傳。"
+            "value": "配對記錄在這支 iPhone 上產生或驗證，並且只存放在它的鑰匙圈中。Sprout 不會上傳。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The pairing record is generated or checked on this iPhone, then stored only in its Keychain. Sprout does not upload it."
           }
         }
       }
@@ -2913,6 +3225,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "外觀"
+          }
+        }
+      }
+    },
+    "This Place Is Active": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此位置使用中"
           }
         }
       }
@@ -2989,7 +3312,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "關閉分享會停止新的回報、盡可能取消仍在進行中的請求，並從 Roam Control 移除識別碼。但無法收回已經送達的匿名事件。"
+            "value": "關閉分享會停止新的回報、盡可能取消仍在進行中的請求，並從 Sprout 移除識別碼。但無法收回已經送達的匿名事件。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turning sharing off stops new reporting, cancels requests still in progress where possible and removes the identifier from Sprout. It cannot withdraw anonymous events already received."
           }
         }
       }
@@ -3088,7 +3417,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "歡迎使用 Roam Control"
+            "value": "歡迎使用 Sprout"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Welcome to Sprout"
           }
         }
       }
@@ -3154,7 +3489,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "iOS 無法在背景維持配對。請保持 Roam Control 開啟後再試一次。"
+            "value": "iOS 無法在背景維持配對。請保持 Sprout 開啟後再試一次。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS could not keep pairing active in the background. Keep Sprout open and try again."
           }
         }
       }
@@ -3165,7 +3506,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "iOS 無法準備定位工作階段。請關閉 Roam Control 後重新開啟再試一次。"
+            "value": "iOS 無法準備定位工作階段。請關閉 Sprout 後重新開啟再試一次。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS could not prepare the location session. Close Sprout, reopen it, and try again."
           }
         }
       }
@@ -3176,7 +3523,13 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "iOS 無法註冊安全配對工作。請關閉 Roam Control 後重新開啟再試一次。"
+            "value": "iOS 無法註冊安全配對工作。請關閉 Sprout 後重新開啟再試一次。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS could not register the secure pairing task. Close Sprout, reopen it, and try again."
           }
         }
       }

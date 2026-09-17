@@ -66,17 +66,19 @@ private struct LandmarkRow: View {
             HStack(spacing: 12) {
                 Image(systemName: landmark.symbolName)
                     .font(.body)
-                    .foregroundStyle(.blue)
+                    .foregroundStyle(SproutTheme.primary)
                     .frame(width: 28)
+                    .padding(6)
+                    .background(SproutTheme.primarySoft, in: Circle())
                     .accessibilityHidden(true)
 
                 VStack(alignment: .leading, spacing: 2) {
                     Text(landmark.name)
-                        .font(.body)
-                        .foregroundStyle(.primary)
+                        .font(SproutTheme.font(.body, weight: .medium))
+                        .foregroundStyle(SproutTheme.text)
                     Text(landmark.locality)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
+                        .font(SproutTheme.font(.caption))
+                        .foregroundStyle(SproutTheme.textSecondary)
                 }
 
                 Spacer(minLength: 0)

@@ -31,9 +31,7 @@ struct LocationSelectionCard: View {
                 cardContent
             }
         }
-        .padding(18)
-        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 24, style: .continuous))
-        .shadow(color: .black.opacity(0.15), radius: 18, y: 8)
+        .sproutCard()
         .confirmationDialog(
             "Stop the simulated location and restore your real location?",
             isPresented: $isConfirmingStop,
@@ -65,8 +63,10 @@ struct LocationSelectionCard: View {
                     .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.borderedProminent)
+                .buttonBorderShape(.roundedRectangle(radius: SproutTheme.Radius.control))
                 .controlSize(.large)
-                .tint(isShowingActiveTarget ? .red : .blue)
+                .font(SproutTheme.font(.body, weight: .semibold))
+                .tint(SproutTheme.primary)
                 .disabled(isPrimaryDisabled)
 
                 if canPreviewWalkingRoute {
@@ -89,24 +89,27 @@ struct LocationSelectionCard: View {
 
                 if let walkingRouteError {
                     Text(SessionMessage.localized(walkingRouteError))
-                        .font(.caption)
-                        .foregroundStyle(.red)
+                        .font(SproutTheme.font(.caption))
+                        .foregroundStyle(SproutTheme.accent)
                         .frame(maxWidth: .infinity, alignment: .center)
                         .fixedSize(horizontal: false, vertical: true)
                 }
 
-                if isActive && !isShowingActiveTarget {
+                if isActive {
                     Button("Stop & Restore", role: .destructive) {
                         isConfirmingStop = true
                     }
-                        .buttonStyle(.bordered)
-                        .controlSize(.regular)
-                        .frame(maxWidth: .infinity)
+                    .buttonStyle(.bordered)
+                    .buttonBorderShape(.roundedRectangle(radius: SproutTheme.Radius.control))
+                    .controlSize(.large)
+                    .tint(SproutTheme.accent)
+                    .font(SproutTheme.font(.body, weight: .semibold))
+                    .frame(maxWidth: .infinity)
                 }
 
                 Text(statusMessage)
-                    .font(.caption)
-                    .foregroundStyle(isFailure ? .red : .secondary)
+                    .font(SproutTheme.font(.caption))
+                    .foregroundStyle(isFailure ? SproutTheme.accent : SproutTheme.textSecondary)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .fixedSize(horizontal: false, vertical: true)
 
@@ -119,16 +122,17 @@ struct LocationSelectionCard: View {
                 }
             } else {
                 HStack(spacing: 14) {
-                    Image(systemName: "hand.tap")
+                    Image(systemName: "leaf.circle.fill")
                         .font(.title2)
-                        .foregroundStyle(.blue)
+                        .foregroundStyle(SproutTheme.primary)
 
                     VStack(alignment: .leading, spacing: 3) {
                         Text("Choose a location")
-                            .font(.headline)
+                            .font(SproutTheme.font(.headline, weight: .semibold))
+                            .foregroundStyle(SproutTheme.text)
                         Text("Search above or tap anywhere on the map.")
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
+                            .font(SproutTheme.font(.subheadline))
+                            .foregroundStyle(SproutTheme.textSecondary)
                     }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -157,21 +161,22 @@ struct LocationSelectionCard: View {
 
     private func locationSummary(for location: LocationTarget) -> some View {
         HStack(alignment: .top, spacing: 12) {
-            Image(systemName: "mappin.and.ellipse")
+            Image(systemName: "leaf.fill")
                 .font(.title2)
-                .foregroundStyle(.blue)
+                .foregroundStyle(SproutTheme.primary)
                 .frame(width: 32)
                 .accessibilityHidden(true)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(location.name)
-                    .font(.headline)
+                    .font(SproutTheme.font(.headline, weight: .semibold))
+                    .foregroundStyle(SproutTheme.text)
                     .lineLimit(dynamicTypeSize.isAccessibilitySize ? 3 : 1)
 
                 HStack(spacing: 7) {
                     Text(locationDescription(for: location))
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
+                        .font(SproutTheme.font(.subheadline))
+                        .foregroundStyle(SproutTheme.textSecondary)
                         .lineLimit(dynamicTypeSize.isAccessibilitySize ? 4 : 2)
 
                     Button {
@@ -194,7 +199,7 @@ struct LocationSelectionCard: View {
         Button(action: onToggleFavourite) {
             Image(systemName: isFavourite ? "heart.fill" : "heart")
                 .font(.title3)
-                .foregroundStyle(isFavourite ? .pink : .secondary)
+                .foregroundStyle(isFavourite ? SproutTheme.accent : SproutTheme.textSecondary)
                 .frame(width: 44, height: 44)
         }
         .buttonStyle(.plain)
@@ -288,7 +293,7 @@ struct LocationSelectionCard: View {
         case .connecting:
             .appText("Starting Location…")
         case .active:
-            isShowingActiveTarget ? .appText("Stop & Restore") : .appText("Update Location")
+            isShowingActiveTarget ? .appText("This Place Is Active") : .appText("Update Location")
         case .stopping:
             .appText("Restoring Real Location…")
         case .failed:
@@ -300,7 +305,7 @@ struct LocationSelectionCard: View {
 
     private var primarySymbol: String {
         switch sessionPhase {
-        case .active: isShowingActiveTarget ? "stop.circle.fill" : "location.fill"
+        case .active: isShowingActiveTarget ? "checkmark.circle.fill" : "location.fill"
         case .failed: "arrow.clockwise"
         case .idle: "location.fill"
         case .openingLocalDevVPN, .discovering, .connecting, .stopping: "hourglass"
@@ -308,7 +313,9 @@ struct LocationSelectionCard: View {
     }
 
     private var isPrimaryDisabled: Bool {
-        isWorking || (!isPaired && !isActive)
+        // Re-sending the place already being reported does nothing.
+        if isActive, isShowingActiveTarget { return true }
+        return isWorking || (!isPaired && !isActive)
     }
 
     private var canClearSelection: Bool {
@@ -360,10 +367,6 @@ struct LocationSelectionCard: View {
     }
 
     private func primaryAction() {
-        if isShowingActiveTarget {
-            isConfirmingStop = true
-        } else {
-            onStart()
-        }
+        onStart()
     }
 }

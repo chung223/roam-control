@@ -9,6 +9,17 @@ All notable public changes to Roam Control are recorded here.
 - Live Activity for a running session, on the Lock Screen and in the Dynamic Island. It shows the reported place and session stage, and for a walk the progress, remaining distance and arrival countdown. It ends when the session ends, including on failure. The place name is drawn by iOS on the Lock Screen and is never transmitted or added to usage statistics. Delivered by a new `RoamControlLiveActivity` app extension embedded in the app.
 - Bundled landmark catalogue: 72 well-known places grouped by region, searchable without a network connection, reachable from the globe button on the map. Choosing one selects it exactly as a search result does; starting a session remains a separate step.
 
+- Rebranded to **Sprout**, at the display layer only. `CFBundleDisplayName` changes, and the String Catalog carries an `en` value for the 57 strings that name the product. The source keeps the old name because it is the telemetry classification key, so nothing about failure reporting or the source invariants moves.
+- Sprout visual system in `SproutTheme`: a warm-paper, moss and coral palette with light and dark values defined side by side, rounded system type, a 24pt card radius and shared `sproutCard`/`sproutMapControl` chrome. Applied to the map controls, selection card, connection badge and landmark list.
+
+### Changed
+
+- Stop & Restore now always sits in the same place, at the same size, in coral, whenever there is a session to stop. It previously moved into the primary button when the selected place happened to be the active one, so the destructive action changed position depending on context. The primary button no longer stops a session and is disabled while the selected place is already the one being reported.
+
+### Removed
+
+- `StatusCard`, 62 lines that nothing referenced and whose copy still said pairing support had not been added yet.
+
 - Traditional Chinese (zh-Hant) localisation, via a String Catalog covering 289 strings: every plain SwiftUI literal, the computed status and button text, and all 54 failure messages the native bridge and session code can produce.
 
   Those failure messages stay English in the source on purpose. `FailureStage` classifies telemetry by matching them exactly, the session coordinator decides recoverability by matching them, and `scripts/test-failure-stages.py` asserts on them, so the English is the internal identity and translation happens only at the point of display. No native rebuild was needed and every source invariant still passes.

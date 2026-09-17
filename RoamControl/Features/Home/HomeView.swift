@@ -34,7 +34,7 @@ struct HomeView: View {
                 Map(position: $mapModel.cameraPosition) {
                     if let route = walkingRoutePlanner.route {
                         MapPolyline(route)
-                            .stroke(.blue, lineWidth: 6)
+                            .stroke(SproutTheme.primary, lineWidth: 6)
                     }
 
                     if shouldShowRealLocation {
@@ -43,17 +43,21 @@ struct HomeView: View {
 
                     if let target = mapModel.selectedLocation {
                         Marker(target.name, coordinate: target.coordinate)
-                            .tint(.blue)
+                            .tint(SproutTheme.primary)
                     }
 
                     if let coordinate = walkingSimulation.currentCoordinate {
                         Annotation("Walking location", coordinate: coordinate) {
-                            Image(systemName: "figure.walk.circle.fill")
+                            Image(systemName: "leaf.circle.fill")
                                 .font(.title.weight(.semibold))
-                                .foregroundStyle(.white, .green)
+                                .foregroundStyle(.white, SproutTheme.primary)
                                 .padding(4)
-                                .background(.regularMaterial, in: Circle())
-                                .shadow(color: .black.opacity(0.22), radius: 7, y: 3)
+                                .background(SproutTheme.surface, in: Circle())
+                                .shadow(
+                                    color: SproutTheme.controlShadow.color,
+                                    radius: SproutTheme.controlShadow.radius,
+                                    y: SproutTheme.controlShadow.y
+                                )
                         }
                     }
                 }
@@ -119,12 +123,9 @@ struct HomeView: View {
                             isShowingLandmarks = true
                         } label: {
                             Image(systemName: "globe.americas.fill")
-                                .font(.subheadline.weight(.semibold))
-                                .foregroundStyle(.primary)
-                                .frame(width: 36, height: 36)
-                                .background(.regularMaterial, in: Circle())
-                                .shadow(color: .black.opacity(0.08), radius: 8, y: 3)
-                                .frame(width: 44, height: 44)
+                                .font(SproutTheme.font(.subheadline, weight: .semibold))
+                                .foregroundStyle(SproutTheme.primary)
+                                .sproutMapControl()
                         }
                         .buttonStyle(.plain)
                         .disabled(walkingSimulation.locksDestination)
@@ -135,12 +136,9 @@ struct HomeView: View {
                             isShowingSavedPlaces = true
                         } label: {
                             Image(systemName: "heart.text.square.fill")
-                                .font(.subheadline.weight(.semibold))
-                                .foregroundStyle(.primary)
-                                .frame(width: 36, height: 36)
-                                .background(.regularMaterial, in: Circle())
-                                .shadow(color: .black.opacity(0.08), radius: 8, y: 3)
-                                .frame(width: 44, height: 44)
+                                .font(SproutTheme.font(.subheadline, weight: .semibold))
+                                .foregroundStyle(SproutTheme.primary)
+                                .sproutMapControl()
                         }
                         .buttonStyle(.plain)
                         .accessibilityLabel("Favourites and history")
@@ -149,12 +147,9 @@ struct HomeView: View {
                             isShowingSettings = true
                         } label: {
                             Image(systemName: "gearshape.fill")
-                                .font(.subheadline.weight(.semibold))
-                                .foregroundStyle(.primary)
-                                .frame(width: 36, height: 36)
-                                .background(.regularMaterial, in: Circle())
-                                .shadow(color: .black.opacity(0.08), radius: 8, y: 3)
-                                .frame(width: 44, height: 44)
+                                .font(SproutTheme.font(.subheadline, weight: .semibold))
+                                .foregroundStyle(SproutTheme.primary)
+                                .sproutMapControl()
                         }
                         .buttonStyle(.plain)
                         .accessibilityLabel("Settings")
@@ -168,7 +163,7 @@ struct HomeView: View {
                         HStack(spacing: 12) {
                             Image(systemName: "iphone.and.arrow.forward")
                                 .font(.title3.weight(.semibold))
-                                .foregroundStyle(.blue)
+                                .foregroundStyle(SproutTheme.primary)
 
                             VStack(alignment: .leading, spacing: 2) {
                                 Text("Pair this iPhone")
@@ -185,9 +180,7 @@ struct HomeView: View {
                                 .font(.caption.weight(.bold))
                                 .foregroundStyle(.secondary)
                         }
-                        .padding(14)
-                        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
-                        .shadow(color: .black.opacity(0.08), radius: 8, y: 3)
+                        .sproutCard(radius: SproutTheme.Radius.control, padding: 14)
                     }
                     .buttonStyle(.plain)
                     }
@@ -202,9 +195,7 @@ struct HomeView: View {
                             Button(action: resetMapHeading) {
                                 CompassRoseDial()
                                     .rotationEffect(.degrees(-normalisedMapHeading))
-                                    .frame(width: 44, height: 44)
-                                    .background(.regularMaterial, in: Circle())
-                                    .shadow(color: .black.opacity(0.12), radius: 10, y: 4)
+                                    .sproutMapControl()
                             }
                             .buttonStyle(.plain)
                             .accessibilityLabel("Return map to north")
@@ -225,9 +216,7 @@ struct HomeView: View {
                                             .foregroundStyle(.blue)
                                     }
                                 }
-                                .frame(width: 44, height: 44)
-                                .background(.regularMaterial, in: Circle())
-                                .shadow(color: .black.opacity(0.12), radius: 10, y: 4)
+                                .sproutMapControl()
                             }
                             .buttonStyle(.plain)
                             .disabled(mapModel.isFindingRealLocation)

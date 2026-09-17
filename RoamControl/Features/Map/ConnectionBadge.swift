@@ -10,17 +10,22 @@ struct ConnectionBadge: View {
                 .frame(width: 8, height: 8)
 
             Text(label)
-                .font(.caption.weight(.semibold))
+                .font(SproutTheme.font(.caption, weight: .semibold))
+                .foregroundStyle(SproutTheme.text)
 
             Image(systemName: "chevron.right")
                 .font(.caption2.weight(.bold))
-                .foregroundStyle(.secondary)
+                .foregroundStyle(SproutTheme.textSecondary)
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 8)
-        .frame(minHeight: 44)
-        .background(.regularMaterial, in: Capsule())
-        .shadow(color: .black.opacity(0.08), radius: 8, y: 3)
+        .frame(minHeight: SproutTheme.mapControlDiameter)
+        .background(SproutTheme.surface, in: Capsule())
+        .shadow(
+            color: SproutTheme.controlShadow.color,
+            radius: SproutTheme.controlShadow.radius,
+            y: SproutTheme.controlShadow.y
+        )
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("Connection status: \(label)")
     }
@@ -37,11 +42,11 @@ struct ConnectionBadge: View {
 
     private var color: Color {
         switch state {
-        case .notConfigured: .orange
-        case .ready: .green
-        case .connecting: .blue
-        case .active: .blue
-        case .failed: .red
+        case .notConfigured: SproutTheme.accent
+        case .ready: SproutTheme.positive
+        case .connecting: SproutTheme.primary
+        case .active: SproutTheme.primary
+        case .failed: SproutTheme.accent
         }
     }
 }
