@@ -992,6 +992,18 @@ final class LocalDeviceSessionCoordinator: NSObject {
         cleanupDiscovery()
         mobileDataGuidance = nil
         hasRequestedLocalDevVPNThisAttempt = true
+
+        // Opening the tunnel app enables the tunnel, which is the one thing
+        // prefersDirectPath exists to do without: a session that succeeded
+        // after this point would not show the direct path carried it. Keep
+        // looking on the direct path and let discovery report its own failure
+        // instead. The flag is still set, so the retry paths show connection
+        // help rather than coming back here.
+        if prefersDirectPath {
+            beginDiscovery(showConnectionHelpIfUnavailable: true)
+            return
+        }
+
         phase = .openingLocalDevVPN
 
         UIApplication.shared.open(Self.enableURL) { [weak self] opened in
