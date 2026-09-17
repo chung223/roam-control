@@ -33,7 +33,7 @@ struct RoamSessionLiveActivity: Widget {
 
                 DynamicIslandExpandedRegion(.trailing) {
                     ElapsedTimeText(startedAt: context.attributes.startedAt)
-                        .font(.caption.monospacedDigit())
+                        .font(.caption.weight(.medium).monospacedDigit())
                         .foregroundStyle(.secondary)
                 }
 
@@ -65,6 +65,7 @@ struct RoamSessionLiveActivity: Widget {
                 ProgressRing(state: context.state)
             }
             .widgetURL(URL(string: "roamcontrol://session"))
+            .keylineTint(SproutActivity.primary)
         }
     }
 }
@@ -219,7 +220,7 @@ private struct CompactTrailing: View {
 
     var body: some View {
         content
-            .font(.caption2.monospacedDigit())
+            .font(.caption.weight(.medium).monospacedDigit())
             .foregroundStyle(SproutActivity.tint(for: state))
     }
 
