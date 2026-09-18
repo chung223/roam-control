@@ -11,18 +11,28 @@ struct LocationTarget: Codable, Hashable, Identifiable, Sendable {
     let latitude: Double
     let longitude: Double
 
+    /// Which group a saved favourite belongs to, or `nil` for none. It lives
+    /// here rather than in a parallel map so that a favourite and its group
+    /// cannot drift apart, and so that an exported file carries both.
+    ///
+    /// It means nothing on a history entry or on the target handed to the
+    /// device, and nothing reads it there.
+    var group: String?
+
     init(
         id: UUID = UUID(),
         name: String,
         subtitle: String,
         latitude: Double,
-        longitude: Double
+        longitude: Double,
+        group: String? = nil
     ) {
         self.id = id
         self.name = name
         self.subtitle = subtitle
         self.latitude = latitude
         self.longitude = longitude
+        self.group = group
     }
 
     /// Favourites and history saved before identities were stored carry no
@@ -34,6 +44,20 @@ struct LocationTarget: Codable, Hashable, Identifiable, Sendable {
         subtitle = try container.decode(String.self, forKey: .subtitle)
         latitude = try container.decode(Double.self, forKey: .latitude)
         longitude = try container.decode(Double.self, forKey: .longitude)
+        group = try container.decodeIfPresent(String.self, forKey: .group)
+    }
+
+    /// Everything that identifies the place, with a different group. Used when
+    /// a favourite is moved, so identity and position survive the move.
+    func inGroup(_ group: String?) -> LocationTarget {
+        LocationTarget(
+            id: id,
+            name: name,
+            subtitle: subtitle,
+            latitude: latitude,
+            longitude: longitude,
+            group: group
+        )
     }
 
     var coordinate: CLLocationCoordinate2D {

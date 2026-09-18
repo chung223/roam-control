@@ -545,25 +545,33 @@ struct HomeView: View {
             }
         }
         .sheet(isPresented: $isShowingSavedPlaces) {
-            SavedPlacesView(
-                favourites: appModel.favouriteLocations,
-                history: appModel.locationHistory,
-                shouldShowFavouriteReorderHint: !appModel.hasSeenFavouriteReorderHint,
-                isFavourite: appModel.isFavourite,
-                onSelect: { target in
-                    guard !walkingSimulation.locksDestination else { return }
-                    mapModel.show(target)
-                },
-                onToggleFavourite: appModel.toggleFavourite,
-                onDeleteFavourite: appModel.removeFavourite,
-                onMoveFavourites: appModel.moveFavouriteLocations,
-                onDismissFavouriteReorderHint: appModel.dismissFavouriteReorderHint,
-                onRenameFavourite: appModel.renameFavourite,
-                onDeleteHistory: appModel.removeFromHistory,
-                onClearFavourites: appModel.clearFavouriteLocations,
-                onClearHistory: appModel.clearLocationHistory
-            )
+            savedPlacesSheet
         }
+    }
+
+    /// Lifted out of `body` because the compiler could no longer type-check
+    /// the whole of it in reasonable time. Fifteen closure arguments inside an
+    /// already large view is past what inference will do in one piece.
+    private var savedPlacesSheet: some View {
+        SavedPlacesView(
+            favourites: appModel.favouriteLocations,
+            history: appModel.locationHistory,
+            shouldShowFavouriteReorderHint: !appModel.hasSeenFavouriteReorderHint,
+            isFavourite: appModel.isFavourite,
+            onSelect: { target in
+                guard !walkingSimulation.locksDestination else { return }
+                mapModel.show(target)
+            },
+            onToggleFavourite: appModel.toggleFavourite,
+            onDeleteFavourite: appModel.removeFavourite,
+            onMoveFavourites: appModel.moveFavouriteLocations,
+            onDismissFavouriteReorderHint: appModel.dismissFavouriteReorderHint,
+            onRenameFavourite: appModel.renameFavourite,
+            onSetFavouriteGroup: appModel.setFavouriteGroup,
+            onDeleteHistory: appModel.removeFromHistory,
+            onClearFavourites: appModel.clearFavouriteLocations,
+            onClearHistory: appModel.clearLocationHistory
+        )
     }
 
     /// Nothing until a filter is chosen: 7,000 pins would describe less than

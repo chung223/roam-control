@@ -162,6 +162,17 @@
         }
       }
     },
+    "Added %lld favourites.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已加入 %lld 個最愛。"
+          }
+        }
+      }
+    },
     "Africa": {
       "extractionState": "manual",
       "localizations": {
@@ -1373,6 +1384,28 @@
         }
       }
     },
+    "Could not export favourites.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "無法匯出最愛。"
+          }
+        }
+      }
+    },
+    "Could not read that file.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "無法讀取該檔案。"
+          }
+        }
+      }
+    },
     "Create the pairing securely on this iPhone, or import an existing file.": {
       "extractionState": "manual",
       "localizations": {
@@ -1775,6 +1808,17 @@
         }
       }
     },
+    "Every place in that file was already saved.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "那個檔案裡的地點都已經儲存過了。"
+          }
+        }
+      }
+    },
     "Every recently used location will be removed. Your favourites will be kept.": {
       "extractionState": "manual",
       "localizations": {
@@ -1782,6 +1826,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "所有最近使用的地點都會被移除，收藏會保留。"
+          }
+        }
+      }
+    },
+    "Export Favourites": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "匯出最愛"
           }
         }
       }
@@ -1859,6 +1914,39 @@
           "stringUnit": {
             "state": "translated",
             "value": "收藏與紀錄"
+          }
+        }
+      }
+    },
+    "Favourites exported.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最愛已匯出。"
+          }
+        }
+      }
+    },
+    "Favourites live on this iPhone and nowhere else, so nothing holds a copy to restore from. An exported file is that copy, and it goes only where you put it. Importing adds places you do not already have and never removes one.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最愛只存在這支 iPhone 上，沒有任何地方留著可以還原的副本。匯出的檔案就是那個副本，而且只會去你放的地方。匯入只會加入你還沒有的地點，不會移除任何一個。"
+          }
+        }
+      }
+    },
+    "Favourites with the same group name are listed together. Leave it empty to remove this one from its group.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "分組名稱相同的最愛會列在一起。留空就把這一個移出分組。"
           }
         }
       }
@@ -2171,6 +2259,39 @@
         }
       }
     },
+    "Group": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "分組"
+          }
+        }
+      }
+    },
+    "Group Favourite": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "為最愛分組"
+          }
+        }
+      }
+    },
+    "Group name": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "分組名稱"
+          }
+        }
+      }
+    },
     "Guggenheim Museum": {
       "extractionState": "manual",
       "localizations": {
@@ -2387,6 +2508,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "匯入現有檔案"
+          }
+        }
+      }
+    },
+    "Import Favourites": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "匯入最愛"
           }
         }
       }
@@ -5682,6 +5814,17 @@
         }
       }
     },
+    "Sprout Favourites": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprout 最愛"
+          }
+        }
+      }
+    },
     "St Peter's Basilica": {
       "extractionState": "manual",
       "localizations": {
@@ -6089,6 +6232,17 @@
         }
       }
     },
+    "Tap Edit to rearrange favourites. Swipe one to put it in a group.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "點「編輯」可以重新排列最愛。滑動任何一個可以把它放進分組。"
+          }
+        }
+      }
+    },
     "Tap Pair with Roam Control.": {
       "extractionState": "manual",
       "localizations": {
@@ -6129,6 +6283,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "太魯閣峽谷"
+          }
+        }
+      }
+    },
+    "That file is not a Sprout favourites file.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "那不是 Sprout 的最愛檔案。"
+          }
+        }
+      }
+    },
+    "That file was made by a newer version of Sprout.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "那個檔案由較新版本的 Sprout 建立。"
           }
         }
       }

@@ -11,6 +11,8 @@ struct SavedPlacesView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var favouriteBeingRenamed: LocationTarget?
     @State private var favouriteName = ""
+    @State private var favouriteBeingGrouped: LocationTarget?
+    @State private var groupName = ""
     @State private var clearTarget: ClearTarget?
     @State private var editMode: EditMode = .inactive
 
@@ -24,6 +26,7 @@ struct SavedPlacesView: View {
     let onMoveFavourites: (IndexSet, Int) -> Void
     let onDismissFavouriteReorderHint: () -> Void
     let onRenameFavourite: (LocationTarget, String) -> Void
+    let onSetFavouriteGroup: (LocationTarget, String?) -> Void
     let onDeleteHistory: (LocationTarget) -> Void
     let onClearFavourites: () -> Void
     let onClearHistory: () -> Void
@@ -31,51 +34,66 @@ struct SavedPlacesView: View {
     var body: some View {
         NavigationStack {
             List {
-                Section {
-                    if favourites.isEmpty {
+                if favourites.isEmpty {
+                    Section {
                         EmptyFavouritesRow(
                             message: .appText("Tap the heart on any selected place to save it.")
                         )
-                    } else {
-                        ForEach(favourites) { location in
-                            SavedPlaceRow(
-                                location: location,
-                                symbol: "heart.fill",
-                                isFavourite: true,
-                                onSelect: { select(location) },
-                                onToggleFavourite: { onToggleFavourite(location) }
-                            )
-                            .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                                Button(role: .destructive) {
-                                    onDeleteFavourite(location)
-                                } label: {
-                                    Label("Delete", systemImage: "trash")
-                                }
-
-                                Button {
-                                    beginRenaming(location)
-                                } label: {
-                                    Label("Rename", systemImage: "pencil")
-                                }
-                                .tint(SproutTheme.primary)
-                            }
-                        }
-                        .onMove(perform: onMoveFavourites)
-                    }
-                } header: {
-                    HStack {
+                    } header: {
                         Text("Favourites")
-                        Spacer()
-                        if !favourites.isEmpty {
-                            Button("Clear") {
-                                clearTarget = .favourites
-                            }
-                            .textCase(nil)
-                        }
                     }
-                } footer: {
-                    if shouldShowFavouriteReorderHint && favourites.count >= 2 {
-                        Text("Tap Edit to rearrange favourites.")
+                } else {
+                    ForEach(favouriteSections, id: \.title) { section in
+                        Section {
+                            ForEach(section.locations) { location in
+                                SavedPlaceRow(
+                                    location: location,
+                                    symbol: "heart.fill",
+                                    isFavourite: true,
+                                    onSelect: { select(location) },
+                                    onToggleFavourite: { onToggleFavourite(location) }
+                                )
+                                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                    Button(role: .destructive) {
+                                        onDeleteFavourite(location)
+                                    } label: {
+                                        Label("Delete", systemImage: "trash")
+                                    }
+
+                                    Button {
+                                        beginRenaming(location)
+                                    } label: {
+                                        Label("Rename", systemImage: "pencil")
+                                    }
+                                    .tint(SproutTheme.primary)
+
+                                    Button {
+                                        beginGrouping(location)
+                                    } label: {
+                                        Label("Group", systemImage: "folder")
+                                    }
+                                    .tint(SproutTheme.Pair.sage)
+                                }
+                            }
+                            .onMove { source, destination in
+                                move(in: section, from: source, to: destination)
+                            }
+                        } header: {
+                            HStack {
+                                Text(section.heading)
+                                Spacer()
+                                if section.isFirst {
+                                    Button("Clear") {
+                                        clearTarget = .favourites
+                                    }
+                                    .textCase(nil)
+                                }
+                            }
+                        } footer: {
+                            if section.isLast, shouldShowFavouriteReorderHint, favourites.count >= 2 {
+                                Text("Tap Edit to rearrange favourites. Swipe one to put it in a group.")
+                            }
+                        }
                     }
                 }
 
@@ -156,6 +174,27 @@ struct SavedPlacesView: View {
             } message: {
                 Text("Give this saved place a name that is easy to recognise.")
             }
+            .alert(
+                "Group Favourite",
+                isPresented: Binding(
+                    get: { favouriteBeingGrouped != nil },
+                    set: { if !$0 { favouriteBeingGrouped = nil } }
+                )
+            ) {
+                TextField("Group name", text: $groupName)
+                Button("Cancel", role: .cancel) {
+                    favouriteBeingGrouped = nil
+                }
+                // Clearing the field is how a favourite leaves a group, so
+                // this is deliberately not disabled when it is empty.
+                Button("Save") {
+                    guard let favouriteBeingGrouped else { return }
+                    onSetFavouriteGroup(favouriteBeingGrouped, groupName)
+                    self.favouriteBeingGrouped = nil
+                }
+            } message: {
+                Text("Favourites with the same group name are listed together. Leave it empty to remove this one from its group.")
+            }
             .confirmationDialog(
                 clearConfirmationTitle,
                 isPresented: Binding(
@@ -184,6 +223,64 @@ struct SavedPlacesView: View {
     private func beginRenaming(_ location: LocationTarget) {
         favouriteName = location.name
         favouriteBeingRenamed = location
+    }
+
+    private func beginGrouping(_ location: LocationTarget) {
+        groupName = location.group ?? ""
+        favouriteBeingGrouped = location
+    }
+
+    /// One section per group, in name order, with the ungrouped ones last.
+    /// A group exists only for as long as something is in it, so there is
+    /// nothing to create beforehand and nothing left empty afterwards.
+    private var favouriteSections: [FavouriteSection] {
+        var byGroup: [String: [LocationTarget]] = [:]
+        var ungrouped: [LocationTarget] = []
+        for location in favourites {
+            if let group = location.group {
+                byGroup[group, default: []].append(location)
+            } else {
+                ungrouped.append(location)
+            }
+        }
+
+        var sections = byGroup.keys
+            .sorted { $0.localizedStandardCompare($1) == .orderedAscending }
+            .map { FavouriteSection(title: $0, isGrouped: true, locations: byGroup[$0] ?? []) }
+        if !ungrouped.isEmpty || sections.isEmpty {
+            sections.append(
+                FavouriteSection(
+                    title: "",
+                    isGrouped: false,
+                    // Without a group, the heading is the list's own, so it
+                    // reads as Favourites rather than as a nameless group.
+                    locations: ungrouped
+                )
+            )
+        }
+        for index in sections.indices {
+            sections[index].isFirst = index == 0
+            sections[index].isLast = index == sections.count - 1
+        }
+        return sections
+    }
+
+    /// A move inside a section is a move of the flat list, since the flat
+    /// order is what is stored and the sections are only how it is read.
+    /// Translating here keeps `onMoveFavourites` unchanged and unaware.
+    private func move(in section: FavouriteSection, from source: IndexSet, to destination: Int) {
+        let positions = section.locations.compactMap { location in
+            favourites.firstIndex { $0.id == location.id }
+        }
+        guard positions.count == section.locations.count else { return }
+
+        let globalSource = IndexSet(source.compactMap { offset in
+            positions.indices.contains(offset) ? positions[offset] : nil
+        })
+        let globalDestination = destination < positions.count
+            ? positions[destination]
+            : (positions.last.map { $0 + 1 } ?? favourites.count)
+        onMoveFavourites(globalSource, globalDestination)
     }
 
     private var clearConfirmationTitle: String {
@@ -220,6 +317,18 @@ struct SavedPlacesView: View {
             break
         }
         clearTarget = nil
+    }
+}
+
+private struct FavouriteSection {
+    let title: String
+    let isGrouped: Bool
+    var locations: [LocationTarget]
+    var isFirst = false
+    var isLast = false
+
+    var heading: String {
+        isGrouped ? title : .appText("Favourites")
     }
 }
 

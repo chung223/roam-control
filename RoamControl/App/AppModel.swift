@@ -180,13 +180,66 @@ final class AppModel {
             name: name,
             subtitle: target.subtitle,
             latitude: target.latitude,
-            longitude: target.longitude
+            longitude: target.longitude,
+            group: favouriteLocations[index].group
         )
         favouriteLocations[index] = renamed
         if selectedTarget?.id == target.id {
             selectedTarget = renamed
         }
         save(favouriteLocations, forKey: Self.favouritesDefaultsKey)
+    }
+
+    /// Every group in use, in the order a reader expects to find them. A
+    /// group exists only while something is in it; there is nothing to create
+    /// or delete separately, and so nothing to leave behind empty.
+    var favouriteGroups: [String] {
+        var seen = Set<String>()
+        return favouriteLocations
+            .compactMap(\.group)
+            .filter { seen.insert($0).inserted }
+            .sorted { $0.localizedStandardCompare($1) == .orderedAscending }
+    }
+
+    /// Named like `renameFavourite(_:to:)`, because it is the same shape of
+    /// operation and the view hands both to the same kind of callback.
+    func setFavouriteGroup(_ target: LocationTarget, to group: String?) {
+        let trimmed = group?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let resolved = (trimmed?.isEmpty ?? true) ? nil : trimmed
+        guard let index = favouriteLocations.firstIndex(where: { $0.id == target.id }) else { return }
+        favouriteLocations[index] = favouriteLocations[index].inGroup(resolved)
+        save(favouriteLocations, forKey: Self.favouritesDefaultsKey)
+    }
+
+    /// A file to keep. Everything here is deliberately device-only, which also
+    /// means a lost iPhone is a lost collection; this is the way out that does
+    /// not involve sending anything anywhere.
+    func exportedPlaces() -> PlacesDocument {
+        PlacesDocument(favourites: favouriteLocations)
+    }
+
+    /// Merges rather than replaces, matching by place rather than by identity:
+    /// a file exported from another install carries identities this one has
+    /// never seen, and importing it should not produce a second copy of a
+    /// favourite already saved here.
+    @discardableResult
+    func importPlaces(_ document: PlacesDocument) -> Int {
+        var added = 0
+        for incoming in document.favourites {
+            if let index = favouriteLocations.firstIndex(where: { $0.isSamePlace(as: incoming) }) {
+                // Already saved. Take the group if this one has none, so an
+                // import can organise a collection without renaming anything.
+                if favouriteLocations[index].group == nil, let group = incoming.group {
+                    favouriteLocations[index] = favouriteLocations[index].inGroup(group)
+                }
+                continue
+            }
+            favouriteLocations.append(incoming)
+            added += 1
+        }
+        guard added > 0 || !document.favourites.isEmpty else { return 0 }
+        save(favouriteLocations, forKey: Self.favouritesDefaultsKey)
+        return added
     }
 
     func removeFromHistory(_ target: LocationTarget) {
