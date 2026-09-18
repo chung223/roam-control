@@ -39,6 +39,10 @@ Landmarks are named in both languages: the reader's own, with the English kept b
 
 ### Pikmin spots
 
+Any spot list offers **Plan a walk** through its nearest three, five or eight. The list is already sorted by distance from wherever the map is looking, so the count is the whole choice. Each stop is a separate directions request and Apple throttles them, which is why the counts are fixed rather than free.
+
+The walk names the stop it is heading for, not the last one — the card, the Live Activity and the watch all move on as each is passed. A looping walk turns round at the end and calls at them again in reverse.
+
 A second bundled catalogue holds Pikmin Bloom spots. Four tabs sort the same places different ways:
 
 - **Decorations** lists what each decoration comes from, so a decoration can be sent to the map to pin the spots that yield it.

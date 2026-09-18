@@ -50,6 +50,12 @@ An unchecked row means untested, not failing. Rows added for a release stay unch
 - [ ] Pikmin spots open from the map and list decorations, counties and countries.
 - [ ] Spot lists sort nearest first, measured from wherever the map is looking.
 - [ ] Sending a decoration to the map pins the spots that yield it.
+- [ ] Plan a walk through 3, 5 and 8 stops each draws one continuous route.
+- [ ] The card names the next stop and moves on as each is passed, not the final one throughout.
+- [ ] Remaining stops are shown while more than one is left, and not for an ordinary walk.
+- [ ] A stop with no walking route to it fails the plan with a readable reason rather than skipping it.
+- [ ] A looping multi-stop walk turns round and calls at the stops in reverse.
+- [ ] The card's subtitle reads in Traditional Chinese.
 - [ ] Searching the catalogue matches a place by its English or Chinese name.
 - [ ] Landmarks show both languages, and search matches either spelling.
 - [ ] The Ask tab is always present. On an ineligible iPhone it explains why it cannot answer instead of disappearing.
