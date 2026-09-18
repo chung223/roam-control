@@ -1,9 +1,10 @@
 # Roam Control releases
 
-## 0.10.0 (Build 62)
+## 0.10.0 (Build 63)
 
 - Released: 18 September 2026
 - Requires: iOS 27.0 or later
+- Replaces Build 62, which reached TestFlight declaring a minimum of iOS 26.0. That was wrong: on-device pairing does not exist below iOS 27, so Build 62 would install on an iOS 26 iPhone and then be unable to pair, making every other feature unreachable. Build 62 should not be installed.
 - Distribution: TestFlight, as **Sprout**
 - Xcode: 26.6 (`17F113`), Swift 6.3.3
 - Display name changed from Roam Control to Sprout. The project, its targets and its failure strings keep the old name, because those strings are telemetry classification keys and are asserted on by the invariant scripts.

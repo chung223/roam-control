@@ -1,6 +1,6 @@
-# Sprout 0.10.0 — Build 62
+# Sprout 0.10.0 — Build 63
 
-Build 62 is the current release of this fork: a source-available SwiftUI app for testing an iPhone's reported location from a clean Apple Maps interface. It supports fixed locations, simulated walking routes, favourites, history and native on-device pairing through LocalDevVPN.
+Build 63 is the current release of this fork: a source-available SwiftUI app for testing an iPhone's reported location from a clean Apple Maps interface. It supports fixed locations, simulated walking routes, favourites, history and native on-device pairing through LocalDevVPN.
 
 It is the first release distributed through TestFlight, and the first to install as **Sprout** rather than Roam Control.
 

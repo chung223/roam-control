@@ -29,6 +29,7 @@ All notable public changes to Roam Control are recorded here.
 
 ### Fixed
 
+- Build 62 reached TestFlight declaring a minimum of iOS 26.0, which it could not honour: on-device pairing does not exist below iOS 27, so the build installed and then could do nothing. Build 63 declares 27.0, which is what the device has always required.
 - Three App Intent descriptions named the iPhone, which App Store Connect rejects partway through an upload rather than at build time (error 90626). They say device now, in both languages: the metadata Apple reads is built from the String Catalog, so a translation still naming the product would have been rejected on its own, and the error quotes the English — by then correct. `scripts/test-intent-metadata.py` fails the build for it instead.
 - An address scoped to `lo0` counted as a direct path. The filter matched loopback by text, and `fe80::1%lo0` is neither `127.` nor `::1`, so the experiment reported a direct path where there was none — and `prefersDirectPath` would have dialled loopback on mobile data instead of falling back.
 - Interface text passed as a `String` stayed English however good the catalogue was. Onboarding, the Lock Screen and the empty states all shipped this; `scripts/test-localisation.py` now fails the build for it, and found 60 more on its first run.
