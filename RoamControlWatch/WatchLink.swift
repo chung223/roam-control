@@ -1,6 +1,7 @@
 import Foundation
 import Observation
 import WatchConnectivity
+import WatchKit
 
 /// The watch's end of the link.
 ///
@@ -45,6 +46,14 @@ final class WatchLink: NSObject {
             let data = payload[WatchSessionCommand.stateKey] as? Data,
             let decoded = try? JSONDecoder().decode(WatchSessionState.self, from: data)
         else { return }
+
+        // Only on the change, and only if there was something to change from.
+        // The system delivers the stored context whenever the app wakes, so a
+        // watch opened an hour after the walk ended would otherwise announce
+        // an arrival that happened while it was asleep.
+        if hasHeardFromPhone, decoded.hasArrived, !state.hasArrived {
+            WKInterfaceDevice.current().play(.notification)
+        }
         state = decoded
         hasHeardFromPhone = true
     }

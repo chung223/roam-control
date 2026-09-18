@@ -78,6 +78,10 @@ An unchecked row means untested, not failing. Rows added for a release stay unch
 - [ ] Pause and resume on the watch act on the walk without opening the iPhone app.
 - [ ] The watch says the iPhone is unreachable rather than showing a stale reading.
 - [ ] The watch reads in Traditional Chinese, failure messages included.
+- [ ] Double tap pauses and resumes a walk on a watch that supports the gesture.
+- [ ] The wrist is tapped once on arrival, not repeatedly.
+- [ ] Opening the watch app long after a walk arrived does not tap on launch.
+- [ ] The pause button disappears on arrival, and returns when a looping walk sets off again.
 
 - [ ] The setting is off on a clean install.
 - [ ] Switching it on asks for alarm permission, and declining leaves the switch off rather than silently on.

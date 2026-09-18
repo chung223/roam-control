@@ -63,6 +63,7 @@ final class WatchSessionBridge: NSObject {
         new.phase != old.phase
             || new.isWalking != old.isWalking
             || new.isPaused != old.isPaused
+            || new.hasArrived != old.hasArrived
             || new.placeName != old.placeName
             || new.message != old.message
     }

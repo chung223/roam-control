@@ -6,6 +6,8 @@ All notable public changes to Roam Control are recorded here.
 
 ### Added
 
+- Double tap holds a walk, on the watches that have the gesture. Holding one is the single thing worth doing without a free hand, which is the state walking somewhere tends to leave you in.
+- A tap on the wrist when a simulated walk arrives. It is not the arrival alarm repeated: an alarm sounds, and a tap is only for the person wearing it.
 - An Apple Watch app. A simulated walk is left running for forty minutes, which is exactly when taking the phone out to check on it is the annoying part. It shows the place, progress, distance left and the countdown, and carries the pause button — only pause, because stopping has to restore the real location and confirm the device accepted it, and a wrist is the wrong place to begin something that must be watched to its end.
 - Session history, beside Connection Health. The existing history records places, so it answers where the iPhone has been and cannot answer whether a session finished, how long the one that failed lasted, or when this last worked. A record opens when a session reaches the device, and closes on idle, on failure with the message that caused it, or as interrupted if the app went away while it was still open.
 - Groups for favourites, and a file to keep them in. A group exists only while something is in it: naming one on a favourite makes it, clearing the name on the last member removes it. Export is the other half — everything here is on the device and nowhere else, which is the point of it and also means nothing holds a copy to restore from.

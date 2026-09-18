@@ -570,6 +570,7 @@ struct HomeView: View {
             placeName: walking.destination?.name ?? appModel.selectedTarget?.name ?? "",
             isWalking: isWalking,
             isPaused: walking.phase == .paused,
+            hasArrived: walking.phase == .arrived,
             progress: isWalking ? walking.progress : nil,
             metresRemaining: isWalking ? walking.remainingDistance : nil,
             arrivesAt: isWalking && walking.phase == .walking

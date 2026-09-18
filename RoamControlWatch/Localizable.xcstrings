@@ -1,6 +1,17 @@
 {
   "sourceLanguage": "en",
   "strings": {
+    "Arrived": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已抵達"
+          }
+        }
+      }
+    },
     "No session running": {
       "extractionState": "manual",
       "localizations": {

@@ -183,6 +183,10 @@ It carries no stop control. Stopping has to restore the real location and confir
 
 The watch shows what the iPhone last told it. When the two are out of touch it says so rather than showing a stale reading as though it were current.
 
+On a watch that supports the double tap gesture, tapping finger and thumb together twice holds the walk and starts it again, without touching the screen.
+
+The watch taps your wrist when a walk arrives. That is separate from the arrival alarm in Settings, and neither one needs the other: an alarm sounds and is heard by the room, a tap is felt only by the person wearing the watch.
+
 A walk of any length is not something to watch. Under Settings, an optional alarm can be set for when a simulated walk arrives.
 
 It is an alarm rather than a notification deliberately: a notification is silenced by the ring switch and by a Focus, which is exactly the state a phone is in while it is being left to walk somewhere. It is off unless switched on, and switching it on asks for permission the first time.

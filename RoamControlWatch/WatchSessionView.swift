@@ -102,7 +102,9 @@ private struct RunningView: View {
                     .foregroundStyle(.secondary)
             }
 
-            if state.isWalking {
+            // Not once it has arrived: there is nothing left to hold it back
+            // from. A looping walk turns round and comes back here.
+            if state.isWalking, !state.hasArrived {
                 Button(action: onTogglePause) {
                     Label(
                         state.isPaused ? "Resume" : "Pause",
@@ -111,6 +113,17 @@ private struct RunningView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(.green)
+                // Double tap, on the watches that have it. Holding a walk is
+                // the one thing worth doing without a free hand, which is the
+                // situation walking somewhere tends to produce. Ignored where
+                // the gesture does not exist, so there is nothing to check.
+                .handGestureShortcut(.primaryAction)
+            }
+
+            if state.hasArrived {
+                Label("Arrived", systemImage: "flag.checkered")
+                    .font(.caption)
+                    .foregroundStyle(.green)
             }
 
             if state.phase == .stopping {

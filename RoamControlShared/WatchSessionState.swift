@@ -24,6 +24,10 @@ public struct WatchSessionState: Codable, Sendable, Equatable {
     public var placeName: String
     public var isWalking: Bool
     public var isPaused: Bool
+    /// The walk has reached its destination and is holding there. Carried
+    /// separately from `phase`, which describes the connection: an arrived
+    /// walk is still a perfectly active session.
+    public var hasArrived: Bool
     /// 0...1 along the route, or `nil` for a fixed location.
     public var progress: Double?
     public var metresRemaining: Double?
@@ -40,6 +44,7 @@ public struct WatchSessionState: Codable, Sendable, Equatable {
         placeName: String = "",
         isWalking: Bool = false,
         isPaused: Bool = false,
+        hasArrived: Bool = false,
         progress: Double? = nil,
         metresRemaining: Double? = nil,
         arrivesAt: Date? = nil,
@@ -50,6 +55,7 @@ public struct WatchSessionState: Codable, Sendable, Equatable {
         self.placeName = placeName
         self.isWalking = isWalking
         self.isPaused = isPaused
+        self.hasArrived = hasArrived
         self.progress = progress
         self.metresRemaining = metresRemaining
         self.arrivesAt = arrivesAt
