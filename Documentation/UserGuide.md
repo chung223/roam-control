@@ -140,6 +140,8 @@ Saved favourite names are offered to the system so a shortcut can choose among t
 
 ## Feedback
 
+Under **Settings → Session History**, past sessions are listed with where they went, how long they lasted and whether they finished, failed or were interrupted. A failure keeps the message that caused it. The last 50 are kept on the iPhone and are never sent anywhere.
+
 Under **Settings → Feedback**, **Report a Bug** and **Request a Feature** open the matching GitHub form. Do not include pairing records, credentials or private locations in a report.
 
 Updates arrive through TestFlight, which says when a new build is available. The app has no update check of its own.
@@ -172,6 +174,14 @@ Tapping it opens the app. A walk's activity carries a pause button, which holds 
 If the activity is missing, check **Settings → Sprout → Live Activities**. Sessions run normally either way.
 
 ### Arrival alarm
+
+### On Apple Watch
+
+If the iPhone has a paired Apple Watch, Sprout installs there too. The watch shows the place, how far along a walk is, the distance left and the countdown to arrival, and offers pause and resume.
+
+It carries no stop control. Stopping has to restore the real location and confirm the iPhone accepted it, which belongs where it can be watched to the end.
+
+The watch shows what the iPhone last told it. When the two are out of touch it says so rather than showing a stale reading as though it were current.
 
 A walk of any length is not something to watch. Under Settings, an optional alarm can be set for when a simulated walk arrives.
 

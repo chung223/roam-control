@@ -10,6 +10,12 @@ This guide covers development builds and the TestFlight upload workflow.
 - Minimum deployment target: iOS 27.0
 - Supported device family: iPhone
 - Display name: Sprout
+- Targets: `RoamControl`, `RoamControlLiveActivity` (embedded extension), `RoamControlWatch` (embedded watch app)
+
+`scripts/test-release-invariants.py` counts the version settings, so the count
+it expects is one Debug/Release pair per target. Adding a target means updating
+that count; a target whose version drifts from its host app is rejected on
+install.
 
 The minimum is 27.0 because of a device capability, not a compiled API. On-device
 pairing — an iPhone pairing with its own developer services through the six-digit

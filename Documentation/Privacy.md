@@ -39,6 +39,18 @@ The optional arrival alarm is scheduled with AlarmKit and is off unless switched
 
 ### Shortcuts, the Action button and links
 
+### Session history
+
+The record of past sessions — where, how long, and whether it finished — is kept on the iPhone. The last 50 are held and older ones are dropped. It is never sent anywhere and is not included in usage statistics. It can be cleared from **Settings → Session History**, and Reset removes it with everything else.
+
+### Exported favourites
+
+An exported file is made only when asked for and written only where you put it. Nothing uploads it, and the app keeps no copy of where it went. It is plain JSON, so its contents can be read before it is handed to anything. It carries saved places and their groups, and nothing else — no pairing material, no history, no diagnostics.
+
+### Apple Watch
+
+When a watch app is installed, the iPhone sends it what a running session looks like: the place name, how far along a walk is, the distance left and the arrival time. That goes between the two devices over Apple's own device-to-device link and reaches nothing else. The watch keeps only the last thing it was sent, and the only thing it can ask for in return is a pause.
+
 The app offers actions to Shortcuts and Siri. So that the Shortcuts action can offer a saved place to choose from, saved favourite names are made available to the system's App Intents infrastructure on the device. Coordinates are not included in what is offered.
 
 A `roamcontrol://location?lat=&lon=` link carries a coordinate in the link itself. A link you create therefore contains that coordinate, and sharing the link shares it. The app neither creates nor transmits such links on its own.

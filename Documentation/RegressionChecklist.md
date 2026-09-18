@@ -63,6 +63,22 @@ An unchecked row means untested, not failing. Rows added for a release stay unch
 
 ## Arrival alarm
 
+- [ ] Session history records a fixed session and a walk, with plausible durations.
+- [ ] A failed session is recorded as failed, with the message that caused it, translated.
+- [ ] Force-closing during a session leaves that record as interrupted on the next launch.
+- [ ] Restoring the real location does not add a record of its own.
+- [ ] Clearing session history leaves favourites, history and pairing untouched.
+- [ ] A favourite can be put in a group, moved between groups and taken out of one by clearing the name.
+- [ ] A group disappears when its last member leaves it.
+- [ ] Renaming a favourite keeps its group.
+- [ ] Reordering inside a group still reorders, and survives relaunch.
+- [ ] Exporting produces a readable file; importing it into a fresh install restores the favourites and their groups.
+- [ ] Importing a file whose places are already saved adds nothing and says so.
+- [ ] The watch app shows a running session, its progress and the countdown.
+- [ ] Pause and resume on the watch act on the walk without opening the iPhone app.
+- [ ] The watch says the iPhone is unreachable rather than showing a stale reading.
+- [ ] The watch reads in Traditional Chinese, failure messages included.
+
 - [ ] The setting is off on a clean install.
 - [ ] Switching it on asks for alarm permission, and declining leaves the switch off rather than silently on.
 - [ ] An alarm fires on arrival with the phone silenced.
