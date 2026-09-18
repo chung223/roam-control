@@ -1,3 +1,8 @@
+// ActivityKit is not on watchOS, and the watch target compiles this folder
+// too. Guarding the file rather than splitting the folder keeps one shared
+// place for shared types; what is inside is iOS-only because Live Activities
+// are, not because of how the targets happen to be arranged.
+#if canImport(ActivityKit)
 import ActivityKit
 import Foundation
 
@@ -96,3 +101,4 @@ extension RoamSessionActivityAttributes.ContentState {
         }
     }
 }
+#endif

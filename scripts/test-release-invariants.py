@@ -25,10 +25,11 @@ def function_body(source: str, signature: str) -> str:
 
 
 project = (ROOT / "RoamControl.xcodeproj/project.pbxproj").read_text()
-# One Debug/Release pair per target: the app and the Live Activity extension.
+# One Debug/Release pair per target: the app, the Live Activity extension and
+# the watch app.
 # An extension whose version drifts from its host app is rejected on install.
-assert project.count("CURRENT_PROJECT_VERSION = 63;") == 4
-assert project.count("MARKETING_VERSION = 0.10.0;") == 4
+assert project.count("CURRENT_PROJECT_VERSION = 63;") == 6
+assert project.count("MARKETING_VERSION = 0.10.0;") == 6
 
 with (ROOT / "Configuration/RoamControl-Info.plist").open("rb") as stream:
     info = plistlib.load(stream)

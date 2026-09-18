@@ -547,6 +547,49 @@ struct HomeView: View {
         .sheet(isPresented: $isShowingSavedPlaces) {
             savedPlacesSheet
         }
+        .onChange(of: watchSessionSnapshot, initial: true) { _, snapshot in
+            appModel.watchBridge.send(snapshot)
+        }
+    }
+
+    /// The whole of what the watch is told, rebuilt whenever anything it
+    /// depends on moves. Equatable, so an unchanged session sends nothing, and
+    /// the bridge decides how often a moving number is worth a message.
+    private var watchSessionSnapshot: WatchSessionState {
+        let walking = walkingSimulation
+        let isWalking = walking.locksDestination
+        let phase: WatchSessionState.Phase = switch appModel.connectionState {
+        case .active: .active
+        case .connecting: .connecting
+        case .failed: .failed
+        case .ready, .notConfigured: .idle
+        }
+
+        return WatchSessionState(
+            phase: walking.phase == .stopping ? .stopping : phase,
+            placeName: walking.destination?.name ?? appModel.selectedTarget?.name ?? "",
+            isWalking: isWalking,
+            isPaused: walking.phase == .paused,
+            progress: isWalking ? walking.progress : nil,
+            metresRemaining: isWalking ? walking.remainingDistance : nil,
+            arrivesAt: isWalking && walking.phase == .walking
+                ? Date.now.addingTimeInterval(walking.remainingDuration)
+                : nil,
+            startedAt: nil,
+            message: watchFailureMessage
+        )
+    }
+
+    /// Translated here, where the catalogue is. The watch shows what it is
+    /// given and holds no failure strings of its own.
+    private var watchFailureMessage: String? {
+        if case .failed(let message) = walkingSimulation.phase {
+            return SessionMessage.localized(message)
+        }
+        if case .failed(let message) = appModel.connectionState {
+            return SessionMessage.localized(message)
+        }
+        return nil
     }
 
     /// Lifted out of `body` because the compiler could no longer type-check

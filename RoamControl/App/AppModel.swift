@@ -48,6 +48,7 @@ final class AppModel {
     let onDevicePairing: OnDevicePairingCoordinator
     let deviceSession: LocalDeviceSessionCoordinator
     let liveActivity = RoamSessionLiveActivityController()
+    let watchBridge = WatchSessionBridge()
     private let usageAnalytics: UsageAnalyticsService
     let localDevVPNInstallURL = URL(string: "https://apps.apple.com/app/localdevvpn/id6755608044")!
 

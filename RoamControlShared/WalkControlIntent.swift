@@ -1,3 +1,7 @@
+// A LiveActivityIntent is unavailable on watchOS, and the watch target
+// compiles this folder. The watch asks for a pause over the link instead,
+// which is a different mechanism for the same request.
+#if !os(watchOS)
 import AppIntents
 import Foundation
 
@@ -34,3 +38,4 @@ public struct ToggleWalkPauseIntent: LiveActivityIntent {
         return .result()
     }
 }
+#endif

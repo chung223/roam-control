@@ -126,7 +126,10 @@ def catalogue_keys(path):
 
 
 def swift_files():
-    for base in ("RoamControl", "RoamControlLiveActivity", "RoamControlShared"):
+    # Every target with interface text. A folder missing from here is not
+    # checked and passes silently, which is how the watch app shipped its
+    # first screen in English only.
+    for base in ("RoamControl", "RoamControlLiveActivity", "RoamControlShared", "RoamControlWatch"):
         for path in sorted((ROOT / base).rglob("*.swift")):
             yield path
 
@@ -134,6 +137,7 @@ def swift_files():
 def check():
     app_keys = catalogue_keys("RoamControl/Resources/Localizable.xcstrings")
     widget_keys = catalogue_keys("RoamControlLiveActivity/Localizable.xcstrings")
+    watch_keys = catalogue_keys("RoamControlWatch/Localizable.xcstrings")
 
     missing = []      # not in any catalogue
     unwrapped = []    # in the catalogue, but used where it cannot be looked up
@@ -142,7 +146,12 @@ def check():
         rel = str(path.relative_to(ROOT))
         if rel in EXEMPT_FILES:
             continue
-        keys = widget_keys if "LiveActivity" in rel or "Shared" in rel else app_keys
+        if "Watch" in rel:
+            keys = watch_keys
+        elif "LiveActivity" in rel or "Shared" in rel:
+            keys = widget_keys
+        else:
+            keys = app_keys
 
         source = path.read_text(encoding="utf-8").splitlines()
         for number, line in enumerate(source, 1):
