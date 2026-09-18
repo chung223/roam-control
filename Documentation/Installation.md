@@ -4,7 +4,7 @@ This fork is distributed through TestFlight as **Sprout**. The upstream project 
 
 ## Requirements
 
-- An iPhone running iOS 26 or newer.
+- An iPhone running iOS 27 or newer. On-device pairing does not exist below 27: the six-digit code never appears in Settings, which has been tested rather than assumed.
 - Developer Mode enabled under **Settings → Privacy & Security**.
 - [LocalDevVPN](https://apps.apple.com/app/localdevvpn/id6755608044) installed on the iPhone.
 - TestFlight, or Xcode 26.6 or newer on a Mac with an Apple development team.

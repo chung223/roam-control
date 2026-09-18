@@ -9,11 +9,11 @@
 </p>
 
 <p align="center">
-  <strong>Current release:</strong> 0.10.0 Build 62 · <strong>Requires:</strong> iOS 26+
+  <strong>Current release:</strong> 0.10.0 Build 62 · <strong>Requires:</strong> iOS 27+
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/iOS-26%2B-blue" alt="iOS 26+">
+  <img src="https://img.shields.io/badge/iOS-27%2B-blue" alt="iOS 27+">
   <img src="https://img.shields.io/badge/UI-SwiftUI-orange" alt="SwiftUI">
   <img src="https://img.shields.io/badge/Current-Build%2062-lightgrey" alt="Current Build 62">
   <img src="https://img.shields.io/badge/License-PolyForm%20NC%201.0.0-blue" alt="PolyForm Noncommercial 1.0.0">
@@ -70,7 +70,7 @@ Earlier releases of the upstream project were published as unsigned IPAs for Sid
 
 You will need:
 
-- An iPhone running iOS 26 or newer.
+- An iPhone running iOS 27 or newer.
 - Developer Mode enabled.
 - [LocalDevVPN](https://apps.apple.com/app/localdevvpn/id6755608044).
 - TestFlight, or Xcode on a Mac to build and install it yourself.

@@ -3,13 +3,13 @@
 ## 0.10.0 (Build 62)
 
 - Released: 18 September 2026
-- Requires: iOS 26.0 or later
+- Requires: iOS 27.0 or later
 - Distribution: TestFlight, as **Sprout**
 - Xcode: 26.6 (`17F113`), Swift 6.3.3
 - Display name changed from Roam Control to Sprout. The project, its targets and its failure strings keep the old name, because those strings are telemetry classification keys and are asserted on by the invariant scripts.
 - First release not published as an unsigned IPA, and the first with no SHA-256 to verify: TestFlight signs and delivers it.
 - Change: a bundled catalogue of 10,505 Pikmin Bloom spots and 72 landmarks; Ask, answered by the on-device model against that catalogue on eligible iPhones; App Intents for the Action button, Siri, Shortcuts and the Share sheet, plus a `roamcontrol://` link; pause and resume from the Live Activity; an optional arrival alarm; looping walks; Traditional Chinese throughout including the Live Activity and permission prompts; the Sprout visual system with system glass over the map.
-- Change: minimum iOS lowered from 27.0 to 26.0, which is the real floor set by the MapKit geocoding the map already uses.
+- Minimum iOS stays at 27.0. It was lowered to 26.0 during development on the grounds that nothing used an iOS 27 API, which was true and beside the point: on-device pairing is a device capability the compiler cannot see, and testing on an iOS 26 device confirmed the six-digit pairing code never appears there.
 - Change: Check for Updates removed. It compared this app against the upstream project's releases, which was never a meaningful comparison. TestFlight delivers updates now.
 - Fixed: an address scoped to `lo0` counted as a direct path; interface text passed as `String` stayed English regardless of the catalogue; three App Intent descriptions named the iPhone, which App Store Connect rejects with error 90626.
 - Validation: eight invariant scripts, Debug and Release device builds, and on-device use of pairing, fixed location, walking and the Live Activity. Several behaviours added in this release are not yet verified on hardware and are listed as unchecked rows in the regression checklist rather than presented as tested.

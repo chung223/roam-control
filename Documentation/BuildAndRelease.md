@@ -7,13 +7,24 @@ This guide covers development builds and the TestFlight upload workflow.
 - Marketing version: `0.10.0`
 - Current build: `62`
 - Bundle identifier: supplied by `ROAMCONTROL_BUNDLE_ID` in the ignored private configuration
-- Minimum deployment target: iOS 26.0
+- Minimum deployment target: iOS 27.0
 - Supported device family: iPhone
 - Display name: Sprout
 
-The minimum is 26.0 rather than anything lower because the map already uses
-`MKReverseGeocodingRequest` and `MKMapItem.address`, which are iOS 26 APIs. That
-is the real floor; nothing else in the app sets a higher one.
+The minimum is 27.0 because of a device capability, not a compiled API. On-device
+pairing — an iPhone pairing with its own developer services through the six-digit
+code in Settings — does not exist below iOS 27, which has been tested on an iOS 26
+device: the code never appears.
+
+This is worth stating because it is invisible to the compiler. The project builds
+cleanly against the iOS 26 SDK with the target set to 26.0, and no availability
+guard anywhere would have flagged it. Lowering the target therefore produces a
+build that installs, launches and cannot pair, which makes every other feature
+unreachable. Apple documents none of this; the pairing path is reached through a
+third-party reimplementation of an undocumented protocol.
+
+MapKit sets a lower floor of its own — `MKReverseGeocodingRequest` and
+`MKMapItem.address` are iOS 26 APIs — but it is not the binding one.
 
 The version and build are shown in **Settings** inside the app. The built date and time come from the timestamp embedded for that packaged build.
 

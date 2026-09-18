@@ -6,7 +6,7 @@ It is the first release distributed through TestFlight, and the first to install
 
 ## Before installing
 
-- Requires iOS 26 or newer.
+- Requires iOS 27 or newer.
 - Requires Developer Mode and LocalDevVPN.
 - Distributed through TestFlight. There is no public App Store listing and no published IPA.
 - Intended only for development, quality assurance and responsible testing on a device the user owns and controls.
@@ -26,7 +26,7 @@ Read the [installation guide](Installation.md), [privacy explanation](Privacy.md
 
 ## Changes worth knowing about
 
-- Minimum iOS is 26.0 rather than 27.0, so the app installs on more devices than earlier builds.
+- Minimum iOS was briefly lowered to 26.0 and has been put back to 27.0. Pairing is the precondition for every other feature, and on iOS 26 the six-digit pairing code never appears in Settings, so the app would have installed and then been unusable — a worse outcome than not installing.
 - Check for Updates is gone. It compared this app against a different project's releases, which was never a meaningful comparison, and TestFlight delivers updates now.
 - Report a Bug and Request a Feature open issues on this repository rather than on the upstream project.
 
