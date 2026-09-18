@@ -22,6 +22,10 @@ struct PikminSpotsView: View {
     let origin: CLLocationCoordinate2D?
     let onSelect: (LocationTarget) -> Void
     let onShowOnMap: (PikminSpotFilter) -> Void
+    /// Plan one walk that calls at all of these, nearest first. The reason a
+    /// decoration list exists is that the decoration comes from any of them,
+    /// and going to one of them five times is a different errand.
+    let onPlanWalk: ([LocationTarget]) -> Void
 
     enum Tab: String, CaseIterable, Identifiable {
         case decorations, counties, world, ask
@@ -99,7 +103,8 @@ struct PikminSpotsView: View {
                                     .type(entry.decoration.placeType, label: entry.decoration.name)
                                 )
                                 dismiss()
-                            }
+                            },
+                            onPlanWalk: onPlanWalk
                         )
                     } label: {
                         row(
@@ -125,7 +130,8 @@ struct PikminSpotsView: View {
                         spots: PikminSpotCatalogue.spots(source: .pureSpot, area: entry.area),
                         origin: origin,
                         onSelect: select,
-                        onShowOnMap: nil
+                        onShowOnMap: nil,
+                        onPlanWalk: onPlanWalk
                     )
                 } label: {
                     row(title: entry.area, subtitle: nil, count: entry.count)
@@ -145,7 +151,8 @@ struct PikminSpotsView: View {
                             spots: PikminSpotCatalogue.spots(source: .postcard, area: entry.area),
                             origin: origin,
                             onSelect: select,
-                            onShowOnMap: nil
+                            onShowOnMap: nil,
+                            onPlanWalk: onPlanWalk
                         )
                     } label: {
                         row(title: entry.area, subtitle: nil, count: entry.count)
@@ -163,7 +170,8 @@ struct PikminSpotsView: View {
                             spots: PikminSpotCatalogue.spots(source: .mushroom, area: entry.area),
                             origin: origin,
                             onSelect: select,
-                            onShowOnMap: nil
+                            onShowOnMap: nil,
+                            onPlanWalk: onPlanWalk
                         )
                     } label: {
                         row(title: entry.area, subtitle: nil, count: entry.count)
@@ -291,11 +299,15 @@ struct PikminSpotsView: View {
 // MARK: - Spot list
 
 private struct SpotList: View {
+    /// Nearest first is already the order, so a count is the whole choice.
+    static let stopCounts = [3, 5, 8]
+
     let title: String
     let spots: [PikminSpot]
     let origin: CLLocationCoordinate2D?
     let onSelect: (PikminSpot) -> Void
     let onShowOnMap: (() -> Void)?
+    let onPlanWalk: ([LocationTarget]) -> Void
 
     /// Nearest first when the map has told us where it is looking. Five taco
     /// spots in the country is only useful once you know which one is yours.
@@ -328,6 +340,25 @@ private struct SpotList: View {
             if let onShowOnMap, !spots.isEmpty {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Show on map", systemImage: "map") { onShowOnMap() }
+                }
+            }
+            if ordered.count >= 2 {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Menu {
+                        // Counts rather than a free number. Each stop is a
+                        // separate directions request, and MapKit throttles;
+                        // a walk through forty places would spend longer being
+                        // planned than walked.
+                        ForEach(Self.stopCounts.filter { $0 <= ordered.count }, id: \.self) { count in
+                            Button {
+                                onPlanWalk(ordered.prefix(count).map(\.target))
+                            } label: {
+                                Text(String(format: .appText("Through %lld stops"), count))
+                            }
+                        }
+                    } label: {
+                        Label("Plan a walk", systemImage: "figure.walk.circle")
+                    }
                 }
             }
         }

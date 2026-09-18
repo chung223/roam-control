@@ -35,6 +35,11 @@ struct HomeView: View {
         ZStack {
             MapReader { proxy in
                 Map(position: $mapModel.cameraPosition) {
+                    if let plan = walkingRoutePlanner.plan {
+                        MapPolyline(plan.polyline)
+                            .stroke(SproutTheme.primary, lineWidth: 5)
+                    }
+
                     if let route = walkingRoutePlanner.route {
                         MapPolyline(route)
                             .stroke(SproutTheme.primary, lineWidth: 6)
@@ -290,10 +295,14 @@ struct HomeView: View {
 
                     if isLocatingRealLocationAfterRestoration {
                     RestoringRealLocationCard()
-                    } else if let route = walkingRoutePlanner.route,
+                    } else if walkingRoutePlanner.hasRoute,
                    let destination = walkingRoutePlanner.destination {
                     WalkingRoutePreviewCard(
-                        route: route,
+                        routeDistance: walkingRoutePlanner.previewDistance ?? 0,
+                        routeDuration: walkingRoutePlanner.previewDuration ?? 0,
+                        stopsRemaining: walkingSimulation.stops.isEmpty
+                            ? 0
+                            : walkingSimulation.stopsRemaining,
                         destination: walkingSimulation.destination ?? destination,
                         simulation: walkingSimulation,
                         isPaired: isPaired,
@@ -535,7 +544,12 @@ struct HomeView: View {
                     guard !walkingSimulation.locksDestination else { return }
                     mapModel.show(target)
                 },
-                onShowOnMap: { pikminFilter = $0 }
+                onShowOnMap: { pikminFilter = $0 },
+                onPlanWalk: { stops in
+                    guard !walkingSimulation.locksDestination else { return }
+                    isShowingPikminSpots = false
+                    planWalk(through: stops)
+                }
             )
         }
         .sheet(isPresented: $isShowingLandmarks) {
@@ -549,6 +563,29 @@ struct HomeView: View {
         }
         .onChange(of: watchSessionSnapshot, initial: true) { _, snapshot in
             appModel.watchBridge.send(snapshot)
+        }
+    }
+
+    /// Planned from where the map is looking rather than from the real
+    /// location: the list was sorted by that, and a walk that starts a
+    /// continent away from the places it calls at is not what was asked for.
+    private func planWalk(through stops: [LocationTarget]) {
+        guard let first = stops.first else { return }
+        Task {
+            let origin = visibleMapRegion.map { region in
+                LocationTarget(
+                    name: .appText("Route Start"),
+                    subtitle: first.subtitle,
+                    latitude: region.center.latitude,
+                    longitude: region.center.longitude
+                )
+            }
+            guard let plan = await walkingRoutePlanner.preview(through: stops, from: origin) else { return }
+            walkingSimulation.prepare(plan)
+            if let destination = plan.destination {
+                mapModel.show(destination)
+            }
+            mapModel.show(plan.polyline)
         }
     }
 

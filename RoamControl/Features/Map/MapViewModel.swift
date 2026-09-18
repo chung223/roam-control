@@ -133,7 +133,11 @@ final class MapViewModel: NSObject, MKLocalSearchCompleterDelegate {
     }
 
     func show(_ route: MKRoute) {
-        let routeRect = route.polyline.boundingMapRect
+        show(route.polyline)
+    }
+
+    func show(_ polyline: MKPolyline) {
+        let routeRect = polyline.boundingMapRect
         guard !routeRect.isNull, !routeRect.isEmpty else { return }
 
         let horizontalPadding = max(routeRect.size.width * 0.24, 1_200)

@@ -4,7 +4,12 @@ import SwiftUI
 struct WalkingRoutePreviewCard: View {
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
-    let route: MKRoute
+    /// The numbers rather than the route: a walk through several places is
+    /// several routes, and this card only ever read these two from it.
+    let routeDistance: CLLocationDistance
+    let routeDuration: TimeInterval
+    /// 0 for an ordinary walk. Otherwise how many places it still calls at.
+    let stopsRemaining: Int
     let destination: LocationTarget
     let simulation: WalkingSimulationController
     let isPaired: Bool
@@ -421,17 +426,30 @@ struct WalkingRoutePreviewCard: View {
         }
     }
 
+    /// Interpolated and therefore invisible to the localisation check, which
+    /// skips anything containing one. These three read in English on the most
+    /// used screen in the app until someone looked.
     private var phaseSubtitle: String {
-        switch simulation.phase {
+        let place = SessionMessage.localized(destination.name)
+        let base = switch simulation.phase {
         case .idle, .preparing, .failed:
-            "Current Location to \(destination.name)"
+            String(format: .appText("Current Location to %@"), place)
         case .walking, .paused:
-            "Heading to \(destination.name) · \(Int((simulation.progress * 100).rounded()))%"
+            String(
+                format: .appText("Heading to %@ · %lld%%"),
+                place,
+                Int((simulation.progress * 100).rounded())
+            )
         case .arrived:
-            "Location active at \(destination.name)"
+            String(format: .appText("Location active at %@"), place)
         case .stopping:
-            .appText("Restoring this iPhone's real location")
+            String.appText("Restoring this iPhone's real location")
         }
+
+        // Only while there is more than the one being walked to, so an
+        // ordinary walk reads exactly as it did.
+        guard stopsRemaining > 1 else { return base }
+        return base + " · " + String(format: .appText("%lld stops left"), stopsRemaining)
     }
 
     private var phaseSymbol: String {
@@ -460,7 +478,7 @@ struct WalkingRoutePreviewCard: View {
     }
 
     private var distanceText: String {
-        let distance = showsProgress ? simulation.remainingDistance : route.distance
+        let distance = showsProgress ? simulation.remainingDistance : routeDistance
         if Locale.current.region?.identifier == "GB" {
             return formatUKDistance(distance)
         }
@@ -490,7 +508,7 @@ struct WalkingRoutePreviewCard: View {
         guard simulation.phase != .arrived else { return .appText("Complete") }
         let duration = simulation.totalDistance > 0
             ? simulation.remainingDuration
-            : route.expectedTravelTime
+            : routeDuration
         return formatDuration(duration)
     }
 
@@ -498,7 +516,7 @@ struct WalkingRoutePreviewCard: View {
         guard simulation.phase != .arrived else { return "Now" }
         let duration = simulation.totalDistance > 0
             ? simulation.remainingDuration
-            : route.expectedTravelTime
+            : routeDuration
         return Date.now
             .addingTimeInterval(duration)
             .formatted(date: .omitted, time: .shortened)

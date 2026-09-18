@@ -6,6 +6,7 @@ All notable public changes to Roam Control are recorded here.
 
 ### Added
 
+- A walk that calls at several places. The reason to want five restaurants is that a decoration comes from restaurants, and going to one of them five times is a different errand — which is what the app could do until now. Any spot list offers a walk through its nearest three, five or eight, planned as one leg per stop and laid end to end. The card, the Live Activity and the watch name the stop it is heading for and move on as each is passed.
 - A Shortcut can be run when a session ends. Someone who turns a proxy and a tracker off before starting already has a Shortcut that calls Start Location; turning them back on afterwards is the half that cannot be scheduled, because the afterwards can happen with the phone in a pocket. It runs after the real location is restored and when a walk reaches its destination. An app in the background cannot launch Shortcuts, so a walk that arrives unattended runs it at the next launch, and the setting says so rather than appearing not to work.
 - Double tap holds a walk, on the watches that have the gesture. Holding one is the single thing worth doing without a free hand, which is the state walking somewhere tends to leave you in.
 - A tap on the wrist when a simulated walk arrives. It is not the arrival alarm repeated: an alarm sounds, and a tap is only for the person wearing it.

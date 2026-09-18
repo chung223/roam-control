@@ -24,6 +24,17 @@
         }
       }
     },
+    "%lld stops left": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "還有 %lld 站"
+          }
+        }
+      }
+    },
     "A directly resolved address answered. LocalDevVPN may not be needed for this hop — worth confirming with a full session before relying on it.": {
       "extractionState": "manual",
       "localizations": {
@@ -1439,6 +1450,17 @@
         }
       }
     },
+    "Current Location to %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "從目前位置到 %@"
+          }
+        }
+      }
+    },
     "Current location": {
       "extractionState": "manual",
       "localizations": {
@@ -2358,6 +2380,17 @@
         }
       }
     },
+    "Heading to %@ · %lld%%": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "前往 %@ · %lld%%"
+          }
+        }
+      }
+    },
     "Help": {
       "extractionState": "manual",
       "localizations": {
@@ -2944,6 +2977,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "模擬定位已停止"
+          }
+        }
+      }
+    },
+    "Location active at %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "定位啟用中：%@"
           }
         }
       }
@@ -4001,6 +4045,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "你用過的地點會出現在這裡。"
+          }
+        }
+      }
+    },
+    "Plan a walk": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "規劃步行路線"
           }
         }
       }
@@ -6955,6 +7010,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "這會移除過去工作階段的紀錄，不會影響最愛、歷史或配對。"
+          }
+        }
+      }
+    },
+    "This walking route does not contain enough detail to simulate movement.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "這條步行路線的細節不足以模擬移動。"
+          }
+        }
+      }
+    },
+    "Through %lld stops": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "經過 %lld 個地點"
           }
         }
       }

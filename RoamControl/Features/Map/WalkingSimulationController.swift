@@ -46,6 +46,16 @@ final class WalkingSimulationController {
     private var cumulativeDistances: [CLLocationDistance] = []
     @ObservationIgnored
     private(set) var destination: LocationTarget?
+    /// Where a multi-stop walk calls, and how far along each one sits. Empty
+    /// for an ordinary walk, which is a walk with one stop that never needed
+    /// to say so.
+    @ObservationIgnored
+    private(set) var stops: [LocationTarget] = []
+    @ObservationIgnored
+    private var stopDistances: [CLLocationDistance] = []
+    /// Observed, because the number of stops behind you is the one part of a
+    /// multi-stop walk that has to redraw as it changes.
+    private(set) var stopsReached = 0
     @ObservationIgnored
     private var routeStart: LocationTarget?
     @ObservationIgnored
@@ -87,6 +97,56 @@ final class WalkingSimulationController {
         }
     }
 
+    /// A walk that calls at several places. The simulation walks one line
+    /// either way; the stops only decide what it is called on the way there.
+    func prepare(_ plan: MultiStopRoute) {
+        guard let destination = plan.destination else { return }
+        movementTask?.cancel()
+        movementTask = nil
+
+        routePoints = plan.points
+        cumulativeDistances = cumulativeDistanceValues(for: routePoints)
+        totalDistance = cumulativeDistances.last ?? plan.totalDistance
+        distanceTravelled = 0
+        currentCoordinate = nil
+        stops = plan.stops
+        stopDistances = plan.stopDistances
+        stopsReached = 0
+        // The first stop, not the last: a walk through five places is on its
+        // way to the first of them, and naming the fifth would be describing
+        // somewhere it will not reach for an hour.
+        self.destination = plan.stops.first
+        setRouteStart(named: destination.name)
+        phase = routePoints.count >= 2 ? .idle : .failed("This walking route does not contain enough detail to simulate movement.")
+    }
+
+    /// The stop it is heading for now, which is the destination until it is
+    /// reached and then the one after it.
+    var nextStop: LocationTarget? {
+        guard !stops.isEmpty else { return destination }
+        return stops.indices.contains(stopsReached) ? stops[stopsReached] : stops.last
+    }
+
+    var stopsRemaining: Int {
+        max(stops.count - stopsReached, 0)
+    }
+
+    /// Moves the named destination on as each stop is passed. Everything that
+    /// shows where a walk is going reads `destination`, so this is all it
+    /// takes for the card, the Live Activity and the watch to keep up.
+    ///
+    /// Returns whether a stop was passed, since that is worth redrawing for.
+    private func advanceStopsIfNeeded() -> Bool {
+        guard !stops.isEmpty else { return false }
+        let before = stopsReached
+        while stopsReached < stopDistances.count, distanceTravelled >= stopDistances[stopsReached] {
+            stopsReached += 1
+        }
+        guard stopsReached != before else { return false }
+        destination = stops.indices.contains(stopsReached) ? stops[stopsReached] : stops.last
+        return true
+    }
+
     func prepare(route: MKRoute, destination: LocationTarget) {
         movementTask?.cancel()
         movementTask = nil
@@ -96,20 +156,28 @@ final class WalkingSimulationController {
         routePoints = (0..<polyline.pointCount).map { points[$0] }
         cumulativeDistances = cumulativeDistanceValues(for: routePoints)
         totalDistance = cumulativeDistances.last ?? route.distance
+        stops = []
+        stopDistances = []
+        stopsReached = 0
         distanceTravelled = 0
         currentCoordinate = nil
         self.destination = destination
-        if let startCoordinate = routePoints.first?.coordinate {
-            routeStart = LocationTarget(
-                name: .appText("Route Start"),
-                subtitle: "Starting point for \(destination.name)",
-                latitude: startCoordinate.latitude,
-                longitude: startCoordinate.longitude
-            )
-        } else {
-            routeStart = nil
-        }
+        setRouteStart(named: destination.name)
         phase = routePoints.count >= 2 ? .idle : .failed("This walking route does not contain enough detail to simulate movement.")
+    }
+
+    /// Where the route begins, kept so a walk can turn round and come back.
+    private func setRouteStart(named destinationName: String) {
+        guard let startCoordinate = routePoints.first?.coordinate else {
+            routeStart = nil
+            return
+        }
+        routeStart = LocationTarget(
+            name: .appText("Route Start"),
+            subtitle: "Starting point for \(destinationName)",
+            latitude: startCoordinate.latitude,
+            longitude: startCoordinate.longitude
+        )
     }
 
     /// Keep walking after arriving, turning round and going back, over and
@@ -136,8 +204,22 @@ final class WalkingSimulationController {
         cumulativeDistances = cumulativeDistanceValues(for: routePoints)
         totalDistance = cumulativeDistances.last ?? totalDistance
         distanceTravelled = 0
-        destination = returnDestination
         routeStart = previousDestination
+
+        guard !stops.isEmpty else {
+            destination = returnDestination
+            return true
+        }
+
+        // The line is reversed, so a stop that was `d` along is now
+        // `totalDistance - d` along. The one being stood on is dropped — it
+        // has just been reached — and the start becomes the final stop.
+        let returning = Array(stops.dropLast().reversed())
+        let returningDistances = Array(stopDistances.dropLast().reversed().map { totalDistance - $0 })
+        stops = returning + [returnDestination]
+        stopDistances = returningDistances + [totalDistance]
+        stopsReached = 0
+        destination = stops.first
         return true
     }
 
@@ -278,6 +360,9 @@ final class WalkingSimulationController {
         cumulativeDistances = []
         destination = nil
         routeStart = nil
+        stops = []
+        stopDistances = []
+        stopsReached = 0
         currentCoordinate = nil
         distanceTravelled = 0
         totalDistance = 0
@@ -360,12 +445,19 @@ final class WalkingSimulationController {
                 if self.phase == .paused {
                     continue
                 }
-                guard self.phase == .walking, let destination = self.destination else { return }
+                guard self.phase == .walking, self.destination != nil else { return }
 
                 self.distanceTravelled = min(
                     self.totalDistance,
                     self.distanceTravelled + (self.pace.metresPerSecond * elapsed)
                 )
+
+                // Passing a stop renames where the walk is going, and every
+                // screen showing that reads it from here.
+                if self.advanceStopsIfNeeded() {
+                    self.publishWalkingActivity(stage: .running)
+                }
+                guard let destination = self.destination else { return }
 
                 guard let coordinate = self.coordinate(at: self.distanceTravelled) else {
                     self.phase = .failed("Roam Control could not follow this walking route.")
