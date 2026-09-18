@@ -1010,6 +1010,17 @@
         }
       }
     },
+    "Clear Session History": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "清除工作階段歷史"
+          }
+        }
+      }
+    },
     "Clear all favourites?": {
       "extractionState": "manual",
       "localizations": {
@@ -1061,6 +1072,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "清除已選位置"
+          }
+        }
+      }
+    },
+    "Clear session history?": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "要清除工作階段歷史嗎？"
           }
         }
       }
@@ -1764,6 +1786,17 @@
         }
       }
     },
+    "Failed": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "失敗"
+          }
+        }
+      }
+    },
     "Favourite": {
       "extractionState": "manual",
       "localizations": {
@@ -1903,6 +1936,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "前往「設定」完成"
+          }
+        }
+      }
+    },
+    "Finished": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已結束"
           }
         }
       }
@@ -2387,6 +2431,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "排程器失敗時，已安裝 App 與允許的背景任務識別碼（僅限維護者服務）"
+          }
+        }
+      }
+    },
+    "Interrupted": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "中斷"
           }
         }
       }
@@ -3170,6 +3225,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "找不到符合的地點。"
+          }
+        }
+      }
+    },
+    "No sessions yet": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "還沒有工作階段"
           }
         }
       }
@@ -5143,6 +5209,17 @@
         }
       }
     },
+    "Running": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "進行中"
+          }
+        }
+      }
+    },
     "S": {
       "extractionState": "manual",
       "localizations": {
@@ -5418,6 +5495,17 @@
         }
       }
     },
+    "Session History": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "工作階段歷史"
+          }
+        }
+      }
+    },
     "Session active": {
       "extractionState": "manual",
       "localizations": {
@@ -5425,6 +5513,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "工作階段進行中"
+          }
+        }
+      }
+    },
+    "Sessions appear here once one reaches the iPhone.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "工作階段連上這支 iPhone 之後就會出現在這裡。"
           }
         }
       }
@@ -6348,6 +6447,17 @@
         }
       }
     },
+    "The last 50 sessions are kept on this iPhone. They are never sent anywhere and are not included in usage statistics.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最近 50 個工作階段保存在這支 iPhone 上。它們不會送到任何地方，也不會計入使用統計。"
+          }
+        }
+      }
+    },
     "The location controls took too long to open.": {
       "extractionState": "manual",
       "localizations": {
@@ -6603,6 +6713,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "這支 iPhone 正在使用 %@。「停止並還原」會結束模擬並還原它的真實位置。"
+          }
+        }
+      }
+    },
+    "This removes the record of past sessions. It does not affect favourites, history or pairing.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "這會移除過去工作階段的紀錄，不會影響最愛、歷史或配對。"
           }
         }
       }

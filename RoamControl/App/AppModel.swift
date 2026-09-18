@@ -11,6 +11,7 @@ final class AppModel {
     static let favouritesDefaultsKey = "favouriteLocations"
     private static let hasSeenFavouriteReorderHintKey = "hasSeenFavouriteReorderHint"
     private static let historyKey = "locationHistory"
+    private static let sessionHistoryKey = "sessionHistory"
     private static let appearanceKey = "appAppearance"
     private static let mapDisplayStyleKey = "mapDisplayStyle"
     private static let activeSessionRecoveryKey = "activeSessionRecovery"
@@ -26,6 +27,7 @@ final class AppModel {
     private(set) var favouriteLocations: [LocationTarget]
     private(set) var hasSeenFavouriteReorderHint: Bool
     private(set) var locationHistory: [LocationTarget]
+    private(set) var sessionHistory: [SessionRecord]
     private(set) var appearance: AppAppearance
     private(set) var mapDisplayStyle: MapDisplayStyle
     private(set) var sharesAnonymousUsageStatistics: Bool
@@ -40,6 +42,7 @@ final class AppModel {
     private var isStoppingLocationSessionForRestoration = false
     private var pendingSessionAnalyticsEvent: UsageAnalyticsEvent?
     private var activeSessionIsWalkingRoute = false
+    private var openSessionRecordID: SessionRecord.ID?
 
     let pairingService: any PairingService
     let onDevicePairing: OnDevicePairingCoordinator
@@ -62,6 +65,7 @@ final class AppModel {
         self.favouriteLocations = Self.locations(forKey: Self.favouritesDefaultsKey, in: preferences)
         self.hasSeenFavouriteReorderHint = preferences.bool(forKey: Self.hasSeenFavouriteReorderHintKey)
         self.locationHistory = Self.locations(forKey: Self.historyKey, in: preferences)
+        self.sessionHistory = Self.sessionRecords(in: preferences)
         self.appearance = AppAppearance(
             rawValue: preferences.string(forKey: Self.appearanceKey) ?? ""
         ) ?? .automatic
@@ -570,6 +574,7 @@ final class AppModel {
     private func applyDeviceSessionPhase(_ phase: DeviceSessionPhase) {
         switch phase {
         case .idle:
+            closeSessionRecord(.completed)
             pendingSessionAnalyticsEvent = nil
             activeSessionIsWalkingRoute = false
             liveActivity.end()
@@ -600,6 +605,11 @@ final class AppModel {
         case .active(let target):
             connectionState = .active
             isStoppingLocationSessionForRestoration = false
+            // Restoring the real location drives the same phases as a session.
+            // It is the undoing of one, so it is not recorded as one.
+            if !isRestoringInterruptedSession {
+                beginSessionRecord(at: target)
+            }
             if let event = pendingSessionAnalyticsEvent {
                 usageAnalytics.record(event, enabled: sharesAnonymousUsageStatistics)
                 pendingSessionAnalyticsEvent = nil
@@ -628,6 +638,7 @@ final class AppModel {
                 persistActiveSessionRecovery(at: target)
             }
         case .failed(let message):
+            closeSessionRecord(.failed, message: message)
             pendingSessionAnalyticsEvent = nil
             activeSessionIsWalkingRoute = false
             liveActivity.end()
@@ -729,6 +740,69 @@ final class AppModel {
             return false
         }
         return elements.contains { $0["id"] == nil }
+    }
+
+    private static func sessionRecords(in preferences: UserDefaults) -> [SessionRecord] {
+        guard
+            let data = preferences.data(forKey: Self.sessionHistoryKey),
+            let records = try? JSONDecoder().decode([SessionRecord].self, from: data)
+        else {
+            return []
+        }
+        // A record still open at launch belongs to a run of the app that is
+        // over. Whether the session itself survived is a separate question,
+        // and the recovery record is what answers it.
+        return records.map { record in
+            guard record.isOpen else { return record }
+            var closed = record
+            closed.outcome = .interrupted
+            return closed
+        }
+    }
+
+    private func saveSessionHistory() {
+        guard let data = try? JSONEncoder().encode(sessionHistory) else { return }
+        preferences.set(data, forKey: Self.sessionHistoryKey)
+    }
+
+    /// Opened when a session reaches the device, not when one is requested: an
+    /// attempt that never connects is a failure to record against nothing.
+    private func beginSessionRecord(at target: LocationTarget) {
+        guard openSessionRecordID == nil else { return }
+        let record = SessionRecord(
+            target: target,
+            kind: activeSessionIsWalkingRoute ? .walkingRoute : .fixed
+        )
+        openSessionRecordID = record.id
+        sessionHistory.insert(record, at: 0)
+        sessionHistory = Array(sessionHistory.prefix(50))
+        saveSessionHistory()
+    }
+
+    private func closeSessionRecord(_ outcome: SessionRecord.Outcome, message: String? = nil) {
+        guard
+            let id = openSessionRecordID,
+            let index = sessionHistory.firstIndex(where: { $0.id == id })
+        else {
+            openSessionRecordID = nil
+            return
+        }
+        sessionHistory[index].endedAt = .now
+        sessionHistory[index].outcome = outcome
+        sessionHistory[index].failureMessage = message
+        openSessionRecordID = nil
+        saveSessionHistory()
+    }
+
+    func removeSessionRecord(_ record: SessionRecord) {
+        sessionHistory.removeAll { $0.id == record.id }
+        saveSessionHistory()
+    }
+
+    func clearSessionHistory() {
+        sessionHistory = []
+        openSessionRecordID = nil
+        preferences.removeObject(forKey: Self.sessionHistoryKey)
     }
 
     private static func recoveryRecord(in preferences: UserDefaults) -> SessionRecoveryRecord? {

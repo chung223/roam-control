@@ -45,6 +45,13 @@ struct SettingsView: View {
                         Label("Connection Health", systemImage: "stethoscope")
                     }
 
+                    NavigationLink {
+                        SessionHistoryView()
+                            .environment(appModel)
+                    } label: {
+                        Label("Session History", systemImage: "clock.arrow.circlepath")
+                    }
+
                     Button {
                         isShowingDeviceSetup = true
                     } label: {
