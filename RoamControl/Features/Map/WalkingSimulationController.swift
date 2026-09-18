@@ -174,7 +174,10 @@ final class WalkingSimulationController {
         }
         routeStart = LocationTarget(
             name: .appText("Route Start"),
-            subtitle: "Starting point for \(destinationName)",
+            subtitle: String(
+                format: .appText("Starting point for %@"),
+                SessionMessage.localized(destinationName)
+            ),
             latitude: startCoordinate.latitude,
             longitude: startCoordinate.longitude
         )
@@ -565,8 +568,14 @@ final class WalkingSimulationController {
         destination: LocationTarget
     ) -> LocationTarget {
         LocationTarget(
-            name: "Walking to \(destination.name)",
-            subtitle: "\(Int((progress * 100).rounded()))% complete",
+            name: String(
+                format: .appText("Walking to %@"),
+                SessionMessage.localized(destination.name)
+            ),
+            subtitle: String(
+                format: .appText("%lld%% complete"),
+                Int((progress * 100).rounded())
+            ),
             latitude: coordinate.latitude,
             longitude: coordinate.longitude
         )

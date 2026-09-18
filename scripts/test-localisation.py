@@ -90,7 +90,12 @@ LOCALISING_MODIFIER = re.compile(
 # Argument labels that are themselves declared LocalizedStringKey.
 LOCALISING_LABEL = re.compile(r"\b(prompt|titleKey|label|message|description):\s*$")
 # Already a lookup; wrapping it again would look the translation up twice.
-ALREADY_LOOKED_UP = re.compile(r"String\(localized:\s*$|LocalizationValue\(\s*$")
+# `String(localized:` is often split over two lines, leaving `localized:`
+# alone in front of the literal and `String(` on the line before. Either half
+# means the lookup is happening.
+ALREADY_LOOKED_UP = re.compile(
+    r"String\(localized:\s*$|LocalizationValue\(\s*$|(^|[\s(])localized:\s*$"
+)
 # Matched against, not shown. Translating one of these breaks the comparison,
 # which is the whole reason the failure messages stay English.
 COMPARISON = re.compile(
@@ -110,13 +115,39 @@ INTENT_TEXT = re.compile(
     r"LocalizedStringResource|IntentDescription\(|TypeDisplayRepresentation\(|"
     r"DisplayRepresentation\(|@Parameter\(|AppShortcut\(|shortTitle:|"
     r"needsValueError\(|IntentDialog\(|requestValue\(|"
-    r"AlarmButton\(|AlarmPresentation|LocalizedStringResource"
+    r"AlarmButton\(|AlarmPresentation|LocalizedStringResource|phrases:"
 )
+# How far back to look for the marker. A Siri phrase list puts `AppShortcut(`
+# and `phrases:` several lines above the phrases themselves, and every phrase
+# after the first has only another phrase on the line before it.
+INTENT_LOOKBACK = 6
 # Session failure text: English is its identity, and SessionMessage.localized
 # translates it on the way to the screen. Same reason as EXEMPT_FILES.
 FAILURE_CALL = re.compile(r"\.(failed|fail)\(\s*$")
 # Prose a person reads: at least one space between words, or a capitalised word.
 PROSE = re.compile(r"^[A-Z“(]?[A-Za-z].*$")
+
+
+# An interpolation in source and a format specifier in a catalogue key are
+# the same hole seen from two sides. Both become this, so the two can be
+# compared at all.
+PLACEHOLDER = "\u0000"
+INTERPOLATION = re.compile(r"\\\((?:[^()]|\([^()]*\))*\)")
+SPECIFIER = re.compile(r"%(?:@|lld|ld|lf|[dsf])")
+
+
+def placeheld(text):
+    """The shape of a string, with whatever varies reduced to one token.
+
+    `Text("Page \\(n) of \\(total)")` is looked up by the key `Page %lld of
+    %lld`, so neither form can be found by searching for the other. Reducing
+    both to the same shape is the only comparison that means anything — and
+    without it every interpolated string is uncheckable, which is how three of
+    them sat untranslated on the busiest screen in the app.
+    """
+    text = text.replace("%%", "%")
+    text = INTERPOLATION.sub(PLACEHOLDER, text)
+    return SPECIFIER.sub(PLACEHOLDER, text)
 
 
 def unescape(literal):
@@ -137,7 +168,9 @@ def unescape(literal):
 def catalogue_keys(path):
     if not (ROOT / path).exists():
         return set()
-    return set(json.loads((ROOT / path).read_text(encoding="utf-8"))["strings"])
+    keys = set(json.loads((ROOT / path).read_text(encoding="utf-8"))["strings"])
+    # Both spellings, so a lookup can use whichever it has.
+    return keys | {placeheld(key) for key in keys}
 
 
 def swift_files():
@@ -150,7 +183,10 @@ def swift_files():
 
 
 def check():
+    # Siri phrases live in their own catalogue, which is where the system
+    # looks for them; a string translated in either is translated.
     app_keys = catalogue_keys("RoamControl/Resources/Localizable.xcstrings")
+    app_keys |= catalogue_keys("RoamControl/Resources/AppShortcuts.xcstrings")
     widget_keys = catalogue_keys("RoamControlLiveActivity/Localizable.xcstrings")
     watch_keys = catalogue_keys("RoamControlWatch/Localizable.xcstrings")
 
@@ -178,8 +214,7 @@ def check():
                 text = match.group(1)
                 if len(text) < 4 or NOT_TEXT.match(text) or not PROSE.match(text):
                     continue
-                if "\\(" in text:            # interpolated; a different key shape
-                    continue
+
                 if " " not in text and not text[0].isupper():
                     continue
 
@@ -188,9 +223,15 @@ def check():
                     NAMING_CALL.search(before)
                     or FAILURE_CALL.search(before)
                     or ALREADY_LOOKED_UP.search(before)
+                    # `String(\n    localized: "…")` puts the call on the line
+                    # above, which is where multi-line ones always put it.
+                    or ALREADY_LOOKED_UP.search(source[number - 2] if number >= 2 else "")
                     or COMPARISON.search(before)
                     or INTENT_TEXT.search(line)
-                    or INTENT_TEXT.search(source[number - 2] if number >= 2 else "")
+                    or any(
+                        INTENT_TEXT.search(source[index])
+                        for index in range(max(0, number - 1 - INTENT_LOOKBACK), number - 1)
+                    )
                 ):
                     continue
                 # The app wraps with appText; the extension has its own
@@ -230,7 +271,7 @@ def check():
                 # real newline in the middle defeats the prose test, and a
                 # string skipped there is a string never checked at all.
                 key = unescape(text)
-                if key not in keys:
+                if key not in keys and placeheld(key) not in keys:
                     missing.append((rel, number, text))
                 elif not wrapped and not localising:
                     unwrapped.append((rel, number, text))

@@ -35,6 +35,17 @@
         }
       }
     },
+    "%lld%% complete": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已完成 %lld%%"
+          }
+        }
+      }
+    },
     "A directly resolved address answered. LocalDevVPN may not be needed for this hop — worth confirming with a full session before relying on it.": {
       "extractionState": "manual",
       "localizations": {
@@ -6045,6 +6056,17 @@
         }
       }
     },
+    "Starting point for %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 的起點"
+          }
+        }
+      }
+    },
     "Starting walking session…": {
       "extractionState": "manual",
       "localizations": {
@@ -7478,6 +7500,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "步行路線"
+          }
+        }
+      }
+    },
+    "Walking to %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在前往 %@"
           }
         }
       }
