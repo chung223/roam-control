@@ -43,6 +43,7 @@
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>localdevvpn</string>
+		<string>shortcuts</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

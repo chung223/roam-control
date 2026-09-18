@@ -55,6 +55,8 @@ The app offers actions to Shortcuts and Siri. So that the Shortcuts action can o
 
 A `roamcontrol://location?lat=&lon=` link carries a coordinate in the link itself. A link you create therefore contains that coordinate, and sharing the link shares it. The app neither creates nor transmits such links on its own.
 
+A Shortcut named under **When a Session Ends** is run by name through the Shortcuts app. Sprout passes it nothing — no place, no coordinate, no session detail — and receives nothing back beyond being reopened. What that Shortcut then does is between it and the apps it acts on.
+
 ## Optional anonymous usage statistics
 
 The app offers **Share Anonymous Usage Statistics**. It is off by default. New users see the switch before finishing setup, and nothing is sent unless they affirmatively switch it on. Existing installations keep their previously saved choice when upgrading. The setting can be changed at any time under **Settings → Privacy**.

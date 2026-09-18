@@ -250,6 +250,17 @@
         }
       }
     },
+    "An app in the background cannot launch Shortcuts, so a walk that arrives in your pocket runs it the next time you open Sprout.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "背景中的 App 不能啟動「捷徑」，所以步行在你口袋裡抵達時，會等到你下次打開 Sprout 才執行。"
+          }
+        }
+      }
+    },
     "An inactive session means Roam Control's worker has ended. Other apps may need time to acquire a fresh real location.": {
       "extractionState": "manual",
       "localizations": {
@@ -5352,6 +5363,17 @@
         }
       }
     },
+    "Runs this Shortcut by name after the real location is restored, and when a walk reaches its destination. Turning a proxy or a tracker back on is the usual reason.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在還原真實位置之後、以及步行抵達目的地時，依名稱執行這個捷徑。通常是用來把代理或軌跡記錄重新打開。"
+          }
+        }
+      }
+    },
     "S": {
       "extractionState": "manual",
       "localizations": {
@@ -5737,6 +5759,28 @@
         }
       }
     },
+    "Shortcut name": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "捷徑名稱"
+          }
+        }
+      }
+    },
+    "Shortcuts is not available on this iPhone.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "這支 iPhone 上沒有「捷徑」。"
+          }
+        }
+      }
+    },
     "Show my current location": {
       "extractionState": "manual",
       "localizations": {
@@ -5931,6 +5975,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "正在這支 iPhone 上啟動私密工作階段。"
+          }
+        }
+      }
+    },
+    "Starting is the other half and belongs in your own Shortcut, before it calls Start Location — by the time this app could run anything, it has already connected.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "啟動是另外一半，該放在你自己的捷徑裡、在它呼叫「開始定位」之前 —— 等到這個 App 有機會執行任何東西時，它已經連線了。"
           }
         }
       }
@@ -7240,6 +7295,17 @@
         }
       }
     },
+    "Waiting to run it": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "等待執行"
+          }
+        }
+      }
+    },
     "Wake me on arrival": {
       "extractionState": "manual",
       "localizations": {
@@ -7407,6 +7473,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "你在找什麼？"
+          }
+        }
+      }
+    },
+    "When a Session Ends": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "工作階段結束時"
           }
         }
       }

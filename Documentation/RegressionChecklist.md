@@ -60,6 +60,11 @@ An unchecked row means untested, not failing. Rows added for a release stay unch
 - [ ] Start Location, Start Location at Coordinates and Stop Location appear in Shortcuts and run without opening the app where they say they will not.
 - [ ] The Action button and Siri run the same actions.
 - [ ] A saved favourite appears as a choice in the Shortcuts action.
+- [ ] Naming a Shortcut under When a Session Ends runs it after Stop & Restore.
+- [ ] It also runs when a walk reaches its destination with the app in front.
+- [ ] A walk that arrives with the app in the background shows a waiting state, and runs it on the next launch, once.
+- [ ] Returning from Shortcuts does not disturb an active session or the pairing callback.
+- [ ] An empty name runs nothing and reports nothing.
 
 ## Arrival alarm
 

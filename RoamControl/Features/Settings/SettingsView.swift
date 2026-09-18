@@ -104,6 +104,28 @@ struct SettingsView: View {
                 }
 
                 Section {
+                    TextField(
+                        "Shortcut name",
+                        text: Binding(
+                            get: { appModel.shortcutRunner.name },
+                            set: { appModel.shortcutRunner.name = $0 }
+                        )
+                    )
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
+
+                    if appModel.shortcutRunner.isPending {
+                        Label("Waiting to run it", systemImage: "clock")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                } header: {
+                    Text("When a Session Ends")
+                } footer: {
+                    shortcutFooter
+                }
+
+                Section {
                     Button {
                         isExportingPlaces = true
                     } label: {
@@ -368,6 +390,21 @@ struct SettingsView: View {
             return .appText("Every place in that file was already saved.")
         }
         return String(format: .appText("Added %lld favourites."), added)
+    }
+
+    /// Says what will happen rather than what could. The background limit is
+    /// the surprising part and is worth stating before it is met, not after.
+    @ViewBuilder
+    private var shortcutFooter: some View {
+        if appModel.shortcutRunner.isAvailable {
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Runs this Shortcut by name after the real location is restored, and when a walk reaches its destination. Turning a proxy or a tracker back on is the usual reason.")
+                Text("Starting is the other half and belongs in your own Shortcut, before it calls Start Location — by the time this app could run anything, it has already connected.")
+                Text("An app in the background cannot launch Shortcuts, so a walk that arrives in your pocket runs it the next time you open Sprout.")
+            }
+        } else {
+            Text("Shortcuts is not available on this iPhone.")
+        }
     }
 
     private var isShowingResetError: Binding<Bool> {

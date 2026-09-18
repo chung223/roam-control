@@ -49,6 +49,7 @@ final class AppModel {
     let deviceSession: LocalDeviceSessionCoordinator
     let liveActivity = RoamSessionLiveActivityController()
     let watchBridge = WatchSessionBridge()
+    let shortcutRunner = ShortcutRunner()
     private let usageAnalytics: UsageAnalyticsService
     let localDevVPNInstallURL = URL(string: "https://apps.apple.com/app/localdevvpn/id6755608044")!
 
@@ -533,6 +534,10 @@ final class AppModel {
     }
 
     func handleOpenURL(_ url: URL) {
+        // Shortcuts handing the screen back after running one. Nothing to do
+        // but stop here, so the tunnel coordinator is not asked to make sense
+        // of a URL that is not its callback.
+        if url.host()?.lowercased() == "shortcut-finished" { return }
         if startLocationFromLink(url) { return }
         deviceSession.handleOpenURL(url)
     }
@@ -579,6 +584,9 @@ final class AppModel {
         guard hasCompletedOnboarding else { return }
         usageAnalytics.recordActivation(enabled: sharesAnonymousUsageStatistics)
         performPendingLocationIntent()
+        // A session that finished while this was in the background could not
+        // launch anything at the time. Now it can.
+        shortcutRunner.runPendingIfNeeded()
     }
 
     /// Carries out whatever the Action button, Siri or a Shortcut asked for.
@@ -629,6 +637,7 @@ final class AppModel {
         switch phase {
         case .idle:
             closeSessionRecord(.completed)
+            NotificationCenter.default.post(name: ShortcutRunner.sessionFinished, object: nil)
             pendingSessionAnalyticsEvent = nil
             activeSessionIsWalkingRoute = false
             liveActivity.end()

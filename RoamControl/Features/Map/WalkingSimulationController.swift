@@ -396,6 +396,10 @@ final class WalkingSimulationController {
                 if reachedDestination {
                     self.currentCoordinate = destination.coordinate
                     self.phase = .arrived
+                    NotificationCenter.default.post(
+                        name: ShortcutRunner.sessionFinished,
+                        object: nil
+                    )
                     // The walk is over, the session is not: the iPhone still
                     // reports the destination. Presenting it as a held location
                     // says that; leaving the walk on screen kept a progress bar

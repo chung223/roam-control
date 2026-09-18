@@ -119,6 +119,21 @@ FAILURE_CALL = re.compile(r"\.(failed|fail)\(\s*$")
 PROSE = re.compile(r"^[A-Z“(]?[A-Za-z].*$")
 
 
+def unescape(literal):
+    """The text a Swift literal means, not the text it is written as.
+
+    A catalogue key is the string's value, so `\\n` in source is a newline by
+    the time anything is looked up. Comparing the written form against the
+    catalogue reports every such string as missing while it is plainly there.
+    """
+    return (
+        literal.replace("\\n", "\n")
+        .replace("\\t", "\t")
+        .replace('\\"', '"')
+        .replace("\\\\", "\\")
+    )
+
+
 def catalogue_keys(path):
     if not (ROOT / path).exists():
         return set()
@@ -210,7 +225,12 @@ def check():
                 if not localising and re.match(r'^\s*"', line):
                     localising = False
 
-                if text not in keys:
+                # Looked up by value rather than by the way it is written.
+                # The heuristics above run on the written form on purpose: a
+                # real newline in the middle defeats the prose test, and a
+                # string skipped there is a string never checked at all.
+                key = unescape(text)
+                if key not in keys:
                     missing.append((rel, number, text))
                 elif not wrapped and not localising:
                     unwrapped.append((rel, number, text))

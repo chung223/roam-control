@@ -138,6 +138,22 @@ Three actions are available to Shortcuts, Siri and the Action button:
 
 Saved favourite names are offered to the system so a shortcut can choose among them. Coordinates are not.
 
+### Running a Shortcut around a session
+
+A workflow that turns something off before a session and back on afterwards splits in two, and only one half needs this app.
+
+The first half is your own Shortcut, and the order matters:
+
+```
+Proxy: off  →  Tracker: off  →  Sprout: Start Location
+```
+
+LocalDevVPN is not a step. Sprout opens it itself when a session needs it.
+
+The second half is **Settings → When a Session Ends**, where naming a Shortcut runs it after the real location is restored and when a walk reaches its destination. This is where turning those apps back on belongs, because that moment can arrive without you.
+
+Two things are worth knowing. An app in the background cannot launch Shortcuts, so a walk that arrives while the iPhone is in a pocket runs yours the next time you open Sprout — the setting says when one is waiting. And Sprout cannot run anything *before* it connects, so a Shortcut named here is no use for turning a proxy off; that belongs in the first half.
+
 ## Feedback
 
 Under **Settings → Session History**, past sessions are listed with where they went, how long they lasted and whether they finished, failed or were interrupted. A failure keeps the message that caused it. The last 50 are kept on the iPhone and are never sent anywhere.
