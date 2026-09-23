@@ -310,18 +310,34 @@ private struct CompactTrailing: View {
             .foregroundStyle(SproutActivity.tint(for: state))
     }
 
+    /// How far ahead an arrival may be and still be shown as a countdown.
+    ///
+    /// `Text(timerInterval:)` reserves width for the widest string its range
+    /// can produce, not for the value it is showing. An arrival an hour and a
+    /// half away therefore reserves room for `1:23:45` from the first second,
+    /// and the compact presentation is as wide as the island will allow for
+    /// the whole walk. The islands on newer iPhones are narrower, so what used
+    /// to merely look roomy now looks broken.
+    ///
+    /// Under an hour the widest it can render is `59:59`, which fits.
+    private static let countdownLimit: TimeInterval = 3_600
+
     @ViewBuilder
     private var content: some View {
         if
             state.isWalking,
             state.stage == .running,
             let expectedArrival = state.expectedArrival,
-            expectedArrival > .now
+            expectedArrival > .now,
+            expectedArrival.timeIntervalSinceNow < Self.countdownLimit
         {
             // Counts down in place, like the Lock Screen, so a walk does not
             // cost an activity update every second.
             Text(timerInterval: Date.now...expectedArrival, countsDown: true)
         } else if state.isWalking, state.stage == .running || state.stage == .paused {
+            // Four characters at its widest, and a long walk is better
+            // described by how far along it is than by how many hours are
+            // left — which is also the only thing that fits.
             Text(percentText)
         }
         // A held location has no number worth the width. The guidance is to
