@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check Build 62 release, scheduler and telemetry invariants without networking."""
+"""Check Release, scheduler and telemetry invariants without networking."""
 
 from pathlib import Path
 import plistlib
@@ -28,8 +28,8 @@ project = (ROOT / "RoamControl.xcodeproj/project.pbxproj").read_text()
 # One Debug/Release pair per target: the app, the Live Activity extension and
 # the watch app.
 # An extension whose version drifts from its host app is rejected on install.
-assert project.count("CURRENT_PROJECT_VERSION = 63;") == 6
-assert project.count("MARKETING_VERSION = 0.10.0;") == 6
+assert project.count("CURRENT_PROJECT_VERSION = 64;") == 6
+assert project.count("MARKETING_VERSION = 0.11.0;") == 6
 
 with (ROOT / "Configuration/RoamControl-Info.plist").open("rb") as stream:
     info = plistlib.load(stream)
@@ -140,4 +140,4 @@ if private_config.exists():
             if path.is_file():
                 assert token not in path.read_text(errors="ignore"), f"Private token tracked in {relative}"
 
-print("Build 62 release, scheduler and consent-gate source checks passed; no network requests made.")
+print("Release, scheduler and consent-gate source checks passed; no network requests made.")

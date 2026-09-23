@@ -1,5 +1,17 @@
 # Roam Control releases
 
+## 0.11.0 (Build 64)
+
+- Released: 23 September 2026
+- Requires: iOS 27.0 or later; the watch app requires watchOS 26.0 or later
+- Distribution: TestFlight, as **Sprout**
+- Xcode: 26.6 (`17F113`), Swift 6.3.3
+- Adds a third target, `RoamControlWatch`, embedded in the app and installed on a paired Apple Watch.
+- Change: a walk can be composed by hand and can ignore Apple's routing entirely, which is the only way to walk somewhere Apple declines to route — a park's interior, a campus, open country. A GPX file can be walked as recorded.
+- Change: session history, favourite groups and an export file, and a Shortcut run when a session ends.
+- Fixed: interpolated interface text was never checked for translations, so the walking card's subtitle and the Siri phrases were English in every language.
+- Validation: eight invariant scripts, Debug and Release device builds, installation on both the iPhone and the watch. Most of what this release adds has not been exercised on hardware yet and is listed as unchecked in the regression checklist rather than presented as tested.
+
 ## 0.10.0 (Build 63)
 
 - Released: 18 September 2026

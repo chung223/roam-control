@@ -1,6 +1,6 @@
-# Sprout 0.10.0 — Build 63
+# Sprout 0.11.0 — Build 64
 
-Build 63 is the current release of this fork: a source-available SwiftUI app for testing an iPhone's reported location from a clean Apple Maps interface. It supports fixed locations, simulated walking routes, favourites, history and native on-device pairing through LocalDevVPN.
+Build 64 is the current release of this fork: a source-available SwiftUI app for testing an iPhone's reported location from a clean Apple Maps interface. It supports fixed locations, simulated walking routes, favourites, history and native on-device pairing through LocalDevVPN.
 
 It is the first release distributed through TestFlight, and the first to install as **Sprout** rather than Roam Control.
 
@@ -13,7 +13,17 @@ It is the first release distributed through TestFlight, and the first to install
 
 Read the [installation guide](Installation.md), [privacy explanation](Privacy.md) and [responsible-use policy](ResponsibleUse.md) before using it.
 
-## What is new in 0.10.0
+## What is new in 0.11.0
+
+- An Apple Watch app. A walk is something you leave running, and the watch shows the place, the progress, the distance left and the countdown, with pause and resume — by button, or by double tap on the watches that have the gesture. It taps your wrist when the walk arrives.
+- Walks you build yourself: add any place to a walk, in any order, dragging to reorder.
+- Straight-line walks, for the places Apple will not route to — a park's interior, a campus, open country — where a walk simply could not be planned before.
+- GPX import, for a path that already exists elsewhere.
+- Session history: what was done, how long it took, and whether it finished, beside Connection Health.
+- Groups for favourites, and an exported file to keep them in — the only copy that exists, since nothing here leaves the device on its own.
+- A Shortcut can be run when a session ends, which is where turning a proxy or a tracker back on belongs.
+
+## What was new in 0.10.0
 
 - A bundled catalogue of 10,505 Pikmin Bloom spots and 72 well-known landmarks, browsable by decoration, county or country and searchable with no network connection.
 - Ask: a question like "where do I get a taco" answered against that catalogue by the on-device model, on iPhones that can run Apple Intelligence. A tool does the searching and the model only chooses, so a wrong answer is a wrong choice among real places rather than an invented one. Nothing is sent anywhere.

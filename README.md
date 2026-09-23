@@ -9,13 +9,13 @@
 </p>
 
 <p align="center">
-  <strong>Current release:</strong> 0.10.0 Build 63 · <strong>Requires:</strong> iOS 27+
+  <strong>Current release:</strong> 0.11.0 Build 64 · <strong>Requires:</strong> iOS 27+
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/iOS-27%2B-blue" alt="iOS 27+">
   <img src="https://img.shields.io/badge/UI-SwiftUI-orange" alt="SwiftUI">
-  <img src="https://img.shields.io/badge/Current-Build%2063-lightgrey" alt="Current Build 63">
+  <img src="https://img.shields.io/badge/Current-Build%2064-lightgrey" alt="Current Build 64">
   <img src="https://img.shields.io/badge/License-PolyForm%20NC%201.0.0-blue" alt="PolyForm Noncommercial 1.0.0">
 </p>
 
@@ -64,7 +64,7 @@ The app installs and appears on the Home Screen as **Sprout**. The project, its 
 
 ## Install Roam Control
 
-This fork is distributed through **TestFlight** as **Sprout 0.10.0 Build 63**. Ask the maintainer for an invitation; there is no public App Store listing.
+This fork is distributed through **TestFlight** as **Sprout 0.11.0 Build 64**. Ask the maintainer for an invitation; there is no public App Store listing.
 
 Earlier releases of the upstream project were published as unsigned IPAs for SideStore. That route still works if you build your own archive, but no IPA is published here.
 
