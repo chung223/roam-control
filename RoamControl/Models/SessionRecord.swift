@@ -28,6 +28,18 @@ struct SessionRecord: Codable, Hashable, Identifiable, Sendable {
     let target: LocationTarget
     let kind: Kind
     let startedAt: Date
+
+    /// The device's time zone when the session began.
+    ///
+    /// Simulating a distant location makes iOS move the device's own zone to
+    /// match it, so a session run in Florida and read back at home would
+    /// otherwise be shown at a time nobody was awake. A record of when
+    /// something happened is worth nothing if it cannot be compared with a
+    /// memory of it.
+    ///
+    /// Optional because records written before this decode without it, and
+    /// the only honest thing to show for those is whatever zone is current.
+    var timeZoneIdentifier: String?
     var endedAt: Date?
     var outcome: Outcome?
 
@@ -41,6 +53,7 @@ struct SessionRecord: Codable, Hashable, Identifiable, Sendable {
         target: LocationTarget,
         kind: Kind,
         startedAt: Date = .now,
+        timeZoneIdentifier: String? = TimeZone.current.identifier,
         endedAt: Date? = nil,
         outcome: Outcome? = nil,
         failureMessage: String? = nil
@@ -49,12 +62,19 @@ struct SessionRecord: Codable, Hashable, Identifiable, Sendable {
         self.target = target
         self.kind = kind
         self.startedAt = startedAt
+        self.timeZoneIdentifier = timeZoneIdentifier
         self.endedAt = endedAt
         self.outcome = outcome
         self.failureMessage = failureMessage
     }
 
     var isOpen: Bool { outcome == nil }
+
+    /// The zone this session's times should be read in, falling back to the
+    /// current one for records that predate this being stored.
+    var timeZone: TimeZone {
+        timeZoneIdentifier.flatMap(TimeZone.init(identifier:)) ?? .current
+    }
 
     /// Absent while the session is open: a duration that grows each time it is
     /// read is a timer, not a record, and nothing here wants one.

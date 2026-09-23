@@ -179,6 +179,10 @@ Two things are worth knowing. An app in the background cannot launch Shortcuts, 
 
 Under **Settings → Session History**, past sessions are listed with where they went, how long they lasted and whether they finished, failed or were interrupted. A failure keeps the message that caused it. The last 50 are kept on the iPhone and are never sent anywhere.
 
+Each session is listed in the time zone it happened in, and the zone is named when it is not the one you are reading in. This matters more than it sounds: with **Set Automatically** on, iOS moves the iPhone's own time zone to match a simulated location, so a session run in the morning here can be read back as the previous evening once the phone believes it is somewhere else.
+
+That is the system's behaviour and not something this app sets or can prevent. It affects the clock, alarms and calendar as well, and the zone returns on its own once the real location is restored — sometimes after a delay. The arrival alarm is unaffected either way: it is scheduled for an instant rather than for a reading on a clock.
+
 Under **Settings → Feedback**, **Report a Bug** and **Request a Feature** open the matching GitHub form. Do not include pairing records, credentials or private locations in a report.
 
 Updates arrive through TestFlight, which says when a new build is available. The app has no update check of its own.

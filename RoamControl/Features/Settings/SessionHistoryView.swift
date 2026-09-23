@@ -76,7 +76,7 @@ private struct SessionRow: View {
                     .foregroundStyle(outcomeColour)
             }
 
-            Text(record.startedAt.formatted(date: .abbreviated, time: .shortened))
+            Text(startedText)
                 .font(.caption)
                 .foregroundStyle(.secondary)
 
@@ -94,6 +94,22 @@ private struct SessionRow: View {
             }
         }
         .padding(.vertical, 2)
+    }
+
+    /// Shown in the zone the session happened in, with the zone named when it
+    /// is not the one being read in — otherwise the reading is a claim about a
+    /// time that never happened anywhere.
+    private var startedText: String {
+        let formatter = DateFormatter()
+        formatter.timeZone = record.timeZone
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        let time = formatter.string(from: record.startedAt)
+
+        guard record.timeZone.identifier != TimeZone.current.identifier else { return time }
+        let zone = record.timeZone.localizedName(for: .shortGeneric, locale: .current)
+            ?? record.timeZone.identifier
+        return "\(time) (\(zone))"
     }
 
     private var outcomeLabel: String {

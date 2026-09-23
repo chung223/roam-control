@@ -88,6 +88,9 @@ An unchecked row means untested, not failing. Rows added for a release stay unch
 - [ ] Force-closing during a session leaves that record as interrupted on the next launch.
 - [ ] Restoring the real location does not add a record of its own.
 - [ ] Clearing session history leaves favourites, history and pairing untouched.
+- [ ] A session run while the iPhone's time zone has followed a simulated location is listed at the time it actually happened, with the zone named.
+- [ ] A session run in the current zone is listed without a zone name.
+- [ ] The diagnostics report names the time zone that generated it.
 - [ ] A favourite can be put in a group, moved between groups and taken out of one by clearing the name.
 - [ ] A group disappears when its last member leaves it.
 - [ ] Renaming a favourite keeps its group.

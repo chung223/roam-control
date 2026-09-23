@@ -428,7 +428,7 @@ struct ConnectionHealthView: View {
 
         return """
         Roam Control Diagnostics
-        Generated: \(Date().formatted(date: .numeric, time: .standard))
+        Generated: \(Date().formatted(date: .numeric, time: .standard)) \(TimeZone.current.identifier)
         App: \(appVersion) (\(build))
         iOS: \(UIDevice.current.systemVersion)
         Runtime bundle identifier: \(runtimeBundleIdentifier)
