@@ -26,6 +26,9 @@ struct PikminSpotsView: View {
     /// decoration list exists is that the decoration comes from any of them,
     /// and going to one of them five times is a different errand.
     let onPlanWalk: ([LocationTarget]) -> Void
+    /// Adds them to the walk being assembled rather than planning one now,
+    /// so a single walk can gather places from more than one list.
+    let onAddToWalk: ([LocationTarget]) -> Void
 
     enum Tab: String, CaseIterable, Identifiable {
         case decorations, counties, world, ask
@@ -104,7 +107,8 @@ struct PikminSpotsView: View {
                                 )
                                 dismiss()
                             },
-                            onPlanWalk: onPlanWalk
+                            onPlanWalk: onPlanWalk,
+                            onAddToWalk: onAddToWalk
                         )
                     } label: {
                         row(
@@ -131,7 +135,8 @@ struct PikminSpotsView: View {
                         origin: origin,
                         onSelect: select,
                         onShowOnMap: nil,
-                        onPlanWalk: onPlanWalk
+                        onPlanWalk: onPlanWalk,
+                        onAddToWalk: onAddToWalk
                     )
                 } label: {
                     row(title: entry.area, subtitle: nil, count: entry.count)
@@ -152,7 +157,8 @@ struct PikminSpotsView: View {
                             origin: origin,
                             onSelect: select,
                             onShowOnMap: nil,
-                            onPlanWalk: onPlanWalk
+                            onPlanWalk: onPlanWalk,
+                            onAddToWalk: onAddToWalk
                         )
                     } label: {
                         row(title: entry.area, subtitle: nil, count: entry.count)
@@ -171,7 +177,8 @@ struct PikminSpotsView: View {
                             origin: origin,
                             onSelect: select,
                             onShowOnMap: nil,
-                            onPlanWalk: onPlanWalk
+                            onPlanWalk: onPlanWalk,
+                            onAddToWalk: onAddToWalk
                         )
                     } label: {
                         row(title: entry.area, subtitle: nil, count: entry.count)
@@ -308,6 +315,7 @@ private struct SpotList: View {
     let onSelect: (PikminSpot) -> Void
     let onShowOnMap: (() -> Void)?
     let onPlanWalk: ([LocationTarget]) -> Void
+    let onAddToWalk: ([LocationTarget]) -> Void
 
     /// Nearest first when the map has told us where it is looking. Five taco
     /// spots in the country is only useful once you know which one is yours.
@@ -354,6 +362,16 @@ private struct SpotList: View {
                                 onPlanWalk(ordered.prefix(count).map(\.target))
                             } label: {
                                 Text(String(format: .appText("Through %lld stops"), count))
+                            }
+                        }
+
+                        Divider()
+
+                        ForEach(Self.stopCounts.filter { $0 <= ordered.count }, id: \.self) { count in
+                            Button {
+                                onAddToWalk(ordered.prefix(count).map(\.target))
+                            } label: {
+                                Text(String(format: .appText("Add %lld to the walk"), count))
                             }
                         }
                     } label: {

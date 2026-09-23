@@ -14,6 +14,10 @@ struct LocationSelectionCard: View {
     let onToggleFavourite: () -> Void
     let onClearSelection: () -> Void
     let onPreviewWalkingRoute: () -> Void
+    /// Whether this place is already the last stop of the walk being planned,
+    /// so the button can say so rather than silently doing nothing.
+    let isLastStopOfWalk: Bool
+    let onAddToWalk: () -> Void
     let onStart: () -> Void
     let onStop: () -> Void
 
@@ -85,6 +89,17 @@ struct LocationSelectionCard: View {
                     .buttonStyle(.bordered)
                     .controlSize(.large)
                     .disabled(isPreviewingWalkingRoute)
+
+                    Button(action: onAddToWalk) {
+                        HStack(spacing: 8) {
+                            Image(systemName: isLastStopOfWalk ? "checkmark" : "plus")
+                            Text(isLastStopOfWalk ? "Added to Walk" : "Add to Walk")
+                        }
+                        .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.bordered)
+                    .controlSize(.large)
+                    .disabled(isLastStopOfWalk)
                 }
 
                 if let walkingRouteError {

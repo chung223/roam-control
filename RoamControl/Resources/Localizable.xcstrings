@@ -46,6 +46,17 @@
         }
       }
     },
+    "A GPX file is walked exactly as recorded and replaces the stops above.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GPX 檔案會完全照紀錄行走，並取代上面的站點。"
+          }
+        }
+      }
+    },
     "A directly resolved address answered. LocalDevVPN may not be needed for this hop — worth confirming with a full session before relying on it.": {
       "extractionState": "manual",
       "localizations": {
@@ -162,6 +173,39 @@
         }
       }
     },
+    "Add %lld to the walk": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "把 %lld 個加入路線"
+          }
+        }
+      }
+    },
+    "Add at least one place before planning a walk.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "規劃路線前至少要加入一個地點。"
+          }
+        }
+      }
+    },
+    "Add to Walk": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "加入路線"
+          }
+        }
+      }
+    },
     "Add to favourites": {
       "extractionState": "manual",
       "localizations": {
@@ -191,6 +235,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "已加入 %lld 個最愛。"
+          }
+        }
+      }
+    },
+    "Added to Walk": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已加入路線"
           }
         }
       }
@@ -762,6 +817,17 @@
         }
       }
     },
+    "Build a walk that calls at several places": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "建立一條經過多個地點的步行路線"
+          }
+        }
+      }
+    },
     "Built": {
       "extractionState": "manual",
       "localizations": {
@@ -956,6 +1022,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "選擇一個位置"
+          }
+        }
+      }
+    },
+    "Choose a place on the map, then tap Add to Walk. Do it again for each place you want to pass.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在地圖上選一個地點，然後點「加入路線」。每個想經過的地點都這樣做一次。"
           }
         }
       }
@@ -1670,6 +1747,17 @@
         }
       }
     },
+    "Each leg follows an Apple Maps walking route. Places Apple will not route to — inside a park, a campus, open country — cannot be planned this way.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每一段都走 Apple 地圖的步行路線。Apple 不提供路線的地方 —— 公園內部、園區、郊野 —— 沒辦法用這個方式規劃。"
+          }
+        }
+      }
+    },
     "Easter Island Moai": {
       "extractionState": "manual",
       "localizations": {
@@ -2160,6 +2248,17 @@
         }
       }
     },
+    "Follow streets": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "沿著道路"
+          }
+        }
+      }
+    },
     "Follow the mobile-data guidance if it appears.": {
       "extractionState": "manual",
       "localizations": {
@@ -2574,6 +2673,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "匯入最愛"
+          }
+        }
+      }
+    },
+    "Import a GPX File": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "匯入 GPX 檔案"
+          }
+        }
+      }
+    },
+    "Imported route": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "匯入的路線"
           }
         }
       }
@@ -3449,6 +3570,17 @@
         }
       }
     },
+    "No stops yet": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "還沒有站點"
+          }
+        }
+      }
+    },
     "No walking route was found for this destination.": {
       "extractionState": "manual",
       "localizations": {
@@ -4060,6 +4192,28 @@
         }
       }
     },
+    "Plan This Walk": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "規劃這條路線"
+          }
+        }
+      }
+    },
+    "Plan a Walk": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "規劃步行路線"
+          }
+        }
+      }
+    },
     "Plan a walk": {
       "extractionState": "manual",
       "localizations": {
@@ -4078,6 +4232,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "正在規劃步行路線…"
+          }
+        }
+      }
+    },
+    "Planning…": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "規劃中…"
           }
         }
       }
@@ -6243,6 +6408,17 @@
         }
       }
     },
+    "Stops": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "站點"
+          }
+        }
+      }
+    },
     "Storage and Control": {
       "extractionState": "manual",
       "localizations": {
@@ -6415,6 +6591,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "太魯閣峽谷"
+          }
+        }
+      }
+    },
+    "That file does not contain a route with at least two points.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "那個檔案裡沒有包含至少兩個點的路線。"
           }
         }
       }
@@ -6762,6 +6949,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "最近 50 個工作階段保存在這支 iPhone 上。它們不會送到任何地方，也不會計入使用統計。"
+          }
+        }
+      }
+    },
+    "The line goes straight from each place to the next, through whatever is in between. Nothing is asked of Apple Maps, so anywhere can be walked.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "路線會從每個地點直線連到下一個，中間有什麼都穿過去。完全不需要 Apple 地圖，所以哪裡都走得了。"
           }
         }
       }
@@ -7434,6 +7632,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "步行已暫停"
+          }
+        }
+      }
+    },
+    "Walked in this order, starting from where the map is looking. Drag to reorder, swipe to remove.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "會依這個順序行走，起點是地圖目前看的位置。拖曳可以排序，滑動可以移除。"
           }
         }
       }

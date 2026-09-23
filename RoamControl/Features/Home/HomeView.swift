@@ -13,6 +13,8 @@ struct HomeView: View {
     @State private var isShowingSavedPlaces = false
     @State private var isShowingLandmarks = false
     @State private var isShowingPikminSpots = false
+    @State private var isShowingWalkPlanner = false
+    @State private var walkDraft = WalkPlanDraft()
     @State private var pikminFilter: PikminSpotFilter?
     @State private var visibleMapRegion: MKCoordinateRegion?
     @State private var shouldRefreshRealLocationWhenActive = false
@@ -35,54 +37,7 @@ struct HomeView: View {
         ZStack {
             MapReader { proxy in
                 Map(position: $mapModel.cameraPosition) {
-                    if let plan = walkingRoutePlanner.plan {
-                        MapPolyline(plan.polyline)
-                            .stroke(SproutTheme.primary, lineWidth: 5)
-                    }
-
-                    if let route = walkingRoutePlanner.route {
-                        MapPolyline(route)
-                            .stroke(SproutTheme.primary, lineWidth: 6)
-                    }
-
-                    if shouldShowRealLocation {
-                        UserAnnotation()
-                    }
-
-                    if let target = mapModel.selectedLocation {
-                        Marker(target.name, coordinate: target.coordinate)
-                            .tint(SproutTheme.primary)
-                    }
-
-                    ForEach(pikminSpotsInView) { spot in
-                        Annotation(spot.name, coordinate: spot.coordinate) {
-                            Image(systemName: "leaf.fill")
-                                .font(SproutTheme.font(.caption2, weight: .bold))
-                                .foregroundStyle(.white)
-                                .padding(5)
-                                .background(SproutTheme.primary, in: Circle())
-                                .onTapGesture {
-                                    guard !walkingSimulation.locksDestination else { return }
-                                    mapModel.show(spot.target)
-                                }
-                        }
-                        .annotationTitles(.hidden)
-                    }
-
-                    if let coordinate = walkingSimulation.currentCoordinate {
-                        Annotation("Walking location", coordinate: coordinate) {
-                            Image(systemName: "leaf.circle.fill")
-                                .font(.title.weight(.semibold))
-                                .foregroundStyle(.white, SproutTheme.primary)
-                                .padding(4)
-                                .background(SproutTheme.surface, in: Circle())
-                                .shadow(
-                                    color: SproutTheme.controlShadow.color,
-                                    radius: SproutTheme.controlShadow.radius,
-                                    y: SproutTheme.controlShadow.y
-                                )
-                        }
-                    }
+                    mapContent
                 }
                 .roamControlMapStyle(appModel.mapDisplayStyle)
                 .mapControls {
@@ -199,6 +154,8 @@ struct HomeView: View {
                         .disabled(walkingSimulation.locksDestination)
                         .accessibilityLabel("Pikmin Spots")
                         .accessibilityHint("Browse the bundled Pikmin Bloom catalogue")
+
+                        walkPlannerControl
 
                         Button {
                             isShowingSavedPlaces = true
@@ -331,43 +288,7 @@ struct HomeView: View {
                         }
                     )
                     } else {
-                    LocationSelectionCard(
-                        location: mapModel.selectedLocation,
-                        isFavourite: mapModel.selectedLocation.map(appModel.isFavourite) ?? false,
-                        isPaired: isPaired,
-                        sessionPhase: appModel.deviceSession.phase,
-                        localDevVPNInstallURL: appModel.localDevVPNInstallURL,
-                        isPreviewingWalkingRoute: walkingRoutePlanner.isLoading,
-                        walkingRouteError: walkingRoutePlanner.errorMessage,
-                        onToggleFavourite: {
-                            guard let target = mapModel.selectedLocation else { return }
-                            appModel.toggleFavourite(target)
-                        },
-                        onClearSelection: {
-                            walkingSimulation.reset()
-                            walkingRoutePlanner.clear()
-                            mapModel.clearSelectedLocation()
-                        },
-                        onPreviewWalkingRoute: {
-                            guard let target = mapModel.selectedLocation else { return }
-                            Task {
-                                if let route = await walkingRoutePlanner.preview(to: target) {
-                                    walkingSimulation.prepare(route: route, destination: target)
-                                    mapModel.show(route)
-                                }
-                            }
-                        },
-                        onStart: {
-                            guard let target = mapModel.selectedLocation else { return }
-                            shouldRefreshRealLocationWhenActive = false
-                            mapModel.show(target)
-                            Task { await appModel.startLocationSession(at: target) }
-                        },
-                        onStop: {
-                            shouldClearLocationAfterRestoration = true
-                            appModel.stopLocationSession()
-                        }
-                    )
+                    locationSelectionCard
                     }
                 } else {
                     Spacer()
@@ -473,39 +394,7 @@ struct HomeView: View {
             }
         }
         .onChange(of: appModel.deviceSession.phase) { oldPhase, newPhase in
-            walkingSimulation.handleDeviceSessionPhase(
-                newPhase,
-                deviceSession: appModel.deviceSession
-            )
-
-            switch newPhase {
-            case .openingLocalDevVPN, .discovering, .connecting, .active, .stopping:
-                shouldRefreshRealLocationWhenActive = false
-                mapModel.invalidateRealLocationCache()
-            case .idle:
-                if oldPhase == .stopping, shouldClearLocationAfterRestoration {
-                    shouldClearLocationAfterRestoration = false
-                    walkingSimulation.reset()
-                    walkingRoutePlanner.clear()
-                    mapModel.clearSelectedLocation()
-                    shouldRefreshRealLocationWhenActive = false
-                    isLocatingRealLocationAfterRestoration = true
-                    mapModel.refreshRealLocationAfterRestoration()
-                }
-            case .failed:
-                shouldClearLocationAfterRestoration = false
-            }
-
-            guard oldPhase == .stopping, newPhase == .idle else { return }
-            guard !isLocatingRealLocationAfterRestoration else { return }
-            shouldRefreshRealLocationWhenActive = true
-            Task { @MainActor in
-                try? await Task.sleep(for: .seconds(3))
-                guard shouldRefreshRealLocationWhenActive, scenePhase == .active else { return }
-                shouldRefreshRealLocationWhenActive = false
-                guard case .idle = appModel.deviceSession.phase else { return }
-                mapModel.showRealLocationAfterSession()
-            }
+            handleDeviceSessionPhaseChange(from: oldPhase, to: newPhase)
         }
         .onChange(of: mapModel.selectedLocation) { _, selectedLocation in
             guard !walkingSimulation.locksDestination else { return }
@@ -538,19 +427,7 @@ struct HomeView: View {
                 .environment(appModel)
         }
         .sheet(isPresented: $isShowingPikminSpots) {
-            PikminSpotsView(
-                origin: visibleMapRegion?.center,
-                onSelect: { target in
-                    guard !walkingSimulation.locksDestination else { return }
-                    mapModel.show(target)
-                },
-                onShowOnMap: { pikminFilter = $0 },
-                onPlanWalk: { stops in
-                    guard !walkingSimulation.locksDestination else { return }
-                    isShowingPikminSpots = false
-                    planWalk(through: stops)
-                }
-            )
+            pikminSpotsSheet
         }
         .sheet(isPresented: $isShowingLandmarks) {
             LandmarksView { target in
@@ -561,31 +438,292 @@ struct HomeView: View {
         .sheet(isPresented: $isShowingSavedPlaces) {
             savedPlacesSheet
         }
+        .sheet(isPresented: $isShowingWalkPlanner) {
+            walkPlannerSheet
+        }
         .onChange(of: watchSessionSnapshot, initial: true) { _, snapshot in
             appModel.watchBridge.send(snapshot)
         }
     }
 
+    /// Twenty arguments inside an already large body is past what the
+    /// compiler will type-check in one piece; it gave up when the walk
+    /// planner added the twentieth.
+    @ViewBuilder
+    private var locationSelectionCard: some View {
+        LocationSelectionCard(
+            location: mapModel.selectedLocation,
+            isFavourite: mapModel.selectedLocation.map(appModel.isFavourite) ?? false,
+            isPaired: isPaired,
+            sessionPhase: appModel.deviceSession.phase,
+            localDevVPNInstallURL: appModel.localDevVPNInstallURL,
+            isPreviewingWalkingRoute: walkingRoutePlanner.isLoading,
+            walkingRouteError: walkingRoutePlanner.errorMessage,
+            onToggleFavourite: {
+                guard let target = mapModel.selectedLocation else { return }
+                appModel.toggleFavourite(target)
+            },
+            onClearSelection: {
+                walkingSimulation.reset()
+                walkingRoutePlanner.clear()
+                mapModel.clearSelectedLocation()
+            },
+            onPreviewWalkingRoute: {
+                guard let target = mapModel.selectedLocation else { return }
+                Task {
+                    if let route = await walkingRoutePlanner.preview(to: target) {
+                        walkingSimulation.prepare(route: route, destination: target)
+                        mapModel.show(route)
+                    }
+                }
+            },
+            isLastStopOfWalk: isSelectionLastStopOfWalk,
+            onAddToWalk: {
+                guard let target = mapModel.selectedLocation else { return }
+                walkDraft.add(target)
+            },
+            onStart: {
+                guard let target = mapModel.selectedLocation else { return }
+                shouldRefreshRealLocationWhenActive = false
+                mapModel.show(target)
+                Task { await appModel.startLocationSession(at: target) }
+            },
+            onStop: {
+                shouldClearLocationAfterRestoration = true
+                appModel.stopLocationSession()
+            }
+        )
+    }
+
+    /// Lifted out of the modifier chain, which is one expression the
+    /// compiler had stopped being able to type-check: this body is 500
+    /// lines long and every addition to it was landing on that limit.
+    /// The map's own contents, as a piece the compiler can type-check on
+    /// its own. Together with the body it was one expression, and one
+    /// expression this size is past what inference will do at once.
+    /// Five closures in one call, inside a body the compiler had already
+    /// given up on. Its own property is its own type-check.
+    private var pikminSpotsSheet: some View {
+        PikminSpotsView(
+            origin: visibleMapRegion?.center,
+            onSelect: { target in
+                guard !walkingSimulation.locksDestination else { return }
+                mapModel.show(target)
+            },
+            onShowOnMap: { pikminFilter = $0 },
+            onPlanWalk: { stops in
+                guard !walkingSimulation.locksDestination else { return }
+                isShowingPikminSpots = false
+                planWalk(through: stops, followingStreets: walkDraft.followsStreets)
+            },
+            onAddToWalk: { stops in
+                guard !walkingSimulation.locksDestination else { return }
+                walkDraft.add(contentsOf: stops)
+            }
+        )
+    }
+
+    /// Same reason as the others: lifted out so the body stays within what
+    /// inference will handle in one piece.
+    private var walkPlannerSheet: some View {
+        WalkPlannerView(
+            draft: walkDraft,
+            isPlanning: walkingRoutePlanner.isLoading,
+            errorMessage: walkingRoutePlanner.errorMessage,
+            onPlan: {
+                isShowingWalkPlanner = false
+                planWalk(through: walkDraft.stops, followingStreets: walkDraft.followsStreets)
+            },
+            onImport: { url in
+                isShowingWalkPlanner = false
+                importWalk(from: url)
+            }
+        )
+    }
+
+    @MapContentBuilder
+    private var mapContent: some MapContent {
+        if let plan = walkingRoutePlanner.plan {
+            MapPolyline(plan.polyline)
+                .stroke(SproutTheme.primary, lineWidth: 5)
+        }
+
+        if let route = walkingRoutePlanner.route {
+            MapPolyline(route)
+                .stroke(SproutTheme.primary, lineWidth: 6)
+        }
+
+        if shouldShowRealLocation {
+            UserAnnotation()
+        }
+
+        if let target = mapModel.selectedLocation {
+            Marker(target.name, coordinate: target.coordinate)
+                .tint(SproutTheme.primary)
+        }
+
+        ForEach(pikminSpotsInView) { spot in
+            Annotation(spot.name, coordinate: spot.coordinate) {
+                Image(systemName: "leaf.fill")
+                    .font(SproutTheme.font(.caption2, weight: .bold))
+                    .foregroundStyle(.white)
+                    .padding(5)
+                    .background(SproutTheme.primary, in: Circle())
+                    .onTapGesture {
+                        guard !walkingSimulation.locksDestination else { return }
+                        mapModel.show(spot.target)
+                    }
+            }
+            .annotationTitles(.hidden)
+        }
+
+        if let coordinate = walkingSimulation.currentCoordinate {
+            Annotation("Walking location", coordinate: coordinate) {
+                Image(systemName: "leaf.circle.fill")
+                    .font(.title.weight(.semibold))
+                    .foregroundStyle(.white, SproutTheme.primary)
+                    .padding(4)
+                    .background(SproutTheme.surface, in: Circle())
+                    .shadow(
+                        color: SproutTheme.controlShadow.color,
+                        radius: SproutTheme.controlShadow.radius,
+                        y: SproutTheme.controlShadow.y
+                    )
+            }
+        }
+    }
+
+    private func handleDeviceSessionPhaseChange(
+        from oldPhase: DeviceSessionPhase,
+        to newPhase: DeviceSessionPhase
+    ) {
+        walkingSimulation.handleDeviceSessionPhase(
+            newPhase,
+            deviceSession: appModel.deviceSession
+        )
+
+        switch newPhase {
+        case .openingLocalDevVPN, .discovering, .connecting, .active, .stopping:
+            shouldRefreshRealLocationWhenActive = false
+            mapModel.invalidateRealLocationCache()
+        case .idle:
+            if oldPhase == .stopping, shouldClearLocationAfterRestoration {
+                shouldClearLocationAfterRestoration = false
+                walkingSimulation.reset()
+                walkingRoutePlanner.clear()
+                mapModel.clearSelectedLocation()
+                shouldRefreshRealLocationWhenActive = false
+                isLocatingRealLocationAfterRestoration = true
+                mapModel.refreshRealLocationAfterRestoration()
+            }
+        case .failed:
+            shouldClearLocationAfterRestoration = false
+        }
+
+        guard oldPhase == .stopping, newPhase == .idle else { return }
+        guard !isLocatingRealLocationAfterRestoration else { return }
+        shouldRefreshRealLocationWhenActive = true
+        Task { @MainActor in
+            try? await Task.sleep(for: .seconds(3))
+            guard shouldRefreshRealLocationWhenActive, scenePhase == .active else { return }
+            shouldRefreshRealLocationWhenActive = false
+            guard case .idle = appModel.deviceSession.phase else { return }
+            mapModel.showRealLocationAfterSession()
+        }
+    }
+
+    private var isSelectionLastStopOfWalk: Bool {
+        guard let location = mapModel.selectedLocation, let last = walkDraft.stops.last else {
+            return false
+        }
+        return last.isSamePlace(as: location)
+    }
+
+    private var walkPlannerControl: some View {
+        Button {
+            isShowingWalkPlanner = true
+        } label: {
+            Image(systemName: "point.topleft.down.to.point.bottomright.curvepath")
+                .font(SproutTheme.font(.subheadline, weight: .semibold))
+                .foregroundStyle(SproutTheme.primary)
+                .sproutMapControl()
+                .overlay(alignment: .topTrailing) { walkStopCountBadge }
+        }
+        .buttonStyle(.plain)
+        .disabled(walkingSimulation.locksDestination)
+        .accessibilityLabel("Plan a walk")
+        .accessibilityHint("Build a walk that calls at several places")
+    }
+
+    /// A plan being assembled is state you can otherwise forget you started,
+    /// so the control says how much of one is waiting.
+    @ViewBuilder
+    private var walkStopCountBadge: some View {
+        if !walkDraft.isEmpty {
+            Text("\(walkDraft.stops.count)")
+                .font(.caption2.weight(.bold).monospacedDigit())
+                .foregroundStyle(.white)
+                .padding(4)
+                .background(SproutTheme.accent, in: Circle())
+                .offset(x: 4, y: -4)
+        }
+    }
+
     /// Planned from where the map is looking rather than from the real
-    /// location: the list was sorted by that, and a walk that starts a
-    /// continent away from the places it calls at is not what was asked for.
-    private func planWalk(through stops: [LocationTarget]) {
-        guard let first = stops.first else { return }
+    /// location: the stops were chosen against that view, and a walk starting
+    /// a continent away from the places it calls at is not what was asked for.
+    private func planWalk(through stops: [LocationTarget], followingStreets: Bool) {
+        guard !stops.isEmpty else { return }
+        let origin = walkOrigin(named: stops[0].subtitle)
+
+        guard followingStreets else {
+            if let plan = walkingRoutePlanner.planStraightLine(through: stops, from: origin) {
+                apply(plan)
+            }
+            return
+        }
         Task {
-            let origin = visibleMapRegion.map { region in
-                LocationTarget(
-                    name: .appText("Route Start"),
-                    subtitle: first.subtitle,
-                    latitude: region.center.latitude,
-                    longitude: region.center.longitude
-                )
-            }
             guard let plan = await walkingRoutePlanner.preview(through: stops, from: origin) else { return }
-            walkingSimulation.prepare(plan)
-            if let destination = plan.destination {
-                mapModel.show(destination)
-            }
-            mapModel.show(plan.polyline)
+            apply(plan)
+        }
+    }
+
+    /// The track replaces whatever was being assembled: a file says where to
+    /// go completely, and leaving half-built stops behind would make the next
+    /// walk planned from them a surprise.
+    private func importWalk(from url: URL) {
+        let needsScope = url.startAccessingSecurityScopedResource()
+        defer { if needsScope { url.stopAccessingSecurityScopedResource() } }
+
+        guard
+            let data = try? Data(contentsOf: url),
+            let track = GPXTrack(
+                data: data,
+                fallbackName: url.deletingPathExtension().lastPathComponent
+            ),
+            let plan = walkingRoutePlanner.plan(track: track)
+        else { return }
+
+        walkDraft.clear()
+        apply(plan)
+    }
+
+    private func apply(_ plan: MultiStopRoute) {
+        walkingSimulation.prepare(plan)
+        if let destination = plan.destination {
+            mapModel.show(destination)
+        }
+        mapModel.show(plan.polyline)
+    }
+
+    private func walkOrigin(named subtitle: String) -> LocationTarget? {
+        visibleMapRegion.map { region in
+            LocationTarget(
+                name: .appText("Route Start"),
+                subtitle: subtitle,
+                latitude: region.center.latitude,
+                longitude: region.center.longitude
+            )
         }
     }
 

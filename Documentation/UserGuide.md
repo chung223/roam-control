@@ -61,6 +61,23 @@ Where the on-device model is unavailable, the tab stays visible and says why rat
 
 ### Coordinates
 
+### Building a walk yourself
+
+The path control on the map opens the walk being planned, and shows how many stops are waiting.
+
+Add to it from anywhere: choose a place — by searching, by tapping the map, from favourites, from landmarks, from the spot catalogue — and tap **Add to Walk** on its card. A spot list can add its nearest three, five or eight in one go. Stops are walked in the order they were added, and can be dragged to reorder or swiped away.
+
+**Follow streets** decides what the line between two stops means:
+
+- **On**: each leg is an Apple Maps walking route. This is the ordinary case, and it fails where Apple will not route — inside a park, a campus, open country.
+- **Off**: the line goes straight from each place to the next, through whatever is in between. Nothing is asked of Apple Maps, so anywhere can be walked.
+
+The setting is remembered, because it describes how you walk rather than any one walk.
+
+### Walking a GPX file
+
+**Import a GPX File** in the same screen walks a track recorded or drawn somewhere else, exactly as it was given. It replaces whatever stops were being assembled, since a file says where to go completely.
+
 A coordinate pair typed or pasted into the search box, such as `28.472262, -81.473574`, selects that point directly. The same pair can be given to the Shortcuts action below, and a `roamcontrol://location?lat=28.472262&lon=-81.473574` link does the same thing from anywhere a link can be tapped.
 
 Remember that such a link contains the coordinate. Sharing the link shares the place.

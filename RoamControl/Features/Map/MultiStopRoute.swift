@@ -71,6 +71,57 @@ struct MultiStopRoute {
         expectedTravelTime = legs.reduce(0) { $0 + $1.expectedTravelTime }
     }
 
+    /// A walk that goes exactly where the line was put, ignoring streets.
+    ///
+    /// Apple will not route through a park's interior, a campus, or most of
+    /// the places somebody wants to be seen walking around, and returns
+    /// `directionsNotFound` rather than a straight line. This is the answer to
+    /// that: the points are the route. It walks through buildings, because
+    /// that is what a straight line between two points does, and anyone
+    /// choosing it has said that is what they want.
+    init?(straightThrough stops: [LocationTarget], from origin: LocationTarget?) {
+        guard !stops.isEmpty else { return nil }
+
+        let places = (origin.map { [$0] } ?? []) + stops
+        let chained = places.map { MKMapPoint($0.coordinate) }
+        guard chained.count >= 2 else { return nil }
+
+        points = chained
+        self.stops = stops
+        // The origin is not a stop, so the first stop sits one point in when
+        // there is one and at the start when there is not.
+        let offset = origin == nil ? 0 : 1
+        stopDistances = stops.indices.map { index in
+            Self.length(of: Array(chained.prefix(index + offset + 1)))
+        }
+        totalDistance = stopDistances.last ?? 0
+        // No leg, so no estimate from Apple. An ordinary pace is the only
+        // honest guess, and the card recomputes from the chosen one anyway.
+        expectedTravelTime = totalDistance / WalkingPace.normal.rawValue
+    }
+
+    /// A route already drawn as points, from a GPX track.
+    ///
+    /// The track is the path; there is nothing to plan. Its last point is the
+    /// destination, and there are no intermediate stops, because a track says
+    /// where to go rather than what to call at.
+    init?(track points: [CLLocationCoordinate2D], named name: String) {
+        let chained = points.map(MKMapPoint.init)
+        guard chained.count >= 2, let last = points.last else { return nil }
+
+        self.points = chained
+        let destination = LocationTarget(
+            name: name,
+            subtitle: .appText("Imported route"),
+            latitude: last.latitude,
+            longitude: last.longitude
+        )
+        stops = [destination]
+        totalDistance = Self.length(of: chained)
+        stopDistances = [totalDistance]
+        expectedTravelTime = totalDistance / WalkingPace.normal.rawValue
+    }
+
     private static func length(of points: [MKMapPoint]) -> CLLocationDistance {
         guard points.count >= 2 else { return 0 }
         return zip(points, points.dropFirst()).reduce(0) { $0 + $1.0.distance(to: $1.1) }

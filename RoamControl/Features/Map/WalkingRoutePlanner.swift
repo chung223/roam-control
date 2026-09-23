@@ -118,6 +118,46 @@ final class WalkingRoutePlanner {
     var previewDuration: TimeInterval? { plan?.expectedTravelTime ?? route?.expectedTravelTime }
     var hasRoute: Bool { plan != nil || route != nil }
 
+    /// A walk that goes straight between the places given, asking Apple
+    /// nothing. Synchronous, because there is nothing to wait for — which is
+    /// most of the point when Apple would have refused anyway.
+    @discardableResult
+    func planStraightLine(through stops: [LocationTarget], from source: LocationTarget? = nil) -> MultiStopRoute? {
+        directions?.cancel()
+        directions = nil
+        route = nil
+        errorMessage = nil
+        destination = stops.last
+        isLoading = false
+
+        guard let plan = MultiStopRoute(straightThrough: stops, from: source) else {
+            errorMessage = .appText("Add at least one place before planning a walk.")
+            self.plan = nil
+            return nil
+        }
+        self.plan = plan
+        return plan
+    }
+
+    @discardableResult
+    func plan(track: GPXTrack) -> MultiStopRoute? {
+        directions?.cancel()
+        directions = nil
+        route = nil
+        errorMessage = nil
+        isLoading = false
+
+        guard let plan = MultiStopRoute(track: track.coordinates, named: track.name) else {
+            errorMessage = .appText("That file does not contain a route with at least two points.")
+            self.plan = nil
+            destination = nil
+            return nil
+        }
+        self.plan = plan
+        destination = plan.destination
+        return plan
+    }
+
     /// One leg, without touching the published route or the loading flag:
     /// a multi-stop plan owns both for the whole chain.
     private func leg(to target: LocationTarget, from source: LocationTarget?) async -> MKRoute? {

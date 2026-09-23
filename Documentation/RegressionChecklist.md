@@ -55,6 +55,15 @@ An unchecked row means untested, not failing. Rows added for a release stay unch
 - [ ] Remaining stops are shown while more than one is left, and not for an ordinary walk.
 - [ ] A stop with no walking route to it fails the plan with a readable reason rather than skipping it.
 - [ ] A looping multi-stop walk turns round and calls at the stops in reverse.
+- [ ] Add to Walk adds the selected place, and says so rather than adding it twice.
+- [ ] Stops can be reordered by dragging and removed by swiping, and the walk follows the new order.
+- [ ] The path control shows how many stops are waiting.
+- [ ] With Follow streets off, a walk between two places Apple will not route between still plans and runs.
+- [ ] With Follow streets on, a place Apple will not route to fails with a readable reason.
+- [ ] The Follow streets choice survives relaunch.
+- [ ] A GPX file imports, replaces the stops, and is walked along its own line.
+- [ ] A GPX file with no track, or with one point, is refused with a readable reason.
+- [ ] A long GPX recording draws and walks the same shape as the original.
 - [ ] The card's subtitle reads in Traditional Chinese.
 - [ ] Searching the catalogue matches a place by its English or Chinese name.
 - [ ] Landmarks show both languages, and search matches either spelling.
