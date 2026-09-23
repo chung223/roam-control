@@ -60,6 +60,26 @@ Keep the Debug and Release configurations identical.
 
 The simulator can validate most interface states, but it cannot perform the real RPPairing handshake or start a location session.
 
+## Type-checking time
+
+Debug builds warn when a function body or an expression takes longer than
+250ms to type-check:
+
+    OTHER_SWIFT_FLAGS = -Xfrontend -warn-long-function-bodies=250
+                        -Xfrontend -warn-long-expression-type-checking=250
+
+This exists because the compiler's own limit arrives as a cliff rather than a
+slope. A SwiftUI `body` that grows past what inference will do in one piece
+fails with "unable to type-check this expression in reasonable time", pointing
+at an arbitrary line inside it, and the only remedy is to take the whole thing
+apart. `HomeView` reached that point at around five hundred lines, having
+absorbed additions on the limit for some time with no sign anything was wrong.
+
+The threshold is set above everything in the project — the slowest is about
+150ms — so it is silent today and speaks when something roughly doubles. Debug
+only: it is a development aid, and a release build should not be measuring
+itself.
+
 ## Native pairing engine
 
 The prebuilt `Frameworks/RoamPairingFFI.xcframework` should be committed with both arm64 iPhone and arm64 Apple Silicon simulator slices.
