@@ -20,7 +20,21 @@ final class ArrivalAlarm {
     /// alarm says one thing and the app is where the detail lives.
     private struct Metadata: AlarmMetadata {}
 
+    /// How far the arrival has to move before it is worth rescheduling.
+    ///
+    /// The walk recalculates its arrival every second, and every one of those
+    /// used to become an alarm. They raced: each finished task overwrote the
+    /// stored identifier, so the alarms it had raced against were left
+    /// scheduled with nothing holding their identifiers, and went off at times
+    /// the walk had long since moved past. Pausing could only cancel the last
+    /// one of them.
+    private static let rescheduleWindow: TimeInterval = 30
+
     private var scheduled: Alarm.ID?
+    /// Claimed before the scheduling is awaited, so the tick a second later
+    /// sees this one in flight rather than starting another beside it.
+    private var claimedFor: Date?
+    private var claimedDestination: String?
 
     var isEnabled: Bool {
         get { UserDefaults.standard.bool(forKey: Self.enabledKey) }
@@ -44,9 +58,27 @@ final class ArrivalAlarm {
 
     /// Replaces any alarm already set: a walk that turns round, or is
     /// retargeted, has a new arrival time and only one of them is true.
+    ///
+    /// Called once a second by the walk, so most calls do nothing: an arrival
+    /// that has moved by less than half a minute is the same arrival, and the
+    /// alarm already scheduled for it is the right one.
     func schedule(arrivingAt date: Date, destination: String) async {
-        cancel()
-        guard isEnabled, date > .now, isAuthorized else { return }
+        guard isEnabled, date > .now, isAuthorized else {
+            cancel()
+            return
+        }
+
+        if
+            let claimedFor,
+            claimedDestination == destination,
+            abs(claimedFor.timeIntervalSince(date)) < Self.rescheduleWindow
+        {
+            return
+        }
+
+        let previous = scheduled
+        claimedFor = date
+        claimedDestination = destination
 
         let alert = AlarmPresentation.Alert(
             title: "Arrived at \(destination)",
@@ -69,8 +101,14 @@ final class ArrivalAlarm {
                 configuration: .alarm(schedule: .fixed(date), attributes: attributes)
             )
             scheduled = id
+            // Cancelled only once its replacement exists, so a walk is never
+            // briefly without an alarm it is meant to have.
+            if let previous {
+                try? AlarmManager.shared.cancel(id: previous)
+            }
         } catch {
-            scheduled = nil
+            claimedFor = nil
+            claimedDestination = nil
         }
     }
 
@@ -78,8 +116,11 @@ final class ArrivalAlarm {
     /// stopped, failed, or arrived early. An alarm for an arrival that has
     /// already happened is worse than none.
     func cancel() {
-        guard let scheduled else { return }
-        try? AlarmManager.shared.cancel(id: scheduled)
-        self.scheduled = nil
+        if let scheduled {
+            try? AlarmManager.shared.cancel(id: scheduled)
+        }
+        scheduled = nil
+        claimedFor = nil
+        claimedDestination = nil
     }
 }

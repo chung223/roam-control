@@ -270,6 +270,17 @@ final class WalkingSimulationController {
             paceMetresPerSecond: pace.metresPerSecond
         )
 
+        // A session that is already active never enters `.active` again, so
+        // the phase change this waits for never arrives: the walk would stay
+        // at `.preparing`, never move, and leave the previous session's Live
+        // Activity on screen describing a walk that had been replaced.
+        if phase == .preparing, case .active = appModel.deviceSession.phase {
+            handleDeviceSessionPhase(
+                appModel.deviceSession.phase,
+                deviceSession: appModel.deviceSession
+            )
+        }
+
         if case .idle = appModel.deviceSession.phase, phase == .preparing {
             phase = .failed("Roam Control could not start the walking session.")
         }

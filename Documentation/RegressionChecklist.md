@@ -111,6 +111,9 @@ An unchecked row means untested, not failing. Rows added for a release stay unch
 - [ ] An alarm fires on arrival with the phone silenced.
 - [ ] An alarm fires on arrival with a Focus active.
 - [ ] Retargeting a walk replaces the alarm rather than leaving two.
+- [ ] Pausing a walk stops its alarm, and resuming schedules it for the new arrival.
+- [ ] A forty-minute walk leaves exactly one alarm behind it, not one a second.
+- [ ] Starting a walk while a session is already running moves the walk and replaces the Live Activity.
 - [ ] Pausing, stopping or arriving early cancels the alarm.
 
 ## Fixed location on Wi-Fi
