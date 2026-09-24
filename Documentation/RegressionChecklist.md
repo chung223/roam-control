@@ -145,9 +145,10 @@ An unchecked row means untested, not failing. Rows added for a release stay unch
 - [ ] Pause holds the current point and Resume continues from it.
 - [ ] The walk continues while Apple Maps or another app is in front.
 - [ ] Arrival holds the destination location.
-- [ ] The Live Activity's pause button holds the walk without bringing the app forward, and resumes it.
+- [x] The Live Activity's pause button holds the walk without bringing the app forward, and resumes it.
 - [ ] The Live Activity ends when the session ends, including when it ends in failure.
-- [ ] Arrival stops the Live Activity's timer rather than letting it keep counting.
+- [x] Arrival stops the Live Activity's timer rather than letting it keep counting.
+- [x] The compact Dynamic Island stays narrow on a walk over an hour long. Verified on iPhone 18 Pro, whose island is narrower than the ones this was built against.
 - [ ] A looping walk turns round and walks the route again.
 - [ ] Walk Route Back reverses the journey.
 - [ ] New Location allows a new destination without restoring the real location first.
