@@ -30,9 +30,50 @@ final class RoamSessionLiveActivityController {
     private var lastPushedState: RoamSessionActivityAttributes.ContentState?
     @ObservationIgnored
     private var lastPushDate: Date?
+    /// Whether the activity being held was started by some earlier run rather
+    /// than by this one. An adopted activity describes a session this process
+    /// is not running, and only the app can decide whether that is still true.
+    @ObservationIgnored
+    private(set) var wasAdopted = false
 
     var areActivitiesEnabled: Bool {
         ActivityAuthorizationInfo().areActivitiesEnabled
+    }
+
+    init() {
+        adoptExistingActivities()
+    }
+
+    /// Takes back whatever a previous run left on screen.
+    ///
+    /// An activity outlives the process that requested it; the reference to it
+    /// does not. Without this, relaunching — or simply being killed — left one
+    /// running that nothing could end, because ending one requires the handle
+    /// that had just been lost. It sat there until iOS's own limit hours
+    /// later, describing a session that had long since finished, and a new
+    /// session started beside it rather than replacing it.
+    private func adoptExistingActivities() {
+        let existing = Activity<RoamSessionActivityAttributes>.activities
+        guard let adopted = existing.first else { return }
+
+        activity = adopted
+        lastPushedState = adopted.content.state
+        lastPushDate = .now
+        isRunning = true
+        wasAdopted = true
+
+        // One session, one activity. Anything beyond the first is from a run
+        // that ended without tidying up.
+        for extra in existing.dropFirst() {
+            Task { await extra.end(nil, dismissalPolicy: .immediate) }
+        }
+    }
+
+    /// Ends an adopted activity, for when the app has established that it is
+    /// not simulating anything. Does nothing to one this run started.
+    func endIfAdopted() {
+        guard wasAdopted else { return }
+        end()
     }
 
     // MARK: - Fixed sessions
@@ -90,6 +131,7 @@ final class RoamSessionLiveActivityController {
     func end() {
         guard let activity else {
             isRunning = false
+            wasAdopted = false
             return
         }
 
@@ -97,6 +139,7 @@ final class RoamSessionLiveActivityController {
         lastPushedState = nil
         lastPushDate = nil
         isRunning = false
+        wasAdopted = false
 
         Task {
             await activity.end(nil, dismissalPolicy: .immediate)
@@ -131,6 +174,7 @@ final class RoamSessionLiveActivityController {
             lastPushedState = state
             lastPushDate = .now
             isRunning = true
+            wasAdopted = false
         } catch {
             // A refused activity must never take the location session with it.
             self.activity = nil

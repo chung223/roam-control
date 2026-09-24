@@ -583,6 +583,11 @@ final class AppModel {
     func appBecameActive() {
         guard hasCompletedOnboarding else { return }
         usageAnalytics.recordActivation(enabled: sharesAnonymousUsageStatistics)
+        // An activity left by an earlier run says a session is simulating.
+        // If nothing is, it is describing something that is not happening.
+        if case .idle = deviceSession.phase {
+            liveActivity.endIfAdopted()
+        }
         performPendingLocationIntent()
         // A session that finished while this was in the background could not
         // launch anything at the time. Now it can.

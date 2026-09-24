@@ -150,6 +150,9 @@ An unchecked row means untested, not failing. Rows added for a release stay unch
 - [ ] Arrival holds the destination location.
 - [x] The Live Activity's pause button holds the walk without bringing the app forward, and resumes it.
 - [ ] The Live Activity ends when the session ends, including when it ends in failure.
+- [ ] Force-quitting during a walk and reopening ends the activity it left behind, rather than leaving one nothing can dismiss.
+- [ ] Restarting the iPhone during a walk and reopening the app does the same.
+- [ ] Two activities never appear at once.
 - [x] Arrival stops the Live Activity's timer rather than letting it keep counting.
 - [x] The compact Dynamic Island stays narrow on a walk over an hour long. Verified on iPhone 18 Pro, whose island is narrower than the ones this was built against.
 - [ ] A looping walk turns round and walks the route again.
