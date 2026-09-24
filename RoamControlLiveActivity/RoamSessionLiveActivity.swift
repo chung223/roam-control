@@ -67,10 +67,7 @@ struct RoamSessionLiveActivity: Widget {
                 Image(systemName: context.state.symbolName)
                     .foregroundStyle(SproutActivity.tint(for: context.state))
             } compactTrailing: {
-                CompactTrailing(
-                    state: context.state,
-                    startedAt: context.attributes.startedAt
-                )
+                CompactTrailing(state: context.state)
             } minimal: {
                 ProgressRing(state: context.state)
             }
@@ -271,6 +268,32 @@ private struct ElapsedTimeText: View {
 /// The smallest presentation. A walk draws its progress as a ring around the
 /// glyph, so the one place with room for nothing else still says how far along
 /// the walk is.
+/// The walk's progress as an arc, sized once and never by its contents.
+///
+/// Deliberately without the symbol the minimal state's ring carries: the
+/// compact leading region is already showing it, and two of the same glyph
+/// either side of the sensor housing looks like a mistake rather than a motif.
+private struct CompactProgressArc: View {
+    let state: RoamSessionActivityAttributes.ContentState
+
+    private static let diameter: CGFloat = 18
+
+    var body: some View {
+        ZStack {
+            Circle()
+                .stroke(SproutActivity.primary.opacity(0.25), lineWidth: 2.5)
+            Circle()
+                .trim(from: 0, to: min(max(state.progress, 0), 1))
+                .stroke(
+                    SproutActivity.tint(for: state),
+                    style: StrokeStyle(lineWidth: 2.5, lineCap: .round)
+                )
+                .rotationEffect(.degrees(-90))
+        }
+        .frame(width: Self.diameter, height: Self.diameter)
+    }
+}
+
 private struct ProgressRing: View {
     let state: RoamSessionActivityAttributes.ContentState
 
@@ -302,7 +325,6 @@ private struct ProgressRing: View {
 /// estimate. Both are short. Anything longer makes the island grow to hold it.
 private struct CompactTrailing: View {
     let state: RoamSessionActivityAttributes.ContentState
-    let startedAt: Date
 
     var body: some View {
         content
@@ -310,35 +332,26 @@ private struct CompactTrailing: View {
             .foregroundStyle(SproutActivity.tint(for: state))
     }
 
-    /// How far ahead an arrival may be and still be shown as a countdown.
+    /// No countdown here, and not because of how long it runs for.
     ///
-    /// `Text(timerInterval:)` reserves width for the widest string its range
-    /// can produce, not for the value it is showing. An arrival an hour and a
-    /// half away therefore reserves room for `1:23:45` from the first second,
-    /// and the compact presentation is as wide as the island will allow for
-    /// the whole walk. The islands on newer iPhones are narrower, so what used
-    /// to merely look roomy now looks broken.
+    /// `Text(timerInterval:)` is greedy in a compact region: it claims the
+    /// width available rather than the width it needs, so a walk twenty-six
+    /// minutes from arriving stretched the island as far as a walk two hours
+    /// from it. Capping the range it could render was the wrong fix — the
+    /// range was never what was wide.
     ///
-    /// Under an hour the widest it can render is `59:59`, which fits.
-    private static let countdownLimit: TimeInterval = 3_600
-
+    /// An arc instead of a number, for the same reason the minimal state uses
+    /// one: it is a fixed eighteen points however far along the walk is, it
+    /// reads at a glance without being read, and it says the one thing worth
+    /// saying in a space this size. The countdown and the distance are still
+    /// on the Lock Screen and in the expanded island, where there is room to
+    /// want them.
     @ViewBuilder
     private var content: some View {
-        if
-            state.isWalking,
-            state.stage == .running,
-            let expectedArrival = state.expectedArrival,
-            expectedArrival > .now,
-            expectedArrival.timeIntervalSinceNow < Self.countdownLimit
-        {
-            // Counts down in place, like the Lock Screen, so a walk does not
-            // cost an activity update every second.
-            Text(timerInterval: Date.now...expectedArrival, countsDown: true)
-        } else if state.isWalking, state.stage == .running || state.stage == .paused {
-            // Four characters at its widest, and a long walk is better
-            // described by how far along it is than by how many hours are
-            // left — which is also the only thing that fits.
-            Text(percentText)
+        if state.isWalking, state.stage == .running || state.stage == .paused {
+            CompactProgressArc(state: state)
+        } else if state.isWalking, state.stage == .arrived {
+            Image(systemName: "flag.checkered")
         }
         // A held location has no number worth the width. The guidance is to
         // use only the space the content needs, and an elapsed timer here
@@ -350,48 +363,82 @@ private struct CompactTrailing: View {
     }
 }
 
-/// The walking route as a trail with a marker on it, rather than a bar. The
-/// marker is the same walking glyph the rest of the session uses, so the two
-/// read as the same thing at different sizes.
+/// The walking route as a path being made, rather than a bar being filled.
+///
+/// This app is used to walk around planting flowers, so the walk plants them:
+/// a leaf stands up behind the walker at each mark it has passed, and the far
+/// end is a closed bud that opens into a flower once it is reached.
+///
+/// The sprouts stand above the line rather than sitting on it. Laid on the
+/// filled capsule they were light-on-light and read as smudges; against the
+/// island's black they read as what they are. Five of them is enough to look
+/// like a path being made and few enough that none crowds the walker.
 private struct RouteTrail: View {
     let progress: Double
     let isPaused: Bool
 
     private static let marker: CGFloat = 14
+    private static let sprout: CGFloat = 10
+    private static let plantedMarks = 5
+    private static let height: CGFloat = 26
 
     private var clamped: Double { min(max(progress, 0), 1) }
     private var fill: Color { isPaused ? SproutActivity.accent : SproutActivity.primary }
+    private var hasArrived: Bool { clamped >= 0.999 }
 
     var body: some View {
         GeometryReader { proxy in
             let width = proxy.size.width
 
-            ZStack(alignment: .leading) {
+            ZStack(alignment: .bottomLeading) {
                 Capsule()
                     .fill(SproutActivity.primary.opacity(0.35))
                     .frame(height: 6)
-                    .frame(maxHeight: .infinity, alignment: .center)
+                    .frame(maxHeight: .infinity, alignment: .bottom)
 
                 Capsule()
                     .fill(fill)
                     .frame(width: max(6, width * clamped), height: 6)
-                    .frame(maxHeight: .infinity, alignment: .center)
+                    .frame(maxHeight: .infinity, alignment: .bottom)
 
-                Image(systemName: "figure.walk")
-                    .font(.system(size: 9, weight: .bold))
-                    .foregroundStyle(.white)
-                    .frame(width: Self.marker, height: Self.marker)
-                    .background(Circle().fill(fill))
-                    .offset(x: width * clamped - Self.marker / 2)
+                ForEach(1...Self.plantedMarks, id: \.self) { index in
+                    let at = Double(index) / Double(Self.plantedMarks + 1)
+                    // Planted, and far enough behind that the walker is never
+                    // standing on one.
+                    if clamped >= at + 0.04 {
+                        Image(systemName: "leaf.fill")
+                            .font(.system(size: Self.sprout, weight: .semibold))
+                            .foregroundStyle(fill)
+                            .rotationEffect(.degrees(index.isMultiple(of: 2) ? 18 : -18))
+                            .offset(x: width * at - Self.sprout / 2, y: -7)
+                    }
+                }
+
+                Image(systemName: hasArrived ? "camera.macro" : "circle.dotted")
+                    .font(.system(size: Self.sprout + 1, weight: .semibold))
+                    .foregroundStyle(hasArrived ? fill : SproutActivity.primary.opacity(0.5))
+                    .offset(x: width - (Self.sprout + 1) / 2, y: -7)
+
+                // Gone once it arrives: the flower is what the end looks like,
+                // and the two would occupy the same point.
+                if !hasArrived {
+                    Image(systemName: "figure.walk")
+                        .font(.system(size: 9, weight: .bold))
+                        .foregroundStyle(.white)
+                        .frame(width: Self.marker, height: Self.marker)
+                        .background(Circle().fill(fill))
+                        .offset(x: width * clamped - Self.marker / 2, y: 4)
+                }
             }
         }
-        .frame(height: Self.marker)
+        .frame(height: Self.height)
         // Inset by half the marker so that at 0% and 100% it still sits inside
         // the view, and never reaches the rounded edge of the island — the
         // guidance asks content not to touch it.
         .padding(.horizontal, Self.marker / 2)
     }
 }
+
 
 // MARK: - Text
 
