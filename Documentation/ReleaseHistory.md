@@ -1,5 +1,17 @@
 # Roam Control releases
 
+## 0.12.0 (Build 70)
+
+- Released: 28 September 2026
+- Requires: iOS 27.0 or later; the watch app requires watchOS 26.0 or later
+- Distribution: TestFlight, as **Sprout**
+- Xcode: 26.6 (`17F113`), Swift 6.3.3
+- Change: coordinates chosen inside mainland China are corrected before being reported, with Automatic, Off and Always in Settings. Map data there is offset by a few hundred metres and the offset hid itself, because the map carried it too.
+- Change: session history reads in the zone each session happened in; the Dynamic Island draws the walk as a path being made; the spot catalogue is checked when it is read.
+- Fixed: a Live Activity from a previous run could not be ended; a walk started during a running session never moved; pausing did not stop the arrival alarm; the map filtered ten thousand places once a second during a walk, which made the iPhone hot.
+- The spot catalogue is no longer in the repository. It is generated from a collection that is not published here, so a checkout builds without it and the spot browser is empty.
+- Validation: eight invariant scripts, Release device builds, installed on the iPhone and the watch. The coordinate correction was verified against an independent transcription of the published transform rather than on hardware — no session has been run inside mainland China.
+
 ## 0.11.0 (Build 64)
 
 - Released: 23 September 2026

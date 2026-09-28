@@ -1,6 +1,6 @@
-# Sprout 0.11.0 — Build 64
+# Sprout 0.12.0 — Build 70
 
-Build 64 is the current release of this fork: a source-available SwiftUI app for testing an iPhone's reported location from a clean Apple Maps interface. It supports fixed locations, simulated walking routes, favourites, history and native on-device pairing through LocalDevVPN.
+Build 70 is the current release of this fork: a source-available SwiftUI app for testing an iPhone's reported location from a clean Apple Maps interface. It supports fixed locations, simulated walking routes, favourites, history and native on-device pairing through LocalDevVPN.
 
 It is the first release distributed through TestFlight, and the first to install as **Sprout** rather than Roam Control.
 
@@ -13,7 +13,22 @@ It is the first release distributed through TestFlight, and the first to install
 
 Read the [installation guide](Installation.md), [privacy explanation](Privacy.md) and [responsible-use policy](ResponsibleUse.md) before using it.
 
-## What is new in 0.11.0
+## What is new in 0.12.0
+
+- Coordinates chosen inside mainland China are corrected before they are reported. Map data there is offset from real positions by a few hundred metres, so a place looked right on the map while the iPhone reported somewhere several hundred metres away. Only the reported position moves; the pin and any coordinate you type are left alone. **Settings → Location Compatibility** offers Automatic, Off and Always.
+- Session history is read in the time zone each session happened in, rather than in whatever zone the iPhone is in now — which changes on its own while a distant place is simulated.
+- The Dynamic Island shows the walk as a path being made: a leaf at every mark passed, and a bud at the end that opens on arrival.
+- The spot catalogue is checked when it is read, and its verdict appears in the diagnostics report.
+
+### Fixed in 0.12.0
+
+- A Live Activity left behind by a previous run could not be ended and sat on screen for hours.
+- Starting a walk while a session was already running left the old activity up and never moved the new walk.
+- Pausing did not stop the arrival alarm, because the walk had been scheduling a new one every second and abandoning the last.
+- The map filtered ten thousand places on every frame of a running walk, which made the iPhone hot.
+- The compact Dynamic Island was as wide as the island allowed for the whole of every walk.
+
+## What was new in 0.11.0
 
 - An Apple Watch app. A walk is something you leave running, and the watch shows the place, the progress, the distance left and the countdown, with pause and resume — by button, or by double tap on the watches that have the gesture. It taps your wrist when the walk arrives.
 - Walks you build yourself: add any place to a walk, in any order, dragging to reorder.

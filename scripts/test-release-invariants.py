@@ -37,8 +37,8 @@ project = (ROOT / "RoamControl.xcodeproj/project.pbxproj").read_text()
 # One Debug/Release pair per target: the app, the Live Activity extension and
 # the watch app.
 # An extension whose version drifts from its host app is rejected on install.
-assert project.count("CURRENT_PROJECT_VERSION = 69;") == 6
-assert project.count("MARKETING_VERSION = 0.11.0;") == 6
+assert project.count("CURRENT_PROJECT_VERSION = 70;") == 6
+assert project.count("MARKETING_VERSION = 0.12.0;") == 6
 
 with (ROOT / "Configuration/RoamControl-Info.plist").open("rb") as stream:
     info = plistlib.load(stream)
