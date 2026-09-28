@@ -133,80 +133,59 @@ Then select **Any iOS Device (arm64)** and choose **Product → Archive**. Xcode
 
 ## Upload to TestFlight
 
-Two routes. The second needs one thing set up once and then needs nobody
-present.
+Three things were tried. What each one does is recorded here because the
+difference between them is not guessable, and guessing it cost this project
+several days of repeating a wrong explanation.
 
-### From Organizer
-
-**Xcode → Window → Organizer → Archives → the archive → Distribute App → App
-Store Connect → Upload**
-
-### From the command line
-
-`xcodebuild` and `altool` both fail with `No Accounts` when they are asked to
-reach App Store Connect, because the session that Xcode holds is the GUI's and
-they cannot see it. That is not a limit of the tools. `xcodebuild -help` says
-so plainly: it wants an account added in Xcode's settings *or* an App Store
-Connect authentication key.
-
-Create the key once, in App Store Connect under **Users and Access →
-Integrations → App Store Connect API**, with the App Manager role. The private
-key downloads once and cannot be downloaded again. Put it where the tools look:
-
-    ~/.appstoreconnect/private_keys/AuthKey_<KEY_ID>.p8
-
-Note the Key ID and the Issuer ID from the same page. Keep all three out of
-this repository — the key is a credential, and anything holding it can publish
-as you.
-
-Then export and upload without anyone clicking anything:
+### Exporting: the command line does this
 
     xcodebuild -exportArchive \
       -archivePath "~/Library/Developer/Xcode/Archives/<date>/Sprout <version> (<build>).xcarchive" \
       -exportPath <output directory> \
       -exportOptionsPlist <options>.plist \
-      -allowProvisioningUpdates \
-      -authenticationKeyPath ~/.appstoreconnect/private_keys/AuthKey_<KEY_ID>.p8 \
-      -authenticationKeyID <KEY_ID> \
-      -authenticationKeyIssuerID <ISSUER_ID>
+      -allowProvisioningUpdates
 
-    xcrun altool --upload-app -f <output directory>/Sprout.ipa -t ios \
-      --apiKey <KEY_ID> --apiIssuer <ISSUER_ID>
+with `method` set to `app-store-connect` and `destination` to `export` in the
+options plist. This works, with no key and nothing else set up, as long as an
+`Apple Distribution` certificate for the team is in the keychain. It produces
+a signed `.ipa`.
 
-The export options plist wants `method` set to `app-store-connect` and
-`destination` to `export`.
+An earlier attempt failed with `No signing certificate "iOS Distribution"
+found`, which named the older certificate type rather than the `Apple
+Distribution` one that exists now, and that failure was then repeated as an
+explanation long after it had stopped being true. Retry before believing it.
+
+### Uploading: Organizer does this
+
+**Xcode → Window → Organizer → Archives → the archive → Distribute App → App
+Store Connect → Upload**
+
+The same `xcodebuild -exportArchive` with `destination` set to `upload` did not
+work. Exporting reaches the developer website, for profiles and signing;
+uploading reaches App Store Connect, which is a different service with its own
+authentication, and the session that satisfies it belongs to Xcode.
+
+### Uploading without anyone present: not yet tried
+
+An App Store Connect API key should remove the need for Organizer, since
+`xcodebuild -help` names `-authenticationKeyPath`, `-authenticationKeyID` and
+`-authenticationKeyIssuerID` as an alternative to an account in Xcode's
+settings. That is what the flags say; nobody here has run it.
+
+Create the key in App Store Connect under **Users and Access → Integrations →
+App Store Connect API** with the App Manager role. The private key downloads
+once and never again. The tools look for it at:
+
+    ~/.appstoreconnect/private_keys/AuthKey_<KEY_ID>.p8
+
+Keep the key, its identifier and the issuer identifier out of this repository.
+Anything holding them can publish as its owner.
 
 A build number cannot be reused once App Store Connect has accepted it. A build
 refused during validation does not consume its number.
 
-
-Upload from Organizer, not from the command line:
-
-**Xcode → Window → Organizer → Archives → the archive → Distribute App → App Store Connect → Upload**
-
-`xcodebuild -exportArchive` fails here with `No Accounts` and `No signing
-certificate "iOS Distribution" found`, because the App Store Connect session
-lives in the Xcode GUI and `xcodebuild` cannot see it. An export can succeed
-once and still leave no certificate behind for the next one, so treat Organizer
-as the route rather than a fallback.
-
-Two validation failures arrive partway through an upload rather than at build
-time, which is why both now have a script:
-
-- **Export compliance.** App Store Connect asks the encryption question once per
-  build unless `ITSAppUsesNonExemptEncryption` is declared in
-  `Configuration/RoamControl-Info.plist`. It is. Note that the app does use
-  encryption the operating system does not provide: the Rust bridge carries its
-  own standard implementations for pair-verify and the TLS-PSK tunnel.
-- **Error 90626.** An App Intent title, description or shortcut phrase may not
-  name an Apple product. `scripts/test-intent-metadata.py` checks every intent
-  string and every localisation of it, because the metadata Apple reads is built
-  from the String Catalog and a translation is rejected on its own.
-
-A build number cannot be reused once App Store Connect has accepted it. A build
-rejected during validation does not consume its number.
-
-Do not treat an Xcode Debug `.app` folder renamed to `.ipa` as a release package. Use the verified Release archive workflow.
+Do not treat an Xcode Debug `.app` folder renamed to `.ipa` as a release
+package. Use the verified Release archive workflow.
 
 ## Privacy statistics configuration
 

@@ -11,6 +11,7 @@
 - Fixed: a Live Activity from a previous run could not be ended; a walk started during a running session never moved; pausing did not stop the arrival alarm; the map filtered ten thousand places once a second during a walk, which made the iPhone hot.
 - The spot catalogue is no longer in the repository. It is generated from a collection that is not published here, so a checkout builds without it and the spot browser is empty.
 - Validation: eight invariant scripts, Release device builds, installed on the iPhone and the watch. The coordinate correction was verified against an independent transcription of the published transform rather than on hardware — no session has been run inside mainland China.
+- Uploaded from Organizer. The watch app passed App Store Connect validation on its first submission, which was the part of this release nothing local could check.
 
 ## 0.11.0 (Build 64)
 
