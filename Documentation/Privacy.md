@@ -23,6 +23,9 @@ That information is handed to iOS so the system can draw it, and it is visible o
 
 ### The bundled catalogue
 
+The catalogue ships inside the app and is never fetched. There is no update
+request to make, and no server that learns the app is installed.
+
 The landmark and Pikmin Bloom catalogues are files inside the app. Browsing them, searching them and sorting them by distance are local operations. No request is made for them, and which places are looked at is not recorded or sent.
 
 ### Ask

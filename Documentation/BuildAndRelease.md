@@ -82,6 +82,19 @@ itself.
 
 ## Native pairing engine
 
+The spot catalogue is not in the repository either, and for a different reason:
+it is generated from a collection that is not published with this project.
+`scripts/build-pikmin-spots.py` writes
+`RoamControl/Resources/PikminSpots.json` from that collection, and the file is
+ignored by git.
+
+A checkout without it builds and runs; the spot browser is empty and nothing
+else changes. `scripts/test-pikmin-catalogue.py` says so and passes, because a
+checkout legitimately has none. `scripts/test-release-invariants.py` refuses,
+because a release built without one ships an empty browser and says nothing
+about it.
+
+
 The prebuilt `Frameworks/RoamPairingFFI.xcframework` should be committed with both arm64 iPhone and arm64 Apple Silicon simulator slices.
 
 Only rebuild it after changing `Native/RoamPairingFFI`. The rebuild requires Rust targets for:

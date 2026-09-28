@@ -37,7 +37,17 @@ def check(condition, message):
 
 
 def main():
-    check(CATALOGUE.exists(), f"{CATALOGUE.name} is missing")
+    # A checkout legitimately has no catalogue: it is generated from a source
+    # collection that is not published with this repository. That is not a
+    # defect to fail on here — scripts/test-release-invariants.py is what
+    # refuses to let a release ship without one.
+    if not CATALOGUE.exists():
+        print(
+            f"{CATALOGUE.name} is not present, so there is nothing to check. "
+            "Generate it with scripts/build-pikmin-spots.py, which needs the "
+            "source collection."
+        )
+        return
     if failures:
         report()
 

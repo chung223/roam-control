@@ -34,3 +34,9 @@ Secrets.plist
 
 # Local private configuration
 Configuration/Local.private.xcconfig
+
+# The Pikmin Bloom spot catalogue. Generated from a source collection that is
+# not part of this repository and is not published with it, so a checkout
+# builds without it and the spot features are simply absent. Regenerate with
+# scripts/build-pikmin-spots.py, which needs that collection.
+RoamControl/Resources/PikminSpots.json

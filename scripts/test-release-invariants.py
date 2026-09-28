@@ -24,6 +24,15 @@ def function_body(source: str, signature: str) -> str:
     raise AssertionError(f"Unterminated function: {signature}")
 
 
+# The catalogue is not in this repository — it is generated from a collection
+# that is not published with it — so nothing else notices when a release is
+# built without one. The app would simply have no spots, silently.
+catalogue = ROOT / "RoamControl/Resources/PikminSpots.json"
+assert catalogue.exists(), (
+    "RoamControl/Resources/PikminSpots.json is missing; a release built now "
+    "would ship with no spots. Generate it with scripts/build-pikmin-spots.py."
+)
+
 project = (ROOT / "RoamControl.xcodeproj/project.pbxproj").read_text()
 # One Debug/Release pair per target: the app, the Live Activity extension and
 # the watch app.
