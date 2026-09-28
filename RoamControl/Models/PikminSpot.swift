@@ -9,7 +9,7 @@ import MapKit
 /// sends nothing anywhere. The file is built by
 /// `scripts/build-pikmin-spots.py` from the piki knowledge base.
 struct PikminSpot: Identifiable, Hashable, Sendable {
-    enum Source: String, Sendable {
+    enum Source: String, CaseIterable, Sendable {
         case pureSpot = "p"
         case postcard = "c"
         case mushroom = "m"
@@ -84,6 +84,15 @@ struct PikminDecoration: Identifiable, Hashable, Sendable {
 enum PikminSpotCatalogue {
     private static var loaded: (spots: [PikminSpot], decorations: [PikminDecoration])?
 
+    /// What the catalogue turned out to be, checked once when it is read.
+    ///
+    /// Advisory for the bundled file: it has already shipped, and refusing to
+    /// read it would leave the app with nothing rather than with something
+    /// imperfect. The script in `scripts/` is what refuses a build. This is
+    /// the same reasoning placed where a catalogue that did not come from a
+    /// build can also reach it.
+    private(set) static var soundness: PikminCatalogueCheck.Result?
+
     private struct File: Decodable {
         struct Spot: Decodable {
             let n: String, t: String, c: String, d: String
@@ -109,8 +118,14 @@ enum PikminSpotCatalogue {
             return empty
         }
 
+        // Counted rather than swallowed: falling back to a pure spot keeps
+        // the catalogue usable, and knowing how often that happened is how a
+        // source marker nobody has heard of gets noticed.
+        var unrecognisedSources = 0
         let spots = file.spots.enumerated().map { index, s in
-            PikminSpot(
+            let source = PikminSpot.Source(rawValue: s.s)
+            if source == nil { unrecognisedSources += 1 }
+            return PikminSpot(
                 id: index,
                 name: s.n,
                 type: s.t,
@@ -118,12 +133,18 @@ enum PikminSpotCatalogue {
                 detail: s.d,
                 latitude: s.la,
                 longitude: s.lo,
-                source: PikminSpot.Source(rawValue: s.s) ?? .pureSpot
+                source: source ?? .pureSpot
             )
         }
         let decorations = file.decorations.map {
             PikminDecoration(name: $0.n, placeType: $0.t)
         }
+
+        soundness = PikminCatalogueCheck.inspect(
+            spots: spots,
+            decorations: decorations,
+            unrecognisedSources: unrecognisedSources
+        )
 
         let result = (spots: spots, decorations: decorations)
         loaded = result

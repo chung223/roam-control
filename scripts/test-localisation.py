@@ -48,6 +48,10 @@ EXEMPT_FILES = {
     "RoamControl/Services/Tunnel/DirectPathProbe.swift",
     "RoamControl/Services/Tunnel/ResolvedServiceAddress.swift",
     "RoamControl/Features/Settings/ConnectionHealthView.swift",
+    # Its findings go into that same report. A catalogue problem is something
+    # to paste into a bug, not something to read on screen, and translating it
+    # would make two versions of a message that has to be searchable.
+    "RoamControl/Models/PikminCatalogueCheck.swift",
     "RoamControl/Resources/SessionMessage.swift",
     "RoamControl/Models/LandmarkCatalogue.swift",
     # Compiled into both targets, so it cannot use the app's appText. Its

@@ -430,6 +430,7 @@ struct ConnectionHealthView: View {
         Roam Control Diagnostics
         Generated: \(Date().formatted(date: .numeric, time: .standard)) \(TimeZone.current.identifier)
         App: \(appVersion) (\(build))
+        Spot catalogue: \(PikminSpotCatalogue.soundness?.summary ?? "Not read yet")
         iOS: \(UIDevice.current.systemVersion)
         Runtime bundle identifier: \(runtimeBundleIdentifier)
         Runtime permitted background tasks: \(permittedBackgroundTasks)
