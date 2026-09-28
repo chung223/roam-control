@@ -133,6 +133,53 @@ Then select **Any iOS Device (arm64)** and choose **Product → Archive**. Xcode
 
 ## Upload to TestFlight
 
+Two routes. The second needs one thing set up once and then needs nobody
+present.
+
+### From Organizer
+
+**Xcode → Window → Organizer → Archives → the archive → Distribute App → App
+Store Connect → Upload**
+
+### From the command line
+
+`xcodebuild` and `altool` both fail with `No Accounts` when they are asked to
+reach App Store Connect, because the session that Xcode holds is the GUI's and
+they cannot see it. That is not a limit of the tools. `xcodebuild -help` says
+so plainly: it wants an account added in Xcode's settings *or* an App Store
+Connect authentication key.
+
+Create the key once, in App Store Connect under **Users and Access →
+Integrations → App Store Connect API**, with the App Manager role. The private
+key downloads once and cannot be downloaded again. Put it where the tools look:
+
+    ~/.appstoreconnect/private_keys/AuthKey_<KEY_ID>.p8
+
+Note the Key ID and the Issuer ID from the same page. Keep all three out of
+this repository — the key is a credential, and anything holding it can publish
+as you.
+
+Then export and upload without anyone clicking anything:
+
+    xcodebuild -exportArchive \
+      -archivePath "~/Library/Developer/Xcode/Archives/<date>/Sprout <version> (<build>).xcarchive" \
+      -exportPath <output directory> \
+      -exportOptionsPlist <options>.plist \
+      -allowProvisioningUpdates \
+      -authenticationKeyPath ~/.appstoreconnect/private_keys/AuthKey_<KEY_ID>.p8 \
+      -authenticationKeyID <KEY_ID> \
+      -authenticationKeyIssuerID <ISSUER_ID>
+
+    xcrun altool --upload-app -f <output directory>/Sprout.ipa -t ios \
+      --apiKey <KEY_ID> --apiIssuer <ISSUER_ID>
+
+The export options plist wants `method` set to `app-store-connect` and
+`destination` to `export`.
+
+A build number cannot be reused once App Store Connect has accepted it. A build
+refused during validation does not consume its number.
+
+
 Upload from Organizer, not from the command line:
 
 **Xcode → Window → Organizer → Archives → the archive → Distribute App → App Store Connect → Upload**
