@@ -19,13 +19,19 @@ struct LocationTarget: Codable, Hashable, Identifiable, Sendable {
     /// device, and nothing reads it there.
     var group: String?
 
+    /// Whether the coordinate was given directly rather than obtained from the
+    /// map. A number somebody typed is already the number they meant; a place
+    /// the map handed over is in whatever system the map uses there.
+    var isLiteralCoordinate: Bool?
+
     init(
         id: UUID = UUID(),
         name: String,
         subtitle: String,
         latitude: Double,
         longitude: Double,
-        group: String? = nil
+        group: String? = nil,
+        isLiteralCoordinate: Bool? = nil
     ) {
         self.id = id
         self.name = name
@@ -33,6 +39,7 @@ struct LocationTarget: Codable, Hashable, Identifiable, Sendable {
         self.latitude = latitude
         self.longitude = longitude
         self.group = group
+        self.isLiteralCoordinate = isLiteralCoordinate
     }
 
     /// Favourites and history saved before identities were stored carry no
@@ -45,6 +52,7 @@ struct LocationTarget: Codable, Hashable, Identifiable, Sendable {
         latitude = try container.decode(Double.self, forKey: .latitude)
         longitude = try container.decode(Double.self, forKey: .longitude)
         group = try container.decodeIfPresent(String.self, forKey: .group)
+        isLiteralCoordinate = try container.decodeIfPresent(Bool.self, forKey: .isLiteralCoordinate)
     }
 
     /// Everything that identifies the place, with a different group. Used when
@@ -56,7 +64,8 @@ struct LocationTarget: Codable, Hashable, Identifiable, Sendable {
             subtitle: subtitle,
             latitude: latitude,
             longitude: longitude,
-            group: group
+            group: group,
+            isLiteralCoordinate: isLiteralCoordinate
         )
     }
 

@@ -576,7 +576,8 @@ final class AppModel {
             name: .appText("Entered Location"),
             subtitle: CoordinateText.describe(coordinate),
             latitude: coordinate.latitude,
-            longitude: coordinate.longitude
+            longitude: coordinate.longitude,
+            isLiteralCoordinate: true
         )
     }
 

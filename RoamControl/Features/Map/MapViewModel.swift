@@ -74,7 +74,8 @@ final class MapViewModel: NSObject, MKLocalSearchCompleterDelegate {
             coordinate,
             fallbackName: .appText("Dropped Pin"),
             fallbackDescription: .appText("Selected from the map"),
-            recenter: false
+            recenter: false,
+            isLiteral: false
         )
     }
 
@@ -91,7 +92,8 @@ final class MapViewModel: NSObject, MKLocalSearchCompleterDelegate {
                 coordinate,
                 fallbackName: .appText("Entered Location"),
                 fallbackDescription: .appText("Entered using coordinates"),
-                recenter: true
+                recenter: true,
+                isLiteral: true
             )
             isSearching = false
             return
@@ -239,14 +241,18 @@ final class MapViewModel: NSObject, MKLocalSearchCompleterDelegate {
         _ coordinate: CLLocationCoordinate2D,
         fallbackName: String,
         fallbackDescription: String,
-        recenter: Bool
+        recenter: Bool,
+        /// A typed coordinate is already the number it means; one taken from
+        /// the map is in whatever system the map draws in there.
+        isLiteral: Bool
     ) async {
         errorMessage = nil
         let pendingTarget = LocationTarget(
             name: fallbackName,
             subtitle: .appText("Finding nearby address…"),
             latitude: coordinate.latitude,
-            longitude: coordinate.longitude
+            longitude: coordinate.longitude,
+            isLiteralCoordinate: isLiteral
         )
         selectedLocation = pendingTarget
 
@@ -267,7 +273,8 @@ final class MapViewModel: NSObject, MKLocalSearchCompleterDelegate {
                 name: fallbackName,
                 subtitle: fallbackDescription,
                 latitude: coordinate.latitude,
-                longitude: coordinate.longitude
+                longitude: coordinate.longitude,
+                isLiteralCoordinate: isLiteral
             )
             return
         }
@@ -281,7 +288,8 @@ final class MapViewModel: NSObject, MKLocalSearchCompleterDelegate {
                 name: item.name ?? fallbackName,
                 subtitle: placeDescription(for: item),
                 latitude: coordinate.latitude,
-                longitude: coordinate.longitude
+                longitude: coordinate.longitude,
+                isLiteralCoordinate: isLiteral
             )
         } catch {
             guard selectedLocation?.id == pendingTarget.id else { return }
@@ -290,7 +298,8 @@ final class MapViewModel: NSObject, MKLocalSearchCompleterDelegate {
                 name: fallbackName,
                 subtitle: fallbackDescription,
                 latitude: coordinate.latitude,
-                longitude: coordinate.longitude
+                longitude: coordinate.longitude,
+                isLiteralCoordinate: isLiteral
             )
         }
     }

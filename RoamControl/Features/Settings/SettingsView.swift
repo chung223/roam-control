@@ -19,6 +19,7 @@ struct SettingsView: View {
     @State private var isExportingPlaces = false
     @State private var isImportingPlaces = false
     @State private var placesTransferMessage: String?
+    @State private var correctionMode = ChinaCoordinateCorrection.mode
 
     var body: some View {
         NavigationStack {
@@ -101,6 +102,18 @@ struct SettingsView: View {
                         Label("Replay Introduction", systemImage: "sparkles")
                     }
                     .foregroundStyle(.primary)
+                }
+
+                Section {
+                    Picker("Chinese Coordinates", selection: correctionBinding) {
+                        ForEach(ChinaCoordinateCorrection.Mode.allCases) { mode in
+                            Text(mode.title).tag(mode)
+                        }
+                    }
+                } header: {
+                    Text("Location Compatibility")
+                } footer: {
+                    correctionFooter
                 }
 
                 Section {
@@ -404,6 +417,27 @@ struct SettingsView: View {
             }
         } else {
             Text("Shortcuts is not available on this iPhone.")
+        }
+    }
+
+    private var correctionBinding: Binding<ChinaCoordinateCorrection.Mode> {
+        Binding(
+            get: { correctionMode },
+            set: {
+                correctionMode = $0
+                ChinaCoordinateCorrection.mode = $0
+            }
+        )
+    }
+
+    /// Says what the offset is and what is left alone, because neither is
+    /// guessable from the setting's name.
+    @ViewBuilder
+    private var correctionFooter: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Map data inside mainland China is published with an offset of a few hundred metres. A place chosen there looks right on the map, because the map carries the same offset, but the location reported to the iPhone would not be.")
+            Text("Only the reported location is corrected. The pin stays where you put it, and a coordinate you type is used exactly as typed.")
+            Text("Automatic corrects inside mainland China and nowhere else. Taiwan, Hong Kong and Macau are not offset and are left alone.")
         }
     }
 

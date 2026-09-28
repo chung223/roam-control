@@ -305,6 +305,17 @@
         }
       }
     },
+    "Always": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "一律修正"
+          }
+        }
+      }
+    },
     "Amsterdam, Netherlands": {
       "extractionState": "manual",
       "localizations": {
@@ -604,6 +615,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "自動"
+          }
+        }
+      }
+    },
+    "Automatic corrects inside mainland China and nowhere else. Taiwan, Hong Kong and Macau are not offset and are left alone.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "「自動」只在中國大陸境內修正。台灣、香港、澳門沒有偏移，不會被動到。"
           }
         }
       }
@@ -1011,6 +1033,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "奇琴伊察"
+          }
+        }
+      }
+    },
+    "Chinese Coordinates": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "中國座標"
           }
         }
       }
@@ -3102,6 +3135,17 @@
         }
       }
     },
+    "Location Compatibility": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "定位相容性"
+          }
+        }
+      }
+    },
     "Location Simulation Stopped": {
       "extractionState": "manual",
       "localizations": {
@@ -3280,6 +3324,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "地圖控制項"
+          }
+        }
+      }
+    },
+    "Map data inside mainland China is published with an offset of a few hundred metres. A place chosen there looks right on the map, because the map carries the same offset, but the location reported to the iPhone would not be.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "中國大陸境內的地圖資料帶有數百公尺的偏移。在那裡選的地點在地圖上看起來是對的（因為地圖帶著同樣的偏移），但回報給 iPhone 的位置不是。"
           }
         }
       }
@@ -3731,6 +3786,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "只有 LocalDevVPN 的位址回應。這一跳需要隧道 App。"
+          }
+        }
+      }
+    },
+    "Only the reported location is corrected. The pin stays where you put it, and a coordinate you type is used exactly as typed.": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "只有回報的位置會被修正。圖釘留在你放的地方，你手動輸入的座標則完全照原樣使用。"
           }
         }
       }

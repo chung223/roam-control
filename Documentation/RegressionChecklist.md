@@ -72,6 +72,11 @@ An unchecked row means untested, not failing. Rows added for a release stay unch
 - [ ] Ask answers in the language of the question.
 - [ ] Pasting a coordinate pair into search selects that point.
 - [ ] A `roamcontrol://location?lat=&lon=` link selects that point.
+- [ ] A place searched inside mainland China reports a position that matches it in the real world, not a few hundred metres away.
+- [ ] The pin stays where it was chosen when the correction applies.
+- [ ] A coordinate typed inside mainland China is reported exactly as typed.
+- [ ] Taiwan, Hong Kong and Macau are unaffected on Automatic.
+- [ ] Off and Always behave as their names say.
 - [ ] Start Location, Start Location at Coordinates and Stop Location appear in Shortcuts and run without opening the app where they say they will not.
 - [ ] The Action button and Siri run the same actions.
 - [ ] A saved favourite appears as a choice in the Shortcuts action.

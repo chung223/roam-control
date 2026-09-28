@@ -197,7 +197,12 @@ final class LocalDeviceSessionCoordinator: NSObject {
         }
     }
 
-    func start(pairingRecord: Data, target: LocationTarget) {
+    /// The one boundary between a place the app has chosen and a coordinate
+    /// the device is told to report, which is where a coordinate system has to
+    /// be settled. Applying it at the four call sites instead would mean
+    /// getting four of them right, and keeping them right.
+    func start(pairingRecord: Data, target rawTarget: LocationTarget) {
+        let target = ChinaCoordinateCorrection.correctedForDevice(rawTarget)
         guard !workerIsRunning, !isBusy else { return }
         terminalFailureReported = false
         retryTelemetry.reset()
@@ -241,7 +246,8 @@ final class LocalDeviceSessionCoordinator: NSObject {
     }
 
     @discardableResult
-    func updateLocation(_ target: LocationTarget) -> ActiveLocationUpdateResult {
+    func updateLocation(_ rawTarget: LocationTarget) -> ActiveLocationUpdateResult {
+        let target = ChinaCoordinateCorrection.correctedForDevice(rawTarget)
         guard
             workerIsRunning,
             case .active = phase,

@@ -61,6 +61,8 @@ Where the on-device model is unavailable, the tab stays visible and says why rat
 
 ### Coordinates
 
+Coordinates you type are used exactly as typed, everywhere and always. That matters inside mainland China, where the map's own coordinates are not the real ones — see Location Compatibility below.
+
 ### Building a walk yourself
 
 The path control on the map opens the walk being planned, and shows how many stops are waiting.
@@ -199,6 +201,18 @@ If Roam Control closes without receiving a normal end signal, the next launch ex
 Nothing starts automatically from this screen.
 
 ## Appearance and accessibility
+
+### Location compatibility
+
+Map data inside mainland China is published in a system offset from real positions by a few hundred metres. MapKit returns coordinates in that system and draws its tiles in it too, so a place chosen there looks right on the map — and the location reported to the iPhone, uncorrected, would be a few hundred metres away from it.
+
+**Settings → Location Compatibility** decides what to do:
+
+- **Automatic** corrects inside mainland China and nowhere else. Taiwan, Hong Kong and Macau are not offset and are left alone.
+- **Off** never corrects.
+- **Always** corrects wherever the place is, for somewhere the automatic boundary gets wrong.
+
+Only the reported location is corrected. The pin stays where you put it — it is drawn on the same offset map, so moving it would take it off the building it names — and a coordinate you type is never touched.
 
 Settings offers automatic, light and dark appearance plus standard, satellite and hybrid maps. Roam Control follows iOS Dynamic Type, VoiceOver and Reduce Motion settings. At accessibility text sizes, cards and pop-ups can scroll so their controls remain reachable.
 
