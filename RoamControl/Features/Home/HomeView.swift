@@ -17,6 +17,12 @@ struct HomeView: View {
     @State private var walkDraft = WalkPlanDraft()
     @State private var pikminFilter: PikminSpotFilter?
     @State private var visibleMapRegion: MKCoordinateRegion?
+    /// Held rather than derived. As a computed property this ran the whole
+    /// catalogue — ten thousand spots — every time the body was evaluated,
+    /// and a running walk moves the reported coordinate once a second, so the
+    /// body is evaluated once a second for as long as the walk lasts. The
+    /// filtering was only ever meant to happen when the map comes to rest.
+    @State private var pikminSpotsInView: [PikminSpot] = []
     @State private var shouldRefreshRealLocationWhenActive = false
     @State private var shouldClearLocationAfterRestoration = false
     @State private var isLocatingRealLocationAfterRestoration = false
@@ -50,6 +56,7 @@ struct HomeView: View {
                 // drag would cost more than the pins are worth.
                 .onMapCameraChange(frequency: .onEnd) { context in
                     visibleMapRegion = context.region
+                    refreshPikminSpotsInView()
                 }
                 .onTapGesture { point in
                     if isSearchFocused {
@@ -444,6 +451,9 @@ struct HomeView: View {
         .onChange(of: watchSessionSnapshot, initial: true) { _, snapshot in
             appModel.watchBridge.send(snapshot)
         }
+        .onChange(of: pikminFilter) { _, _ in
+            refreshPikminSpotsInView()
+        }
     }
 
     /// Twenty arguments inside an already large body is past what the
@@ -795,9 +805,15 @@ struct HomeView: View {
 
     /// Nothing until a filter is chosen: 7,000 pins would describe less than
     /// no pins at all.
-    private var pikminSpotsInView: [PikminSpot] {
-        guard let pikminFilter, let visibleMapRegion else { return [] }
-        return PikminSpotCatalogue.spots(in: visibleMapRegion, matching: pikminFilter)
+    /// Recomputed when the map settles or the filter changes, and at no other
+    /// time. `MKCoordinateRegion` is not Equatable, so this is called from the
+    /// two places that change it rather than observed.
+    private func refreshPikminSpotsInView() {
+        guard let pikminFilter, let visibleMapRegion else {
+            pikminSpotsInView = []
+            return
+        }
+        pikminSpotsInView = PikminSpotCatalogue.spots(in: visibleMapRegion, matching: pikminFilter)
     }
 
     private var needsPairingPrompt: Bool {

@@ -28,6 +28,7 @@ All notable public changes to Roam Control are recorded here.
 
 ### Changed
 
+- The bundled spot catalogue is regenerated from the current source: 10,742 places, up from 10,505.
 - Report a Bug and Request a Feature open issues on this repository rather than on the upstream project they were forked from. A tester's report about this app would have arrived in an unrelated maintainer's tracker. The private security-reporting link moves with them.
 - Everything floating over the map uses the system's glass rather than an opaque fill and a drawn shadow. A control over a map has to stay legible whether what is underneath is a pale street or a dark satellite photograph, and an opaque surface has to pick one.
 - Minimum iOS stays at 27.0. It was lowered to 26.0 on the grounds that no iOS 27 API was used, which was true and not the question: on-device pairing is a device capability rather than a compiled symbol, so the compiler had nothing to object to. An iOS 26 device shows no six-digit pairing code at all, and pairing is the precondition for everything else, so a 26.0 build would have installed and then done nothing.
@@ -39,6 +40,7 @@ All notable public changes to Roam Control are recorded here.
 
 ### Fixed
 
+- The map filtered the whole spot catalogue on every evaluation of the view rather than when the map came to rest, which is what the code next to it said it did. A running walk moves the reported coordinate once a second, so an hour of walking with spots shown was some three thousand scans of ten thousand places, with the pins rebuilt each time. The phone got hot. The result is held now and recomputed only when the map settles or the filter changes.
 - A Live Activity left behind by a previous run could not be ended by the app, so it sat on screen for hours describing a session that had finished. An activity outlives the process that requested it and the handle to it does not, and ending one needs that handle. Existing activities are now taken back when the app starts: the first is adopted, any others are ended, and an adopted one is ended outright if nothing is being simulated.
 - Starting a walk while a session was already running left the previous session's Live Activity on screen and never moved the new walk. An active session does not enter its active phase a second time, and that phase change was the only thing that started a walk — so it stayed at preparing, went nowhere, and the island went on describing a walk that had been replaced.
 - Pausing a walk did not stop its arrival alarm. The walk recalculates its arrival every second and every one of those became an alarm, each racing the last: a finished one overwrote the stored identifier and abandoned whatever it had raced against, still scheduled and no longer cancellable. Pausing cancelled the one identifier left, and the abandoned alarms went off at times the walk had moved past. An arrival that has shifted by less than half a minute is now the same arrival, the scheduling is claimed before it is awaited so a later tick does not start another beside it, and the old alarm is cancelled only once its replacement exists.
