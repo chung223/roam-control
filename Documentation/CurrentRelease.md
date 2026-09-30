@@ -1,6 +1,6 @@
-# Sprout 0.12.0 — Build 70
+# Sprout 0.12.0 — Build 71
 
-Build 70 is the current release of this fork: a source-available SwiftUI app for testing an iPhone's reported location from a clean Apple Maps interface. It supports fixed locations, simulated walking routes, favourites, history and native on-device pairing through LocalDevVPN.
+Build 71 is the current release of this fork: a source-available SwiftUI app for testing an iPhone's reported location from a clean Apple Maps interface. It supports fixed locations, simulated walking routes, favourites, history and native on-device pairing through LocalDevVPN.
 
 It is the first release distributed through TestFlight, and the first to install as **Sprout** rather than Roam Control.
 
@@ -15,6 +15,7 @@ Read the [installation guide](Installation.md), [privacy explanation](Privacy.md
 
 ## What is new in 0.12.0
 
+- Build 71 rebuilds the native pairing engine against a newer `idevice`. Nothing behaves differently; it was five weeks behind, and the time to move it is while the environment it works in is known to work rather than after an iOS update.
 - Coordinates chosen inside mainland China are corrected before they are reported. Map data there is offset from real positions by a few hundred metres, so a place looked right on the map while the iPhone reported somewhere several hundred metres away. Only the reported position moves; the pin and any coordinate you type are left alone. **Settings → Location Compatibility** offers Automatic, Off and Always.
 - Session history is read in the time zone each session happened in, rather than in whatever zone the iPhone is in now — which changes on its own while a distant place is simulated.
 - The Dynamic Island shows the walk as a path being made: a leaf at every mark passed, and a bud at the end that opens on arrival.

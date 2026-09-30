@@ -5,7 +5,7 @@ This guide covers development builds and the TestFlight upload workflow.
 ## Current release identity
 
 - Marketing version: `0.12.0`
-- Current build: `70`
+- Current build: `71`
 - Bundle identifier: supplied by `ROAMCONTROL_BUNDLE_ID` in the ignored private configuration
 - Minimum deployment target: iOS 27.0
 - Supported device family: iPhone

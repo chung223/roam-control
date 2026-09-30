@@ -1,5 +1,15 @@
 # Roam Control releases
 
+## 0.12.0 (Build 71)
+
+- Released: 30 September 2026
+- Requires: iOS 27.0 or later; the watch app requires watchOS 26.0 or later
+- Distribution: TestFlight, as **Sprout**
+- Xcode: 26.6 (`17F113`), Swift 6.3.3
+- Change: the native pairing engine is rebuilt against `idevice` at `d32c818`, eleven commits on from the revision pinned since August, including a fix to the pairing layer's OPACK decoding. No behaviour changes. A build number rather than a minor version, because nothing a reader of the app would notice is different.
+- Reason: the revision was five weeks old. Moving it after an iOS update would mean two variables moving at once, with no way to attribute a failure to either.
+- Validation: eight invariant scripts; the FFI interface compared symbol by symbol either side of the rebuild; and a session run end to end on an iPhone 18 Pro from a `roamcontrol://` link, with Apple Maps showing the coordinate that was sent — so pair-verify, the tunnel, RSD and DVT were all exercised, and the pairing record from before the rebuild still worked. The shipped executable's `__text` grew by the same 9 KB the rebuilt library did.
+
 ## 0.12.0 (Build 70)
 
 - Released: 28 September 2026

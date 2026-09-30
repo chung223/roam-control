@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <strong>Current release:</strong> 0.12.0 Build 70 · <strong>Requires:</strong> iOS 27+
+  <strong>Current release:</strong> 0.12.0 Build 71 · <strong>Requires:</strong> iOS 27+
 </p>
 
 <p align="center">
@@ -64,7 +64,7 @@ The app installs and appears on the Home Screen as **Sprout**. The project, its 
 
 ## Install Roam Control
 
-This fork is distributed through **TestFlight** as **Sprout 0.12.0 Build 70**. Ask the maintainer for an invitation; there is no public App Store listing.
+This fork is distributed through **TestFlight** as **Sprout 0.12.0 Build 71**. Ask the maintainer for an invitation; there is no public App Store listing.
 
 Earlier releases of the upstream project were published as unsigned IPAs for SideStore. That route still works if you build your own archive, but no IPA is published here.
 
