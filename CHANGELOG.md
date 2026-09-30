@@ -29,6 +29,7 @@ All notable public changes to Roam Control are recorded here.
 
 ### Changed
 
+- The pairing engine is rebuilt against a newer `idevice`, eleven commits on from the revision that was pinned, including a fix to the pairing layer itself. Nothing in the project needed it today; it was five weeks stale, and the sensible time to move it is while the environment it works in is known to work — not after an iOS update has changed something, when two variables would be moving at once.
 - The bundled spot catalogue is regenerated from the current source: 10,742 places, up from 10,505.
 - Report a Bug and Request a Feature open issues on this repository rather than on the upstream project they were forked from. A tester's report about this app would have arrived in an unrelated maintainer's tracker. The private security-reporting link moves with them.
 - Everything floating over the map uses the system's glass rather than an opaque fill and a drawn shadow. A control over a map has to stay legible whether what is underneath is a pale street or a dark satellite photograph, and an opaque surface has to pick one.

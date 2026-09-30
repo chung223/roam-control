@@ -20,6 +20,7 @@ An unchecked row means untested, not failing. Rows added for a release stay unch
 - [ ] Pair This iPhone starts without crashing.
 - [ ] The six-digit PIN is readable and accepted by iOS Settings.
 - [ ] Successful pairing persists after relaunch.
+- [x] An existing pairing record still works after the native engine is rebuilt against a newer `idevice`. Verified on an iPhone 18 Pro: a session started from a link reached active and Apple Maps showed the reported coordinate.
 - [ ] Import Existing File accepts a valid pairing record.
 - [ ] An invalid record produces a readable error.
 - [ ] Removing pairing requires confirmation and returns the app to Not paired.
